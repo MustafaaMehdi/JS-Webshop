@@ -1,33 +1,68 @@
 body {
-    background-color: beige;
+    background-color: rgb(252, 246, 246);
     header {
-        background-color: #fff;
+        // background-color: #fff;
         display: flex;
         flex-direction: column;
         align-items: center;
-        position: relative;
-        figure {
+        // position: relative;
+        // .headingLogo {
+
             // text-align: center;
             margin: 0;
+    
+        figure {
+            position: relative;
+            margin: 0;
+            h1 {
+                position: absolute;
+                bottom: 0.5rem;
+                left: 1.2rem;
+                letter-spacing: 8px;
+                text-transform: uppercase;
+                margin: 0;
+                color: #FFB406;
+                font-weight: 300;
+            }
         }
+    // }
         .checkOut {
             position: absolute;
             right: 1rem;
         }
         nav {
             // display: flex;
-            height: 50px;
+            // height: 50px;
             width: 100%;
-            background-color: aquamarine;
+            // background-color: aquamarine;
             // justify-content: space-between ;
+            ul {
+                margin: 0;
+                display: flex;
+                padding: 0;
+
+                justify-content: space-between;
             .navList {
-                // display: block;
-                float: left;
-                padding: 0 16px;
+                width: 100%;
+                text-align: center;
+                // justify-content: space-between;
+                // flex-direction: row;
+                // float: left;
+                // padding: 0 16px;
                 a {
-                    // display: block;
+                    display: block;
+                    // height: 100%;
+                    // width: 100%;
+                    // text-align: center;
+                    padding: 14px 14px;
+                    color: #080404;
                 }
+                a:hover {
+                    background-color: #fac450;
+                    color: #080404;
+                  }
             }
+        }
         }
     }
 
@@ -42,6 +77,7 @@ body {
         padding: 1rem;
         text-transform: uppercase;
         position: relative;
+        font-weight: 400;
 
     .rightDivider,
     .leftDivider {
@@ -61,20 +97,23 @@ body {
     }
 }
     .introSec {
-        background-color: aqua;
+        // background-color: aqua;
+        background-color: #fff;
     }
 
     .instructionSec {
-        background-color: rgb(56, 80, 80);
+        // background-color: #fff;
     }
 
     .productSec {
-        background-color: rgb(75, 30, 43);
+        // background-color: rgb(75, 30, 43);
         height: 100vh;
+        background-color: #fff;
     }
 
     footer {
-        height: 20vh;
+        height: 15vh;
+        background-color: rgb(241, 237, 237);
     }
 }
 
