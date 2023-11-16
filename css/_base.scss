@@ -5,13 +5,19 @@ body {
         display: flex;
         flex-direction: column;
         align-items: center;
+        position: relative;
         figure {
             // text-align: center;
             margin: 0;
         }
+        .checkOut {
+            position: absolute;
+            right: 1rem;
+        }
         nav {
             // display: flex;
             height: 50px;
+            width: 100%;
             background-color: aquamarine;
             // justify-content: space-between ;
             .navList {
@@ -35,8 +41,25 @@ body {
         margin: 0;
         padding: 1rem;
         text-transform: uppercase;
-    }
+        position: relative;
 
+    .rightDivider,
+    .leftDivider {
+        display: inline-block;
+        border-bottom: 1px solid #080404;
+        width: 20%;
+    }
+    .rightDivider {
+        position: absolute;
+        right: 0;
+        top: 2rem;
+    }
+    .leftDivider {
+        position: absolute;
+        left: 0;
+        top: 2rem;
+    }
+}
     .introSec {
         background-color: aqua;
     }
@@ -48,6 +71,10 @@ body {
     .productSec {
         background-color: rgb(75, 30, 43);
         height: 100vh;
+    }
+
+    footer {
+        height: 20vh;
     }
 }
 
