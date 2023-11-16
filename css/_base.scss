@@ -1,7 +1,16 @@
 body {
     background-color: beige;
+    header {
+        background-color: #fff;
+    }
 }
 
-.dark {
+.darkTheme {
     background-color: rgb(56, 53, 49);
+    //Logo here?
+}
+
+.logoColor {
+    // filter: invert(42%) sepia(93%) saturate(1352%) hue-rotate(87deg) brightness(119%) contrast(119%);
+
 }
