@@ -2,22 +2,47 @@ body {
     background-color: beige;
     header {
         background-color: #fff;
-        justify-items: center;
-        nav {
-            display: flex;
-            border: 2px solid red;
-            height: 10vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        figure {
+            // text-align: center;
+            margin: 0;
         }
+        nav {
+            // display: flex;
+            height: 50px;
+            background-color: aquamarine;
+            // justify-content: space-between ;
+            .navList {
+                // display: block;
+                float: left;
+                padding: 0 16px;
+                a {
+                    // display: block;
+                }
+            }
+        }
+    }
+
+    .introSec,
+    .instructionSec {
+        height: 50vh;
+    }
+
+    .sectionHeading {
+        text-align: center;
+        margin: 0;
+        padding: 1rem;
+        text-transform: uppercase;
     }
 
     .introSec {
         background-color: aqua;
-        height: 50vh;
     }
 
     .instructionSec {
         background-color: rgb(56, 80, 80);
-        height: 50vh;
     }
 
     .productSec {
