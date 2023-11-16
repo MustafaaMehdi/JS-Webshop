@@ -2,6 +2,12 @@ body {
     background-color: beige;
     header {
         background-color: #fff;
+        justify-items: center;
+        nav {
+            display: flex;
+            border: 2px solid red;
+            height: 10vh;
+        }
     }
 }
 
