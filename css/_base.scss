@@ -26,9 +26,13 @@ body {
             }
         }
     // }
-        .checkOut {
-            position: absolute;
+        .checkOutProd,
+        .checkOutAmount {
+            position: fixed;
             right: 1rem;
+        }
+        .checkOutAmount {
+            top: 1.5rem
         }
         nav {
             // display: flex;
@@ -45,11 +49,12 @@ body {
             .navList {
                 width: 100%;
                 text-align: center;
+                
                 // justify-content: space-between;
                 // flex-direction: row;
                 // float: left;
                 // padding: 0 16px;
-                a {
+                a{
                     display: block;
                     // height: 100%;
                     // width: 100%;
@@ -61,7 +66,16 @@ body {
                     background-color: #fac450;
                     color: #080404;
                   }
+
             }
+            .navSearch {
+                input {
+                    display: block;
+                    margin: 0.5rem;
+                    width: 80%;
+                    float: right;
+                }
+              }
         }
         }
     }
