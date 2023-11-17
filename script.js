@@ -34,3 +34,15 @@
 
 // }
 
+
+
+// REVIEWS:
+// {
+
+    //1 Add reviews with a for loop:
+    // - Create a variable for the reviews container
+    // - create an Array with the 
+    // - Select the reviewsContainer 
+    // - Push the Image, H3 and P inside of an <article> with a class
+
+// }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if lt IE 7]>      <html class='no-js lt-ie9 lt-ie8 lt-ie7'> <![endif]-->
 
 <html>
 	<head>
@@ -17,50 +17,61 @@
 	</head>
 	<body>
 		<header>
-			<!-- <div class="headingLogo"> -->
+			<!-- <div class='headingLogo'> -->
 
 			<figure>
 				<img src="Assets/icons/lightThemeLogo.svg" class="logoColor" />
 				<h1>Elegant Roses</h1>
 			</figure>
 			<!-- </div> -->
-			<!-- <p class="checkOutProd">TROLLY</p>
-			<p class="checkOutAmount">PRICE</p> -->
+			<!-- <p class='checkOutProd'>TROLLY</p>
+			<p class='checkOutAmount'>PRICE</p> -->
 			<nav>
-                <button class="navButtonCart"><img src="Assets/icons/shopping-cart-icon.svg" alt="" width="30px" height="30px"></button>
-                <input type="text">
-                <button class="navButtonMenu"><img src="Assets/icons/burgerMenu.svg" alt="" width="30px" height="30px"></button>
+				<button class="navButtonCart">
+					<img
+						src="Assets/icons/shoppingCart.svg"
+						alt=""
+						width="30px"
+						height="30px"
+					/>
+				</button>
+			    <input type="text"/>
+				<button class="searchBtn">
+					<img
+						src="Assets/icons/Search.svg"
+						alt=""
+						width="30px"
+						height="30px"
+					/>
+				</button>
+                <button class="navButtonMenu">
+					<img
+						src="Assets/icons/burgerMenu.svg"
+						alt=""
+						width="30px"
+						height="30px"
+					/>
+				</button>
 				<!-- <ul>
-					<li class="navList"><a href="#">Cart</a></li>
-					<li class="navList"><a href=""><input type="text" placeholder="Search roses" /></a></li>
-					<li class="navList"><a href="#">Contact</a></li> -->
-					<!-- <li class="navSearch">
-						<span class="searchIcon">Search</span
-						><input type="text" placeholder="Search roses" />
+					<li class='navList'><a href='#'>Cart</a></li>
+					<li class='navList'><a href=''><input type='text' placeholder='Search roses' /></a></li>
+					<li class='navList'><a href='#'>Contact</a></li> -->
+				<!-- <li class='navSearch'>
+						<span class='searchIcon'>Search</span
+						><input type='text' placeholder='Search roses' />
 					</li> -->
 				<!-- </ul> -->
 			</nav>
 		</header>
-
-		<section class="introSec">
+		<section class="productSec">
 			<h2 class="sectionHeading">
-				<span class="leftDivider"></span>Intro<span class="rightDivider"></span>
+				<span class="leftDivider"></span>Products<span
+					class="rightDivider"
+				></span>
 			</h2>
-            <div class="reviewsContainer">
-                <article class="reviews">
-                    HEJ
-                </article>
-                <article class="reviews">
-                    TJA
-                </article>
-                <article class="reviews">
-                    HALLÅ
-                </article>
-                <article class="reviews">
-                    DÄR
-                </article>
-            </div>
+			<div class="productContainer"></div>
 		</section>
+
 		<section class="instructionSec">
 			<h2 class="sectionHeading">
 				<span class="leftDivider"></span>How it works<span
@@ -68,15 +79,37 @@
 				></span>
 			</h2>
 		</section>
-		<section class="productSec">
-			<h2 class="sectionHeading">
-				<span class="leftDivider"></span>Products<span class="rightDivider"></span>
-			</h2>
-            <div class="productContainer">
 
-            </div>
+		<section class="reviewSec">
+			<h2 class="sectionHeading">
+				<span class="leftDivider"></span>Reviews<span
+					class="rightDivider"
+				></span>
+			</h2>
+			<div class="reviewsContainer">
+				<article class="reviews">
+					<img
+						src="/Assets/Images/Reviews/Review1.jpg"
+						alt="girl holding box of flowers"
+						height="300"
+						width="300"
+					/>
+					<h3>
+						My girlfriend loved it so much she left me for an
+						Elegantrose...10/10!
+					</h3>
+					<p>-A poor soul</p>
+				</article>
+				<article class="reviews">JS</article>
+				<article class="reviews">JS</article>
+				<article class="reviews">JS</article>
+			</div>
 		</section>
+
+
 		<footer>Links</footer>
+
+        
 		<script src="script.js" async defer></script>
 	</body>
 </html>

@@ -1,169 +1,196 @@
 body {
-    background-color: rgb(252, 246, 246);
-    header {
-        // background-color: #fff;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        // position: relative;
-        // .headingLogo {
+	background-color: rgb(252, 246, 246);
+	header {
+		// background-color: #fff;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		// position: relative;
+		// .headingLogo {
 
-            // text-align: center;
-            // margin: 0;
-    
-        figure {
-            position: relative;
-            margin: 0;
-            h1 {
-                position: absolute;
-                bottom: 0.5rem;
-                left: 1.2rem;
-                letter-spacing: 8px;
-                text-transform: uppercase;
-                margin: 0;
-                color: #FFB406;
-                font-weight: 300;
-            }
-        }
-    // }
-        .checkOutProd,
-        .checkOutAmount {
-            position: fixed;
-            right: 1rem;
-        }
-        .checkOutAmount {
-            top: 1.5rem
-        }
-        nav {
-            display: flex;
-            width: 100%;
-            height: 40px;
-            .navButtonCart,
-            .navButtonMenu {
-                flex: 1;
-                border: none;
-            }
-            .navButtonCart {
-                svg {
-                    fill: #f3ca6a;
-                }
-            }
-            input {
-                flex:2;
-                border: 1px solid #f3ca6a;
-            }
-        //     ul {
-        //         margin: 0;
-        //         display: flex;
-        //         padding: 0;
+		// text-align: center;
+		// margin: 0;
 
-        //         justify-content: space-between;
-        //     .navList {
-        //         width: 100%;
-        //         text-align: center;
-                
-        //         // justify-content: space-between;
-        //         // flex-direction: row;
-        //         // float: left;
-        //         // padding: 0 16px;
-        //         a{
-        //             display: block;
-        //             // height: 100%;
-        //             // width: 100%;
-        //             // text-align: center;
-        //             padding: 14px 14px;
-        //             color: #080404;
-        //         }
-        //         a:hover {
-        //             background-color: #fac450;
-        //             color: #080404;
-        //           }
+		figure {
+			position: relative;
+			margin: 0;
+			h1 {
+				position: absolute;
+				bottom: 0.5rem;
+				left: 1.2rem;
+				letter-spacing: 8px;
+				text-transform: uppercase;
+				margin: 0;
+				color: #ffb406;
+				font-weight: 300;
+			}
+		}
+		// }
+		.checkOutProd,
+		.checkOutAmount {
+			position: fixed;
+			right: 1rem;
+		}
+		.checkOutAmount {
+			top: 1.5rem;
+		}
+		nav {
+			display: flex;
+			width: 100%;
+			height: 40px;
+			position: relative;
+			.navButtonCart,
+			.navButtonMenu {
+				flex: 3;
+				border: none;
+			}
+			.searchBtn {
+				flex: 1;
+				border: 1px solid #f3ca6a;
+				border-left: none;
+			}
+			.navButtonCart:active,
+			.navButtonMenu:active,
+			.searchBtn:active {
+				background-color: #f3ca6a;
+				// color: #ffffff;
+			}
+			.navButtonCart {
+				svg {
+					// fill: #f3ca6a;
+				}
+			}
 
-        //     }
-        //     .navSearch {
-        //         input {
-        //             display: block;
-        //             margin: 0.5rem;
-        //             width: 80%;
-        //             float: right;
-        //         }
-        //       }
-        // }
-        }
-    }
+			input {
+				flex: 4;
+				position: relative;
+				height: 36px;
+				width: 100%;
+				border: 1px solid #f3ca6a;
+				border-right: none;
+			}
+			// .searchBtn {
+			//     position: absolute;
+			//     top: 0;
+			//     right: -6px;
+			//     height: 100%;
+			//     border:1px solid #FFB406;                // background-color: #fff;
+			// }
+		}
+	}
 
-    .introSec,
-    .instructionSec {
-        height: 50vh;
-    }
+	.reviewSec,
+	.instructionSec {
+		height: 50vh;
+	}
 
-    .sectionHeading {
-        text-align: center;
-        margin: 0;
-        padding: 1rem;
-        text-transform: uppercase;
-        position: relative;
-        font-weight: 400;
+	.sectionHeading {
+		text-align: center;
+		margin: 0;
+		padding: 1rem;
+		text-transform: uppercase;
+		position: relative;
+		font-weight: 400;
 
-    .rightDivider,
-    .leftDivider {
-        display: inline-block;
-        border-bottom: 1px solid #080404;
-        width: 20%;
-        top: 2rem;
-    }
-    .rightDivider {
-        position: absolute;
-        right: 0;
-    }
-    .leftDivider {
-        position: absolute;
-        left: 0;
+		.rightDivider,
+		.leftDivider {
+			display: inline-block;
+			border-bottom: 1px solid #080404;
+			width: 20%;
+			top: 2rem;
+		}
+		.rightDivider {
+			position: absolute;
+			right: 0;
+		}
+		.leftDivider {
+			position: absolute;
+			left: 0;
+		}
+	}
 
-    }
-}
-    .introSec {
-        // background-color: aqua;
-        background-color: #fff;
+	.productSec {
+		// background-color: rgb(75, 30, 43);
+		height: 100vh;
+		background-color: #fff;
+	}
 
-        .reviewsContainer {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            .reviews:nth-child(1) {
-                background-image: url('/Assets/Images/Products/blanding.jpg');
-                height: 100%;
-                width: 100%;
-            }
-            .reviews:nth-child(2) {
-                background-image: url('/Assets/Images/Products/blanding.jpg');
-                height: 100px;
-                width: 100%;
-            }
-        }
-    }
+	.instructionSec {
+		// background-color: #fff;
+	}
 
-    .instructionSec {
-        // background-color: #fff;
-    }
+	.reviewSec {
+		// background-color: aqua;
+		background-color: #fff;
 
-    .productSec {
-        // background-color: rgb(75, 30, 43);
-        height: 100vh;
-        background-color: #fff;
-    }
+		.reviewsContainer {
+			display: grid;
+			grid-template-columns: repeat(4, 1fr);
+			gap: 20px;
+			position: relative;
+			// height: 45vh;
+			.reviews {
+				position: relative;
+                grid-column: span 2;
 
-    footer {
-        height: 15vh;
-        background-color: rgb(241, 237, 237);
-    }
+                background-position: center
+			}
+			.reviews:nth-child(1) {
+				img {
+					filter: blur(5px);
+
+                    width: 100%;
+                    height: 100%;
+				}
+				h3 {
+					position: absolute;
+					top: 3rem;
+				}
+				p {
+					position: absolute;
+					top: 9rem;
+					color: #fff;
+				}
+			}
+			.reviews:nth-child(2) {
+				background-image: url('/Assets/Images/Reviews/Review2.jpg');
+				width: 100%;
+                object-fit:contain;
+				img {
+					filter: blur(5px);
+				}
+				h3 {
+					position: absolute;
+					top: 3rem;
+				}
+				p {
+					position: absolute;
+					top: 9rem;
+					color: #fff;
+				}
+			}
+			.reviews:nth-child(3) {
+				background-image: url('/Assets/Images/Reviews/Review2.jpg');
+				width: 100%;
+			}
+			.reviews:nth-child(4) {
+				background-image: url('/Assets/Images/Reviews/Review2.jpg');
+				width: 100%;
+			}
+		}
+	}
+
+	footer {
+		height: 15vh;
+		background-color: rgb(241, 237, 237);
+	}
 }
 
 .darkTheme {
-    background-color: rgb(56, 53, 49);
-    //Logo here?
+	background-color: rgb(56, 53, 49);
+	//Logo here?
 }
 
 .logoColor {
-    // filter: invert(42%) sepia(93%) saturate(1352%) hue-rotate(87deg) brightness(119%) contrast(119%);
-
+	// filter: invert(42%) sepia(93%) saturate(1352%) hue-rotate(87deg) brightness(119%) contrast(119%);
 }
