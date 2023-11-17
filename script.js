@@ -36,13 +36,27 @@
 
 
 
-// REVIEWS:
+// PAGECONTENT:
 // {
 
-    //1 Add reviews with a for loop:
-    // - Create a variable for the reviews container
-    // - create an Array with the 
-    // - Select the reviewsContainer 
-    // - Push the Image, H3 and P inside of an <article> with a class
+
+    // PRODUCTS PAGE
+        //1a Add Products with a for loop:
+        // - Create a variable for the products container
+        // - create an Array containing all objects 
+        // - Select the productsContainer 
+        // - Push the Image, Title and Price inside of an <article> with a class
+
+        //1b Add Products buttons with a for loop:
+        // - Select the productsContainer 
+        // - Push the subrtract and add buttons
+
+
+    // REVIEWS
+        //1 Add reviews with a for loop:
+        // - Create a variable for the reviews container
+        // - create an Array with the 
+        // - Select the reviewsContainer 
+        // - Push the Image, H3 and P inside of an <article> with a class
 
 // }
