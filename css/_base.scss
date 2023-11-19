@@ -331,7 +331,10 @@ body {
 	}
 
 	.instructionSec {
-		// background-color: #fff;
+		.instructionList {
+			display: flex;
+			justify-content: space-evenly;
+		}
 	}
 
 	.reviewSec {
@@ -403,18 +406,36 @@ body {
 		background-image: url(/Assets/icons/lightThemeLogo.svg);
 		background-repeat: no-repeat;
 		background-position: center;
+		flex-wrap: wrap;
 		li {
 			padding: 10px;
 			border-bottom: 1px solid #000000;
 			font-weight: 600;
 			a {
 				color: #000000;
+				width: 4rem;
 			}
 			a:hover {
 				background-color: #dfd1d1;
 			}
 		}
-		// height: 100%;
+		div {
+			display: flex;
+			width: 100%;
+			background-color: #000000;
+			justify-content: space-evenly;
+			// justify-content: space-between;
+
+			p {
+				// text-align: center;
+				margin: 1.5rem;
+				color: #fff;
+				img {
+					// display: inline-block;
+					object-fit: contain;
+				}
+			}
+		}
 	}
 }
 
