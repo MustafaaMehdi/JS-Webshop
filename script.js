@@ -9,7 +9,11 @@
     // - create a button for expanded Burger menu
     // - Create function to make the button able to Toggle the navigation menu on and off
 
-    // 1.1 Add Dark Theme/Light Theme functionality button:
+    // 1.1 Burge Menu navigation:
+    // - When clicking on a menu option/Section menu should toggle and scroll to section
+    
+
+    // 1.2 Add Dark Theme/Light Theme functionality button:
     // - Once the burger menu is expanded /create a button in CSS/
     // - customer should be able to toggle theme via button
 
@@ -28,7 +32,7 @@
     // - Add product removal button to the summary 
 
 
-    // 3.b Update shopping card visuals on product addition:
+    // 3.b Update shopping cart visuals on product addition:
     // - Per default, shopping card should be stock navBar color 
     // - As customers adds a product, the shopping card should change color and expand 
     // - TotalPrice value should be added upon a customer adding product  

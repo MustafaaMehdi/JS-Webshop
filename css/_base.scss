@@ -6,9 +6,10 @@
 	position: absolute;
 	white-space: nowrap;
 	width: 1px;
-  }
+}
 
 body {
+	// overflow: hidden; 
 	background-color: rgb(252, 246, 246);
 	header {
 		// background-color: #fff;
@@ -21,10 +22,10 @@ body {
 		// text-align: center;
 		// margin: 0;
 
-		figure {
+		.headerLogo {
 			position: relative;
 			margin: 0;
-			h1 {
+			.headerLogoText {
 				position: absolute;
 				bottom: 0.5rem;
 				left: 1.2rem;
@@ -58,72 +59,84 @@ body {
 				flex: 1;
 				border: 1px solid #f3ca6a;
 				border-left: none;
-                
 			}
-            .navCartBtnFilled { //Om kundvagn har produkter, visa denna färg
-                background-image: linear-gradient(to right,#f3ca6a,pink , rgb(187, 76, 94));
+			.navCartBtnFilled {
+				//Om kundvagn har produkter, visa denna färg
+				background-image: linear-gradient(
+					to right,
+					#f3ca6a,
+					pink,
+					rgb(187, 76, 94)
+				);
 				// svg {
 				// 	// fill: #f3ca6a;
 				// }
 			}
-            .cartPreview {
-                position: absolute;
-                left: 0;
-                top: 3rem;
-                // border: 1px solid black;
-                background-color: #f3ca6a;
-                width: 350px;
-                height: auto;
-                z-index: 1;
-                border-radius: 3px;
-
-                .cartPreviewArrow {
-                    position: absolute;
-                    left: 2rem;
-                    top: -9px;
-                    background-color: #f3ca6a;
-                    transform: rotate(45deg);
-                    padding: 10px;
-                }
-                .cartPreviewToggle {
-                    justify-content: center;
-                    position: absolute;
-                    right: 0;
-                    top: 0;
-                    border: none;
-                    border-radius: 0 10px 0 80px;
-                    padding: 0px 20px 10px 15px;
-                    background-color: rgb(216, 93, 114);
+			//FIX ___ Opacity between arrow and shopping cart
+			.cartPreview {
+				position: absolute;
+				left: 10px;
+				right: 30px;
+				top: 3rem;
+				// border: 1px solid black;
+				background-color: RGBA(243, 202, 106, 1);
+				width: 90vw;
+				height: auto;
+				z-index: 1;
+				border-radius: 3px;
+				.cartPreviewArrow {
+					position: absolute;
+					left: 2rem;
+					top: -9px;
+					background-color: RGBA(243, 202, 106, 1);
+					transform: rotate(45deg);
+					padding: 10px;
+				}
+				.cartPreviewToggle {
+					justify-content: center;
+					position: absolute;
+					right: 0;
+					top: 0;
+					border: none;
+					border-radius: 0 10px 0 80px;
+					padding: 0px 20px 10px 15px;
+					background-color: rgb(216, 93, 114);
 					font-size: 1.5rem;
 					.cartPreviewToggleBtn {
 						padding: 10px 0 2px 10px;
 					}
-                }
-				.cartPreviewToggle:hover {
-					background-color: rgb(172, 77, 93)
-
 				}
-                .summaryHeading {
-                    text-align: center;
-                    border-bottom: 1px solid black;
-                }
-				.productPreviewInfo {
+				.cartPreviewToggle:hover {
+					background-color: rgb(172, 77, 93);
+				}
+				.summaryHeading {
+					text-align: center;
+					border-bottom: 1px solid black;
+				}
+				ul {
 					display: flex;
-					justify-content:space-evenly;
+					justify-content:space-around;
 					border-bottom: 1px solid #fff;
 				}
+				.productPreviewInfo {
+
+					justify-content:space-around;
+					// border-bottom: 1px solid #fff;
+					padding: 0;
+				}
 				.productPreviewSummary {
-					display: flex;
+					// display: flex;
 					// grid-template-columns: repeat(6,1fr)
 					padding: 10px;
 					font-size: 1rem;
-					justify-content: space-evenly;
-					border-bottom: 1px solid #fff;
-					li {
-						// border-top: 1px solid fff;
-					}
+					// justify-content: space-evenly;
+					// border-bottom: 1px solid #fff;
+					// ul {
+					// 	margin-left: 2px;
+					// }
 
 					.productPreviewImage {
+						border-radius: 3px;
 					}
 					.previewProductTitle,
 					.previewProductPrice {
@@ -138,15 +151,33 @@ body {
 					}
 					.productAmountActions {
 						// margin-top: 1rem;
-					.productAmount {
-						width: 1.5rem;
+						.productAmount {
+							width: 1.5rem;
+						}
 					}
-				}
 					.previewProductRemoval,
 					.productAmountSub,
-					.productAmountAdd {
+					.productAmountAdd,
+					.productAmount {
 						margin-top: 13px;
-						border: none;
+						border: 1px solid #0e0b0b;
+						// border-radius: 3px;
+					}
+					.productAmountSub,
+					.productAmount {
+						border-right: none;
+					}
+					.productAmountAdd,
+					.productAmount {
+						border-left: none;
+					}
+					.productAmountSub {
+						border-radius: 3px 0 0 3px;
+					}
+					.productAmountAdd {
+						border-radius: 0 3px 3px 0;
+					}
+					.previewProductRemoval {
 						border-radius: 3px;
 					}
 					.previewProductRemoval:hover,
@@ -154,9 +185,7 @@ body {
 					.productAmountAdd:hover {
 						background-color: rgb(172, 168, 168);
 					}
-
 				}
-
 
 				.checkoutBtn {
 					border: none;
@@ -170,7 +199,7 @@ body {
 				.checkoutBtn:hover {
 					background-color: rgb(172, 168, 168);
 				}
-            }
+			}
 			.navCartBtn:hover,
 			.navMenuBtn:hover,
 			.navSearchBtn:hover {
@@ -178,8 +207,7 @@ body {
 				// color: #ffffff;
 			}
 
-
-			input {
+			.navSearchBar {
 				flex: 4;
 				position: relative;
 				// height: 36px;
@@ -194,6 +222,75 @@ body {
 			//     height: 100%;
 			//     border:1px solid #FFB406;                // background-color: #fff;
 			// }
+			.navMenu {
+				position: fixed;
+				top: 0;
+				width: 100vw;
+				height: 100vh;
+				background-color: rgb(107, 107, 107);
+				opacity: 0.9;
+				z-index: 5;
+				.menuToggleBtn,
+				.themeToggleBtn {
+					position: absolute;
+				}
+				.menuToggleBtn {
+					// justify-content: center;
+					// position: absolute;
+					right: 0;
+					top: 0;
+					border: none;
+					border-radius: 0 0 0 80px;
+					padding: 0px 40px 25px 25px;
+					background-color: rgb(216, 93, 114);
+					// font-size: 1.5rem;
+					img {
+						padding: 10px 1px 2px 10px;
+					}
+				}
+				.menuToggleBtn:hover {
+					background-color: rgb(172, 77, 93);
+				}
+				.themeToggleBtn {
+					left: 0;
+					top: 0;
+					border: none;
+					border-radius: 0 0 80px 0;
+					padding: 0px 40px 25px 25px;
+					background-image: linear-gradient(
+						to right,
+						#4b4a4a,
+						rgb(170, 148, 152),
+						rgb(255, 255, 255)
+					);
+					img {
+						padding: 10px 1px 2px 5px;
+					}
+				}
+				.themeToggleBtn:hover {
+					background-image: linear-gradient(
+						to right,
+						rgb(255, 255, 255),
+						rgb(170, 148, 152),
+						#4b4a4a
+					);
+				}
+				ul {
+					display: flex;
+					justify-content: space-evenly;
+					flex-direction: column;
+					height: 80%;
+					text-align: center;
+					font-size: 2rem;
+					padding: 0;
+					a {
+						color: #fff;
+					}
+					a:hover {
+						color: #ffb406;
+					}
+				}
+			}
 		}
 	}
 
@@ -249,16 +346,16 @@ body {
 			// height: 45vh;
 			.reviews {
 				position: relative;
-                grid-column: span 4;
+				grid-column: span 4;
 
-                background-position: center
+				background-position: center;
 			}
 			.reviews:nth-child(1) {
 				img {
 					filter: blur(5px);
 					object-fit: cover;
-                    width: 100%;
-                    // height: 100%;
+					width: 100%;
+					// height: 100%;
 				}
 				h3 {
 					position: absolute;
@@ -273,7 +370,7 @@ body {
 			.reviews:nth-child(2) {
 				background-image: url('../Assets/Images/Reviews/Review2.jpg');
 				width: 100%;
-                object-fit:contain;
+				object-fit: contain;
 				img {
 					filter: blur(5px);
 				}
@@ -299,8 +396,25 @@ body {
 	}
 
 	footer {
-		height: 15vh;
+		// height: 15vh;
 		background-color: rgb(241, 237, 237);
+		display: flex;
+		justify-content: space-evenly;
+		background-image: url(/Assets/icons/lightThemeLogo.svg);
+		background-repeat: no-repeat;
+		background-position: center;
+		li {
+			padding: 10px;
+			border-bottom: 1px solid #000000;
+			font-weight: 600;
+			a {
+				color: #000000;
+			}
+			a:hover {
+				background-color: #dfd1d1;
+			}
+		}
+		// height: 100%;
 	}
 }
 

@@ -19,9 +19,9 @@
 		<header>
 			<!-- <div class='headingLogo'> -->
 
-			<figure>
+			<figure class="headerLogo">
 				<img src="Assets/icons/lightThemeLogo.svg" class="logoColor" />
-				<h1>Elegant Roses</h1>
+				<h1 class="headerLogoText">Elegant Roses</h1>
 			</figure>
 			<!-- </div> -->
 			<!-- <p class='checkOutProd'>TROLLY</p>
@@ -35,7 +35,87 @@
 						height="30px"
 					/>
 				</button>
-			    <input type="text"/>
+				<div class="cartPreview toggleHide">
+					<span class="cartPreviewArrow"></span>
+					<button class="cartPreviewToggle">
+						<img
+							class="cartPreviewToggleBtn"
+							src="Assets/icons/closeBtn.svg"
+							width="20"
+							height="20"
+						/>
+					</button>
+					<h2 class="summaryHeading">Shopping cart</h2>
+					<!-- <article class="productPreviewSummary"> -->
+					<ul class="productPreviewInfo">
+						<h3>Product</h3>
+						<h3>Price</h3>
+						<h3>Amount</h3>
+					</ul>
+					<ul class="productPreviewSummary">
+						<li>
+							<img
+								class="productPreviewImage"
+								src="Assets/Images/Products/Akryl.jpg"
+								width="50"
+								height="50"
+							/>
+						</li>
+						<li><h3 class="previewProductTitle">Test1</h3></li>
+						<li><p class="previewProductPrice">2590 SEK</p></li>
+						<li class="productAmountActions">
+							<button class="productAmountSub">-</button
+							><input class="productAmount" type="number" /><button
+								class="productAmountAdd"
+							>
+								+
+							</button>
+						</li>
+						<li>
+							<button class="previewProductRemoval">
+								<img
+									src="Assets/icons/trashcan.svg"
+									alt=""
+									width="15px"
+									height="15px"
+								/>
+							</button>
+						</li>
+					</ul>
+					<ul class="productPreviewSummary">
+						<li>
+							<img
+								class="productPreviewImage"
+								src="Assets/Images/Products/Akryl.jpg"
+								width="50"
+								height="50"
+							/>
+						</li>
+						<li><h3 class="previewProductTitle">Test2</h3></li>
+						<li><p class="previewProductPrice">190 SEK</p></li>
+						<li class="productAmountActions">
+							<button class="productAmountSub">-</button
+							><input class="productAmount" type="number" /><button
+								class="productAmountAdd"
+							>
+								+
+							</button>
+						</li>
+						<li>
+							<button class="previewProductRemoval">
+								<img
+									src="Assets/icons/trashcan.svg"
+									alt=""
+									width="15px"
+									height="15px"
+								/>
+							</button>
+						</li>
+					</ul>
+					<!-- </article> -->
+					<button class="checkoutBtn">Proceed to checkout</button>
+				</div>
+				<input type="text" class="navSearchBar" />
 				<button class="navSearchBtn">
 					<img
 						src="Assets/icons/Search.svg"
@@ -44,7 +124,7 @@
 						height="30px"
 					/>
 				</button>
-                <button class="navMenuBtn">
+				<button class="navMenuBtn">
 					<img
 						src="Assets/icons/burgerMenu.svg"
 						alt=""
@@ -52,43 +132,21 @@
 						height="30px"
 					/>
 				</button>
-                <div class="cartPreview toggleHide">
-                    <span class="cartPreviewArrow"></span>
-                    <button class="cartPreviewToggle"><img class="cartPreviewToggleBtn" src="Assets/icons/closeBtn.svg" width="20" height="20"></button>
-                    <h2 class="summaryHeading">Shopping cart</h2>
-					<!-- <article class="productPreviewSummary"> -->
-						<ul class="productPreviewInfo">
-							<h3>Product</h3>
-							<h3>Price</h3>
-							<h3>Amount</h3>
-						</ul>
-					<ul class="productPreviewSummary">
-						<li><img class="productPreviewImage" src="Assets/Images/Products/Akryl.jpg" width="50" height="50"></li>
-						<li><h3 class="previewProductTitle">Test1</h3></li>
-						<li><p class="previewProductPrice">2590 SEK</p></li>
-						<li class="productAmountActions"><button class="productAmountSub">-</button><input class="productAmount" type="number"><button class="productAmountAdd">+</button></li>
-						<li><button class="previewProductRemoval">					<img
-							src="Assets/icons/trashcan.svg"
-							alt=""
-							width="15px"
-							height="15px"
-						/></button></li>
+				<div class="navMenu toggleHide">
+					<button class="menuToggleBtn">
+						<img src="Assets/icons/closeBtn.svg" width="30" height="30" />
+					</button>
+					<button class="themeToggleBtn">
+						<img src="Assets/icons/themeToggle.svg" width="30" height="30" />
+					</button>
+					<ul>
+						<li><a href="#">Products</a></li>
+						<li><a href="#">Who are we</a></li>
+						<li><a href="#">How does it work</a></li>
+						<li><a href="#">About us</a></li>
 					</ul>
-					<ul class="productPreviewSummary">
-						<li><img class="productPreviewImage" src="Assets/Images/Products/Akryl.jpg" width="50" height="50"></li>
-						<li><h3 class="previewProductTitle">Test2</h3></li>
-						<li><p class="previewProductPrice">190 SEK</p></li>
-						<li class="productAmountActions"><button class="productAmountSub">-</button><input class="productAmount" type="number"><button class="productAmountAdd">+</button></li>
-						<li><button class="previewProductRemoval">					<img
-							src="Assets/icons/trashcan.svg"
-							alt=""
-							width="15px"
-							height="15px"
-						/></button></li>
-					</ul>
-					<!-- </article> -->
-					<button class="checkoutBtn">Proceed to checkout</button>
-                </div>
+				</div>
+
 				<!-- <ul>
 					<li class='navList'><a href='#'>Cart</a></li>
 					<li class='navList'><a href=''><input type='text' placeholder='Search roses' /></a></li>
@@ -143,10 +201,31 @@
 			</div>
 		</section>
 
+		<footer>
+			<ul>
+				
+				<li><h3>About ElegantRoses AB </h3></li>
+				<li><a href="#">Environmental policy</a></li>
+				<li><a href="#">Our roses</a></li>
+				<li><a href="#">Available jobs</a></li>
+				<li><a href="#">Follow our journey</a></li>
+			</ul>
+			<ul>
+				<li><h3>Customer care</h3></li>
+				<li><a href="#">T&C</a></li>
+				<li><a href="#">Payment</a></li>
+				<li><a href="#">Contact us</a></li>
+				<li><a href="#">Test</a></li>
+			</ul>
+			<!-- <ul>
+				<li><h3>Customer care</h3></li>
+				<li>Payment</li>
+				<li>Contact us</li>
+				<li>Test</li>
+				<li>Test</li>
+			</ul> -->
+		</footer>
 
-		<footer>Links</footer>
-
-        
 		<script src="script.js" async defer></script>
 	</body>
 </html>
