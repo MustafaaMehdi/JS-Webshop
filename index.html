@@ -27,7 +27,7 @@
 			<!-- <p class='checkOutProd'>TROLLY</p>
 			<p class='checkOutAmount'>PRICE</p> -->
 			<nav>
-				<button class="navButtonCart">
+				<button class="navCartBtn">
 					<img
 						src="Assets/icons/shoppingCart.svg"
 						alt=""
@@ -36,7 +36,7 @@
 					/>
 				</button>
 			    <input type="text"/>
-				<button class="searchBtn">
+				<button class="navSearchBtn">
 					<img
 						src="Assets/icons/Search.svg"
 						alt=""
@@ -44,7 +44,7 @@
 						height="30px"
 					/>
 				</button>
-                <button class="navButtonMenu">
+                <button class="navMenuBtn">
 					<img
 						src="Assets/icons/burgerMenu.svg"
 						alt=""
@@ -52,6 +52,26 @@
 						height="30px"
 					/>
 				</button>
+                <div class="cartPreview hide">
+                    <span class="cartPreviewArrow"></span>
+                    <button class="cartPreviewToggle">X</button>
+                    <h2 class="summaryHeading">Order summary</h2>
+					<!-- <article class="productPreviewSummary"> -->
+					<ul class="productPreviewSummary">
+						<li><img class="productPreviewImage" src="/Assets/Images/Products/Akryl.jpg" width="50" height="50"></li>
+						<li><h3 class="previewProductTitle">Akryl1</h3></li>
+						<li><p class="previewProductPrice">Price: 1190 kr</p></li>
+						<li><button class="previewProductRemoval">X</button></li>
+					</ul>
+					<ul class="productPreviewSummary">
+						<li><img class="productPreviewImage" src="/Assets/Images/Products/Akryl.jpg" width="50" height="50"></li>
+						<li><h3 class="previewProductTitle">Akryl1</h3></li>
+						<li><p class="previewProductPrice">Price: 1190 kr</p></li>
+						<li><button class="previewProductRemoval">X</button></li>
+					</ul>
+					<!-- </article> -->
+					<button class="checkoutBtn">Proceed to checkout</button>
+                </div>
 				<!-- <ul>
 					<li class='navList'><a href='#'>Cart</a></li>
 					<li class='navList'><a href=''><input type='text' placeholder='Search roses' /></a></li>
@@ -89,7 +109,7 @@
 			<div class="reviewsContainer">
 				<article class="reviews">
 					<img
-						src="../Assets/Images/Reviews/Review1.jpg"
+						src="Assets/Images/Reviews/Review1.jpg"
 						alt="girl holding box of flowers"
 						height="300"
 						width="300"
