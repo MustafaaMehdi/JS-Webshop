@@ -52,22 +52,39 @@
 						height="30px"
 					/>
 				</button>
-                <div class="cartPreview hide">
+                <div class="cartPreview toggleHide">
                     <span class="cartPreviewArrow"></span>
-                    <button class="cartPreviewToggle">X</button>
-                    <h2 class="summaryHeading">Order summary</h2>
+                    <button class="cartPreviewToggle"><img class="cartPreviewToggleBtn" src="Assets/icons/closeBtn.svg" width="20" height="20"></button>
+                    <h2 class="summaryHeading">Shopping cart</h2>
 					<!-- <article class="productPreviewSummary"> -->
+						<ul class="productPreviewInfo">
+							<h3>Product</h3>
+							<h3>Price</h3>
+							<h3>Amount</h3>
+						</ul>
 					<ul class="productPreviewSummary">
-						<li><img class="productPreviewImage" src="/Assets/Images/Products/Akryl.jpg" width="50" height="50"></li>
-						<li><h3 class="previewProductTitle">Akryl1</h3></li>
-						<li><p class="previewProductPrice">Price: 1190 kr</p></li>
-						<li><button class="previewProductRemoval">X</button></li>
+						<li><img class="productPreviewImage" src="Assets/Images/Products/Akryl.jpg" width="50" height="50"></li>
+						<li><h3 class="previewProductTitle">Test1</h3></li>
+						<li><p class="previewProductPrice">2590 SEK</p></li>
+						<li class="productAmountActions"><button class="productAmountSub">-</button><input class="productAmount" type="number"><button class="productAmountAdd">+</button></li>
+						<li><button class="previewProductRemoval">					<img
+							src="Assets/icons/trashcan.svg"
+							alt=""
+							width="15px"
+							height="15px"
+						/></button></li>
 					</ul>
 					<ul class="productPreviewSummary">
-						<li><img class="productPreviewImage" src="/Assets/Images/Products/Akryl.jpg" width="50" height="50"></li>
-						<li><h3 class="previewProductTitle">Akryl1</h3></li>
-						<li><p class="previewProductPrice">Price: 1190 kr</p></li>
-						<li><button class="previewProductRemoval">X</button></li>
+						<li><img class="productPreviewImage" src="Assets/Images/Products/Akryl.jpg" width="50" height="50"></li>
+						<li><h3 class="previewProductTitle">Test2</h3></li>
+						<li><p class="previewProductPrice">190 SEK</p></li>
+						<li class="productAmountActions"><button class="productAmountSub">-</button><input class="productAmount" type="number"><button class="productAmountAdd">+</button></li>
+						<li><button class="previewProductRemoval">					<img
+							src="Assets/icons/trashcan.svg"
+							alt=""
+							width="15px"
+							height="15px"
+						/></button></li>
 					</ul>
 					<!-- </article> -->
 					<button class="checkoutBtn">Proceed to checkout</button>
