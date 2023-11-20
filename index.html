@@ -15,6 +15,7 @@
 			rel="stylesheet"
 		/>
 	</head>
+
 	<body>
 		<header>
 			<!-- <div class='headingLogo'> -->
@@ -61,8 +62,12 @@
 								height="50"
 							/>
 						</li>
-						<li><h3 class="previewProductTitle">Test1</h3></li>
-						<li><p class="previewProductPrice">2590 SEK</p></li>
+						<li>
+							<h3 class="previewProductTitle">Test1</h3>
+						</li>
+						<li>
+							<p class="previewProductPrice">2590 SEK</p>
+						</li>
 						<li class="productAmountActions">
 							<button class="productAmountSub">-</button
 							><input class="productAmount" type="number" /><button
@@ -91,8 +96,12 @@
 								height="50"
 							/>
 						</li>
-						<li><h3 class="previewProductTitle">Test2</h3></li>
-						<li><p class="previewProductPrice">190 SEK</p></li>
+						<li>
+							<h3 class="previewProductTitle">Test2</h3>
+						</li>
+						<li>
+							<p class="previewProductPrice">190 SEK</p>
+						</li>
 						<li class="productAmountActions">
 							<button class="productAmountSub">-</button
 							><input class="productAmount" type="number" /><button
@@ -217,58 +226,154 @@
 				</div>
 			</section>
 		</div>
-		<div class="orderFormWrapper">
+
+		<div class="checkoutWrapper">
 			<h2 class="sectionHeading">
 				<span class="leftDivider"></span>Checkout<span
 					class="rightDivider"
 				></span>
 			</h2>
-			<section class="orderFormSec">
-				<form action="" >
-					<h3>Order Summary</h3>
+			<section class="checkoutSec">
+				<h3>Order Summary</h3>
+				<div>
+					<ul class="productCheckoutSummary">
+						<li class="productAdded">
+							<img
+								class="productCheckoutImage"
+								src="Assets/Images/Products/Akryl.jpg"
+								width="60"
+								height="60"
+							/>
+
+							<h3 class="ProductCheckoutTitle">Test1</h3>
+							<p class="ProductCheckoutPrice">2590 SEK</p>
+							<div class="productAmount">
+							<button class="productAmountSub">-</button
+							><input class="productAmountValue" type="number" /><button
+								class="productAmountAdd"
+							>
+								+
+							</button>
+
+							<button class="productCheckoutRemoval">
+								<img
+									src="Assets/icons/trashcan.svg"
+									alt=""
+									width="15px"
+									height="15px"
+								/>
+							</button>
+						</div>
+						</li>
+					</ul>
+				</div>
+				<form action="">
 					<fieldset class="orderForm">
 						<legend>
-							<h4>Contact information</h4>
+							<h4>Contact details</h4>
 						</legend>
 						<label for="fname">First name</label>
-						<input type="text" id="fname" required="required"/>
-						
+						<input type="text" id="fname" required="required" class="checkoutInput"/>
+
 						<label for="lname">Last name</label>
-						<input type="text" id="lname"/>
-						
+						<input type="text" id="lname" class="checkoutInput"/>
+
 						<label for="street-address">Street address</label>
-						<input type="text" id="street-address" name="street-address" autocomplete="street-address" required enterkeyhint="next"></input>
-						
+						<input
+							type="text"
+							id="street-address"
+							name="street-address"
+							required="required"
+							class="checkoutInput"
+						/>
 
 						<label for="zip">Zip code</label>
-						<input name="zip" id="zip" pattern="[0-9]*" inputmode="numeric" novalidate="novalidate" type="number"></input>
+						<input
+							name="zip"
+							id="zip"
+							pattern="[0-9]*"
+							inputmode="numeric"
+							required="required"
+							type="number"
+							class="checkoutInput"
+						/>
 
 						<label for="city">City</label>
-						<input type="text" id="postort" name="city">
+						<input type="text" id="postort" name="city" class="checkoutInput"/>
 
 						<label for="doorcode">Door code(Optional):</label>
-						<input type="number" id="portkod" name="doorcode">
- 
+						<input type="number" id="doorcode" name="doorcode" class="checkoutInput"/>
+
 						<label for="tel">Phone (mobile):</label>
-						<input type="tel" id="telefon" name="tel">
+						<input type="tel" id="tel" name="tel" required="required" class="checkoutInput"/>
 
 						<label for="email">Email Address:</label>
-						<input type="email" id="email" name="email">
+						<input type="email" id="email" name="email" required="required" class="checkoutInput"/>
+					</fieldset>
 
+					<fieldset class="couponCode">
+						<legend>Coupon code</legend>
+						<input type="text" name="coupon" id="coupon" class="checkoutInput"/>
+					</fieldset>
+
+					<fieldset class="paymentChoice">
+						<legend><h4>Choose payment method</h4></legend>
+						<label> <input type="radio" name="payment" />Invoice </label>
+						<label> <input type="radio" name="payment" />Card </label>
+						<div class="cardPayment">
+							<label for="cardno">Card number:</label>
+							<input type="number" class="checkoutInput">
+							<label for="expirydate">Expiry date</label>
+							<input type="expirydate" class="checkoutInput">
+							<label for="cvv">CVV Code</label>
+							<input type="cvv" class="checkoutInput">
+						</div>
+						<div class="invoicePayment">
+							<label for="ssn">SSN:</label>
+							<input type="number" class="checkoutInput">
+						</div>
+					</fieldset>
+
+					<fieldset class="orderSubmit">
+						<legend><h4>T&Cs</h4></legend>
+						<div>
+						<input
+							type="checkbox"
+							id="subscribeNews"
+							name="subscribe"
+							value="newsletter"
+						/>
+						<label for="subscribeNews">Subscribe to newsletter, receive unique deals and coupon codes</label>
+					</div>
+					<div>
+						<input
+							type="checkbox"
+							id="privacynotice"
+							name="privacynotice"
+							value="privacynotice"
+						/>
+						<label for="privacynotice">Do you accept our privacy notice?</label>
+					</div>
+						<button type="submit">Submit order</button>
+						<button type="reset">reset</button>
 					</fieldset>
 				</form>
 			</section>
 		</div>
 		<footer>
 			<ul>
-				<li><h3>About ElegantRoses</h3></li>
+				<li>
+					<h3>About ElegantRoses</h3>
+				</li>
 				<li><a href="#">Environmental policy</a></li>
 				<li><a href="#">Our roses</a></li>
 				<li><a href="#">Job openings</a></li>
 				<li><a href="#">Follow our journey</a></li>
 			</ul>
 			<ul>
-				<li><h3>Customer support</h3></li>
+				<li>
+					<h3>Customer support</h3>
+				</li>
 				<li><a href="#">T&C</a></li>
 				<li><a href="#">Payment</a></li>
 				<li><a href="#">Contact us</a></li>
