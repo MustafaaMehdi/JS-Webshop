@@ -158,57 +158,109 @@
 				<!-- </ul> -->
 			</nav>
 		</header>
-		<section class="productSec">
+
+		<div class="mainSectionWrapper toggleHide">
+			<section class="productSec">
+				<h2 class="sectionHeading">
+					<span class="leftDivider"></span>Products<span
+						class="rightDivider"
+					></span>
+				</h2>
+				<div class="productContainer"></div>
+			</section>
+
+			<section class="instructionSec">
+				<h2 class="sectionHeading">
+					<span class="leftDivider"></span>How it works<span
+						class="rightDivider"
+					></span>
+				</h2>
+				<ul class="instructionList">
+					<li>
+						<img
+							src="Assets/icons/2Choose.png"
+							alt=""
+							width="150"
+							height="150"
+						/>
+					</li>
+					<li>
+						<h3>First, Choose the products that represent your eternal love</h3>
+						<p>We have roses of all sorts,</p>
+					</li>
+				</ul>
+			</section>
+
+			<section class="reviewSec">
+				<h2 class="sectionHeading">
+					<span class="leftDivider"></span>Reviews<span
+						class="rightDivider"
+					></span>
+				</h2>
+				<div class="reviewsContainer">
+					<article class="reviews">
+						<img
+							src="Assets/Images/Reviews/Review1.jpg"
+							alt="girl holding box of flowers"
+							height="300"
+							width="300"
+						/>
+						<h3>
+							My girlfriend loved it so much she left me for an
+							Elegantrose...10/10!
+						</h3>
+						<p>-A poor soul</p>
+					</article>
+					<article class="reviews">JS</article>
+					<article class="reviews">JS</article>
+					<article class="reviews">JS</article>
+				</div>
+			</section>
+		</div>
+		<div class="orderFormWrapper">
 			<h2 class="sectionHeading">
-				<span class="leftDivider"></span>Products<span
+				<span class="leftDivider"></span>Checkout<span
 					class="rightDivider"
 				></span>
 			</h2>
-			<div class="productContainer"></div>
-		</section>
+			<section class="orderFormSec">
+				<form action="" >
+					<h3>Order Summary</h3>
+					<fieldset class="orderForm">
+						<legend>
+							<h4>Contact information</h4>
+						</legend>
+						<label for="fname">First name</label>
+						<input type="text" id="fname" required="required"/>
+						
+						<label for="lname">Last name</label>
+						<input type="text" id="lname"/>
+						
+						<label for="street-address">Street address</label>
+						<input type="text" id="street-address" name="street-address" autocomplete="street-address" required enterkeyhint="next"></input>
+						
 
-		<section class="instructionSec">
-			<h2 class="sectionHeading">
-				<span class="leftDivider"></span>How it works<span
-					class="rightDivider"
-				></span>
-			</h2>
-			<ul class="instructionList">
-				<li><img src="Assets/icons/2Choose.png" alt="" width="100" height="100"></li>
-				<li><h3>First, Choose the products that represent your eternal love</h3><p>We have roses of all sorts, </p></li>
-			</ul>
+						<label for="zip">Zip code</label>
+						<input name="zip" id="zip" pattern="[0-9]*" inputmode="numeric" novalidate="novalidate" type="number"></input>
 
-		</section>
+						<label for="city">City</label>
+						<input type="text" id="postort" name="city">
 
-		<section class="reviewSec">
-			<h2 class="sectionHeading">
-				<span class="leftDivider"></span>Reviews<span
-					class="rightDivider"
-				></span>
-			</h2>
-			<div class="reviewsContainer">
-				<article class="reviews">
-					<img
-						src="Assets/Images/Reviews/Review1.jpg"
-						alt="girl holding box of flowers"
-						height="300"
-						width="300"
-					/>
-					<h3>
-						My girlfriend loved it so much she left me for an
-						Elegantrose...10/10!
-					</h3>
-					<p>-A poor soul</p>
-				</article>
-				<article class="reviews">JS</article>
-				<article class="reviews">JS</article>
-				<article class="reviews">JS</article>
-			</div>
-		</section>
+						<label for="doorcode">Door code(Optional):</label>
+						<input type="number" id="portkod" name="doorcode">
+ 
+						<label for="tel">Phone (mobile):</label>
+						<input type="tel" id="telefon" name="tel">
 
+						<label for="email">Email Address:</label>
+						<input type="email" id="email" name="email">
+
+					</fieldset>
+				</form>
+			</section>
+		</div>
 		<footer>
 			<ul>
-				
 				<li><h3>About ElegantRoses</h3></li>
 				<li><a href="#">Environmental policy</a></li>
 				<li><a href="#">Our roses</a></li>
@@ -223,7 +275,7 @@
 			</ul>
 			<div>
 				<p>Elegant Roses 2023</p>
-				<img src="Assets/icons/FooterLogo.svg" alt="" width="100" height="64">
+				<img src="Assets/icons/FooterLogo.svg" alt="" width="100" height="64" />
 				<p>All Rights Reserved</p>
 			</div>
 		</footer>

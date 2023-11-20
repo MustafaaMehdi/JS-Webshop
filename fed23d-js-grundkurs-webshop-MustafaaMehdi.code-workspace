@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"githubPullRequests.ignoredPullRequestBranches": [
+			"main"
+		],
+		"liveServer.settings.multiRootWorkspaceName": "fed23d-html-css-inlamningsuppgift-2-MustafaaMehdi"
+	}
+}
