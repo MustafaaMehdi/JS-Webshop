@@ -37,14 +37,14 @@ body {
 			}
 		}
 		// }
-		.checkOutProd,
-		.checkOutAmount {
-			position: fixed;
-			right: 1rem;
-		}
-		.checkOutAmount {
-			top: 1.5rem;
-		}
+		// .checkOutProd,
+		// .checkOutAmount {
+		// 	position: fixed;
+		// 	right: 1rem;
+		// }
+		// .checkOutAmount {
+		// 	top: 1.5rem;
+		// }
 		nav {
 			display: flex;
 			width: 100%;
@@ -84,6 +84,7 @@ body {
 				height: auto;
 				z-index: 1;
 				border-radius: 3px;
+				// display: grid;
 				.cartPreviewArrow {
 					position: absolute;
 					left: 2rem;
@@ -93,7 +94,7 @@ body {
 					padding: 10px;
 				}
 				.cartPreviewToggle {
-					justify-content: center;
+					// justify-content: center;
 					position: absolute;
 					right: 0;
 					top: 0;
@@ -101,8 +102,8 @@ body {
 					border-radius: 0 10px 0 80px;
 					padding: 0px 20px 10px 15px;
 					background-color: rgb(216, 93, 114);
-					font-size: 1.5rem;
-					.cartPreviewToggleBtn {
+					// font-size: 1.5rem;
+					.cartPreviewImg {
 						padding: 10px 0 2px 10px;
 					}
 				}
@@ -113,33 +114,42 @@ body {
 					text-align: center;
 					border-bottom: 1px solid black;
 				}
-				ul {
-					display: flex;
-					justify-content: space-around;
-					border-bottom: 1px solid #fff;
-				}
+				// ul {
+				// 	display: flex;
+				// 	justify-content: space-between;
+				// 	border-bottom: 1px solid #fff;
+				// }
 				.productPreviewInfo {
-					justify-content: space-around;
-					// border-bottom: 1px solid #fff;
 					padding: 0;
+					display: flex;
+					justify-content: space-evenly;
+					border-bottom: 1px solid #fff;
+					// font-size: 2rem;
+					margin: 0;
 				}
 				.productPreviewSummary {
-					// display: flex;
-					// grid-template-columns: repeat(6,1fr)
+					display: flex;
+					justify-content: space-evenly;
 					padding: 10px;
-					font-size: 1rem;
+					// font-size: 1rem;
+					
 					// justify-content: space-evenly;
-					// border-bottom: 1px solid #fff;
+					border-bottom: 1px solid #fff;
 					// ul {
 					// 	margin-left: 2px;
 					// }
 
 					.productPreviewImage {
+						grid-column: 1/ span 1;
 						border-radius: 3px;
+						width: 100px;
+						height: 100px;
+						
 					}
 					.previewProductTitle,
 					.previewProductPrice {
 						margin-top: 15px;
+						text-align: center;
 					}
 
 					.previewProductTitle {
@@ -149,7 +159,7 @@ body {
 						// margin: 0;
 					}
 					.productAmountActions {
-						// margin-top: 1rem;
+						margin-top: 1rem;
 						.productAmount {
 							width: 1.5rem;
 						}
@@ -300,40 +310,117 @@ body {
 		text-transform: uppercase;
 		position: relative;
 		font-weight: 400;
+	}
 
-		.rightDivider,
-		.leftDivider {
-			display: inline-block;
-			border-bottom: 1px solid #080404;
-			width: 20%;
-			top: 2rem;
-		}
-		.rightDivider {
-			position: absolute;
-			right: 0;
-		}
-		.leftDivider {
-			position: absolute;
-			left: 0;
-		}
+	.rightDivider,
+	.leftDivider {
+		display: inline-block;
+		border-bottom: 1px solid #080404;
+		width: 20%;
+		top: 2rem;
+	}
+	.rightDivider {
+		position: absolute;
+		right: 0;
+	}
+	.leftDivider {
+		position: absolute;
+		left: 0;
+	}
 
-		.mainSectionWrapper {
-			.reviewSec,
-			.instructionSec {
-				height: 50vh;
-			}
-		
+	.mainSectionWrapper {
+		// .reviewSec,
+		// .instructionSec {
+		// 	// height: 50vh;
+		// }
 
 		.productSec {
 			// background-color: rgb(75, 30, 43);
-			height: 100vh;
+			// height: 100vh;
 			background-color: #fff;
+			.sortBtn {
+				border: none;
+				border-radius: 5px;
+				background-color: rgb(252, 246, 246);
+				// float: right;
+				// padding: 2rem;
+				// position: absolute;
+				// top: -3rem;
+				// right: 0;
+			}
+			.sortBtn:hover {
+				background-color: rgb(172, 168, 168);
+			}
+			.sortMenu {
+				border: 1px solid black;
+			}
+			.productContainer {
+				display: grid;
+				grid-template-columns: repeat(4, 1fr);
+				gap: 1rem;
+				margin: 2rem;
+				position: relative;
+				// .articleSort {
+
+
+				// }
+				.productArticles {
+					width: 100%;
+					grid-column: span 2;
+					border-radius: 5px;
+					.articleImage {
+						width: 100%;
+						height: 300px;
+						object-fit: cover;
+						object-position: center;
+						// border: 10px solid #fff;
+						// border-radius: 5px;
+						// filter: brightness(2);
+						border-radius: 5px;
+					}
+					.articleTitle,
+					.articlePrice {
+						text-align: center;
+						font-size: 1.5rem;
+					}
+					.articlePrice {
+						position: relative;
+						.articleRating {
+							position: absolute;
+							right: 0;
+							top: -2rem;
+							float: right;
+							margin: 10px;
+							border: 3px solid #f3ca6a;
+							font-size: 1rem;
+						}
+					}
+					.articleAddToCart {
+						width: 100%;
+						height: 40px;
+						border: none;
+						border-radius: 0 0 5px 5px;
+					}
+					.articleAddToCart:hover {
+						background-color: #c0a8a8;
+					}
+					.articleAddToCart:active {
+						background-color: #8f4949;
+					}
+				}
+				.productArticles:nth-child(even) {
+					background-color: #f8e1e1;
+				}
+			}
 		}
 
 		.instructionSec {
 			.instructionList {
-				display: flex;
-				justify-content: space-evenly;
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				li {
+					grid-column: span 1;
+				}
 			}
 		}
 
@@ -398,86 +485,88 @@ body {
 			}
 		}
 	}
-}
+
 	.checkoutWrapper {
-		height: 100vh;
+		// min-height: 100vh;
 		.checkoutSec {
 			width: 85vw;
 			margin: auto;
 			background-color: rgb(252, 246, 246);
 			border-radius: 5px;
+			margin-bottom: 10rem;
 			// display: flex;
-		.productCheckoutSummary {
-			padding: 0;
-			.productAdded {
-				display: flex;
-				justify-content: space-between;
-				border-bottom: 1px solid #000000;
-				.productAmount {
-					margin-top:1.5rem;
-				width: 20%;
-					.productAmountValue {
+			.productCheckoutSummary {
+				padding: 0;
+				.productAdded {
+					display: flex;
+					justify-content: space-between;
+					border-bottom: 1px solid #000000;
+					.productAmount {
+						margin-top: 1.5rem;
 						width: 20%;
+						.productAmountValue {
+							width: 20%;
+						}
+					}
+					.productCheckoutImage {
+						margin: 0 0 1rem 1rem;
+						border-radius: 5px;
 					}
 				}
-				.productCheckoutImage {
-					margin: 0 0 1rem 1rem;
-					border-radius: 5px;
-				}
 			}
-		}
-			.checkoutInput{
+			.checkoutInput {
 				border-radius: 5px;
-				border:1px solid #f5c24c;
+				border: 1px solid #f5c24c;
 				padding: 3px;
 			}
 			h3 {
 				text-align: center;
 			}
+			// .fieldSetContainer {
 			.orderForm {
 				border: none;
-			display: grid;
-			grid-template-columns: repeat(4,1fr);
-			flex-direction: column;
-			width: 80vw;
-			gap: 20px;
-			label {
-				grid-column: 1/span 2;
-				// float: left;
-				// width: 30%;
-				// margin-bottom: 1rem;
-			}
-			input {
-				grid-column: 3/span 2;
-				
-				// border:1px solid rgb(172, 64, 64)
-				// margin-bottom: 1rem;
-				// width: 100%;
-			}
+				display: grid;
+				grid-template-columns: repeat(4, 1fr);
+				flex-direction: column;
+				width: 80vw;
+				gap: 20px;
+				label {
+					grid-column: 1 / span 2;
+					// float: left;
+					// width: 30%;
+					// margin-bottom: 1rem;
+				}
+				input {
+					grid-column: 3 / span 2;
 
-		}
-		.couponCode {
-			border: none;
-		}
-		.paymentChoice {
-			border: none;
-			background-color: rgba($color: #c0a8a8, $alpha: 0.5);
-			margin: auto;
-
-		}
-		.cardPayment,
-		.orderSubmit {
-			display: flex;
-			flex-direction: column;
-			// width: 50%;
-			justify-content: space-between;
-		}
-		
+					// border:1px solid rgb(172, 64, 64)
+					// margin-bottom: 1rem;
+					// width: 100%;
+				}
+			}
+			.couponCode {
+				border: none;
+			}
+			.paymentChoice {
+				border: none;
+				background-color: rgba($color: #c0a8a8, $alpha: 0.5);
+				margin: auto;
+			}
+			.cardPayment,
+			.orderSubmit {
+				display: flex;
+				flex-direction: column;
+				// width: 50%;
+				justify-content: space-between;
+			}
 		}
 	}
 
+	.orderConfirmation {
+		text-align: center;
+	}
 	footer {
-		// height: 15vh;
+		margin-top: 3rem;
 		background-color: rgb(241, 237, 237);
 		display: flex;
 		justify-content: space-evenly;

@@ -36,11 +36,13 @@
 						height="30px"
 					/>
 				</button>
-				<div class="cartPreview toggleHide">
+
+				<div class="cartPreview">
+				<!-- <div class="cartPreview toggleHide"> -->
 					<span class="cartPreviewArrow"></span>
 					<button class="cartPreviewToggle">
 						<img
-							class="cartPreviewToggleBtn"
+							class="cartPreviewImg"
 							src="Assets/icons/closeBtn.svg"
 							width="20"
 							height="20"
@@ -49,9 +51,10 @@
 					<h2 class="summaryHeading">Shopping cart</h2>
 					<!-- <article class="productPreviewSummary"> -->
 					<ul class="productPreviewInfo">
-						<h3>Product</h3>
-						<h3>Price</h3>
-						<h3>Amount</h3>
+						<li><h3>Product</h3></li>
+						<li><h3>Price</h3></li>
+						<li><h3>Amount</h3></li>
+						
 					</ul>
 					<ul class="productPreviewSummary">
 						<li>
@@ -61,13 +64,13 @@
 								width="50"
 								height="50"
 							/>
-						</li>
-						<li>
+						<!-- </li>
+						<li> -->
 							<h3 class="previewProductTitle">Test1</h3>
-						</li>
-						<li>
-							<p class="previewProductPrice">2590 SEK</p>
-						</li>
+						<!-- </li>
+						<li> -->
+							<li><p class="previewProductPrice">2590 SEK</p></li>
+						<!-- </li> -->
 						<li class="productAmountActions">
 							<button class="productAmountSub">-</button
 							><input class="productAmount" type="number" /><button
@@ -75,8 +78,6 @@
 							>
 								+
 							</button>
-						</li>
-						<li>
 							<button class="previewProductRemoval">
 								<img
 									src="Assets/icons/trashcan.svg"
@@ -87,6 +88,8 @@
 							</button>
 						</li>
 					</ul>
+
+					
 					<ul class="productPreviewSummary">
 						<li>
 							<img
@@ -95,13 +98,13 @@
 								width="50"
 								height="50"
 							/>
-						</li>
-						<li>
-							<h3 class="previewProductTitle">Test2</h3>
-						</li>
-						<li>
-							<p class="previewProductPrice">190 SEK</p>
-						</li>
+						<!-- </li>
+						<li> -->
+							<h3 class="previewProductTitle">Test1</h3>
+						<!-- </li>
+						<li> -->
+							<li><p class="previewProductPrice">2590 SEK</p></li>
+						<!-- </li> -->
 						<li class="productAmountActions">
 							<button class="productAmountSub">-</button
 							><input class="productAmount" type="number" /><button
@@ -109,8 +112,6 @@
 							>
 								+
 							</button>
-						</li>
-						<li>
 							<button class="previewProductRemoval">
 								<img
 									src="Assets/icons/trashcan.svg"
@@ -121,7 +122,6 @@
 							</button>
 						</li>
 					</ul>
-					<!-- </article> -->
 					<button class="checkoutBtn">Proceed to checkout</button>
 				</div>
 				<input type="text" class="navSearchBar" />
@@ -168,14 +168,109 @@
 			</nav>
 		</header>
 
-		<div class="mainSectionWrapper toggleHide">
+		<div class="mainSectionWrapper">
+			<!-- <div class="mainSectionWrapper toggleHide"> -->
+
 			<section class="productSec">
 				<h2 class="sectionHeading">
 					<span class="leftDivider"></span>Products<span
 						class="rightDivider"
 					></span>
 				</h2>
-				<div class="productContainer"></div>
+				<button class="sortBtn">
+					<img src="Assets/icons/Filter.svg" alt="" height="30" width="50" />
+				</button>
+
+				<div class="sortMenu toggleHide">
+				<!-- <div class="sortMenu"> -->
+					<p>Sort on:</p>
+					<label for="range" >Price</label>
+					<input type="range" />
+
+					<select name="sorting" id="sorting">
+						<option value="fprice">Price falling</option>
+						<option value="rprice">Price rising</option>
+						<option value="Blue category">Blue category</option>
+						<option value="red category">Audi</option>
+					</select>
+					<label for="sorting">Rose color</label>
+
+					<select name="sorting" id="sorting">
+						<option value="fprice">Price falling</option>
+						<option value="rprice">Price rising</option>
+						<option value="Blue category">Blue category</option>
+						<option value="red category">Audi</option>
+					</select>
+					<p>Select rose color category</p>
+					<label for="blue">Blue</label>
+					<input type="radio" name="category">
+					<label for="red">Red</label>
+					<input type="radio" name="category">
+					<label for="yellow">Yellow</label>
+					<input type="radio" name="category">
+					<label for="pink">Pink</label>
+					<input type="radio" name="category">
+
+					<p>Select box Shape category</p>
+					<label for="square">Square</label>
+					<input type="radio" name="category">
+					<label for="round">Round</label>
+					<input type="radio" name="category">
+	
+				</div>
+				<div class="productContainer">
+					<!-- <div class="articleSort"> -->
+					<!-- <button class="sortBtn"><img src="Assets/icons/Filter.svg" alt="" height="30" width="50"></button>
+						<div class="sortMenu"> 
+							
+						</div> -->
+
+					<!-- </div> -->
+					<article class="productArticles">
+						<h3 class="articleTitle">Test1</h3>
+						<img
+							class="articleImage"
+							src="Assets/Images/Products/Akryl.jpg"
+							width="100"
+							height="100"
+						/>
+
+						<p class="articlePrice">
+							590 SEK<span class="articleRating">4/5</span>
+						</p>
+
+						<button class="articleAddToCart">Add to cart</button>
+					</article>
+
+					<article class="productArticles">
+						<h3 class="articleTitle">Test1</h3>
+						<img
+							class="articleImage"
+							src="Assets/Images/Products/Akryl.jpg"
+							width="100"
+							height="100"
+						/>
+
+						<p class="articlePrice">
+							590 SEK<span class="articleRating">4/5</span>
+						</p>
+
+						<button class="articleAddToCart">Add to cart</button>
+					</article>
+					<article class="productArticles">
+						<img
+							class="articleImage"
+							src="Assets/Images/Products/Akryl.jpg"
+							width="100"
+							height="100"
+						/>
+
+						<h3 class="articleTitle">Test1</h3>
+						<p class="articlePrice">2590 SEK</p>
+
+						<button class="articleAddToCart">Add to cart</button>
+					</article>
+				</div>
 			</section>
 
 			<section class="instructionSec">
@@ -187,15 +282,57 @@
 				<ul class="instructionList">
 					<li>
 						<img
-							src="Assets/icons/2Choose.png"
+							src="Assets/icons/1Choose.png"
 							alt=""
 							width="150"
 							height="150"
 						/>
-					</li>
-					<li>
+						<!-- </li>
+					<li> -->
 						<h3>First, Choose the products that represent your eternal love</h3>
 						<p>We have roses of all sorts,</p>
+					</li>
+					<li>
+						<img
+							src="Assets/icons/2Payment.png"
+							alt=""
+							width="150"
+							height="150"
+						/>
+						<!-- </li>
+					<li> -->
+						<h3>Second, Choose your prefered method of payment</h3>
+						<p>We accept accept card and offer smooth invoicing</p>
+					</li>
+					<li>
+						<img
+							src="Assets/icons/3Delivery.png"
+							alt=""
+							width="150"
+							height="120"
+						/>
+						<!-- </li>
+					<li> -->
+						<h3>
+							Third thing is easy, just relax and enjoy life while we deliver
+							your product
+						</h3>
+						<p>Our delivery methods are most sustainable</p>
+					</li>
+					<li>
+						<img
+							src="Assets/icons/4Enjoy.png"
+							alt=""
+							width="150"
+							height="150"
+						/>
+						<!-- </li>
+					<li> -->
+						<h3>Fourth, and most important part</h3>
+						<p>
+							Surprise your loved ones with a symbol of love, a symbol like no
+							other, Elegantroses a symbol of etirity
+						</p>
 					</li>
 				</ul>
 			</section>
@@ -226,14 +363,14 @@
 				</div>
 			</section>
 		</div>
-
-		<div class="checkoutWrapper">
+		<!-- <div class="checkoutWrapper"> -->
+		<section class="checkoutWrapper toggleHide">
 			<h2 class="sectionHeading">
 				<span class="leftDivider"></span>Checkout<span
 					class="rightDivider"
 				></span>
 			</h2>
-			<section class="checkoutSec">
+			<div class="checkoutSec">
 				<h3>Order Summary</h3>
 				<div>
 					<ul class="productCheckoutSummary">
@@ -248,35 +385,31 @@
 							<h3 class="ProductCheckoutTitle">Test1</h3>
 							<p class="ProductCheckoutPrice">2590 SEK</p>
 							<div class="productAmount">
-							<button class="productAmountSub">-</button
-							><input class="productAmountValue" type="number" /><button
-								class="productAmountAdd"
-							>
-								+
-							</button>
-
-							<button class="productCheckoutRemoval">
-								<img
-									src="Assets/icons/trashcan.svg"
-									alt=""
-									width="15px"
-									height="15px"
-								/>
-							</button>
-						</div>
+								<button class="productAmountSub">-</button
+								><input class="productAmountValue" type="number" /><button
+									class="productAmountAdd"
+								>
+									+
+								</button>
+							</div>
 						</li>
 					</ul>
 				</div>
-				<form action="">
+				<form action="" class="fieldSetContainer">
 					<fieldset class="orderForm">
 						<legend>
 							<h4>Contact details</h4>
 						</legend>
 						<label for="fname">First name</label>
-						<input type="text" id="fname" required="required" class="checkoutInput"/>
+						<input
+							type="text"
+							id="fname"
+							required="required"
+							class="checkoutInput"
+						/>
 
 						<label for="lname">Last name</label>
-						<input type="text" id="lname" class="checkoutInput"/>
+						<input type="text" id="lname" class="checkoutInput" />
 
 						<label for="street-address">Street address</label>
 						<input
@@ -299,21 +432,43 @@
 						/>
 
 						<label for="city">City</label>
-						<input type="text" id="postort" name="city" class="checkoutInput"/>
+						<input type="text" id="postort" name="city" class="checkoutInput" />
 
 						<label for="doorcode">Door code(Optional):</label>
-						<input type="number" id="doorcode" name="doorcode" class="checkoutInput"/>
+						<input
+							type="number"
+							id="doorcode"
+							name="doorcode"
+							class="checkoutInput"
+						/>
 
 						<label for="tel">Phone (mobile):</label>
-						<input type="tel" id="tel" name="tel" required="required" class="checkoutInput"/>
+						<input
+							type="tel"
+							id="tel"
+							name="tel"
+							required="required"
+							class="checkoutInput"
+						/>
 
 						<label for="email">Email Address:</label>
-						<input type="email" id="email" name="email" required="required" class="checkoutInput"/>
+						<input
+							type="email"
+							id="email"
+							name="email"
+							required="required"
+							class="checkoutInput"
+						/>
 					</fieldset>
 
 					<fieldset class="couponCode">
 						<legend>Coupon code</legend>
-						<input type="text" name="coupon" id="coupon" class="checkoutInput"/>
+						<input
+							type="text"
+							name="coupon"
+							id="coupon"
+							class="checkoutInput"
+						/>
 					</fieldset>
 
 					<fieldset class="paymentChoice">
@@ -322,44 +477,68 @@
 						<label> <input type="radio" name="payment" />Card </label>
 						<div class="cardPayment">
 							<label for="cardno">Card number:</label>
-							<input type="number" class="checkoutInput">
+							<input type="number" class="checkoutInput" />
 							<label for="expirydate">Expiry date</label>
-							<input type="expirydate" class="checkoutInput">
+							<input type="number" class="checkoutInput" />
 							<label for="cvv">CVV Code</label>
-							<input type="cvv" class="checkoutInput">
+							<input type="number" class="checkoutInput" />
 						</div>
 						<div class="invoicePayment">
 							<label for="ssn">SSN:</label>
-							<input type="number" class="checkoutInput">
+							<input type="number" class="checkoutInput" />
 						</div>
 					</fieldset>
 
 					<fieldset class="orderSubmit">
 						<legend><h4>T&Cs</h4></legend>
 						<div>
-						<input
-							type="checkbox"
-							id="subscribeNews"
-							name="subscribe"
-							value="newsletter"
-						/>
-						<label for="subscribeNews">Subscribe to newsletter, receive unique deals and coupon codes</label>
-					</div>
-					<div>
-						<input
-							type="checkbox"
-							id="privacynotice"
-							name="privacynotice"
-							value="privacynotice"
-						/>
-						<label for="privacynotice">Do you accept our privacy notice?</label>
-					</div>
+							<input
+								type="checkbox"
+								id="subscribeNews"
+								name="subscribe"
+								value="newsletter"
+							/>
+							<label for="subscribeNews"
+								>Subscribe to newsletter, receive unique deals and coupon
+								codes</label
+							>
+						</div>
+						<div>
+							<input
+								type="checkbox"
+								id="privacynotice"
+								name="privacynotice"
+								value="privacynotice"
+							/>
+							<label for="privacynotice"
+								>I confirm that I have read and accepted
+								<a href="#">Elgantroses T&Cs</a></label
+							>
+						</div>
 						<button type="submit">Submit order</button>
 						<button type="reset">reset</button>
 					</fieldset>
 				</form>
-			</section>
-		</div>
+			</div>
+		</section>
+
+		<!-- <section class="orderConfirmation"> -->
+		<section class="orderConfirmation toggleHide">
+			<h2 class="sectionHeading">
+				<span class="leftDivider"></span>Order confirmation<span
+					class="rightDivider"
+				></span>
+			</h2>
+			<div class="confirmationMsg">
+				<h3>Thank you for your order</h3>
+				<p>
+					We are happy to let you know that your order will be delivered to you
+					in {JS} Your order confirmation will be emailed shortly
+				</p>
+				<p>See your order summary below</p>
+			</div>
+		</section>
+
 		<footer>
 			<ul>
 				<li>
