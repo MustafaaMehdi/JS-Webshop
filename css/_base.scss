@@ -55,6 +55,17 @@ body {
 				flex: 3;
 				border: none;
 			}
+			.navCartBtn {
+			position: relative;
+			.productInCart {
+				position: absolute;
+				top: 5px;
+				background-color: #f5c24c;
+				border-radius: 10px;
+				height:50%;
+				// right: 5px ;
+			}
+			}
 			.navSearchBtn {
 				flex: 1;
 				border: 1px solid #f3ca6a;
@@ -564,6 +575,31 @@ body {
 
 	.orderConfirmation {
 		text-align: center;
+		// height: 100vh;
+		.confirmationMsg {
+			border: 5px solid #f3ca6a;
+			border-left: none;
+			border-right: none;
+			.orderSummary {
+				padding: 0;
+				.productAdded {
+					display: flex;
+					justify-content: space-around;
+					border-bottom: 1px solid #000000;
+					.productAmount {
+						margin-top: 1.5rem;
+						width: 20%;
+						.productAmountValue {
+							width: 20%;
+						}
+					}
+					.productCheckoutImage {
+						margin: 0 0 1rem 1rem;
+						border-radius: 5px;
+					}
+				}
+			}
+		}
 	}
 	footer {
 		margin-top: 3rem;

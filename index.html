@@ -34,11 +34,11 @@
 						alt=""
 						width="30px"
 						height="30px"
-					/>
+					/><span class="productInCart">0</span>
 				</button>
 
-				<div class="cartPreview">
-				<!-- <div class="cartPreview toggleHide"> -->
+				<!-- <div class="cartPreview"> -->
+				<div class="cartPreview toggleHide">
 					<span class="cartPreviewArrow"></span>
 					<button class="cartPreviewToggle">
 						<img
@@ -89,7 +89,7 @@
 						</li>
 					</ul>
 
-					
+
 					<ul class="productPreviewSummary">
 						<li>
 							<img
@@ -141,6 +141,7 @@
 						height="30px"
 					/>
 				</button>
+				<!-- <div class="navMenu "> -->
 				<div class="navMenu toggleHide">
 					<button class="menuToggleBtn">
 						<img src="Assets/icons/closeBtn.svg" width="30" height="30" />
@@ -177,10 +178,10 @@
 						class="rightDivider"
 					></span>
 				</h2>
+
 				<button class="sortBtn">
 					<img src="Assets/icons/Filter.svg" alt="" height="30" width="50" />
 				</button>
-
 				<div class="sortMenu toggleHide">
 				<!-- <div class="sortMenu"> -->
 					<p>Sort on:</p>
@@ -218,13 +219,12 @@
 					<input type="radio" name="category">
 	
 				</div>
+
 				<div class="productContainer">
 					<!-- <div class="articleSort"> -->
 					<!-- <button class="sortBtn"><img src="Assets/icons/Filter.svg" alt="" height="30" width="50"></button>
 						<div class="sortMenu"> 
-							
 						</div> -->
-
 					<!-- </div> -->
 					<article class="productArticles">
 						<h3 class="articleTitle">Test1</h3>
@@ -522,8 +522,8 @@
 			</div>
 		</section>
 
-		<!-- <section class="orderConfirmation"> -->
-		<section class="orderConfirmation toggleHide">
+		<section class="orderConfirmation">
+		<!-- <section class="orderConfirmation toggleHide"> -->
 			<h2 class="sectionHeading">
 				<span class="leftDivider"></span>Order confirmation<span
 					class="rightDivider"
@@ -536,6 +536,22 @@
 					in {JS} Your order confirmation will be emailed shortly
 				</p>
 				<p>See your order summary below</p>
+				<ul class="orderSummary">
+					<li class="productAdded">
+						<img
+							class="productCheckoutImage"
+							src="Assets/Images/Products/Akryl.jpg"
+							width="60"
+							height="60"
+						/>
+
+						<h3 class="ProductCheckoutTitle">Test1</h3>
+						<p class="ProductCheckoutPrice">2590 SEK</p>
+						<p class="productAmount">7</p>
+					</li>
+					<li><p  class="orderTotalCost">Your total cost: {JS}</p></li>
+					<li><p  class="orderTotalPcs">Total PCS: {JS}</p></li>
+				</ul>
 			</div>
 		</section>
 
