@@ -51,7 +51,7 @@ body {
 			height: 40px;
 			position: relative;
 			.navCartBtn,
-			.navMenuBtn {
+			.OpenNavBtn {
 				flex: 3;
 				border: none;
 			}
@@ -104,7 +104,7 @@ body {
 					transform: rotate(45deg);
 					padding: 10px;
 				}
-				.cartPreviewToggle {
+				.cartCloseBtn {
 					// justify-content: center;
 					position: absolute;
 					right: 0;
@@ -118,7 +118,7 @@ body {
 						padding: 10px 0 2px 10px;
 					}
 				}
-				.cartPreviewToggle:hover {
+				.cartCloseBtn:hover {
 					background-color: rgb(172, 77, 93);
 				}
 				.summaryHeading {
@@ -220,7 +220,7 @@ body {
 				}
 			}
 			.navCartBtn:hover,
-			.navMenuBtn:hover,
+			.OpenNavBtn:hover,
 			.navSearchBtn:hover {
 				background-color: #f3ca6a;
 				// color: #ffffff;
@@ -249,15 +249,15 @@ body {
 				background-color: rgb(107, 107, 107);
 				opacity: 0.9;
 				z-index: 5;
-				.menuToggleBtn,
+				.closeNavBtn,
 				.themeToggleBtn {
 					position: absolute;
 				}
-				.menuToggleBtn {
+				.closeNavBtn {
 					// justify-content: center;
 					// position: absolute;
 					right: 0;
-					top: 0;
+					top: -1px;
 					border: none;
 					border-radius: 0 0 0 80px;
 					padding: 0px 40px 25px 25px;
@@ -267,7 +267,7 @@ body {
 						padding: 10px 1px 2px 10px;
 					}
 				}
-				.menuToggleBtn:hover {
+				.closeNavBtn:hover {
 					background-color: rgb(172, 77, 93);
 				}
 				.themeToggleBtn {
@@ -421,8 +421,10 @@ body {
 						.articleAmnt {
 							margin: 0px;
 							// width: 5rem;
-							background-color: #c0a8a8;
-							// span {
+							background-color: #ffffff;
+							// border-top: 1px solid #000000;
+							// border-bottom: 1px solid #000000;
+							// // span {
 								
 							// }
 						}

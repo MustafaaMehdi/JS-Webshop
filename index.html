@@ -40,7 +40,7 @@
 				<!-- <div class="cartPreview"> -->
 				<div class="cartPreview toggleHide">
 					<span class="cartPreviewArrow"></span>
-					<button class="cartPreviewToggle">
+					<button class="cartCloseBtn">
 						<img
 							class="cartPreviewImg"
 							src="Assets/icons/closeBtn.svg"
@@ -56,7 +56,42 @@
 						<li><h3>Amount</h3></li>
 						
 					</ul>
-					<ul class="productPreviewSummary">
+					<div class="productPreviewSummary">
+					<ul>
+						<li>
+							<img
+								class="productPreviewImage"
+								src="Assets/Images/Products/Akryl.jpg"
+								width="50"
+								height="50"
+							/>
+						<!-- </li>
+						<li> -->
+							<h3 class="previewProductTitle">Test1</h3>
+						<!-- </li>
+						<li> -->
+							<li><p class="previewProductPrice">2590 SEK</p></li>
+						<!-- </li> -->
+						<li class="productAmountActions">
+							<button class="productAmountSub">-</button
+							><input class="productAmount" type="number" /><button
+								class="productAmountAdd"
+							>
+								+
+							</button>
+							<button class="previewProductRemoval">
+								<img
+									src="Assets/icons/trashcan.svg"
+									alt=""
+									width="15px"
+									height="15px"
+								/>
+							</button>
+						</li>
+					<!-- </ul>
+
+
+					<ul class="productPreviewSummary"> -->
 						<li>
 							<img
 								class="productPreviewImage"
@@ -88,40 +123,7 @@
 							</button>
 						</li>
 					</ul>
-
-
-					<ul class="productPreviewSummary">
-						<li>
-							<img
-								class="productPreviewImage"
-								src="Assets/Images/Products/Akryl.jpg"
-								width="50"
-								height="50"
-							/>
-						<!-- </li>
-						<li> -->
-							<h3 class="previewProductTitle">Test1</h3>
-						<!-- </li>
-						<li> -->
-							<li><p class="previewProductPrice">2590 SEK</p></li>
-						<!-- </li> -->
-						<li class="productAmountActions">
-							<button class="productAmountSub">-</button
-							><input class="productAmount" type="number" /><button
-								class="productAmountAdd"
-							>
-								+
-							</button>
-							<button class="previewProductRemoval">
-								<img
-									src="Assets/icons/trashcan.svg"
-									alt=""
-									width="15px"
-									height="15px"
-								/>
-							</button>
-						</li>
-					</ul>
+				</div>
 					<button class="checkoutBtn">Proceed to checkout</button>
 				</div>
 				<input type="text" class="navSearchBar" />
@@ -133,7 +135,7 @@
 						height="30px"
 					/>
 				</button>
-				<button class="navMenuBtn">
+				<button class="OpenNavBtn">
 					<img
 						src="Assets/icons/burgerMenu.svg"
 						alt=""
@@ -143,7 +145,7 @@
 				</button>
 				<!-- <div class="navMenu "> -->
 				<div class="navMenu toggleHide">
-					<button class="menuToggleBtn">
+					<button class="closeNavBtn">
 						<img src="Assets/icons/closeBtn.svg" width="30" height="30" />
 					</button>
 					<button class="themeToggleBtn">
@@ -226,7 +228,7 @@
 						<div class="sortMenu"> 
 						</div> -->
 					<!-- </div> -->
-					<article class="productArticles">
+					<!-- <article class="productArticles">
 						<h3 class="articleTitle">Test1</h3>
 						<img
 							class="articleImage"
@@ -246,50 +248,8 @@
 					</div>
 
 
-					</article>
+					</article> -->
 
-					<article class="productArticles">
-						<h3 class="articleTitle">Test1</h3>
-						<img
-							class="articleImage"
-							src="Assets/Images/Products/Akryl.jpg"
-							width="100"
-							height="100"
-						/>
-
-						<p class="articlePrice">
-							590 SEK<span class="articleRating">4/5 <img src="Assets/icons/Star.svg" alt=""></span>
-						</p>
-						
-					<div class="articleBtn">
-						<button class="articleRemoveFromCart">Remove</button>
-						<p class="articleAmnt">In cart: <span>0</span></p>
-						<button class="articleAddToCart">Add</button>
-					</div>
-
-
-					</article>
-					<article class="productArticles">
-						<h3 class="articleTitle">Test1</h3>
-						<img
-							class="articleImage"
-							src="Assets/Images/Products/Akryl.jpg"
-							width="100"
-							height="100"
-						/>
-
-						<p class="articlePrice">
-							590 SEK<span class="articleRating">4/5 <img src="Assets/icons/Star.svg" alt=""></span>
-						</p>
-						
-					<div class="articleBtn">
-						<button class="articleRemoveFromCart">Remove</button>
-						<p class="articleAmnt">In cart: <span>0</span></p>
-						<button class="articleAddToCart">Add</button>
-					</div>
-
-
-					</article>
 				</div>
 			</section>
 
@@ -572,7 +532,7 @@
 			</div>
 		</section>
 
-		<section class="orderConfirmation">
+		<section class="orderConfirmation toggleHide">
 		<!-- <section class="orderConfirmation toggleHide"> -->
 			<h2 class="sectionHeading">
 				<span class="leftDivider"></span>Order confirmation<span
