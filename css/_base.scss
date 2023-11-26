@@ -143,13 +143,15 @@ body {
 					justify-content: space-evenly;
 					padding: 10px;
 					// font-size: 1rem;
-
+					
 					// justify-content: space-evenly;
 					border-bottom: 1px solid #fff;
 					// ul {
 					// 	margin-left: 2px;
 					// }
-
+					li::marker {
+						content: '-';
+					  }
 					.productPreviewImage {
 						grid-column: 1 / span 1;
 						border-radius: 3px;
@@ -198,6 +200,9 @@ body {
 					}
 					.previewProductRemoval {
 						border-radius: 3px;
+						img {
+							display: inline;
+						}
 					}
 					.previewProductRemoval:hover,
 					.productAmountSub:hover,
@@ -546,9 +551,16 @@ body {
 					.productAmount {
 						margin-top: 1.5rem;
 						width: 20%;
+						// .previewProductRemoval {
+						// 	background-image: url('/Assets/icons/trashcan.svg');
+						// 	background-size: cover;
+						// 	// height: 30px;
+						// 	// width: 30px;
 						.productAmountValue {
 							width: 20%;
+
 						}
+						
 					}
 					.productCheckoutImage {
 						margin: 0 0 1rem 1rem;
