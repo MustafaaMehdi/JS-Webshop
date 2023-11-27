@@ -432,10 +432,16 @@ function pushProductStock() {
 function addAProduct(e) {
 	let index = e.target.id.replace('articleAddToCart', '');
 	index = Number(index);
-	productStock[index].amount += 1;
-	cart = productStock.filter((productStock) => productStock.amount > 0);
-	pushProductStock();
-	addProductToCart();
+ const productInCart = cart.find((product) => product.serialNo === productStock[index].serialNo);
+
+    if (productInCart) {
+        productInCart.amount += 1;
+    } else {
+        cart.push({ ...productStock[index], amount: 1 });
+    }
+
+    pushProductStock();
+    addProductToCart();
 }
 
 //Create a function to update the decrease cart amount value
@@ -463,20 +469,18 @@ function increaseCartPlus(e) {
 	const index = e.currentTarget.dataset.id;
 	cart[index].amount += 1;
 	
-	updateStock();
+	updateViews();
 }
 
 function decreaseCartMinus(e) {
 	const index = e.currentTarget.dataset.id;
-	//Condition only decreases the amount down to 0
 	if (cart[index].amount > 0) {
 		cart[index].amount -= 1;
-		//When the .amount object reaches 0, the product is removed from the cart array
-		if (cart[index].amount === 0) {
-			cart.splice(index, 1);
-		}
-		//
-		updateStock();
+		updateViews()
+	 if (cart[index].amount === 0) {
+		cart.splice(cart, 1);
+		updateViews()
+	}
 	}
 }
 
@@ -562,9 +566,10 @@ function addProductToCart() {
 }
 
 
-function updateStock() {
+function updateViews() {
 	pushProductStock();
 	addProductToCart();
+
 }
 
 
