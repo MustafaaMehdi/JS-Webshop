@@ -44,6 +44,30 @@ function cartToggle() {
 	cartPreview.classList.toggle('toggleHide');
 }
 
+
+
+
+
+//Search Input variabel
+const navSearchBar = document.querySelector('.navSearchBar')
+//Search button variable
+const searchBtn = document.querySelector('.navSearchBtn')
+//Add input event to the searchbar and display function
+navSearchBar.addEventListener('input', (e) => {
+
+	let keyWord = e.target.value
+
+	if (keyWord && keyWord.trim().length > 0) {
+		// keyWord = keyWord.trim().toLowerCase()
+		console.log(keyWord)
+	} 
+	// else {
+		
+	// }
+
+})
+
+
 //2b CART PREVIEW CLOSE:
 // [] Create button for the CART PREVIEW CLOSE BTN
 //VARIABLE to select the CART PREVIEW CLOSE button

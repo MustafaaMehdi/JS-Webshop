@@ -89,12 +89,18 @@ body {
 				left: 10px;
 				right: 30px;
 				top: 3rem;
-				// border: 1px solid black;
-				background-color: RGBA(243, 202, 106, 1);
+				text-align: center;
+				background-image: linear-gradient(
+					to right,
+					#f1daa7,
+					#f0d9a3,
+					#ecc66d
+				);
 				width: 90vw;
 				height: auto;
 				z-index: 1;
 				border-radius: 3px;
+				// border-bottom:10px solid #eed28c;
 				// display: grid;
 				.cartPreviewArrow {
 					position: absolute;
@@ -122,7 +128,7 @@ body {
 					background-color: rgb(172, 77, 93);
 				}
 				.summaryHeading {
-					text-align: center;
+					// text-align: center;
 					border-bottom: 1px solid black;
 				}
 				// ul {
@@ -180,32 +186,41 @@ body {
 						}
 					}
 					.previewProductRemoval,
-					.productAmountSub,
-					.productAmountAdd,
+					.minusOneProduct,
+					.addOneProduct,
 					.productAmount {
 						margin-top: 13px;
 						border: 1px solid #0e0b0b;
 						// border-radius: 3px;
 					}
-					.productAmountSub,
+					.minusOneProduct,
 					.productAmount {
 						border-right: none;
 					}
-					.productAmountAdd,
+					.addOneProduct,
 					.productAmount {
 						border-left: none;
 					}
-					.productAmountSub {
+					.minusOneProduct {
 						border-radius: 3px 0 0 3px;
 					}
-					.productAmountAdd {
+					.addOneProduct {
 						border-radius: 0 3px 3px 0;
 					}
 					.previewProductRemoval {
 						border-radius: 3px;
-						img {
-							display: inline;
-						}
+						// z-index: 3;
+						// position: relative;
+						// height: 25px;
+						// width: 30px;
+						// .productRemoveImg {
+						// 	height: 50px;
+						// 	// z-index: 0;
+						// 	// position: absolute;
+						// 	top: -13px;
+						// 	left: 0;
+						// 	width: 20px;
+						// }
 					}
 					.previewProductRemoval:hover,
 					.productAmountSub:hover,
@@ -216,10 +231,10 @@ body {
 
 				.checkoutBtn {
 					border: none;
-					background-color: rgb(252, 246, 246);
+					background-color: rgb(222, 230, 247);
 					// text-align: center;
-					width: 100%;
-					margin-bottom: 5px;
+					width: 80%;
+					margin-bottom: 1rem;
 					border-radius: 10px;
 					height: 50px;
 				}
@@ -595,6 +610,8 @@ body {
 					}
 				}
 			}
+
+
 			.checkoutInput {
 				border-radius: 5px;
 				border: 1px solid #f5c24c;
@@ -602,6 +619,15 @@ body {
 			}
 			h3 {
 				text-align: center;
+			}
+			.checkoutProductSum {
+				background-color: #fff;
+				width: 20rem;
+				border-radius: 10px;
+				.productSummaryAmount,
+				.productSummarySum {
+				text-align: left;
+				}
 			}
 			// .fieldSetContainer {
 			.orderForm {
