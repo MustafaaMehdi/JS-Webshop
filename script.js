@@ -111,7 +111,7 @@ const productStock = [
 		category: { shape: 'heart', color: 'red' },
 		rating: 4.8,
 		image: {
-			src: "/Assets/Images/Warehouse/SegretoD'Amore.jpg",
+			src: "Assets/Images/Warehouse/SegretoD'Amore.jpg",
 			alt: 'heartshaped black box filled with red roses',
 			height: 100,
 			width: 100,
@@ -125,7 +125,7 @@ const productStock = [
 		category: { shape: 'round', color: 'red' },
 		rating: 3.9,
 		image: {
-			src: '/Assets/Images/Warehouse/CestoDiRose.jpg',
+			src: 'Assets/Images/Warehouse/CestoDiRose.jpg',
 			alt: 'white round box filled with red roses',
 			height: 100,
 			width: 100,
@@ -139,7 +139,7 @@ const productStock = [
 		category: { shape: 'round', color: 'blue' },
 		rating: 2.9,
 		image: {
-			src: '/Assets/Images/Warehouse/GioielloDiFiori.png',
+			src: 'Assets/Images/Warehouse/GioielloDiFiori.png',
 			alt: 'blue round box filled with blue roses',
 			height: 100,
 			width: 100,
@@ -153,7 +153,7 @@ const productStock = [
 		category: { shape: 'square', color: 'transparent' },
 		rating: 4.9,
 		image: {
-			src: '/Assets/Images/Warehouse/CuoreInfinito2.jpg',
+			src: 'Assets/Images/Warehouse/CuoreInfinito2.jpg',
 			alt: 'transparent square box filled with red roses',
 			height: 100,
 			width: 100,
@@ -167,7 +167,7 @@ const productStock = [
 		category: { shape: 'round', color: 'white' },
 		rating: 4.9,
 		image: {
-			src: '/Assets/Images/Warehouse/DolceRose.jfif',
+			src: 'Assets/Images/Warehouse/DolceRose.jfif',
 			alt: 'round white box filled with pink roses',
 			height: 100,
 			width: 100,
@@ -181,7 +181,7 @@ const productStock = [
 		category: { shape: 'square', color: 'black' },
 		rating: 4.9,
 		image: {
-			src: '/Assets/Images/Warehouse/NotteRomantica.jpg',
+			src: 'Assets/Images/Warehouse/NotteRomantica.jpg',
 			alt: 'black square box filled with red roses',
 			height: 100,
 			width: 100,
@@ -195,7 +195,7 @@ const productStock = [
 		category: { shape: 'square', color: 'white' },
 		rating: 4.3,
 		image: {
-			src: '/Assets/Images/Warehouse/GioielloDiRoseBianche.jpg',
+			src: 'Assets/Images/Warehouse/GioielloDiRoseBianche.jpg',
 			alt: 'white square box filled with pink roses',
 			height: 100,
 			width: 100,
@@ -209,7 +209,7 @@ const productStock = [
 		category: { shape: 'round', color: 'white' },
 		rating: 3.3,
 		image: {
-			src: '/Assets/Images/Warehouse/CuorediRoseBlu.jpg',
+			src: 'Assets/Images/Warehouse/CuorediRoseBlu.jpg',
 			alt: 'white round box filled with blue roses',
 			height: 100,
 			width: 100,
@@ -223,7 +223,7 @@ const productStock = [
 		category: { shape: 'heart', color: 'black' },
 		rating: 4.1,
 		image: {
-			src: '/Assets/Images/Warehouse/AmoreEterno.jpg',
+			src: 'Assets/Images/Warehouse/AmoreEterno.jpg',
 			alt: 'black heart shaped box filled with red roses',
 			height: 100,
 			width: 100,
@@ -237,7 +237,7 @@ const productStock = [
 		category: { shape: 'round', color: 'pink' },
 		rating: 3.1,
 		image: {
-			src: '/Assets/Images/Warehouse/DolcezzaInRosa.jpg',
+			src: 'Assets/Images/Warehouse/DolcezzaInRosa.jpg',
 			alt: 'pink round box filled with blue roses',
 			height: 100,
 			width: 100,
@@ -251,7 +251,7 @@ const productStock = [
 		category: { shape: 'heart', color: 'white' },
 		rating: 4.4,
 		image: {
-			src: '/Assets/Images/Warehouse/GioiaDelCuore.jpg',
+			src: 'Assets/Images/Warehouse/GioiaDelCuore.jpg',
 			alt: 'white heart shaped box filled with red roses',
 			height: 100,
 			width: 100,
@@ -265,7 +265,7 @@ const productStock = [
 		category: { shape: 'round', color: 'pink' },
 		rating: 3.7,
 		image: {
-			src: '/Assets/Images/Warehouse/SerenataRosata.jpg',
+			src: 'Assets/Images/Warehouse/SerenataRosata.jpg',
 			alt: 'round shaped pink box filled with pink roses',
 			height: 100,
 			width: 100,
@@ -279,7 +279,7 @@ const productStock = [
 		category: { shape: 'round', color: 'white' },
 		rating: 4.5,
 		image: {
-			src: '/Assets/Images/Warehouse/DolceAmore.jpg',
+			src: 'Assets/Images/Warehouse/DolceAmore.jpg',
 			alt: 'white round shaped box filled with red roses',
 			height: 100,
 			width: 100,
@@ -295,7 +295,7 @@ const productStock = [
 		category: { shape: 'bear', color: 'white' },
 		rating: 4.6,
 		image: {
-			src: '/Assets/Images/Warehouse/DolceAbbraccio.jpg',
+			src: 'Assets/Images/Warehouse/DolceAbbraccio.jpg',
 			alt: 'white bear made out of plastic roses',
 			height: 100,
 			width: 100,
@@ -309,7 +309,7 @@ const productStock = [
 		category: { shape: 'bear', color: 'brown' },
 		rating: 3.6,
 		image: {
-			src: '/Assets/Images/Warehouse/CoccoleDiNoce.jpg',
+			src: 'Assets/Images/Warehouse/CoccoleDiNoce.jpg',
 			alt: 'brown bear made out of plastic roses',
 			height: 100,
 			width: 100,
@@ -323,7 +323,7 @@ const productStock = [
 		category: { shape: 'bear', color: 'grey' },
 		rating: 4.5,
 		image: {
-			src: '/Assets/Images/Warehouse/GioielloDelCuore.jpg',
+			src: 'Assets/Images/Warehouse/GioielloDelCuore.jpg',
 			alt: 'grey bear made out of plastic roses',
 			height: 100,
 			width: 100,
@@ -337,7 +337,7 @@ const productStock = [
 		category: { shape: 'bear', color: 'red' },
 		rating: 4.8,
 		image: {
-			src: "/Assets/Images/Warehouse/OrsettoD'Amore.jpg",
+			src: "Assets/Images/Warehouse/OrsettoD'Amore.jpg",
 			alt: 'red bear made out of plastic roses',
 			height: 100,
 			width: 100,
@@ -351,7 +351,7 @@ const productStock = [
 		category: { shape: 'bear', color: 'pink' },
 		rating: 4.4,
 		image: {
-			src: '/Assets/Images/Warehouse/RosaIncanto.jpg',
+			src: 'Assets/Images/Warehouse/RosaIncanto.jpg',
 			alt: 'pink bear made out of plastic roses',
 			height: 100,
 			width: 100,
@@ -365,7 +365,7 @@ const productStock = [
 		category: { shape: 'bear', color: 'blue' },
 		rating: 4.7,
 		image: {
-			src: '/Assets/Images/Warehouse/SognoAzzurro.jpg',
+			src: 'Assets/Images/Warehouse/SognoAzzurro.jpg',
 			alt: 'blue mini bear made out of plastic roses',
 			height: 100,
 			width: 100,

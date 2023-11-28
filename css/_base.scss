@@ -139,8 +139,10 @@ body {
 					margin: 0;
 				}
 				.productPreviewSummary {
+					li {
 					display: flex;
 					justify-content: space-evenly;
+					// flex-direction: column;
 					padding: 10px;
 					// font-size: 1rem;
 					
@@ -149,8 +151,9 @@ body {
 					// ul {
 					// 	margin-left: 2px;
 					// }
+				}
 					li::marker {
-						content: '-';
+						content: '';
 					  }
 					.productPreviewImage {
 						grid-column: 1 / span 1;
@@ -676,7 +679,7 @@ body {
 		background-color: rgb(241, 237, 237);
 		display: flex;
 		justify-content: space-evenly;
-		background-image: url(/Assets/icons/lightThemeLogo.svg);
+		background-image: url(Assets/icons/lightThemeLogo.svg);
 		background-repeat: no-repeat;
 		background-position: center;
 		flex-wrap: wrap;
