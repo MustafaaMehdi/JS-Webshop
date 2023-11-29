@@ -1,53 +1,101 @@
-//HEADER: VARIABLE to select the BURGER MENU open button
-const burgerMenuBtn = document.querySelector('.OpenNavBtn');
+//NAVIGATION
 
-//AddCLICKevent to openBTN BURGER MENU
+//VARIABLE to select the BURGER MENU open button
+const burgerMenuBtn = document.querySelector('.OpenNavBtn');
+//Event to burger menu BTN
 burgerMenuBtn.addEventListener('click', burgerMenuOpen);
-//Define a variable for the Navigation menu to be used in open and close function
+
+//Variable for the Navigation menu 
 const openBurgeMenu = document.querySelector('.navMenu');
-//define FUNCTION to TOGGLE BURGER MENU
+//Function to TOGGLE BURGER MENU
 function burgerMenuOpen() {
 	console.log(openBurgeMenu);
 	openBurgeMenu.classList.remove('toggleHide');
 }
 
-const closeNavBtn = document.querySelector('.closeNavBtn');
 
-//CLICKevent to CLOSE BURGER MENU
+//Variabel, event & function for NAVIGATION MENU - close
+closeNavBtn = document.querySelector('.closeNavBtn')
 closeNavBtn.addEventListener('click', burgerMenuClose);
-//define FUNCTION to CLOSE BURGER MENU
 function burgerMenuClose() {
-	console.log(openBurgeMenu);
 	openBurgeMenu.classList.add('toggleHide');
 }
 
-//2 CART PREVIEW:
-// [] Create button for the CART PREVIEW
-//VARIABLE to select the CART PREVIEW TOGGLE button
+
+//Variabel, event & function for CART PREVIEW - Toggle
 const cartPreviewBtn = document.querySelector('.navCartBtn');
-
-//SHOW TOTALT amount of products 
-let productTotal = document.querySelector('.productInCart');
-
-
-
-
-
-
-//AddCLICKevent to cartpreviewBTN CART PREVIEW
 cartPreviewBtn.addEventListener('click', cartToggle);
-//Define a variable for the CART PREVIEW menu to be used in Toggle and close function
 const cartPreview = document.querySelector('.cartPreview');
-//define FUNCTION to CART PREVIEW TOGGLE to toggle between hide/unhide
 function cartToggle() {
 	console.log(openBurgeMenu);
 	cartPreview.classList.toggle('toggleHide');
 }
 
+//Variabel, event & function for CART PREVIEW close BTN
+const cartCloseBtn = document.querySelector('.cartCloseBtn');
+cartCloseBtn.addEventListener('click', cartClose);
+function cartClose() {
+	console.log(openBurgeMenu);
+	cartPreview.classList.add('toggleHide');
+}
+
+//Variabel, event & function for the proceed to checkout BTN
+const checkoutBtn = document.querySelector('.checkoutBtn');
+checkoutBtn.addEventListener('click', orderSummary);
+function orderSummary() {
+	checkOutPage.classList.remove('toggleHide');
+	mainPageWrapper.classList.add('toggleHide');
+	cartPreview.classList.add('toggleHide');
+}
+
+//Variable, event & function for back to shop BTN
+const backToShop = document.querySelector('.continueShopping');
+backToShop.addEventListener('click', toggleCheckout);
+function toggleCheckout() {
+	checkOutPage.classList.add('toggleHide');
+	mainPageWrapper.classList.remove('toggleHide');
+}
+
+//2 SORTING:
+//Variable, event & function for SORTING - toggle
+const sortBtn = document.querySelector('.sortBtn');
+sortBtn.addEventListener('click', sortToggle);
+const sortMenu = document.querySelector('.sortMenu');
+function sortToggle() {
+	sortMenu.classList.toggle('toggleHide');
+}
+
+//Variable and function to display TOTALT AMOUNT of products in cart
+// let productTotal = document.querySelector('.productInCart');
+//Variable for total amount in cart
+let cartTotalProducts = document.querySelector('.productInCart');
+function updateTotalAmount() {
+    let totalProductsAmount = cart.reduce((total, product) => total + product.amount, 0);
+
+    const totalAmountDisplay = document.querySelector('.productInCart');
+    if (totalAmountDisplay) {
+        totalAmountDisplay.innerHTML = totalProductsAmount;
+    }
+}
+
+//3 Page Wrappers
+
+//Variable for:
+// Main Page wrapper
+const mainPageWrapper = document.querySelector('.mainSectionWrapper');
+// Variable for Checkout page
+const checkOutPage = document.querySelector('.checkoutWrapper');
+// Product section Wrapper
+const productContainer = document.querySelector('.productContainer');
+//Cart preview Wrapper 
+const cartSummary = document.querySelector('.productPreviewSummary');
+//Checkout summary Wrapper
+const checkoutSummary = document.querySelector('.productCheckoutSummary');
 
 
 
 
+//Search function 
 //Search Input variabel
 const navSearchBar = document.querySelector('.navSearchBar')
 //Search button variable
@@ -68,64 +116,11 @@ navSearchBar.addEventListener('input', (e) => {
 })
 
 
-//2b CART PREVIEW CLOSE:
-// [] Create button for the CART PREVIEW CLOSE BTN
-//VARIABLE to select the CART PREVIEW CLOSE button
-const cartCloseBtn = document.querySelector('.cartCloseBtn');
 
-//AddCLICKevent to cartpreviewBTN CART PREVIEW
-cartCloseBtn.addEventListener('click', cartClose);
-//Define a variable for the CART PREVIEW menu to be used in Toggle and close function
 
-//define FUNCTION to CART PREVIEW TOGGLE to toggle between hide/unhide
-function cartClose() {
-	console.log(openBurgeMenu);
-	cartPreview.classList.add('toggleHide');
-}
-//Variabel for the proceed to checkout BTN
-const checkoutBtn = document.querySelector('.checkoutBtn');
-checkoutBtn.addEventListener('click', orderSummary);
 
-const mainPageWrapper = document.querySelector('.mainSectionWrapper');
-const checkOutPage = document.querySelector('.checkoutWrapper');
 
-//Function for the proceed to checkout BTN
-function orderSummary() {
-	checkOutPage.classList.remove('toggleHide');
-	mainPageWrapper.classList.add('toggleHide');
-	cartPreview.classList.add('toggleHide');
-}
-const backToShop = document.querySelector('.continueShopping');
-backToShop.addEventListener('click', toggleCheckout);
-
-function toggleCheckout() {
-	checkOutPage.classList.add('toggleHide');
-	mainPageWrapper.classList.remove('toggleHide');
-}
-// PRODUCT SECTION:
-// {
-//2 SORTING:
-// [] Create button for the SORTING BTN
-//VARIABLE to select the SORT TOGGLE button
-//ADD EventClick to the SORT BTN
-const sortBtn = document.querySelector('.sortBtn');
-
-//AddCLICKevent to cartpreviewBTN CART PREVIEW
-sortBtn.addEventListener('click', sortToggle);
-//Define a variable for the CART PREVIEW menu to be used in Toggle and close function
-const sortOptions = document.querySelector('.sortMenu');
-//define FUNCTION to CART PREVIEW TOGGLE to toggle between hide/unhide
-function sortToggle() {
-	sortOptions.classList.toggle('toggleHide');
-}
-
-// PRODUCTS PAGE
-//1.a Add Products with a for loop:
-// [x] Create a variable for the products container
-// [x] Create an Array which holds the different product property objects
-// [x] create an Array containing all objects
-
-//Define an array with pre-defined object properties:
+//Array containing the product stock 
 const productStock = [
 	{
 		name: "Segreto D'Amore",
@@ -397,22 +392,37 @@ const productStock = [
 	},
 ];
 
-// [X] Select the product container from the HTML DOM
-// [Used Class since it's unique]   Add ID to the container in HTML ()
-const productContainer = document.querySelector('.productContainer');
-//Test to see if correct Element is selected
-// console.log(productContainer);
+//SORTING & FILTER
+//Have the price range react and show the price intervall set by user
 
-// [X] Push the Image, Title and Price inside of an <article> with a class
 
-//2 Add Products buttons with a for loop:
-// [X] Select the productsContainer
-// [X] Push template for articles as innerHTML
-// [X] Push the subrtract and add buttons
+//Variable for price range slider
+const priceRangeSlider = document.querySelector('#pricerange')
+//Add event to the slider
+priceRangeSlider.addEventListener('input', adjustPriceRange)
+
+function adjustPriceRange() {
+
+
+}
+//Function for sorting based on name A-Z
+productStock.sort((product1, product2) => {
+		if (product1.name < product2.name) {
+		  return -1;
+		}
+		if (product1.name > product2.name) {
+		  return 1;
+		}
+		return 0;
+});
+
+console.table(productStock)
+
+
+//Function to print out the products
 function pushProductStock() {
     productContainer.innerHTML = '';
     productStock.forEach((product, index) => {
-		// if (productStock.amount < 0) {
         productContainer.innerHTML += `<article class="productArticles">
             <h3 class="articleTitle">${product.name}</h3>
             <img
@@ -434,25 +444,24 @@ function pushProductStock() {
                 <button class="articleAddToCart" id="articleAddToCart${index}">Add</button>
             </div>
         </article>`;
-	// }
     });
 
-    //Variable and event for the add button in cart & summary
+    //Variable and event for the IncreaseAmount BTN for each added product in cart
     const addToCartBtn = document.querySelectorAll('.articleAddToCart');
     addToCartBtn.forEach((button) => {
         button.addEventListener('click', addAProduct);
     });
 
-    //Variable and event for the decrease button in cart & summary
+    //Variable and event for the DecreaseAmount BTN for each added product in cart
     const subtractFromCartBtn = document.querySelectorAll('.articleRemoveFromCart');
     subtractFromCartBtn.forEach((button) => {
         button.addEventListener('click', subtractAProduct);
     });
 }
-//Copy of array for the products in cart
-// let cart = [];
-// pushProductStock()
-//Create a function to be able to increase the amount of product in the cart view & Summary view
+
+
+
+//Function to be able to increase the amount of product in the cart view & Summary view
 function addAProduct(e) {
 	let index = e.target.id.replace('articleAddToCart', '');
 	index = Number(index);
@@ -462,7 +471,7 @@ function addAProduct(e) {
 	addProductToCart();
 }
 
-//Create a function to update the decrease cart amount value
+//Function to be able to decrease the amount of product in the cart view & Summary view
 function subtractAProduct(e) {
 	let index = e.target.id.replace('articleRemoveFromCart', '');
 	if (productStock[index].amount > 0) {
@@ -477,9 +486,7 @@ function subtractAProduct(e) {
 	}
 }
 
-const cartSummary = document.querySelector('.productPreviewSummary');
-const checkoutSummary = document.querySelector('.productCheckoutSummary');
-let cartTotalProducts = document.querySelector('.productInCart');
+
 
 //Göra om funtkion till forEach, lägg till function i add knappen sen också
 
@@ -504,6 +511,8 @@ function decreaseCartMinus(e) {
 	}
 }
 
+
+//Function to get added products printed in CART and CHECKOUT
 function addProductToCart() {
 	cartTotalProducts.innerHTML = '';
 	cartSummary.innerHTML = '';
@@ -585,7 +594,7 @@ function addProductToCart() {
 	updateTotalAmount();
 }
 
-
+//Call two functions at the same time
 function updateStock() {
 	pushProductStock();
 	addProductToCart();
@@ -593,7 +602,7 @@ function updateStock() {
 
 
 
-
+//Function for remove BTN in cart and Checkout summary
 function removeFromCartBtn(e) {
 	const productSerialNo = Number(e.target.id.replace('productRemove', ''));
 
@@ -620,14 +629,6 @@ function removeFromCartBtn(e) {
 
 
 
-function updateTotalAmount() {
-    let totalProductsAmount = cart.reduce((total, product) => total + product.amount, 0);
-
-    const totalAmountDisplay = document.querySelector('.productInCart');
-    if (totalAmountDisplay) {
-        totalAmountDisplay.innerHTML = totalProductsAmount;
-    }
-}
 pushProductStock();
 
 // Total cart amount showing = all (product.amount > 0) should be summed together and loop through forEach (all products with amount > 0)
