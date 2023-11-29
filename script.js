@@ -1,4 +1,4 @@
-//NAVIGATION
+/*------------------------------------------NAVIGATION------------------------------------------*/
 
 //VARIABLE to select the BURGER MENU open button
 const burgerMenuBtn = document.querySelector('.OpenNavBtn');
@@ -56,7 +56,7 @@ function toggleCheckout() {
 	mainPageWrapper.classList.remove('toggleHide');
 }
 
-//2 SORTING:
+
 //Variable, event & function for SORTING - toggle
 const sortBtn = document.querySelector('.sortBtn');
 sortBtn.addEventListener('click', sortToggle);
@@ -65,9 +65,7 @@ function sortToggle() {
 	sortMenu.classList.toggle('toggleHide');
 }
 
-//Variable and function to display TOTALT AMOUNT of products in cart
-// let productTotal = document.querySelector('.productInCart');
-//Variable for total amount in cart
+//Variable and function to receive and display TOTALT AMOUNT of products in cart
 let cartTotalProducts = document.querySelector('.productInCart');
 function updateTotalAmount() {
     let totalProductsAmount = cart.reduce((total, product) => total + product.amount, 0);
@@ -78,7 +76,7 @@ function updateTotalAmount() {
     }
 }
 
-//3 Page Wrappers
+/*------------------------------------------PAGE WRAPPERS------------------------------------------*/
 
 //Variable for:
 // Main Page wrapper
@@ -392,7 +390,7 @@ const productStock = [
 	},
 ];
 
-//SORTING & FILTER
+/*------------------------------------------SORTING & FILTER------------------------------------------*/
 //Have the price range react and show the price intervall set by user
 
 
@@ -401,12 +399,28 @@ const priceRangeSlider = document.querySelector('#pricerange')
 //Add event to the slider
 priceRangeSlider.addEventListener('input', adjustPriceRange)
 
+//Global variabel for the price element 
+const priceRangeValue = document.querySelector('.rangeVal')
+//Variable for BTN to sort alphabetically
+alphaSort = document.querySelector('.sortAlpha')
+alphaSort.addEventListener('click', sortByAlphabet)
+//Array for filtered products on category
+let filteredProductStock = [...productStock]
+//Array for filtered products on price range
+let filteredPriceRange = [...productStock]
+//Function to display the slider price and apply to array
 function adjustPriceRange() {
-
-
+const currentPriceValue = priceRangeSlider.value
+priceRangeValue.innerHTML = currentPriceValue
+filteredPriceRange = filteredProductStock.filter(product => product.price <= currentPriceValue)
+console.log(filteredPriceRange)
+updateStock();
 }
-//Function for sorting based on name A-Z
-productStock.sort((product1, product2) => {
+
+
+// Function for sorting based on name A-Z
+function sortByAlphabet() {
+filteredPriceRange.sort((product1, product2) => {
 		if (product1.name < product2.name) {
 		  return -1;
 		}
@@ -415,14 +429,15 @@ productStock.sort((product1, product2) => {
 		}
 		return 0;
 });
+pushProductStock()
+}
 
-console.table(productStock)
-
+// console.table(productStock)
 
 //Function to print out the products
 function pushProductStock() {
     productContainer.innerHTML = '';
-    productStock.forEach((product, index) => {
+    filteredPriceRange.forEach((product, index) => {
         productContainer.innerHTML += `<article class="productArticles">
             <h3 class="articleTitle">${product.name}</h3>
             <img
@@ -435,7 +450,7 @@ function pushProductStock() {
             />
 
             <p class="articlePrice">
-                ${product.price} $<span class="articleRating">${product.rating} <img src="Assets/icons/Rating.webp" alt="" height="50"></span>
+                ${product.price} $<span class="articleRating"> <img src="Assets/icons/Rating.webp" alt="" height="50">${product.rating}</span>
             </p>
 
             <div class="articleBtn">
@@ -465,7 +480,8 @@ function pushProductStock() {
 function addAProduct(e) {
 	let index = e.target.id.replace('articleAddToCart', '');
 	index = Number(index);
-	productStock[index].amount += 1;
+	// productStock[index].amount += 1;
+	filteredPriceRange[index].amount += 1;
 	cart = productStock.filter((productStock) => productStock.amount > 0);
 	pushProductStock();
 	addProductToCart();
@@ -474,11 +490,12 @@ function addAProduct(e) {
 //Function to be able to decrease the amount of product in the cart view & Summary view
 function subtractAProduct(e) {
 	let index = e.target.id.replace('articleRemoveFromCart', '');
-	if (productStock[index].amount > 0) {
+	if (filteredPriceRange[index].amount > 0) {
 		index = Number(index);
-		productStock[index].amount -= 1;
+		// productStock[index].amount -= 1;
+		filteredPriceRange[index].amount -= 1;
 		//Conditions the product to be removed from cart if the amount is set to 0
-		if (productStock[index].amount === 0) {
+		if (filteredPriceRange[index].amount === 0) {
 			cart = cart.filter((product) => product.serialNo !==productStock[index].serialNo)
 		}
 		pushProductStock();
@@ -530,6 +547,7 @@ function addProductToCart() {
 			//`<p>Product: ${productStock.name}Antal: ${productStock.amount}<button class="delete" id="delete-${productStock.serialNo}">radera</button></p>`;
 
 			`<li>
+			<div>
 			<img
 				class="productPreviewImage"
 				src="${product.image.src}"
@@ -537,8 +555,8 @@ function addProductToCart() {
 				height="${product.image.height}"
 			/>
 			<h3 class="previewProductTitle">${product.name}</h3>
+			</div>
 			<p class="previewProductPrice">${amountPrice}</p>
-
 		<div class="productAmountActions">
 			<button class="minusOneProduct" data-id="${index}" >-</button
 			><input class="productAmount" type="number" value="${product.amount}" /><button
@@ -546,7 +564,7 @@ function addProductToCart() {
 			>
 				+
 			</button>
-			<button class="previewProductRemoval" id="productRemove${product.serialNo}">Remove product
+			<button class="previewProductRemoval" id="productRemove${product.serialNo}">Remove
 			</button>
 		</li>`;
 
@@ -568,7 +586,7 @@ function addProductToCart() {
 			>
 				+
 			</button>
-			<button class="previewProductRemoval" id="productRemove${product.serialNo}"> Remove product
+			<button class="previewProductRemoval" id="productRemove${product.serialNo}">Remove
 								</button>
 		</div>`;
 	});
@@ -623,6 +641,7 @@ function removeFromCartBtn(e) {
 		addProductToCart();
 	}
 }
+
 
 
 

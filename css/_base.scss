@@ -448,6 +448,8 @@ body {
 					.articlePrice {
 						position: relative;
 						.articleRating {
+							display: flex;
+							flex-direction: column;
 							position: absolute;
 							right: 0;
 							top: -2rem;
