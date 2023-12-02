@@ -1,45 +1,74 @@
 /*------------------------------------------NAVIGATION------------------------------------------*/
 
-//VARIABLE to select the BURGER MENU open button
+//Burger Menu(Open.Button) - VARIABLE to select the BURGER MENU open button
 const burgerMenuBtn = document.querySelector('.OpenNavBtn');
-//Event to burger menu BTN
+//Burger Menu(Open.Button) - Click EVENT for the burger menu open BTN
 burgerMenuBtn.addEventListener('click', burgerMenuOpen);
-
-//Variable for the Navigation menu
+//Burger Menu(Navigation screen) - Variable for the Navigation menu
 const openBurgeMenu = document.querySelector('.navMenu');
-//Function to TOGGLE BURGER MENU
+//Burger Menu(Close.Button) - VARIABLE to select the BURGER MENU close BTN
+const closeNavBtn = document.querySelector('.closeNavBtn');
+// Burger Menu(Close.Button) - Click EVENT for the burger menu close BTN
+closeNavBtn.addEventListener('click', burgerMenuClose);
+
+//Cart preview (Toggle.Button) - VARIABLE to select the Cart preview toggle BTN
+const cartPreviewBtn = document.querySelector('.navCartBtn');
+//Cart preview (Toggle.Button) - Click EVENT for the Cart preview toggle BTN
+cartPreviewBtn.addEventListener('click', cartToggle);
+//Cart preview screen - VARIABLE for the Cart preview screen
+const cartPreview = document.querySelector('.cartPreview');
+//Cart preview (Close.Button) - VARIABLE to select the Cart preview close BTN
+const cartCloseBtn = document.querySelector('.cartCloseBtn');
+//Cart preview (Close.Button) - Click EVENT for the Cart preview close BTN
+cartCloseBtn.addEventListener('click', cartClose);
+
+///Checkout section (open.Btn) - VARIABLE for proceed to checkout in the Cart preview BTN
+const checkoutBtn = document.querySelector('.checkoutBtn');
+//Checkout section (open.Btn) - Click EVENT for proceed to checkout in the Cart preview BTN
+checkoutBtn.addEventListener('click', orderSummary);
+
+//Back to shopping (close.Btn) - VARIABLE for continue shopping (from checkout) BTN
+const backToShop = document.querySelector('.continueShopping');
+//Checkout section (close.Btn) - Click EVENT for continue shopping (from checkout) BTN
+backToShop.addEventListener('click', toggleCheckout);
+
+//Sorting menu (Toggle.Button) - VARIABLE for sorting menu toggle BTN
+const sortBtn = document.querySelector('.sortBtn');
+//Sorting menu (Toggle.Button) - Click EVENT for sorting menu toggle BTN
+sortBtn.addEventListener('click', sortToggle);
+
+//Cart icon total amount <span> element - VARIABLE for the mini cart icon in the Navigation
+const totalAmountIcon = document.querySelector('.productInCart');
+//Cart icon total amount <span> element inside cart preview - VARIABLE for the total PCS <span> in cart preview
+const totalAmountcartPreview = document.querySelector('#totalAmountcartPreview');
+//Checkout section total amount <span> element - VARIABLE for the total PCS <span> element in the Navigation
+const totalAmountCheckout = document.querySelector('#totalAmountCheckout');
+//Summary section total amount <span> element - VARIABLE for the total PCS <span> element in summary msg
+const totalAmountSummary = document.querySelector('#totalAmountSummary');
+
+//Burger Menu (open.button) - Function for open navigation menu when clicking on burger menu BTN
 function burgerMenuOpen() {
 	console.log(openBurgeMenu);
 	openBurgeMenu.classList.remove('toggleHide');
 }
 
-//Variabel, event & function for NAVIGATION MENU - close
-closeNavBtn = document.querySelector('.closeNavBtn');
-closeNavBtn.addEventListener('click', burgerMenuClose);
+//Burger Menu (close.button) - Function for close navigation menu when clicking on close in nav menu BTN
 function burgerMenuClose() {
 	openBurgeMenu.classList.add('toggleHide');
 }
 
 //Variabel, event & function for CART PREVIEW - Toggle
-const cartPreviewBtn = document.querySelector('.navCartBtn');
-cartPreviewBtn.addEventListener('click', cartToggle);
-const cartPreview = document.querySelector('.cartPreview');
 function cartToggle() {
-	console.log(openBurgeMenu);
 	cartPreview.classList.toggle('toggleHide');
 }
 
 //Variabel, event & function for CART PREVIEW close BTN
-const cartCloseBtn = document.querySelector('.cartCloseBtn');
-cartCloseBtn.addEventListener('click', cartClose);
 function cartClose() {
 	console.log(openBurgeMenu);
 	cartPreview.classList.add('toggleHide');
 }
 
 //Variabel, event & function for the proceed to checkout BTN
-const checkoutBtn = document.querySelector('.checkoutBtn');
-checkoutBtn.addEventListener('click', orderSummary);
 function orderSummary() {
 	checkOutPage.classList.remove('toggleHide');
 	mainPageWrapper.classList.add('toggleHide');
@@ -47,33 +76,18 @@ function orderSummary() {
 }
 
 //Variable, event & function for back to shop BTN
-const backToShop = document.querySelector('.continueShopping');
-backToShop.addEventListener('click', toggleCheckout);
 function toggleCheckout() {
 	checkOutPage.classList.add('toggleHide');
 	mainPageWrapper.classList.remove('toggleHide');
 }
 
 //Variable, event & function for toggeling the sorting menu
-const sortBtn = document.querySelector('.sortBtn');
-sortBtn.addEventListener('click', sortToggle);
 const sortMenu = document.querySelector('.sortMenu');
 function sortToggle() {
 	sortMenu.classList.toggle('toggleHide');
 }
 
 //Variable and function to receive and display TOTALT AMOUNT of products in cart, checkout and Summary
-//Variable for the mini cart icon in the Navigation
-const totalAmountIcon = document.querySelector('.productInCart');
-//Variable for cart total amount <span>
-const totalAmountcartPreview = document.querySelector(
-	'#totalAmountcartPreview'
-);
-//Variable for checkout total amount <span>
-const totalAmountCheckout = document.querySelector('#totalAmountCheckout');
-//Variable for order confirmation total amount <span>
-const totalAmountSummary = document.querySelector('#totalAmountSummary');
-
 function updateTotalAmount() {
 	//Define a variable to hold a reduce function which accumilates the total amount value
 	let totalProductsAmount = cart.reduce(
