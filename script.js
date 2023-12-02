@@ -42,12 +42,13 @@ const sortMenu = document.querySelector('.sortMenu');
 //Cart icon total amount <span> element - VARIABLE for the mini cart icon in the Navigation
 const totalAmountIcon = document.querySelector('.productInCart');
 //Cart icon total amount <span> element inside cart preview - VARIABLE for the total PCS <span> in cart preview
-const totalAmountcartPreview = document.querySelector('#totalAmountcartPreview');
+const totalAmountcartPreview = document.querySelector(
+	'#totalAmountcartPreview'
+);
 //Checkout section total amount <span> element - VARIABLE for the total PCS <span> element in the Navigation
 const totalAmountCheckout = document.querySelector('#totalAmountCheckout');
 //order confirmation section total amount <span> element - VARIABLE for the total PCS <span> element in order confirmation section msg
 const totalAmountSummary = document.querySelector('#totalAmountSummary');
-
 
 //Cart preview total price inside cart preview - VARIABLE for the total PRICE in cart preview
 const totalPriceCartPreview = document.querySelector('#totalPriceCartPreview');
@@ -57,13 +58,12 @@ const totalPriceCheckout = document.querySelector('#totalPriceCheckout');
 const totalPriceSummary = document.querySelector('#totalPriceSummary');
 /*------------------------------------------Header------------------------------------------*/
 
-
 /*------------------------------------------PAGE WRAPPERS------------------------------------------*/
-// Main Page wrapper - Variable to select the main page container 
+// Main Page wrapper - Variable to select the main page container
 const mainPageWrapper = document.querySelector('.mainSectionWrapper');
 // Product section Wrapper - Variable to select the product page container
 const productContainer = document.querySelector('.productContainer');
-//Cart preview Wrapper - Variable which selects the cart preview product 
+//Cart preview Wrapper - Variable which selects the cart preview product
 const cartSummary = document.querySelector('.productPreviewSummary');
 //Checkout section wrapper - Variable to select the checkout section
 const checkOutPage = document.querySelector('.checkoutWrapper');
@@ -77,24 +77,29 @@ const navSearchBar = document.querySelector('.navSearchBar');
 //Search button variable - Variable to slect the search button in the header
 const searchBtn = document.querySelector('.navSearchBtn');
 
-
 //Variable to store actual current date which is used to define the discount parameters
 const weekDay = new Date();
 //Variable which is multiplied with the price of all individual inside both the print products function and print to cart function to display the individual prices accumilated and not only the total
 // - should the criterie meet, the prices are increased, if not the price is unchanged
 let priceBoost = 1;
-let shippingCost = 25
-//Sets condition for the priceBoost variable which increases the amount if certain days are true
-if (weekDay.getDay() === 6) {
-  priceBoost *= 1.15
-}
+let shippingCost = 25;
+
 // Defined variables which store certain days/hours to make the reading of conditions easier
-//Variable for friday 
-const boostrapFriday = weekDay.getDay() === 6 //6
+//Variable for friday
+const boostrapFriday = weekDay.getDay() === 2; //6
 //Variable for Monday
-const tomatoSaleMonday = weekDay.getDay() === 1; //1
+const tomatoSaleMonday = weekDay.getDay() === 3; //1
 //Variable for actual current hour
 const rightNowHour = weekDay.getHours();
+
+//Sets condition for the priceBoost variable which increases the amount if certain days are true
+if (
+	(boostrapFriday && rightNowHour >= 15) ||
+	(tomatoSaleMonday && rightNowHour <= 3)
+) {
+	priceBoost *= 1.15;
+	console.log('stan');
+}
 
 //Burger Menu (open.button) - Function for displaying navigation menu when clicking on burger menu BTN
 function burgerMenuOpen() {
@@ -150,27 +155,34 @@ function updateTotalAmount() {
 	totalAmountSummary.innerHTML = totalProductsAmount;
 }
 
-
-
-
 //Total Price to be updated & streamline - Function to streamline the total price accross the cart preview, checkout and order confirmation
 function updateTotalPrice() {
-	let discountMessage = '';
-  //Define a variable to hold a reduce function which accumilates the total price value
-	let totalProductsPrice = cart.reduce(
-		(total, product) => total + (product.price*priceBoost) * product.amount,
-		0
-	);
-    //Condition which provides user with a discount for the total price alongside a message
-    if (weekDay.getDay() === 1) {
-      discountMessage = '10% OFF a wonderful discount on the entire order to start your week<3'
-      totalProductsPrice *= 0.9;
-    } 
-	// Print the total price accumilated into the different sections
-	totalPriceCartPreview.innerHTML = `<h3>Total amount: ${totalProductsPrice.toFixed(2)} $</h3><div class="discountMessage">${discountMessage}</div>`;
-	totalPriceCheckout.innerHTML = `<h4>Total amount: ${totalProductsPrice.toFixed(2)} $</h4><div class="discountMessage">${discountMessage}</div>`;
-	totalPriceSummary.innerHTML = `${totalProductsPrice.toFixed(2)} $`;
+	// let discountMessage = '';
+	// //Define a variable to hold a reduce function which accumilates the total price value
+	// let totalProductsPrice = cart.reduce(
+	// 	(total, product) => total + product.price * priceBoost * product.amount,
+	// 	0
+	// );
+	// //Condition which provides user with a discount for the total price alongside a message
+	// if (weekDay.getDay() === 1) {
+	// 	discountMessage =
+	// 		'10% OFF a wonderful discount on the entire order to start your week<3';
+	// 	totalProductsPrice *= 0.9;
 	// }
+
+  // // let adjustedPriceOnAmount = product.price;
+	// if (product.amount > 0) {
+  //   adjustedPriceOnAmount *= 0.9
+	// }
+	// // Print the total price accumilated into the different sections
+	// totalPriceCartPreview.innerHTML = `<h3>Total amount: ${totalProductsPrice.toFixed(
+	// 	2
+	// )} $</h3><div class="discountMessage">${discountMessage}</div>`;
+	// totalPriceCheckout.innerHTML = `<h4>Total amount: ${totalProductsPrice.toFixed(
+	// 	2
+	// )} $</h4><div class="discountMessage">${discountMessage}</div>`;
+	// totalPriceSummary.innerHTML = `${totalProductsPrice.toFixed(2)} $`;
+	// // }
 }
 
 //Variable for:
@@ -471,8 +483,8 @@ priceRangeSlider.addEventListener('input', adjustPriceRange);
 //Global variabel for the price element
 const priceRangeValue = document.querySelector('.rangeVal');
 //Variable for BTN to sort alphabetically
-alphaSort = document.querySelector('.sortAlpha');
-alphaSort.addEventListener('click', sortByAlphabet);
+alphabetSorting = document.querySelector('.sortAlpha');
+alphabetSorting.addEventListener('click', sortByAlphabet);
 //Array for filtered products on category
 let filteredProductStock = [...productStock];
 //Array for filtered products on price range
@@ -508,7 +520,6 @@ function sortByAlphabet() {
 function pushProductStock() {
 	productContainer.innerHTML = '';
 	filteredPriceRange.forEach((product, index) => {
-
 		productContainer.innerHTML += `<article class="productArticles">
             <h3 class="articleTitle">${product.name}</h3>
             <img
@@ -521,12 +532,18 @@ function pushProductStock() {
             />
 
             <p class="articlePrice">
-                ${(product.price*priceBoost).toFixed(2)} $<span class="articleRating"> <img src="Assets/icons/Rating.webp" alt="" height="50">${product.rating}</span>
+                ${(product.price * priceBoost).toFixed(
+									2
+								)} $<span class="articleRating"> <img src="Assets/icons/Rating.webp" alt="" height="50">${
+			product.rating
+		}</span>
             </p>
 
             <div class="articleBtn">
                 <button class="articleRemoveFromCart" id="articleRemoveFromCart${index}">Remove</button>
-                <p class="articleAmnt">In cart: <span>${product.amount}</span></p>
+                <p class="articleAmnt">In cart: <span>${
+									product.amount
+								}</span></p>
                 <button class="articleAddToCart" id="articleAddToCart${index}">Add</button>
             </div>
         </article>`;
@@ -599,22 +616,30 @@ function decreaseCartMinus(e) {
 	}
 }
 
-
 //Function to get added products printed in CART and CHECKOUT
 function addProductToCart() {
-
 	cartSummary.innerHTML = '';
 	checkoutSummary.innerHTML = '';
+  totalPriceCartPreview.innerHTML = ``
+  totalPriceCheckout.innerHTML = ``
+  totalPriceSummary.innerHTML = ``
 	// checkoutSummary.innerHTML = "";
-
+  let totalPriceSum = 0;
 	cart.forEach((product, index) => {
-  //Variable to round up the price to a maximum of two decimal points
-  let totalPcsPrice = ((product.price*priceBoost) * product.amount).toFixed(2);
+		//Variable to round up the price to a maximum of two decimal points
+  let discountProuductOnAmount = product.price;
 
-		cartSummary.innerHTML +=
-			//`<p>Product: ${productStock.name}Antal: ${productStock.amount}<button class="delete" id="delete-${productStock.serialNo}">radera</button></p>`;
+		if (product.amount >= 10) {
+			discountProuductOnAmount *= 0.9;
+		}
+    totalPriceSum += product.amount * discountProuductOnAmount * priceBoost;
+		let totalPcsPrice = (
+			discountProuductOnAmount *
+			priceBoost *
+			product.amount
+		).toFixed(2);
 
-			`<li class="productsInCart">
+		cartSummary.innerHTML += `<li class="productsInCart">
 			<div>
 			<img
 				class="productPreviewImage"
@@ -657,6 +682,33 @@ function addProductToCart() {
 			<button class="previewProductRemoval" id="productRemove${product.serialNo}">Remove
 								</button>
 		</div>`;
+
+    let discountMessage = '';
+    //Define a variable to hold a reduce function which accumilates the total price value
+    // let totalProductsPrice = cart.reduce(
+    //   (total, product) => total + product.price * priceBoost * product.amount,
+    //   0
+    // );
+    // //Condition which provides user with a discount for the total price alongside a message
+    // if (weekDay.getDay() === 1) {
+    //   discountMessage =
+    //     '10% OFF a wonderful discount on the entire order to start your week<3';
+    //   totalProductsPrice *= 0.9;
+    // }
+  
+    // if (product.amount >= 10) {
+    //   totalProductsPrice = cart.reduce(
+    //     (total, product) => total + (product.price*0.9) * priceBoost * product.amount,
+    //     0)
+    // }
+    // Print the total price accumilated into the different sections
+    totalPriceCartPreview.innerHTML = `<h3>Total amount: ${totalPriceSum.toFixed(
+      2
+    )} $</h3><div class="discountMessage">${discountMessage}</div>`;
+    totalPriceCheckout.innerHTML = `<h4>Total amount: ${totalPriceSum.toFixed(
+      2
+    )} $</h4><div class="discountMessage">${discountMessage}</div>`;
+    totalPriceSummary.innerHTML = `${totalPriceSum.toFixed(2)} $`;
 	});
 
 	//Add clickEvent to each of the removal Btns
@@ -678,7 +730,6 @@ function addProductToCart() {
 	});
 
 	updateTotalAmount();
-	updateTotalPrice();
 }
 
 //Call two functions at the same time
