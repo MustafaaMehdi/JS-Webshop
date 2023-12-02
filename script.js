@@ -1,4 +1,4 @@
-/*------------------------------------------NAVIGATION------------------------------------------*/
+/*------------------------------------------Header------------------------------------------*/
 
 //Burger Menu(Open.Button) - VARIABLE to select the BURGER MENU open button
 const burgerMenuBtn = document.querySelector('.OpenNavBtn');
@@ -15,7 +15,7 @@ closeNavBtn.addEventListener('click', burgerMenuClose);
 const cartPreviewBtn = document.querySelector('.navCartBtn');
 //Cart preview (Toggle.Button) - Click EVENT for the Cart preview toggle BTN
 cartPreviewBtn.addEventListener('click', cartToggle);
-//Cart preview screen - VARIABLE for the Cart preview screen
+//Cart preview screen - VARIABLE which selects the Cart preview screen
 const cartPreview = document.querySelector('.cartPreview');
 //Cart preview (Close.Button) - VARIABLE to select the Cart preview close BTN
 const cartCloseBtn = document.querySelector('.cartCloseBtn');
@@ -36,6 +36,8 @@ backToShop.addEventListener('click', toggleCheckout);
 const sortBtn = document.querySelector('.sortBtn');
 //Sorting menu (Toggle.Button) - Click EVENT for sorting menu toggle BTN
 sortBtn.addEventListener('click', sortToggle);
+//Sort menu screen - VARIABLE which selects the sort menu screen
+const sortMenu = document.querySelector('.sortMenu');
 
 //Cart icon total amount <span> element - VARIABLE for the mini cart icon in the Navigation
 const totalAmountIcon = document.querySelector('.productInCart');
@@ -43,51 +45,97 @@ const totalAmountIcon = document.querySelector('.productInCart');
 const totalAmountcartPreview = document.querySelector('#totalAmountcartPreview');
 //Checkout section total amount <span> element - VARIABLE for the total PCS <span> element in the Navigation
 const totalAmountCheckout = document.querySelector('#totalAmountCheckout');
-//Summary section total amount <span> element - VARIABLE for the total PCS <span> element in summary msg
+//order confirmation section total amount <span> element - VARIABLE for the total PCS <span> element in order confirmation section msg
 const totalAmountSummary = document.querySelector('#totalAmountSummary');
 
-//Burger Menu (open.button) - Function for open navigation menu when clicking on burger menu BTN
+
+//Cart preview total price inside cart preview - VARIABLE for the total PRICE in cart preview
+const totalPriceCartPreview = document.querySelector('#totalPriceCartPreview');
+//Checkout section total price inside cart preview - VARIABLE for the total PRICE in checkout section
+const totalPriceCheckout = document.querySelector('#totalPriceCheckout');
+//Order confirmation section total price inside cart preview - VARIABLE for the total PRICE in order confirmation section
+const totalPriceSummary = document.querySelector('#totalPriceSummary');
+/*------------------------------------------Header------------------------------------------*/
+
+
+/*------------------------------------------PAGE WRAPPERS------------------------------------------*/
+// Main Page wrapper - Variable to select the main page container 
+const mainPageWrapper = document.querySelector('.mainSectionWrapper');
+// Product section Wrapper - Variable to select the product page container
+const productContainer = document.querySelector('.productContainer');
+//Cart preview Wrapper - Variable which selects the cart preview product 
+const cartSummary = document.querySelector('.productPreviewSummary');
+//Checkout section wrapper - Variable to select the checkout section
+const checkOutPage = document.querySelector('.checkoutWrapper');
+//Checkout summary Wrapper - Variable to select the checkout product summary section
+const checkoutSummary = document.querySelector('.productCheckoutSummary');
+/*------------------------------------------PAGE WRAPPERS------------------------------------------*/
+
+//Search function
+//Search Input variabel - Variable to slect the search bar input variable in header
+const navSearchBar = document.querySelector('.navSearchBar');
+//Search button variable - Variable to slect the search button in the header
+const searchBtn = document.querySelector('.navSearchBtn');
+
+
+//Variable to store actual current date which is used to define the discount parameters
+const weekDay = new Date();
+//Variable which is multiplied with the price of all individual inside both the print products function and print to cart function to display the individual prices accumilated and not only the total
+// - should the criterie meet, the prices are increased, if not the price is unchanged
+let priceBoost = 1;
+let shippingCost = 25
+//Sets condition for the priceBoost variable which increases the amount if certain days are true
+if (weekDay.getDay() === 6) {
+  priceBoost *= 1.15
+}
+// Defined variables which store certain days/hours to make the reading of conditions easier
+//Variable for friday 
+const boostrapFriday = weekDay.getDay() === 6 //6
+//Variable for Monday
+const tomatoSaleMonday = weekDay.getDay() === 1; //1
+//Variable for actual current hour
+const rightNowHour = weekDay.getHours();
+
+//Burger Menu (open.button) - Function for displaying navigation menu when clicking on burger menu BTN
 function burgerMenuOpen() {
 	console.log(openBurgeMenu);
 	openBurgeMenu.classList.remove('toggleHide');
 }
 
-//Burger Menu (close.button) - Function for close navigation menu when clicking on close in nav menu BTN
+//Burger Menu (close.button) - Function for hiding navigation menu when clicking on close in nav menu BTN
 function burgerMenuClose() {
 	openBurgeMenu.classList.add('toggleHide');
 }
 
-//Variabel, event & function for CART PREVIEW - Toggle
+//Cart preview (Toggle.button) - Function which displays/collapses cart preview when clicking on cart BTN
 function cartToggle() {
 	cartPreview.classList.toggle('toggleHide');
 }
-
-//Variabel, event & function for CART PREVIEW close BTN
+//Cart preview (close.button) - Function which collapses cart preview when clicking on close BTN in the cart preview
 function cartClose() {
 	console.log(openBurgeMenu);
 	cartPreview.classList.add('toggleHide');
 }
 
-//Variabel, event & function for the proceed to checkout BTN
+//Checkout section (open.button) - Function which displays checkout section when clicking on proceed to checkout BTN in the cart preview
 function orderSummary() {
 	checkOutPage.classList.remove('toggleHide');
 	mainPageWrapper.classList.add('toggleHide');
 	cartPreview.classList.add('toggleHide');
 }
 
-//Variable, event & function for back to shop BTN
+//Checkout section (close.button) - Function which hides checkout section and displays product page when clicking on continue shopping BTN in the checkout section
 function toggleCheckout() {
 	checkOutPage.classList.add('toggleHide');
 	mainPageWrapper.classList.remove('toggleHide');
 }
 
-//Variable, event & function for toggeling the sorting menu
-const sortMenu = document.querySelector('.sortMenu');
+//Checkout section (toggle.button) - Function which displays/hides sorting menu when clicking the sort icon BTN
 function sortToggle() {
 	sortMenu.classList.toggle('toggleHide');
 }
 
-//Variable and function to receive and display TOTALT AMOUNT of products in cart, checkout and Summary
+//Total amount(Pieces/products) to update/streamline - Function to streamline the total amount accross the cart preview, checkout and order confirmation
 function updateTotalAmount() {
 	//Define a variable to hold a reduce function which accumilates the total amount value
 	let totalProductsAmount = cart.reduce(
@@ -95,35 +143,17 @@ function updateTotalAmount() {
 		0
 	);
 
-	// Print the total amount accumilated into the different sections
+	//Print the total amount accumilated at the same time into the different sections based on the totalProductsAmunt
 	totalAmountIcon.innerHTML = totalProductsAmount;
 	totalAmountcartPreview.innerHTML = totalProductsAmount;
 	totalAmountCheckout.innerHTML = totalProductsAmount;
 	totalAmountSummary.innerHTML = totalProductsAmount;
 }
 
-//variable for cart preview to push the discount message
-const cartSummaryContainer = document.querySelector('.cartProductSum')
-//Variable to store date which is used to define the discount parameters
-const weekDay = new Date();
-//Variable and function to receive and display TOTALT PRICE of products in cart, checkout and Summary
-//Variable for cart total Price <span>
-const totalPriceCartPreview = document.querySelector('#totalPriceCartPreview');
-//Variable for cart total Price <span>
-const totalPriceCheckout = document.querySelector('#totalPriceCheckout');
-//Variable for cart total Price <span>
-const totalPriceSummary = document.querySelector('#totalPriceSummary');
 
 
-//Variables for the different discount criteria
-let priceBoost = 1;
-//condition to jack prices if friday-sunday with 15%
-if (weekDay.getDay() === 6) {
-  priceBoost *= 1.15
-}
-const bootstrapFriday = weekDay.getDay() === 6 //6
-const tomatoMonday = weekDay.getDay() === 1; //1
-const rightNowHour = weekDay.getHours();
+
+//Total Price to be updated & streamline - Function to streamline the total price accross the cart preview, checkout and order confirmation
 function updateTotalPrice() {
 	let discountMessage = '';
   //Define a variable to hold a reduce function which accumilates the total price value
@@ -131,35 +161,20 @@ function updateTotalPrice() {
 		(total, product) => total + (product.price*priceBoost) * product.amount,
 		0
 	);
+    //Condition which provides user with a discount for the total price alongside a message
     if (weekDay.getDay() === 1) {
-      discountMessage = '10% OFF a wonderful discount to start your week<3'
+      discountMessage = '10% OFF a wonderful discount on the entire order to start your week<3'
       totalProductsPrice *= 0.9;
     } 
 	// Print the total price accumilated into the different sections
-	totalPriceCartPreview.innerHTML = `<div class="discountMessage">${discountMessage}</div><h3>Total amount: ${totalProductsPrice.toFixed(2)} $</h3>`;
-	totalPriceCheckout.innerHTML = `${totalProductsPrice.toFixed(2)} $`;
+	totalPriceCartPreview.innerHTML = `<h3>Total amount: ${totalProductsPrice.toFixed(2)} $</h3><div class="discountMessage">${discountMessage}</div>`;
+	totalPriceCheckout.innerHTML = `<h4>Total amount: ${totalProductsPrice.toFixed(2)} $</h4><div class="discountMessage">${discountMessage}</div>`;
 	totalPriceSummary.innerHTML = `${totalProductsPrice.toFixed(2)} $`;
 	// }
 }
-/*------------------------------------------PAGE WRAPPERS------------------------------------------*/
 
 //Variable for:
-// Main Page wrapper
-const mainPageWrapper = document.querySelector('.mainSectionWrapper');
-// Variable for Checkout page
-const checkOutPage = document.querySelector('.checkoutWrapper');
-// Product section Wrapper
-const productContainer = document.querySelector('.productContainer');
-//Cart preview Wrapper
-const cartSummary = document.querySelector('.productPreviewSummary');
-//Checkout summary Wrapper
-const checkoutSummary = document.querySelector('.productCheckoutSummary');
 
-//Search function
-//Search Input variabel
-const navSearchBar = document.querySelector('.navSearchBar');
-//Search button variable
-const searchBtn = document.querySelector('.navSearchBtn');
 //Add input event to the searchbar and display function
 navSearchBar.addEventListener('input', (e) => {
 	let keyWord = e.target.value;
@@ -672,7 +687,7 @@ function updateStock() {
 	addProductToCart();
 }
 
-//Function for remove BTN in cart and Checkout summary
+//Function for removing-product button in cart and Checkout summary
 function removeFromCartBtn(e) {
 	const productSerialNo = Number(e.target.id.replace('productRemove', ''));
 
