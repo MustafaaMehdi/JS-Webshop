@@ -5,7 +5,7 @@ const burgerMenuBtn = document.querySelector('.OpenNavBtn');
 //Event to burger menu BTN
 burgerMenuBtn.addEventListener('click', burgerMenuOpen);
 
-//Variable for the Navigation menu 
+//Variable for the Navigation menu
 const openBurgeMenu = document.querySelector('.navMenu');
 //Function to TOGGLE BURGER MENU
 function burgerMenuOpen() {
@@ -13,14 +13,12 @@ function burgerMenuOpen() {
 	openBurgeMenu.classList.remove('toggleHide');
 }
 
-
 //Variabel, event & function for NAVIGATION MENU - close
-closeNavBtn = document.querySelector('.closeNavBtn')
+closeNavBtn = document.querySelector('.closeNavBtn');
 closeNavBtn.addEventListener('click', burgerMenuClose);
 function burgerMenuClose() {
 	openBurgeMenu.classList.add('toggleHide');
 }
-
 
 //Variabel, event & function for CART PREVIEW - Toggle
 const cartPreviewBtn = document.querySelector('.navCartBtn');
@@ -56,8 +54,7 @@ function toggleCheckout() {
 	mainPageWrapper.classList.remove('toggleHide');
 }
 
-
-//Variable, event & function for SORTING - toggle
+//Variable, event & function for toggeling the sorting menu
 const sortBtn = document.querySelector('.sortBtn');
 sortBtn.addEventListener('click', sortToggle);
 const sortMenu = document.querySelector('.sortMenu');
@@ -65,17 +62,71 @@ function sortToggle() {
 	sortMenu.classList.toggle('toggleHide');
 }
 
-//Variable and function to receive and display TOTALT AMOUNT of products in cart
-let cartTotalProducts = document.querySelector('.productInCart');
-function updateTotalAmount() {
-    let totalProductsAmount = cart.reduce((total, product) => total + product.amount, 0);
+//Variable and function to receive and display TOTALT AMOUNT of products in cart, checkout and Summary
+//Variable for the mini cart icon in the Navigation
+const totalAmountIcon = document.querySelector('.productInCart');
+//Variable for cart total amount <span>
+const totalAmountcartPreview = document.querySelector(
+	'#totalAmountcartPreview'
+);
+//Variable for checkout total amount <span>
+const totalAmountCheckout = document.querySelector('#totalAmountCheckout');
+//Variable for order confirmation total amount <span>
+const totalAmountSummary = document.querySelector('#totalAmountSummary');
 
-    const totalAmountDisplay = document.querySelector('.productInCart');
-    if (totalAmountDisplay) {
-        totalAmountDisplay.innerHTML = totalProductsAmount;
-    }
+function updateTotalAmount() {
+	//Define a variable to hold a reduce function which accumilates the total amount value
+	let totalProductsAmount = cart.reduce(
+		(total, product) => total + product.amount,
+		0
+	);
+
+	// Print the total amount accumilated into the different sections
+	totalAmountIcon.innerHTML = totalProductsAmount;
+	totalAmountcartPreview.innerHTML = totalProductsAmount;
+	totalAmountCheckout.innerHTML = totalProductsAmount;
+	totalAmountSummary.innerHTML = totalProductsAmount;
 }
 
+//variable for cart preview to push the discount message
+const cartSummaryContainer = document.querySelector('.cartProductSum')
+//Variable to store date which is used to define the discount parameters
+const weekDay = new Date();
+//Variable and function to receive and display TOTALT PRICE of products in cart, checkout and Summary
+//Variable for cart total Price <span>
+const totalPriceCartPreview = document.querySelector('#totalPriceCartPreview');
+//Variable for cart total Price <span>
+const totalPriceCheckout = document.querySelector('#totalPriceCheckout');
+//Variable for cart total Price <span>
+const totalPriceSummary = document.querySelector('#totalPriceSummary');
+
+
+//Variables for the different discount criteria
+let priceBoost = 1;
+//condition to jack prices if friday-sunday with 15%
+if (weekDay.getDay() === 6) {
+  priceBoost *= 1.15
+}
+const bootstrapFriday = weekDay.getDay() === 6 //6
+const tomatoMonday = weekDay.getDay() === 1; //1
+const rightNowHour = weekDay.getHours();
+function updateTotalPrice() {
+	let discountMessage = '';
+  //Define a variable to hold a reduce function which accumilates the total price value
+	let totalProductsPrice = cart.reduce(
+		(total, product) => total + (product.price*priceBoost) * product.amount,
+		0
+	);
+    if (weekDay.getDay() === 1) {
+      discountMessage = '10% OFF a wonderful discount to start your week<3'
+      totalProductsPrice *= 0.9;
+    } 
+	// Print the total price accumilated into the different sections
+	totalPriceCartPreview.innerHTML = `<div class="discountMessage">${discountMessage}</div><h3>Total amount: ${totalProductsPrice.toFixed(2)} $</h3>`;
+	totalPriceCheckout.innerHTML = `${totalProductsPrice.toFixed(2)} $`;
+	totalPriceSummary.innerHTML = `${totalProductsPrice.toFixed(2)} $`;
+	// }
+}
 /*------------------------------------------PAGE WRAPPERS------------------------------------------*/
 
 //Variable for:
@@ -85,40 +136,30 @@ const mainPageWrapper = document.querySelector('.mainSectionWrapper');
 const checkOutPage = document.querySelector('.checkoutWrapper');
 // Product section Wrapper
 const productContainer = document.querySelector('.productContainer');
-//Cart preview Wrapper 
+//Cart preview Wrapper
 const cartSummary = document.querySelector('.productPreviewSummary');
 //Checkout summary Wrapper
 const checkoutSummary = document.querySelector('.productCheckoutSummary');
 
-
-
-
-//Search function 
+//Search function
 //Search Input variabel
-const navSearchBar = document.querySelector('.navSearchBar')
+const navSearchBar = document.querySelector('.navSearchBar');
 //Search button variable
-const searchBtn = document.querySelector('.navSearchBtn')
+const searchBtn = document.querySelector('.navSearchBtn');
 //Add input event to the searchbar and display function
 navSearchBar.addEventListener('input', (e) => {
-
-	let keyWord = e.target.value
+	let keyWord = e.target.value;
 
 	if (keyWord && keyWord.trim().length > 0) {
 		// keyWord = keyWord.trim().toLowerCase()
-		console.log(keyWord)
-	} 
+		console.log(keyWord);
+	}
 	// else {
-		
+
 	// }
+});
 
-})
-
-
-
-
-
-
-//Array containing the product stock 
+//Array containing the product stock
 const productStock = [
 	{
 		name: "Segreto D'Amore",
@@ -393,52 +434,53 @@ const productStock = [
 /*------------------------------------------SORTING & FILTER------------------------------------------*/
 //Have the price range react and show the price intervall set by user
 
-
 //Variable for price range slider
-const priceRangeSlider = document.querySelector('#pricerange')
+const priceRangeSlider = document.querySelector('#pricerange');
 //Add event to the slider
-priceRangeSlider.addEventListener('input', adjustPriceRange)
+priceRangeSlider.addEventListener('input', adjustPriceRange);
 
-//Global variabel for the price element 
-const priceRangeValue = document.querySelector('.rangeVal')
+//Global variabel for the price element
+const priceRangeValue = document.querySelector('.rangeVal');
 //Variable for BTN to sort alphabetically
-alphaSort = document.querySelector('.sortAlpha')
-alphaSort.addEventListener('click', sortByAlphabet)
+alphaSort = document.querySelector('.sortAlpha');
+alphaSort.addEventListener('click', sortByAlphabet);
 //Array for filtered products on category
-let filteredProductStock = [...productStock]
+let filteredProductStock = [...productStock];
 //Array for filtered products on price range
-let filteredPriceRange = [...productStock]
+let filteredPriceRange = [...productStock];
 //Function to display the slider price and apply to array
 function adjustPriceRange() {
-const currentPriceValue = priceRangeSlider.value
-priceRangeValue.innerHTML = currentPriceValue
-filteredPriceRange = filteredProductStock.filter(product => product.price <= currentPriceValue)
-console.log(filteredPriceRange)
-updateStock();
+	const currentPriceValue = priceRangeSlider.value;
+	priceRangeValue.innerHTML = currentPriceValue;
+	filteredPriceRange = filteredProductStock.filter(
+		(product) => product.price <= currentPriceValue
+	);
+	console.log(filteredPriceRange);
+	updateStock();
 }
-
 
 // Function for sorting based on name A-Z
 function sortByAlphabet() {
-filteredPriceRange.sort((product1, product2) => {
+	filteredPriceRange.sort((product1, product2) => {
 		if (product1.name < product2.name) {
-		  return -1;
+			return -1;
 		}
 		if (product1.name > product2.name) {
-		  return 1;
+			return 1;
 		}
 		return 0;
-});
-pushProductStock()
+	});
+	pushProductStock();
 }
 
 // console.table(productStock)
 
-//Function to print out the products
+//Function to print out the products to the main product cataloge page
 function pushProductStock() {
-    productContainer.innerHTML = '';
-    filteredPriceRange.forEach((product, index) => {
-        productContainer.innerHTML += `<article class="productArticles">
+	productContainer.innerHTML = '';
+	filteredPriceRange.forEach((product, index) => {
+
+		productContainer.innerHTML += `<article class="productArticles">
             <h3 class="articleTitle">${product.name}</h3>
             <img
                 class="articleImage"
@@ -450,7 +492,7 @@ function pushProductStock() {
             />
 
             <p class="articlePrice">
-                ${product.price} $<span class="articleRating"> <img src="Assets/icons/Rating.webp" alt="" height="50">${product.rating}</span>
+                ${(product.price*priceBoost).toFixed(2)} $<span class="articleRating"> <img src="Assets/icons/Rating.webp" alt="" height="50">${product.rating}</span>
             </p>
 
             <div class="articleBtn">
@@ -459,22 +501,22 @@ function pushProductStock() {
                 <button class="articleAddToCart" id="articleAddToCart${index}">Add</button>
             </div>
         </article>`;
-    });
+	});
 
-    //Variable and event for the IncreaseAmount BTN for each added product in cart
-    const addToCartBtn = document.querySelectorAll('.articleAddToCart');
-    addToCartBtn.forEach((button) => {
-        button.addEventListener('click', addAProduct);
-    });
+	//Variable and event for the IncreaseAmount BTN for each added product in cart
+	const addToCartBtn = document.querySelectorAll('.articleAddToCart');
+	addToCartBtn.forEach((button) => {
+		button.addEventListener('click', addAProduct);
+	});
 
-    //Variable and event for the DecreaseAmount BTN for each added product in cart
-    const subtractFromCartBtn = document.querySelectorAll('.articleRemoveFromCart');
-    subtractFromCartBtn.forEach((button) => {
-        button.addEventListener('click', subtractAProduct);
-    });
+	//Variable and event for the DecreaseAmount BTN for each added product in cart
+	const subtractFromCartBtn = document.querySelectorAll(
+		'.articleRemoveFromCart'
+	);
+	subtractFromCartBtn.forEach((button) => {
+		button.addEventListener('click', subtractAProduct);
+	});
 }
-
-
 
 //Function to be able to increase the amount of product in the cart view & Summary view
 function addAProduct(e) {
@@ -496,21 +538,21 @@ function subtractAProduct(e) {
 		filteredPriceRange[index].amount -= 1;
 		//Conditions the product to be removed from cart if the amount is set to 0
 		if (filteredPriceRange[index].amount === 0) {
-			cart = cart.filter((product) => product.serialNo !==productStock[index].serialNo)
+			cart = cart.filter(
+				(product) => product.serialNo !== productStock[index].serialNo
+			);
 		}
 		pushProductStock();
 		addProductToCart();
 	}
 }
 
-
-
 //Göra om funtkion till forEach, lägg till function i add knappen sen också
 
 function increaseCartPlus(e) {
 	const index = e.currentTarget.dataset.id;
 	cart[index].amount += 1;
-	
+
 	updateStock();
 }
 
@@ -531,22 +573,19 @@ function decreaseCartMinus(e) {
 
 //Function to get added products printed in CART and CHECKOUT
 function addProductToCart() {
-	cartTotalProducts.innerHTML = '';
+
 	cartSummary.innerHTML = '';
 	checkoutSummary.innerHTML = '';
 	// checkoutSummary.innerHTML = "";
 
 	cart.forEach((product, index) => {
-		//Variable to round up the price to a maximum of two decimal points
-		let amountPrice = (
-			(product.price * product.amount).toFixed(2)
-		);
-		
-		checkoutSummary.innerHTML += `${product.amount}`;
+  //Variable to round up the price to a maximum of two decimal points
+  let totalPcsPrice = ((product.price*priceBoost) * product.amount).toFixed(2);
+
 		cartSummary.innerHTML +=
 			//`<p>Product: ${productStock.name}Antal: ${productStock.amount}<button class="delete" id="delete-${productStock.serialNo}">radera</button></p>`;
 
-			`<li>
+			`<li class="productsInCart">
 			<div>
 			<img
 				class="productPreviewImage"
@@ -556,7 +595,7 @@ function addProductToCart() {
 			/>
 			<h3 class="previewProductTitle">${product.name}</h3>
 			</div>
-			<p class="previewProductPrice">${amountPrice}</p>
+			<p class="previewProductPrice">${totalPcsPrice}$</p>
 		<div class="productAmountActions">
 			<button class="minusOneProduct" data-id="${index}" >-</button
 			><input class="productAmount" type="number" value="${product.amount}" /><button
@@ -577,7 +616,7 @@ function addProductToCart() {
 		/>
 
 		<h3 class="ProductCheckoutTitle">${product.name}</h3>
-		<p class="ProductCheckoutPrice">${amountPrice}</p>
+		<p class="ProductCheckoutPrice">${totalPcsPrice}</p>
 		<div class="productAmount">
 		<button class="minusOneProduct" data-id="${index}" >-</button>
 		<input class="productAmountValue" type="number" value="${product.amount}"/>
@@ -599,17 +638,18 @@ function addProductToCart() {
 	);
 
 	const cartPlus = document.querySelectorAll('.addOneProduct');
-	const cartMinus = document.querySelectorAll('.minusOneProduct')
+	const cartMinus = document.querySelectorAll('.minusOneProduct');
 
-	cartPlus.forEach(button => {
-		button.addEventListener('click', increaseCartPlus)
-	})
+	cartPlus.forEach((button) => {
+		button.addEventListener('click', increaseCartPlus);
+	});
 
-	cartMinus.forEach(button => {
-		button.addEventListener('click', decreaseCartMinus)
-	})
+	cartMinus.forEach((button) => {
+		button.addEventListener('click', decreaseCartMinus);
+	});
 
 	updateTotalAmount();
+	updateTotalPrice();
 }
 
 //Call two functions at the same time
@@ -617,8 +657,6 @@ function updateStock() {
 	pushProductStock();
 	addProductToCart();
 }
-
-
 
 //Function for remove BTN in cart and Checkout summary
 function removeFromCartBtn(e) {
@@ -642,15 +680,6 @@ function removeFromCartBtn(e) {
 	}
 }
 
-
-
-
-
-
-
 pushProductStock();
 
 // Total cart amount showing = all (product.amount > 0) should be summed together and loop through forEach (all products with amount > 0)
-
-
-

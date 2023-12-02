@@ -63,9 +63,9 @@
 						</ul>
 					</div>
 					<ul class="cartProductSum">
-						<li><h3>Product</h3></li>
+						<li><h3>Total PCS: <span id="totalAmountcartPreview">0</span></h3></li>
 
-						<li><h3>Amount</h3></li>
+						<li id="totalPriceCartPreview"></li>
 					</ul>
 					<button class="checkoutBtn">Proceed to checkout</button>
 				</div>
@@ -133,7 +133,7 @@
 					<div class="priceSorting">
 						<label for="pricerange">Price range: </label>
 						<span class="rangeMinVal">0$</span
-						><input type="range" id="pricerange" class="priceRangeInput" step="5" min="14.99" max="49.99" value="49.99"/><span
+						><input type="range" id="pricerange" class="priceRangeInput" step="5" min="14.99" max="60.99" value="60.99"/><span
 							class="rangeMaxVal"
 							>49.99$</span
 						>
@@ -256,7 +256,7 @@
 						<!-- </li>
 					<li> -->
 						<h3>Cherish the Extraordinary:</h3>
-						<p>Gift your loved ones with a symbol of love like no other. ElegantRoses <3 A timeless emblem of eternity.</p>
+						<p>Gift your loved ones with a symbol of love like no other. ElegantRoses - A timeless emblem of eternity.</p>
 					</li>
 				</ul>
 			</section>
@@ -352,9 +352,9 @@
 					</ul>
 				</div>
 				<ul class="checkoutProductSum">
-					<li><h4 class="productSummaryAmount">Total products:</h4></li>
+					<li><h4 class="productSummaryAmount">Total products: <span id="totalAmountCheckout"></span></h4></li>
 
-					<li><h4 class="productSummarySum">Total amount:</h4></li>
+					<li><h4 class="productSummarySum">Total amount: <span id="totalPriceCheckout"></span></h4></li>
 				</ul>
 				<form action="" class="fieldSetContainer">
 					<fieldset class="orderForm">
@@ -510,8 +510,8 @@
 						<p class="ProductCheckoutPrice">2590 SEK</p>
 						<p class="productAmount">7</p>
 					</li>
-					<li><p class="orderTotalCost">Your total cost: {JS}</p></li>
-					<li><p class="orderTotalPcs">Total PCS: {JS}</p></li>
+					<li><p class="orderTotalCost">Your total cost:  <span id="totalPriceSummary"></p></li>
+					<li><p class="orderTotalPcs">Total PCS: <span id="totalAmountSummary"></span></p></li>
 				</ul>
 			</div>
 		</section>
