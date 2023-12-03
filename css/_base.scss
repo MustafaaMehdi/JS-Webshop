@@ -727,6 +727,44 @@ body {
 			}
 		}
 	}
+
+	.timeOutMsgBg {
+		position: fixed;
+		top: 0;
+		width: 100vw;
+		height: 100vh;
+		background: rgba($color: #000000, $alpha: 0.5);
+	.timeOutMsg {
+		position: fixed;
+		width: 100vw;
+		height: 50vh;
+		// left: 0;
+		top: 25%;
+		background-image: linear-gradient(
+			to right,
+			#f1daa7,
+			#ecd196,
+			#ecc66d
+		);
+		opacity: 0.9;
+
+		border-radius: 25px;
+		.timeOutHeader {
+			text-align: center;
+			text-transform: uppercase;
+			font-size: 10rem;
+			margin: 0;
+		}
+		.timeOutText {
+			font-size: 1.5rem;
+		}
+		.timeOutBtn {
+			width: 100%;
+			height: 18%;
+			font-size: 3rem;
+		}
+	}
+}
 	footer {
 		margin-top: 3rem;
 		background-color: rgb(241, 237, 237);

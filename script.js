@@ -74,24 +74,122 @@ const resetCart = document.querySelector('#resetBTN');
 resetCart.addEventListener('click', resetCartOrder);
 
 //Variable to select the card payment option
+
+// const paymentOptions = Array.from(document.querySelectorAll('input[name="payment"]'))
+
+// paymentOptions.forEach(paymentBtn => {
+// 	paymentBtn.addEventListener('change', choiceOfPayment)
+// })
+
+// function choiceOfPayment(e) {
+// 	console.log(e.target.id)
+// }
+
+//*Variable to select the invoice radio button option
 const invoicePaymentBtn = document.querySelector('#invoicePaymentOption');
-invoicePaymentBtn.addEventListener('change', displayInvoice);
-
+//*Click event for the button to trigger the display of invoice and hide card option
+invoicePaymentBtn.addEventListener('click', SelectedPaymentOption);
+//*Variable to select the card radio button option
 const cardPaymentBtn = document.querySelector('#cardPaymentOption');
-cardPaymentBtn.addEventListener('change', displayCard);
+//*Click event for the button to trigger the display of card and hide invoice option
+cardPaymentBtn.addEventListener('click', SelectedPaymentOption);
 
+//Variable to select the card payment form
 const cardPayment = document.querySelector('#cardPaymentForm');
+//Variable to select the invoice payment form
 const invoicePayment = document.querySelector('#invoicePaymentForm');
-function displayCard() {
-	cardPayment.style.display = 'flex';
-	invoicePayment.style.display = 'none';
-	console.log('change1');
+//Functions to alter between the card form and invoice form by applying display attribute directly to the section
+let currentPaymentOption = 'cardPaymentOption';
+function SelectedPaymentOption(e) {
+	currentPaymentOption = e.target.id;
+	if (currentPaymentOption === 'cardPaymentOption') {
+		cardPayment.style.display = 'flex';
+		invoicePayment.style.display = 'none';
+	} else if (currentPaymentOption === 'invoicePaymentOption') {
+		cardPayment.style.display = 'none';
+		invoicePayment.style.display = 'block';
+	}
+	clearPaymentField();
+	console.log(currentPaymentOption);
 }
 
-function displayInvoice() {
-	cardPayment.style.display = 'none';
-	invoicePayment.style.display = 'block';
-	console.log('change2');
+// function displayInvoice() {
+// 	cardPayment.style.display = 'none';
+// 	invoicePayment.style.display = 'block';
+// 	console.log('change2');
+// }
+
+//Variable to select the timeout message
+timeOutMsgBg = document.querySelector('.timeOutMsgBg');
+//Variable for Button to close the timeout message which appears if user has been idle for more than 15 minutes
+const timeOutMsgBtn = document.querySelector('.timeOutBtn');
+timeOutMsgBtn.addEventListener('click', toggleTimeoutMsg);
+function toggleTimeoutMsg() {
+  timeOutMsgBg.classList.toggle('toggleHide')
+}
+
+//Variable to select the payment input fields and change event to trigger the validation function
+const ssnField = document.querySelector('#ssn');
+ssnField.addEventListener('focusout', activateSubmitOrder);
+const cardNoField = document.querySelector('#cardno');
+cardNoField.addEventListener('focusout', activateSubmitOrder);
+const cardCvvField = document.querySelector('#cvv');
+cardCvvField.addEventListener('focusout', activateSubmitOrder);
+const cardExpiryField = document.querySelector('#expirydate');
+cardExpiryField.addEventListener('focusout', activateSubmitOrder);
+
+//Variables to define the different validation criteria - RegEx for different fields in the payment forms
+const ssnRegEx = new RegExp(/^(?=[\s\S]{0,13}$)\d{6}(?:\d{2})?[-\s]?\d{4}/);
+const cardNoRegEx = new RegExp(
+	/^(?:4[0-9]{12}(?:[0-9]{3})?|[25][1-7][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13})$/
+);
+//Variables to hold criteria specific for the expiry date
+const expiryDateRegEx = new RegExp(
+	/^(0[1-9]|1[0-2])\/(20)?(24|25|26|27|28|29)$/
+);
+const cvvRegex = new RegExp(/^\d{3,4}$/);
+
+const submitOrderBtn = document.querySelector('#submitorder');
+
+function clearPaymentField() {
+	cardNoField.value = '';
+	cardExpiryField.value = '';
+	cardCvvField.value = '';
+	ssnField.value = '';
+	submitOrderBtn.setAttribute('disabled', '');
+}
+// function clearCardField() {
+// 	cardNoField.value = ''
+// 	cardExpiryField.value = ''
+// 	cardCvvField.value = ''
+// 	ssnField.value = ''
+// 	submitOrderBtn.setAttribute('disabled', '');
+// }
+// function clearSsnField() {
+// 	ssnField.value = ''
+// 	submitOrderBtn.setAttribute('disabled', '');
+// }
+function activateSubmitOrder() {
+	submitOrderBtn.setAttribute('disabled', '');
+	if (currentPaymentOption === 'cardPaymentOption') {
+		if (cardNoRegEx.exec(cardNoField.value) === null) {
+			console.log('Invalid card no');
+			return;
+		} else if (expiryDateRegEx.exec(cardExpiryField.value) === null) {
+			console.log('Invalid expiry format');
+			return;
+		} else if (cvvRegex.exec(cardCvvField.value) === null) {
+			console.log('Invalid cvv no');
+			return;
+		}
+	} else if (currentPaymentOption === 'invoicePaymentOption') {
+		if (ssnRegEx.exec(ssnField.value) === null) {
+			submitOrderBtn.setAttribute('disabled', '');
+			console.log('Invalid SSN format');
+			return;
+		}
+	}
+	submitOrderBtn.removeAttribute('disabled');
 }
 //Search function
 //Search Input variabel - Variable to slect the search bar input variable in header
@@ -735,10 +833,14 @@ function addProductToCart() {
 		totalPriceSummary.innerHTML = `${(shippingCost + totalPriceSum).toFixed(
 			2
 		)} ${totalProductsAmount}`;
+
+      disableInvoiceOption(totalPriceSum);
+
 	});
 	if (totalProductsAmount > 0) {
 		setTimeout(resetCartOrder, 1000 * 60 * 15);
-	}
+    setTimeout(toggleTimeoutMsg, 1000 * 60 * 15);
+	} 
 	//Add clickEvent to each of the removal Btns
 	Array.from(document.querySelectorAll('.previewProductRemoval')).forEach(
 		(btn) => {
@@ -763,7 +865,15 @@ function updateStock() {
 	pushProductStock();
 	addProductToCart();
 }
-
+function disableInvoiceOption(totalPriceSum) {
+		if (totalPriceSum >= 800) {
+			invoicePaymentBtn.setAttribute('disabled', '');
+			cardPayment.style.display = 'flex';
+			invoicePayment.style.display = 'none';
+		} else {
+			invoicePaymentBtn.removeAttribute('disabled');
+		}
+  }
 //Function for reset BTN in the checkout section, also called when timer runs out for user
 function resetCartOrder() {
 	productStock.forEach((product) => {
@@ -771,8 +881,9 @@ function resetCartOrder() {
 	});
 	totalAmountIcon.innerHTML = '';
 	cart = [];
-
 	updateStock();
+  // cartClose()
+  // toggleCheckout()
 }
 //Function to reset cart and push message to user informing that they were too slow
 // function tooSlow() {

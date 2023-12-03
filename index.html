@@ -433,19 +433,21 @@
 
 					<fieldset class="paymentChoice">
 						<legend><h4>Choose payment method</h4></legend>
-						<label> <input type="radio" name="payment" id="cardPaymentOption" checked/>Card </label>
-						<label> <input type="radio" name="payment" id="invoicePaymentOption"/>Invoice </label>
+						<!-- <label> <input type="radio" name="payment" id="cardPaymentOption" />Card </label>
+						<label> <input type="radio" name="payment" id="invoicePaymentOption" checked/>Invoice </label> -->
+						<button id="cardPaymentOption">Card </button>
+						<button id="invoicePaymentOption">Invoice </button>
 						<div class="cardPayment" id="cardPaymentForm">
 							<label for="cardno">Card number:</label>
-							<input type="number" class="checkoutInput" />
+							<input type="number" id="cardno" class="checkoutInput" value="4111111111111111"/>
 							<label for="expirydate">Expiry date</label>
-							<input type="number" class="checkoutInput" />
+							<input type="text" id="expirydate" class="checkoutInput" value="05/25"/>
 							<label for="cvv">CVV Code</label>
-							<input type="number" class="checkoutInput" />
+							<input type="number" id="cvv" class="checkoutInput" />
 						</div>
 						<div class="invoicePayment toggleHide" id="invoicePaymentForm">
 							<label for="ssn">SSN:</label>
-							<input type="number" class="checkoutInput" />
+							<input type="text" id="ssn" class="checkoutInput" />
 						</div>
 					</fieldset>
 
@@ -476,8 +478,8 @@
 								<a href="#">Elgantroses T&Cs</a></label
 							>
 						</div>
-						<button type="submit" disabled>Submit order</button>
-						<button id="resetBTN" type="reset">reset</button>
+						<button type="submit" id="submitorder" disabled>Submit order</button>
+						<button id="resetBTN" type="reset">Reset</button>
 					</fieldset>
 				</form>
 			</div>
@@ -515,7 +517,13 @@
 				</ul>
 			</div>
 		</section>
-
+		<div class="timeOutMsgBg toggleHide">
+		<div class="timeOutMsg">
+			<h2 class="timeOutHeader">Wake up!</h2>
+			<p class="timeOutText">Sorry about that...Seems like someone fell asleep, for your own safety, we have emptied out the cart for you to re-discover all the amazing products we have to offer!</p>
+			<button class="timeOutBtn">Snooze...ZzZzZzz</button>
+		</div>
+	</div>
 		<footer>
 			<ul>
 				<li>
