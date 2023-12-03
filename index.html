@@ -34,7 +34,7 @@
 						alt=""
 						width="30px"
 						height="30px"
-					/><span class="productInCart">0</span>
+					/><span class="productInCart"></span>
 				</button>
 
 				<!-- <div class="cartPreview"> -->
@@ -63,8 +63,7 @@
 						</ul>
 					</div>
 					<ul class="cartProductSum">
-						<li><h3>Total PCS: <span id="totalAmountcartPreview">0</span></h3></li>
-
+						<li id="totalAmountcartPreview"></li>
 						<li id="totalPriceCartPreview"></li>
 					</ul>
 					<button class="checkoutBtn">Proceed to checkout</button>
@@ -354,7 +353,7 @@
 				<ul class="checkoutProductSum">
 					<li><h4 class="productSummaryAmount">Total products: <span id="totalAmountCheckout"></span></h4></li>
 
-					<li id="totalPriceCheckout"></li>
+					<li id="totalPriceCheckout"><h4 class="productSummarySum">Total amount: <span id="totalPriceCheckout"></span></h4></li>
 				</ul>
 				<form action="" class="fieldSetContainer">
 					<fieldset class="orderForm">
@@ -434,9 +433,9 @@
 
 					<fieldset class="paymentChoice">
 						<legend><h4>Choose payment method</h4></legend>
-						<label> <input type="radio" name="payment" />Invoice </label>
-						<label> <input type="radio" name="payment" />Card </label>
-						<div class="cardPayment">
+						<label> <input type="radio" name="payment" id="cardPaymentOption" checked/>Card </label>
+						<label> <input type="radio" name="payment" id="invoicePaymentOption"/>Invoice </label>
+						<div class="cardPayment" id="cardPaymentForm">
 							<label for="cardno">Card number:</label>
 							<input type="number" class="checkoutInput" />
 							<label for="expirydate">Expiry date</label>
@@ -444,20 +443,21 @@
 							<label for="cvv">CVV Code</label>
 							<input type="number" class="checkoutInput" />
 						</div>
-						<div class="invoicePayment">
+						<div class="invoicePayment toggleHide" id="invoicePaymentForm">
 							<label for="ssn">SSN:</label>
 							<input type="number" class="checkoutInput" />
 						</div>
 					</fieldset>
 
 					<fieldset class="orderSubmit">
-						<legend><h4>T&Cs</h4></legend>
+						<legend><h4>Complete order</h4></legend>
 						<div>
 							<input
 								type="checkbox"
 								id="subscribeNews"
 								name="subscribe"
 								value="newsletter"
+								checked
 							/>
 							<label for="subscribeNews"
 								>Subscribe to newsletter, receive unique deals and coupon
@@ -476,8 +476,8 @@
 								<a href="#">Elgantroses T&Cs</a></label
 							>
 						</div>
-						<button type="submit">Submit order</button>
-						<button type="reset">reset</button>
+						<button type="submit" disabled>Submit order</button>
+						<button id="resetBTN" type="reset">reset</button>
 					</fieldset>
 				</form>
 			</div>

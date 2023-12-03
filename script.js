@@ -43,7 +43,7 @@ const sortMenu = document.querySelector('.sortMenu');
 const totalAmountIcon = document.querySelector('.productInCart');
 //Cart icon total amount <span> element inside cart preview - VARIABLE for the total PCS <span> in cart preview
 const totalAmountcartPreview = document.querySelector(
-	'#totalAmountcartPreview'
+	'.cartProductSum'
 );
 //Checkout section total amount <span> element - VARIABLE for the total PCS <span> element in the Navigation
 const totalAmountCheckout = document.querySelector('#totalAmountCheckout');
@@ -53,7 +53,7 @@ const totalAmountSummary = document.querySelector('#totalAmountSummary');
 //Cart preview total price inside cart preview - VARIABLE for the total PRICE in cart preview
 const totalPriceCartPreview = document.querySelector('#totalPriceCartPreview');
 //Checkout section total price inside cart preview - VARIABLE for the total PRICE in checkout section
-const totalPriceCheckout = document.querySelector('#totalPriceCheckout');
+const totalPriceCheckout = document.querySelector('.checkoutProductSum');
 //Order confirmation section total price inside cart preview - VARIABLE for the total PRICE in order confirmation section
 const totalPriceSummary = document.querySelector('#totalPriceSummary');
 /*------------------------------------------Header------------------------------------------*/
@@ -70,7 +70,31 @@ const checkOutPage = document.querySelector('.checkoutWrapper');
 //Checkout summary Wrapper - Variable to select the checkout product summary section
 const checkoutSummary = document.querySelector('.productCheckoutSummary');
 /*------------------------------------------PAGE WRAPPERS------------------------------------------*/
+//reset BTN in the checkout section 
+const resetCart = document.querySelector('#resetBTN')
+//Click event for the reset BTN in checkout section
+resetCart.addEventListener('click', resetCartOrder)
 
+//Variable to select the card payment option
+const invoicePaymentBtn = document.querySelector('#invoicePaymentOption')
+invoicePaymentBtn.addEventListener('change', displayInvoice)
+
+const cardPaymentBtn = document.querySelector('#cardPaymentOption')
+cardPaymentBtn.addEventListener('change', displayCard)
+
+const cardPayment = document.querySelector('#cardPaymentForm')
+const invoicePayment = document.querySelector('#invoicePaymentForm')
+function displayCard() {
+  cardPayment.style.display = "flex";
+  invoicePayment.style.display = "none";
+  console.log('change1')
+}
+
+function displayInvoice() {
+  cardPayment.style.display = "none";
+  invoicePayment.style.display = "block";
+  console.log('change2')
+}
 //Search function
 //Search Input variabel - Variable to slect the search bar input variable in header
 const navSearchBar = document.querySelector('.navSearchBar');
@@ -82,7 +106,7 @@ const weekDay = new Date();
 //Variable which is multiplied with the price of all individual inside both the print products function and print to cart function to display the individual prices accumilated and not only the total
 // - should the criterie meet, the prices are increased, if not the price is unchanged
 let priceBoost = 1;
-let shippingCost = 25;
+
 
 // Defined variables which store certain days/hours to make the reading of conditions easier
 //Variable for friday
@@ -92,18 +116,20 @@ const tomatoSaleMonday = weekDay.getDay() === 3; //1
 //Variable for actual current hour
 const rightNowHour = weekDay.getHours();
 
+
+
+
+
 //Sets condition for the priceBoost variable which increases the amount if certain days are true
 if (
 	(boostrapFriday && rightNowHour >= 15) ||
 	(tomatoSaleMonday && rightNowHour <= 3)
 ) {
 	priceBoost *= 1.15;
-	console.log('stan');
 }
 
 //Burger Menu (open.button) - Function for displaying navigation menu when clicking on burger menu BTN
 function burgerMenuOpen() {
-	console.log(openBurgeMenu);
 	openBurgeMenu.classList.remove('toggleHide');
 }
 
@@ -143,16 +169,13 @@ function sortToggle() {
 //Total amount(Pieces/products) to update/streamline - Function to streamline the total amount accross the cart preview, checkout and order confirmation
 function updateTotalAmount() {
 	//Define a variable to hold a reduce function which accumilates the total amount value
-	let totalProductsAmount = cart.reduce(
-		(total, product) => total + product.amount,
-		0
-	);
+
 
 	//Print the total amount accumilated at the same time into the different sections based on the totalProductsAmunt
-	totalAmountIcon.innerHTML = totalProductsAmount;
-	totalAmountcartPreview.innerHTML = totalProductsAmount;
-	totalAmountCheckout.innerHTML = totalProductsAmount;
-	totalAmountSummary.innerHTML = totalProductsAmount;
+	// totalAmountIcon.innerHTML = totalProductsAmount;
+	// totalAmountcartPreview.innerHTML = `<h3>Total PCS: ${totalProductsAmount}</h3>`;
+	// totalAmountCheckout.innerHTML = totalProductsAmount;
+	// totalAmountSummary.innerHTML = totalProductsAmount;
 }
 
 //Total Price to be updated & streamline - Function to streamline the total price accross the cart preview, checkout and order confirmation
@@ -616,22 +639,33 @@ function decreaseCartMinus(e) {
 	}
 }
 
-//Function to get added products printed in CART and CHECKOUT
+//Function to sreamline products + cost for individual and total + shipping in cart preview, checkout section and summary section
 function addProductToCart() {
+  totalAmountIcon.innerHTML=''
 	cartSummary.innerHTML = '';
 	checkoutSummary.innerHTML = '';
   totalPriceCartPreview.innerHTML = ``
   totalPriceCheckout.innerHTML = ``
   totalPriceSummary.innerHTML = ``
+  let discountMessage = '';
 	// checkoutSummary.innerHTML = "";
-  let totalPriceSum = 0;
+     let totalPriceSum = 0;
+  	let totalProductsAmount = cart.reduce(
+		(total, product) => total + product.amount,
+		0
+	);
 	cart.forEach((product, index) => {
 		//Variable to round up the price to a maximum of two decimal points
   let discountProuductOnAmount = product.price;
-
 		if (product.amount >= 10) {
 			discountProuductOnAmount *= 0.9;
 		}
+    if (weekDay.getDay() === 6) { //1
+      discountMessage =
+        '10% OFF a wonderful discount on the entire order to start your week<3';
+        discountProuductOnAmount *= 0.9;
+    }
+    // if ()
     totalPriceSum += product.amount * discountProuductOnAmount * priceBoost;
 		let totalPcsPrice = (
 			discountProuductOnAmount *
@@ -683,18 +717,14 @@ function addProductToCart() {
 								</button>
 		</div>`;
 
-    let discountMessage = '';
+
     //Define a variable to hold a reduce function which accumilates the total price value
     // let totalProductsPrice = cart.reduce(
     //   (total, product) => total + product.price * priceBoost * product.amount,
     //   0
     // );
     // //Condition which provides user with a discount for the total price alongside a message
-    // if (weekDay.getDay() === 1) {
-    //   discountMessage =
-    //     '10% OFF a wonderful discount on the entire order to start your week<3';
-    //   totalProductsPrice *= 0.9;
-    // }
+
   
     // if (product.amount >= 10) {
     //   totalProductsPrice = cart.reduce(
@@ -702,15 +732,24 @@ function addProductToCart() {
     //     0)
     // }
     // Print the total price accumilated into the different sections
-    totalPriceCartPreview.innerHTML = `<h3>Total amount: ${totalPriceSum.toFixed(
+    let shippingCost = Math.round(25+(totalPriceSum*0.1));
+    if (totalProductsAmount >= 15) {
+      shippingCost = 0
+    }
+    totalAmountIcon.innerHTML = totalProductsAmount;
+    totalPriceCartPreview.innerHTML = `<h3>Total PCS: ${totalProductsAmount}</h3><h3>Total amount: ${totalPriceSum.toFixed(
       2
     )} $</h3><div class="discountMessage">${discountMessage}</div>`;
-    totalPriceCheckout.innerHTML = `<h4>Total amount: ${totalPriceSum.toFixed(
+    totalPriceCheckout.innerHTML = `<h4 class="ShippingCost">Shipping: ${shippingCost}$</h4></h4><div class="discountMessage">${discountMessage}</div><h4>Total PCS: ${totalProductsAmount}</h4><h4>Total amount + shipping: ${(shippingCost+totalPriceSum).toFixed(
       2
-    )} $</h4><div class="discountMessage">${discountMessage}</div>`;
-    totalPriceSummary.innerHTML = `${totalPriceSum.toFixed(2)} $`;
+    )} $`;
+    totalPriceSummary.innerHTML = `${(shippingCost+totalPriceSum).toFixed(
+      2
+    )} ${totalProductsAmount}`;
 	});
-
+if (totalProductsAmount > 0){
+  setTimeout(tooSlow, 1000 * 3)
+}
 	//Add clickEvent to each of the removal Btns
 	Array.from(document.querySelectorAll('.previewProductRemoval')).forEach(
 		(btn) => {
@@ -729,13 +768,29 @@ function addProductToCart() {
 		button.addEventListener('click', decreaseCartMinus);
 	});
 
-	updateTotalAmount();
+
 }
 
 //Call two functions at the same time
 function updateStock() {
 	pushProductStock();
 	addProductToCart();
+}
+
+//Function for reset BTN in the checkout section, also called when timer runs out for user
+function resetCartOrder() {
+  productStock.forEach((product) => {
+    product.amount = 0;
+});
+totalAmountIcon.innerHTML=''
+cart = [];
+
+updateStock();
+}
+//Function to reset cart and push message to user informing that they were too slow
+function tooSlow() {
+      console.log('stan') 
+      resetCartOrder()
 }
 
 //Function for removing-product button in cart and Checkout summary
