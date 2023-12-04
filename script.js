@@ -125,18 +125,18 @@ timeOutMsgBg = document.querySelector('.timeOutMsgBg');
 const timeOutMsgBtn = document.querySelector('.timeOutBtn');
 timeOutMsgBtn.addEventListener('click', toggleTimeoutMsg);
 function toggleTimeoutMsg() {
-  timeOutMsgBg.classList.toggle('toggleHide')
+	timeOutMsgBg.classList.toggle('toggleHide');
 }
 
 //Variable to select the payment input fields and change event to trigger the validation function
 const ssnField = document.querySelector('#ssn');
-ssnField.addEventListener('focusout', activateSubmitOrder);
+ssnField.addEventListener('input', activateSubmitOrder);
 const cardNoField = document.querySelector('#cardno');
-cardNoField.addEventListener('focusout', activateSubmitOrder);
+cardNoField.addEventListener('input', activateSubmitOrder);
 const cardCvvField = document.querySelector('#cvv');
-cardCvvField.addEventListener('focusout', activateSubmitOrder);
+cardCvvField.addEventListener('input', activateSubmitOrder);
 const cardExpiryField = document.querySelector('#expirydate');
-cardExpiryField.addEventListener('focusout', activateSubmitOrder);
+cardExpiryField.addEventListener('input', activateSubmitOrder);
 
 //Variables to define the different validation criteria - RegEx for different fields in the payment forms
 const ssnRegEx = new RegExp(/^(?=[\s\S]{0,13}$)\d{6}(?:\d{2})?[-\s]?\d{4}/);
@@ -152,6 +152,7 @@ const cvvRegex = new RegExp(/^\d{3,4}$/);
 const submitOrderBtn = document.querySelector('#submitorder');
 
 function clearPaymentField() {
+  //Kolla om det går applicera form.clear istället
 	cardNoField.value = '';
 	cardExpiryField.value = '';
 	cardCvvField.value = '';
@@ -802,8 +803,13 @@ function addProductToCart() {
 			>
 				+
 			</button>
+
 			<button class="previewProductRemoval" id="productRemove${product.serialNo}">Remove
-								</button>
+			</button>
+
+      <button class="previewProductRemoval" id="productRemove${product.serialNo}"><img src="Assets/icons/trashcan.svg" height="30" width="30">
+      </button>
+
 		</div>`;
 
 		//Define a variable to hold a reduce function which accumilates the total price value
@@ -834,13 +840,12 @@ function addProductToCart() {
 			2
 		)} ${totalProductsAmount}`;
 
-      disableInvoiceOption(totalPriceSum);
-
+		disableInvoiceOption(totalPriceSum);
 	});
 	if (totalProductsAmount > 0) {
 		setTimeout(resetCartOrder, 1000 * 60 * 15);
-    setTimeout(toggleTimeoutMsg, 1000 * 60 * 15);
-	} 
+		setTimeout(toggleTimeoutMsg, 1000 * 60 * 15);
+	}
 	//Add clickEvent to each of the removal Btns
 	Array.from(document.querySelectorAll('.previewProductRemoval')).forEach(
 		(btn) => {
@@ -866,14 +871,14 @@ function updateStock() {
 	addProductToCart();
 }
 function disableInvoiceOption(totalPriceSum) {
-		if (totalPriceSum >= 800) {
-			invoicePaymentBtn.setAttribute('disabled', '');
-			cardPayment.style.display = 'flex';
-			invoicePayment.style.display = 'none';
-		} else {
-			invoicePaymentBtn.removeAttribute('disabled');
-		}
-  }
+	if (totalPriceSum >= 800) {
+		invoicePaymentBtn.setAttribute('disabled', '');
+		cardPayment.style.display = 'flex';
+		invoicePayment.style.display = 'none';
+	} else {
+		invoicePaymentBtn.removeAttribute('disabled');
+	}
+}
 //Function for reset BTN in the checkout section, also called when timer runs out for user
 function resetCartOrder() {
 	productStock.forEach((product) => {
@@ -882,8 +887,9 @@ function resetCartOrder() {
 	totalAmountIcon.innerHTML = '';
 	cart = [];
 	updateStock();
-  // cartClose()
-  // toggleCheckout()
+  clearPaymentField()
+	// cartClose()
+	// toggleCheckout()
 }
 //Function to reset cart and push message to user informing that they were too slow
 // function tooSlow() {
@@ -893,7 +899,7 @@ function resetCartOrder() {
 
 //Function for removing-product button in cart and Checkout summary
 function removeFromCartBtn(e) {
-	const productSerialNo = Number(e.target.id.replace('productRemove', ''));
+	const productSerialNo = Number(e.currentTarget.id.replace('productRemove', ''));
 
 	let cartIndex = cart.findIndex(
 		(productStock) => productStock.serialNo === productSerialNo
