@@ -152,24 +152,57 @@ const cvvRegex = new RegExp(/^\d{3,4}$/);
 const submitOrderBtn = document.querySelector('#submitorder');
 
 function clearPaymentField() {
-  //Kolla om det går applicera form.clear istället
+	//Kolla om det går applicera form.clear istället
 	cardNoField.value = '';
 	cardExpiryField.value = '';
 	cardCvvField.value = '';
 	ssnField.value = '';
 	submitOrderBtn.setAttribute('disabled', '');
 }
-// function clearCardField() {
-// 	cardNoField.value = ''
-// 	cardExpiryField.value = ''
-// 	cardCvvField.value = ''
-// 	ssnField.value = ''
-// 	submitOrderBtn.setAttribute('disabled', '');
-// }
-// function clearSsnField() {
-// 	ssnField.value = ''
-// 	submitOrderBtn.setAttribute('disabled', '');
-// }
+
+
+const fnameField = document.querySelector('#fname');
+fnameField.addEventListener('focusout', activatePaymentForm)
+const lnameField = document.querySelector('#lname');
+lnameField.addEventListener('focusout', activatePaymentForm)
+const streetField = document.querySelector('#street-address');
+streetField.addEventListener('focusout', activatePaymentForm)
+const zipField = document.querySelector('#zip');
+zipField.addEventListener('focusout', activatePaymentForm)
+const cityField = document.querySelector('#city');
+cityField.addEventListener('focusout', activatePaymentForm)
+const telField = document.querySelector('#tel');
+telField.addEventListener('focusout', activatePaymentForm)
+const emailField = document.querySelector('#email');
+emailField.addEventListener('focusout', activatePaymentForm)
+
+function activatePaymentForm() {
+
+  if (fnameField.value.trim() === '') {
+    console.log('Please input your name');
+    return;
+  } else if (lnameField.value.trim() === '') {
+    console.log('Please input your last name');
+    return;
+  } else if (streetField.value.trim() === '') {
+    console.log('Please input your street name');
+    return;
+  } else if (zipField.value.trim() === '') {
+    console.log('Please input a valid zip code');
+    return;
+  } else if (cityField.value.trim() === '') {
+    console.log('Please input your city');
+    return;
+  } else if (telField.value.trim() === '') {
+    console.log('Please type your phone number');
+    return;
+  } else if (emailField.value.trim() === '') {
+    console.log('Please input a valid e-mail address');
+    return;
+  } 
+  
+}
+
 function activateSubmitOrder() {
 	submitOrderBtn.setAttribute('disabled', '');
 	if (currentPaymentOption === 'cardPaymentOption') {
@@ -192,6 +225,13 @@ function activateSubmitOrder() {
 	}
 	submitOrderBtn.removeAttribute('disabled');
 }
+
+// function displayError() {
+//   if (email.validity.valueMissing) {
+    
+//   }
+// }
+
 //Search function
 //Search Input variabel - Variable to slect the search bar input variable in header
 const navSearchBar = document.querySelector('.navSearchBar');
@@ -749,12 +789,9 @@ function addProductToCart() {
 		if (product.amount >= 10) {
 			discountProuductOnAmount *= 0.9;
 		}
-		if (weekDay.getDay() === 6) {
-			//1
-			discountMessage =
-				'10% OFF a wonderful discount on the entire order to start your week<3';
-			discountProuductOnAmount *= 0.9;
-		}
+
+		discountEntireOrder(discountMessage, discountProuductOnAmount);
+
 		// if ()
 		totalPriceSum += product.amount * discountProuductOnAmount * priceBoost;
 		let totalPcsPrice = (
@@ -812,19 +849,6 @@ function addProductToCart() {
 
 		</div>`;
 
-		//Define a variable to hold a reduce function which accumilates the total price value
-		// let totalProductsPrice = cart.reduce(
-		//   (total, product) => total + product.price * priceBoost * product.amount,
-		//   0
-		// );
-		// //Condition which provides user with a discount for the total price alongside a message
-
-		// if (product.amount >= 10) {
-		//   totalProductsPrice = cart.reduce(
-		//     (total, product) => total + (product.price*0.9) * priceBoost * product.amount,
-		//     0)
-		// }
-		// Print the total price accumilated into the different sections
 		let shippingCost = Math.round(25 + totalPriceSum * 0.1);
 		if (totalProductsAmount >= 15) {
 			shippingCost = 0;
@@ -842,10 +866,14 @@ function addProductToCart() {
 
 		disableInvoiceOption(totalPriceSum);
 	});
+
+
 	if (totalProductsAmount > 0) {
-		setTimeout(resetCartOrder, 1000 * 60 * 15);
-		setTimeout(toggleTimeoutMsg, 1000 * 60 * 15);
-	}
+		resetOrderTimer = (setTimeout(resetCartOrder, 1000 * 60 * 15)) && (setTimeout(toggleTimeoutMsg, 1000 * 60 * 15))
+		
+	} else {
+    clearTimeout(resetOrderTimer)
+  }
 	//Add clickEvent to each of the removal Btns
 	Array.from(document.querySelectorAll('.previewProductRemoval')).forEach(
 		(btn) => {
@@ -863,6 +891,15 @@ function addProductToCart() {
 	cartMinus.forEach((button) => {
 		button.addEventListener('click', decreaseCartMinus);
 	});
+}
+
+function discountEntireOrder(discountMessage, discountProuductOnAmount) {
+	if (weekDay.getDay() === 6) {
+		//1
+		discountMessage =
+			'10% OFF a wonderful discount on the entire order to start your week<3';
+		discountProuductOnAmount *= 0.9;
+	}
 }
 
 //Call two functions at the same time
@@ -887,9 +924,9 @@ function resetCartOrder() {
 	totalAmountIcon.innerHTML = '';
 	cart = [];
 	updateStock();
-  clearPaymentField()
+	clearPaymentField();
 	// cartClose()
-	// toggleCheckout()
+	// toggleTimeoutMsg()
 }
 //Function to reset cart and push message to user informing that they were too slow
 // function tooSlow() {
@@ -899,7 +936,9 @@ function resetCartOrder() {
 
 //Function for removing-product button in cart and Checkout summary
 function removeFromCartBtn(e) {
-	const productSerialNo = Number(e.currentTarget.id.replace('productRemove', ''));
+	const productSerialNo = Number(
+		e.currentTarget.id.replace('productRemove', '')
+	);
 
 	let cartIndex = cart.findIndex(
 		(productStock) => productStock.serialNo === productSerialNo
