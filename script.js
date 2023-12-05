@@ -88,11 +88,11 @@ resetCart.addEventListener('click', resetCartOrder);
 //*Variable to select the invoice radio button option
 const invoicePaymentBtn = document.querySelector('#invoicePaymentOption');
 //*Click event for the button to trigger the display of invoice and hide card option
-invoicePaymentBtn.addEventListener('click', SelectedPaymentOption);
+invoicePaymentBtn.addEventListener('click', selectedPaymentOption);
 //*Variable to select the card radio button option
 const cardPaymentBtn = document.querySelector('#cardPaymentOption');
 //*Click event for the button to trigger the display of card and hide invoice option
-cardPaymentBtn.addEventListener('click', SelectedPaymentOption);
+cardPaymentBtn.addEventListener('click', selectedPaymentOption);
 
 //Variable to select the card payment form
 const cardPayment = document.querySelector('#cardPaymentForm');
@@ -100,7 +100,7 @@ const cardPayment = document.querySelector('#cardPaymentForm');
 const invoicePayment = document.querySelector('#invoicePaymentForm');
 //Functions to alter between the card form and invoice form by applying display attribute directly to the section
 let currentPaymentOption = 'cardPaymentOption';
-function SelectedPaymentOption(e) {
+function selectedPaymentOption(e) {
 	currentPaymentOption = e.target.id;
 	if (currentPaymentOption === 'cardPaymentOption') {
 		cardPayment.style.display = 'flex';
@@ -120,7 +120,7 @@ function SelectedPaymentOption(e) {
 // }
 
 //Variable to select the timeout message
-timeOutMsgBg = document.querySelector('.timeOutMsgBg');
+const timeOutMsgBg = document.querySelector('.timeOutMsgBg');
 //Variable for Button to close the timeout message which appears if user has been idle for more than 15 minutes
 const timeOutMsgBtn = document.querySelector('.timeOutBtn');
 timeOutMsgBtn.addEventListener('click', toggleTimeoutMsg);
@@ -148,7 +148,12 @@ const expiryDateRegEx = new RegExp(
 	/^(0[1-9]|1[0-2])\/(20)?(24|25|26|27|28|29)$/
 );
 const cvvRegex = new RegExp(/^\d{3,4}$/);
-
+const fNameRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ '-]+$/
+const lNameRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ '-]+$/
+const zipRegex = /^[1-9]\d{2}\s?\d{2}$/
+const telRegex = /^(07\d{8}|(\+46\s?)?\d{10})$/
+const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+//Variable for the order form submit order
 const submitOrderBtn = document.querySelector('#submitorder');
 
 function clearPaymentField() {
@@ -160,47 +165,121 @@ function clearPaymentField() {
 	submitOrderBtn.setAttribute('disabled', '');
 }
 
-
+//Variables & event listeners for fields in the contact detail form
 const fnameField = document.querySelector('#fname');
-fnameField.addEventListener('focusout', activatePaymentForm)
+// fnameField.addEventListener('change', activatePaymentForm);
+fnameField.addEventListener('input', fNameError);
 const lnameField = document.querySelector('#lname');
-lnameField.addEventListener('focusout', activatePaymentForm)
+// lnameField.addEventListener('focusout', activatePaymentForm);
+lnameField.addEventListener('input', lNameError);
 const streetField = document.querySelector('#street-address');
-streetField.addEventListener('focusout', activatePaymentForm)
+// streetField.addEventListener('focusout', activatePaymentForm);
+streetField.addEventListener('focusout', streetError);
 const zipField = document.querySelector('#zip');
-zipField.addEventListener('focusout', activatePaymentForm)
+// zipField.addEventListener('focusout', activatePaymentForm);
+zipField.addEventListener('focusout', zipError);
 const cityField = document.querySelector('#city');
-cityField.addEventListener('focusout', activatePaymentForm)
+// cityField.addEventListener('focusout', activatePaymentForm);
+cityField.addEventListener('focusout', cityError);
 const telField = document.querySelector('#tel');
-telField.addEventListener('focusout', activatePaymentForm)
+// telField.addEventListener('focusout', activatePaymentForm);
+telField.addEventListener('focusout', telError);
 const emailField = document.querySelector('#email');
-emailField.addEventListener('focusout', activatePaymentForm)
+// emailField.addEventListener('focusout', activatePaymentForm);
+emailField.addEventListener('focusout', emailError);
 
+
+//ERROR MESSAGES
+//Variable for first name field error message
+const fNameErrorMsg = document.querySelector('#fNameErrorMsg');
+const lNameErrorMsg = document.querySelector('#lNameErrorMsg');
+const streetErrorMsg = document.querySelector('#streetError');
+const zipErrorMsg = document.querySelector('#zipErrorMsg');
+const cityErrorMsg = document.querySelector('#cityErrorMsg');
+const telErrorMsg = document.querySelector('#telErrorMsg');
+const emailErrorMsg = document.querySelector('#emailErrorMsg');
+
+function fNameError() {
+  if (fNameRegex.exec(fnameField.value) === null) {
+		fNameErrorMsg.classList.remove('toggleHide');
+	} else {
+    fNameErrorMsg.classList.add('activeField');
+		fNameErrorMsg.classList.add('toggleHide');
+	}
+}
+function lNameError() {
+	if (lNameRegex.exec(lnameField.value) === null) {
+		lNameErrorMsg.classList.remove('toggleHide');
+	} else {
+    lNameErrorMsg.classList.add('activeField');
+		lNameErrorMsg.classList.add('toggleHide');
+	}
+}
+function streetError() {
+	if (streetField.value.trim() === '') {
+		streetErrorMsg.classList.remove('toggleHide');
+	} else {
+    streetErrorMsg.classList.add('activeField');
+		streetErrorMsg.classList.add('toggleHide');
+	}
+}
+function zipError() {
+	if (zipRegex.exec(zipField.value) === null) {
+		zipErrorMsg.classList.remove('toggleHide');
+	} else {
+    zipErrorMsg.classList.add('activeField');
+		zipErrorMsg.classList.add('toggleHide');
+	}
+}
+function cityError() {
+	if (cityField.value.trim() === '') {
+		cityErrorMsg.classList.remove('toggleHide');
+	} else {
+    cityErrorMsg.classList.add('activeField');
+		cityErrorMsg.classList.add('toggleHide');
+	}
+}
+function telError() {
+	if (telField.value.trim() === '') {
+		telErrorMsg.classList.remove('toggleHide');
+	} else {
+    telErrorMsg.classList.add('activeField');
+		telErrorMsg.classList.add('toggleHide');
+	}
+}
+function emailError() {
+	if (emailField.value.trim() === '') {
+		emailErrorMsg.classList.remove('toggleHide');
+	} else {
+    emailErrorMsg.classList.add('activeField');
+		emailErrorMsg.classList.add('toggleHide');
+	}
+}
+//Variable & event listener for the "To Payment Button"
+const toPaymentBtn = document.querySelector('#toPaymentBtn');
+toPaymentBtn.addEventListener('click', activatePaymentForm);
+//Variable for the payment section
+const paymentSection = document.querySelector('.paymentSection');
+
+//Function to validate the contact details in form - piror to payment section
 function activatePaymentForm() {
+  paymentSection.classList.add('toggleHide');
+  //Variable which checks if all fields valid
+  const allFieldsValid = (
+    fNameErrorMsg.classList.contains('activeField') &&
+    lNameErrorMsg.classList.contains('activeField') &&
+    streetErrorMsg.classList.contains('activeField') &&
+    zipErrorMsg.classList.contains('activeField') &&
+    cityErrorMsg.classList.contains('activeField') &&
+    telErrorMsg.classList.contains('activeField') &&
+    emailErrorMsg.classList.contains('activeField')
+  );
 
-  if (fnameField.value.trim() === '') {
-    console.log('Please input your name');
-    return;
-  } else if (lnameField.value.trim() === '') {
-    console.log('Please input your last name');
-    return;
-  } else if (streetField.value.trim() === '') {
-    console.log('Please input your street name');
-    return;
-  } else if (zipField.value.trim() === '') {
-    console.log('Please input a valid zip code');
-    return;
-  } else if (cityField.value.trim() === '') {
-    console.log('Please input your city');
-    return;
-  } else if (telField.value.trim() === '') {
-    console.log('Please type your phone number');
-    return;
-  } else if (emailField.value.trim() === '') {
-    console.log('Please input a valid e-mail address');
-    return;
+  // If
+  if (allFieldsValid) {
+    paymentSection.classList.remove('toggleHide');
   } 
-  
+
 }
 
 function activateSubmitOrder() {
@@ -228,7 +307,7 @@ function activateSubmitOrder() {
 
 // function displayError() {
 //   if (email.validity.valueMissing) {
-    
+
 //   }
 // }
 
@@ -238,27 +317,29 @@ const navSearchBar = document.querySelector('.navSearchBar');
 //Search button variable - Variable to slect the search button in the header
 const searchBtn = document.querySelector('.navSearchBtn');
 
-//Variable to store actual current date which is used to define the discount parameters
-const weekDay = new Date();
 //Variable which is multiplied with the price of all individual inside both the print products function and print to cart function to display the individual prices accumilated and not only the total
 // - should the criterie meet, the prices are increased, if not the price is unchanged
 let priceBoost = 1;
-
-// Defined variables which store certain days/hours to make the reading of conditions easier
-//Variable for friday
-const boostrapFriday = weekDay.getDay() === 2; //6
-//Variable for Monday
-const tomatoSaleMonday = weekDay.getDay() === 3; //1
-//Variable for actual current hour
-const rightNowHour = weekDay.getHours();
-
-//Sets condition for the priceBoost variable which increases the amount if certain days are true
-if (
-	(boostrapFriday && rightNowHour >= 15) ||
-	(tomatoSaleMonday && rightNowHour <= 3)
-) {
-	priceBoost *= 1.15;
+//Function to check if the weekend price increase citeria is matched
+function weekendPriceBoost() {
+	//Variable to store actual current date which is used to define the discount parameters
+	const weekendCheck = new Date();
+	// Defined variables which store certain days/hours to make the reading of conditions easier
+	//Variable for friday
+	const boostrapFriday = weekendCheck.getDay() === 6; //6
+	//Variable for Monday
+	const tomatoSaleMonday = weekendCheck.getDay() === 1; //1
+	//Variable for actual current hour
+	const rightNowHour = weekendCheck.getHours();
+	//Sets condition for the priceBoost variable which increases the amount if certain days are true
+	if (
+		(boostrapFriday && rightNowHour >= 15) ||
+		(tomatoSaleMonday && rightNowHour <= 3)
+	) {
+		priceBoost *= 1.15;
+	}
 }
+weekendPriceBoost();
 
 //Burger Menu (open.button) - Function for displaying navigation menu when clicking on burger menu BTN
 function burgerMenuOpen() {
@@ -666,8 +747,6 @@ function sortByAlphabet() {
 	pushProductStock();
 }
 
-// console.table(productStock)
-
 //Function to print out the products to the main product cataloge page
 function pushProductStock() {
 	productContainer.innerHTML = '';
@@ -770,6 +849,7 @@ function decreaseCartMinus(e) {
 
 //Function to sreamline products + cost for individual and total + shipping in cart preview, checkout section and summary section
 function addProductToCart() {
+	// weekendPriceBoost()
 	totalAmountIcon.innerHTML = '';
 	cartSummary.innerHTML = '';
 	checkoutSummary.innerHTML = '';
@@ -790,7 +870,15 @@ function addProductToCart() {
 			discountProuductOnAmount *= 0.9;
 		}
 
-		discountEntireOrder(discountMessage, discountProuductOnAmount);
+		// discountEntireOrder(discountMessage, discountProuductOnAmount);
+		const MondayCheck = new Date();
+		console.log(MondayCheck.getDay());
+		if (MondayCheck.getDay() === 2) {
+			//1
+			discountMessage =
+				'10% OFF a wonderful discount on the entire order to start your week<3';
+			discountProuductOnAmount *= 0.9;
+		}
 
 		// if ()
 		totalPriceSum += product.amount * discountProuductOnAmount * priceBoost;
@@ -867,13 +955,13 @@ function addProductToCart() {
 		disableInvoiceOption(totalPriceSum);
 	});
 
-
 	if (totalProductsAmount > 0) {
-		resetOrderTimer = (setTimeout(resetCartOrder, 1000 * 60 * 15)) && (setTimeout(toggleTimeoutMsg, 1000 * 60 * 15))
-		
+		resetOrderTimer =
+			setTimeout(resetCartOrder, 1000 * 60 * 15) &&
+			setTimeout(toggleTimeoutMsg, 1000 * 60 * 15);
 	} else {
-    clearTimeout(resetOrderTimer)
-  }
+		clearTimeout(resetOrderTimer);
+	}
 	//Add clickEvent to each of the removal Btns
 	Array.from(document.querySelectorAll('.previewProductRemoval')).forEach(
 		(btn) => {
@@ -893,15 +981,19 @@ function addProductToCart() {
 	});
 }
 
-function discountEntireOrder(discountMessage, discountProuductOnAmount) {
-	if (weekDay.getDay() === 6) {
-		//1
-		discountMessage =
-			'10% OFF a wonderful discount on the entire order to start your week<3';
-		discountProuductOnAmount *= 0.9;
-	}
-}
-
+// function discountEntireOrder(discountMessage, discountProuductOnAmount) {
+//   const MondayCheck = new Date();
+//   console.log(MondayCheck.getDay())
+// 	if (MondayCheck.getDay() === 3) { //1
+// 		discountMessage =
+// 			'10% OFF a wonderful discount on the entire order to start your week<3';
+// 		discountProuductOnAmount *= 0.9;
+// 	}
+//   // return {
+//   //   discountMessage: discountMessage,
+//   //   discountProuductOnAmount: discountProuductOnAmount
+//   // };
+// }
 //Call two functions at the same time
 function updateStock() {
 	pushProductStock();

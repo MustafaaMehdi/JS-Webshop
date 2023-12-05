@@ -1,15 +1,32 @@
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class='no-js lt-ie9 lt-ie8 lt-ie7'> <![endif]-->
 
-<html>
+<html lang="en">
 	<head>
-		<meta charset="utf-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<title></title>
-		<meta name="description" content="" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href="css/style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elegant roses</title>
+    <link rel="icon" type="image/x-icon" href="Assets/icons/faviconLogo.ico">
 
+    <meta name="description" content="Elegant Roses - Discover timeless romance with our exquisite collection of eternal roses in various colors and enchanting boxes. Elevate your special moments with the language of love.">
+    <meta name="keywords" content="Elegant Roses, eternal roses, romantic gifts, flower arrangements, love, special occasions, floral elegance">
+    <meta name="author" content="Elegant Roses">
+    <meta name="theme-color" content="#FFD9E6">
+    
+    <meta property="og:title" content="Elegant Roses">
+    <meta property="og:description" content="Discover timeless romance with our exquisite collection of eternal roses in various colors and enchanting boxes. Elevate your special moments with the language of love.">
+    <meta property="og:image" content="https://medieinstitutet.github.io/fed23d-js-grundkurs-webshop-MustafaaMehdi/Assets/Images/Reviews/Review4.jpg">
+    <meta property="og:url" content="https://medieinstitutet.github.io/fed23d-js-grundkurs-webshop-MustafaaMehdi">
+    <meta name="og:site_name" content="Elegant Roses - Capturing Moments in Petals">
+    <meta property="og:type" content="website">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Elegant Roses - Capturing Moments in Petals">
+    <meta name="twitter:description" content="Discover timeless romance with our exquisite collection of eternal roses in various colors and enchanting boxes. Elevate your special moments with the language of love.">
+    <meta name="twitter:image" content="https://medieinstitutet.github.io/fed23d-js-grundkurs-webshop-MustafaaMehdi/Assets/Images/Reviews/Review4.jpg">
+    <meta name="twitter:site" content="@elegantroses">
+
+		<link rel="stylesheet" href="css/style.css" />
 		<link
 			href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400&display=swap"
 			rel="stylesheet"
@@ -351,6 +368,13 @@
 					</ul>
 				</div>
 				<ul class="checkoutProductSum">
+          <li><label for="coupon"><h4>Coupon code</h4></label>
+						<input
+							type="text"
+							name="coupon"
+							id="coupon"
+							class="checkoutInput"
+						/><button>Apply</button></li>
 					<li><h4 class="productSummaryAmount">Total products: <span id="totalAmountCheckout"></span></h4></li>
 
 					<li id="totalPriceCheckout"><h4 class="productSummarySum">Total amount: <span id="totalPriceCheckout"></span></h4></li>
@@ -360,7 +384,7 @@
 						<legend>
 							<h4>Contact details</h4>
 						</legend>
-						<label for="fname">First name</label>
+						<label for="fname">First name <span id="fNameErrorMsg" class="toggleHide">Please input your first name</span></label>
 						<input
 							type="text"
 							id="fname"
@@ -368,10 +392,10 @@
 							class="checkoutInput"
 						/>
 
-						<label for="lname">Last name</label>
+						<label for="lname">Last name <span id="lNameErrorMsg" class="toggleHide">Please input your last name</span></label>
 						<input type="text" id="lname" class="checkoutInput" />
 
-						<label for="street-address">Street address</label>
+						<label for="street-address">Street address <span id="streetError" class="toggleHide">Please input a valid street address</span></label>
 						<input
 							type="text"
 							id="street-address"
@@ -380,7 +404,7 @@
 							class="checkoutInput"
 						/>
 
-						<label for="zip">Zip code</label>
+						<label for="zip">Zip code <span id="zipErrorMsg" class="toggleHide">Please input a valid zip</span></label>
 						<input
 							name="zip"
 							id="zip"
@@ -391,7 +415,7 @@
 							class="checkoutInput"
 						/>
 
-						<label for="city">City</label>
+						<label for="city">City <span id="cityErrorMsg" class="toggleHide">Please input a valid city</span></label>
 						<input type="text" id="city" name="city" class="checkoutInput" />
 
 						<label for="doorcode">Door code(Optional):</label>
@@ -402,7 +426,7 @@
 							class="checkoutInput"
 						/>
 
-						<label for="tel">Phone (mobile):</label>
+						<label for="tel">Phone (mobile): <span id="telErrorMsg" class="toggleHide">Please input a valid Phone number</span></label>
 						<input
 							type="tel"
 							id="tel"
@@ -411,7 +435,7 @@
 							class="checkoutInput"
 						/>
 
-						<label for="email">Email Address:</label>
+						<label for="email">Email Address: <span id="emailErrorMsg" class="toggleHide">Please input your last name</span></label>
 						<input
 							type="email"
 							id="email"
@@ -421,7 +445,7 @@
 						/>
 					</fieldset>
 
-					<fieldset class="couponCode">
+					<!-- <fieldset class="couponCode">
 						<legend>Coupon code</legend>
 						<input
 							type="text"
@@ -429,9 +453,9 @@
 							id="coupon"
 							class="checkoutInput"
 						/>
-					</fieldset>
-
-					<fieldset class="paymentChoice">
+					</fieldset> -->
+          <button type="button" id="toPaymentBtn">To Payment</button>
+					<fieldset class="paymentSection toggleHide">
 						<legend><h4>Choose payment method</h4></legend>
 						<!-- <label> <input type="radio" name="payment" id="cardPaymentOption" />Card </label>
 						<label> <input type="radio" name="payment" id="invoicePaymentOption" checked/>Invoice </label> -->
