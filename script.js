@@ -139,15 +139,11 @@ const cardExpiryField = document.querySelector('#expirydate');
 cardExpiryField.addEventListener('input', activateSubmitOrder);
 
 //Variables to define the different validation criteria - RegEx for different fields in the payment forms
-const ssnRegEx = new RegExp(/^(?=[\s\S]{0,13}$)\d{6}(?:\d{2})?[-\s]?\d{4}/);
-const cardNoRegEx = new RegExp(
-	/^(?:4[0-9]{12}(?:[0-9]{3})?|[25][1-7][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13})$/
-);
+const ssnRegEx = /^(?=[\s\S]{0,13}$)\d{6}(?:\d{2})?[-\s]?\d{4}/;
+const cardNoRegEx = /^(?:4[0-9]{12}(?:[0-9]{3})?|[25][1-7][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13})$/;
 //Variables to hold criteria specific for the expiry date
-const expiryDateRegEx = new RegExp(
-	/^(0[1-9]|1[0-2])\/(20)?(24|25|26|27|28|29)$/
-);
-const cvvRegex = new RegExp(/^\d{3,4}$/);
+const expiryDateRegEx = /^(0[1-9]|1[0-2])\/(20)?(24|25|26|27|28|29)$/;
+const cvvRegex = /^\d{3,4}$/;
 const fNameRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ '-]+$/
 const lNameRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ '-]+$/
 const zipRegex = /^[1-9]\d{2}\s?\d{2}$/
@@ -165,28 +161,7 @@ function clearPaymentField() {
 	submitOrderBtn.setAttribute('disabled', '');
 }
 
-//Variables & event listeners for fields in the contact detail form
-const fnameField = document.querySelector('#fname');
-// fnameField.addEventListener('change', activatePaymentForm);
-fnameField.addEventListener('input', fNameError);
-const lnameField = document.querySelector('#lname');
-// lnameField.addEventListener('focusout', activatePaymentForm);
-lnameField.addEventListener('input', lNameError);
-const streetField = document.querySelector('#street-address');
-// streetField.addEventListener('focusout', activatePaymentForm);
-streetField.addEventListener('focusout', streetError);
-const zipField = document.querySelector('#zip');
-// zipField.addEventListener('focusout', activatePaymentForm);
-zipField.addEventListener('focusout', zipError);
-const cityField = document.querySelector('#city');
-// cityField.addEventListener('focusout', activatePaymentForm);
-cityField.addEventListener('focusout', cityError);
-const telField = document.querySelector('#tel');
-// telField.addEventListener('focusout', activatePaymentForm);
-telField.addEventListener('focusout', telError);
-const emailField = document.querySelector('#email');
-// emailField.addEventListener('focusout', activatePaymentForm);
-emailField.addEventListener('focusout', emailError);
+
 
 
 //ERROR MESSAGES
@@ -199,60 +174,106 @@ const cityErrorMsg = document.querySelector('#cityErrorMsg');
 const telErrorMsg = document.querySelector('#telErrorMsg');
 const emailErrorMsg = document.querySelector('#emailErrorMsg');
 
+//Variables & event listeners for fields in the contact detail form
+const fnameField = document.querySelector('#fname');
+fnameField.addEventListener('change', activatePaymentForm);
+fnameField.addEventListener('change', fNameError);
+const lnameField = document.querySelector('#lname');
+lnameField.addEventListener('focusout', activatePaymentForm);
+lnameField.addEventListener('change', lNameError);
+const streetField = document.querySelector('#street-address');
+streetField.addEventListener('focusout', activatePaymentForm);
+streetField.addEventListener('change', streetError);
+const zipField = document.querySelector('#zip');
+zipField.addEventListener('focusout', activatePaymentForm);
+zipField.addEventListener('change', zipError);
+const cityField = document.querySelector('#city');
+cityField.addEventListener('focusout', activatePaymentForm);
+cityField.addEventListener('change', cityError);
+const telField = document.querySelector('#tel');
+telField.addEventListener('focusout', activatePaymentForm);
+telField.addEventListener('change', telError);
+const emailField = document.querySelector('#email');
+emailField.addEventListener('focusout', activatePaymentForm);
+emailField.addEventListener('change', emailError);
+
+
 function fNameError() {
   if (fNameRegex.exec(fnameField.value) === null) {
-		fNameErrorMsg.classList.remove('toggleHide');
+		fNameErrorMsg.classList.remove('toggleHide', 'activeField');
+    fnameField.classList.remove('fieldValid');
+    fnameField.classList.add('fieldInvalid');
 	} else {
-    fNameErrorMsg.classList.add('activeField');
-		fNameErrorMsg.classList.add('toggleHide');
+    fNameErrorMsg.classList.add('toggleHide', 'activeField');
+    fnameField.classList.add('fieldValid');
+    fnameField.classList.remove('fieldInvalid');
 	}
 }
 function lNameError() {
 	if (lNameRegex.exec(lnameField.value) === null) {
-		lNameErrorMsg.classList.remove('toggleHide');
+		lNameErrorMsg.classList.remove('toggleHide', 'activeField');
+    lnameField.classList.remove('fieldValid');
+    lnameField.classList.add('fieldInvalid');
 	} else {
-    lNameErrorMsg.classList.add('activeField');
-		lNameErrorMsg.classList.add('toggleHide');
+    lNameErrorMsg.classList.add('toggleHide', 'activeField');
+    lnameField.classList.add('fieldValid');
+    lnameField.classList.remove('fieldInvalid');
 	}
 }
 function streetError() {
 	if (streetField.value.trim() === '') {
-		streetErrorMsg.classList.remove('toggleHide');
+		streetErrorMsg.classList.remove('toggleHide', 'activeField');
+    streetField.classList.remove('fieldValid');
+    streetField.classList.add('fieldInvalid');
 	} else {
-    streetErrorMsg.classList.add('activeField');
-		streetErrorMsg.classList.add('toggleHide');
+    streetErrorMsg.classList.add('activeField', 'toggleHide');
+		streetField.classList.add('fieldValid');
+    streetField.classList.remove('fieldInvalid');
 	}
 }
 function zipError() {
 	if (zipRegex.exec(zipField.value) === null) {
-		zipErrorMsg.classList.remove('toggleHide');
+		zipErrorMsg.classList.remove('toggleHide', 'activeField');
+    zipField.classList.remove('fieldValid');
+    zipField.classList.add('fieldInvalid');
 	} else {
-    zipErrorMsg.classList.add('activeField');
-		zipErrorMsg.classList.add('toggleHide');
+    zipErrorMsg.classList.add('toggleHide', 'activeField');
+		zipField.classList.add('fieldValid');
+    zipField.classList.remove('fieldInvalid');
 	}
 }
 function cityError() {
 	if (cityField.value.trim() === '') {
-		cityErrorMsg.classList.remove('toggleHide');
+		cityErrorMsg.classList.remove('toggleHide', 'activeField');
+    cityField.classList.remove('fieldValid');
+    cityField.classList.add('fieldInvalid');
 	} else {
-    cityErrorMsg.classList.add('activeField');
-		cityErrorMsg.classList.add('toggleHide');
+    // cityErrorMsg.classList.add('activeField');
+		cityErrorMsg.classList.add('toggleHide', 'activeField');
+    cityField.classList.add('fieldValid');
+    cityField.classList.remove('fieldInvalid');
 	}
 }
 function telError() {
-	if (telField.value.trim() === '') {
-		telErrorMsg.classList.remove('toggleHide');
+	if (telRegex.exec(telField.value) === null) {
+		telErrorMsg.classList.remove('toggleHide', 'activeField');
+    telField.classList.remove('fieldValid');
+    telField.classList.add('fieldInvalid');
 	} else {
-    telErrorMsg.classList.add('activeField');
-		telErrorMsg.classList.add('toggleHide');
+		telErrorMsg.classList.add('toggleHide', 'activeField');
+		telField.classList.add('fieldValid');
+    telField.classList.remove('fieldInvalid');
 	}
 }
 function emailError() {
-	if (emailField.value.trim() === '') {
-		emailErrorMsg.classList.remove('toggleHide');
+	if (emailRegex.exec(emailField.value) === null) {
+		emailErrorMsg.classList.remove('toggleHide', 'activeField');
+    emailField.classList.remove('fieldValid');
+    emailField.classList.add('fieldInvalid');
 	} else {
-    emailErrorMsg.classList.add('activeField');
-		emailErrorMsg.classList.add('toggleHide');
+    emailErrorMsg.classList.add('toggleHide', 'activeField');
+		emailField.classList.add('fieldValid');
+    emailField.classList.remove('fieldInvalid');
 	}
 }
 //Variable & event listener for the "To Payment Button"
@@ -262,9 +283,17 @@ toPaymentBtn.addEventListener('click', activatePaymentForm);
 const paymentSection = document.querySelector('.paymentSection');
 
 //Function to validate the contact details in form - piror to payment section
-function activatePaymentForm() {
-  paymentSection.classList.add('toggleHide');
   //Variable which checks if all fields valid
+
+function activatePaymentForm() {
+  fNameError()
+  lNameError()
+  streetError()
+  zipError()
+  cityError()
+  telError()
+  emailError()
+  // If
   const allFieldsValid = (
     fNameErrorMsg.classList.contains('activeField') &&
     lNameErrorMsg.classList.contains('activeField') &&
@@ -274,12 +303,11 @@ function activatePaymentForm() {
     telErrorMsg.classList.contains('activeField') &&
     emailErrorMsg.classList.contains('activeField')
   );
-
-  // If
   if (allFieldsValid) {
     paymentSection.classList.remove('toggleHide');
-  } 
-
+  } else {
+    paymentSection.classList.add('toggleHide');
+  }
 }
 
 function activateSubmitOrder() {
@@ -295,7 +323,7 @@ function activateSubmitOrder() {
 			console.log('Invalid cvv no');
 			return;
 		}
-	} else if (currentPaymentOption === 'invoicePaymentOption') {
+	} else if (currentPaymentOption === 'invoicePaymentOption' ) {
 		if (ssnRegEx.exec(ssnField.value) === null) {
 			submitOrderBtn.setAttribute('disabled', '');
 			console.log('Invalid SSN format');
