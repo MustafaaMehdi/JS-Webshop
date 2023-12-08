@@ -73,6 +73,8 @@ const resetCart = document.querySelector('#resetBTN');
 //Click event for the reset BTN in checkout section
 resetCart.addEventListener('click', resetCartOrder);
 
+
+const orderSummaryPage = document.querySelector('.orderSummary')
 //Variable to select the card payment option
 
 // const paymentOptions = Array.from(document.querySelectorAll('input[name="payment"]'))
@@ -216,6 +218,7 @@ function fNameError() {
     fnameField.classList.remove('fieldInvalid');
 	}
 }
+
 function lNameError() {
 	if (lNameRegex.exec(lnameField.value) === null) {
 		lNameErrorMsg.classList.remove('toggleHide');
@@ -954,6 +957,7 @@ function addProductToCart() {
 	checkoutSummary.innerHTML = '';
 	totalPriceCartPreview.innerHTML = ``;
 	totalPriceCheckout.innerHTML = ``;
+  orderSummaryPage.innerHTML = ``
 	totalPriceSummary.innerHTML = ``;
 	let discountMessage = '';
 	// checkoutSummary.innerHTML = "";
@@ -1031,28 +1035,46 @@ function addProductToCart() {
 				+
 			</button>
 
-			<button class="previewProductRemoval" id="productRemove${product.serialNo}">Remove
-			</button>
-
-      <button class="previewProductRemoval" id="productRemove${product.serialNo}"><img src="Assets/icons/trashcan.svg" height="30" width="30">
+      <button class="previewProductRemoval" id="productRemove${product.serialNo}"><img src="Assets/icons/trashcan.svg" height="15" width="15">
       </button>
 
 		</div>`;
+
+    orderSummaryPage.innerHTML += `<li class="productAdded">
+		<img
+			class="productCheckoutImage"
+			src="${product.image.src}"
+			width="${product.image.width}"
+			height="${product.image.height}"
+		/>
+
+		<h3 class="ProductCheckoutTitle">${product.name}</h3>
+		<p class="ProductCheckoutPrice">${totalPcsPrice}</p>
+		<div class="productAmount">
+		<p class="productAmountValue">${product.amount}</p>
+		</div>`
 
 		let shippingCost = Math.round(25 + totalPriceSum * 0.1);
 		if (totalProductsAmount >= 15) {
 			shippingCost = 0;
 		}
+    
 		totalAmountIcon.innerHTML = totalProductsAmount;
-		totalPriceCartPreview.innerHTML = `<h3>Total PCS: ${totalProductsAmount}</h3><h3>Total amount: ${totalPriceSum.toFixed(
+		
+    totalPriceCartPreview.innerHTML = `<h3>Total PCS: ${totalProductsAmount}</h3><h3>Total amount: ${totalPriceSum.toFixed(
 			2
 		)} $</h3><div class="discountMessage">${discountMessage}</div>`;
 		totalPriceCheckout.innerHTML = `<h4 class="ShippingCost">Shipping: ${shippingCost}$</h4></h4><div class="discountMessage">${discountMessage}</div><h4>Total PCS: ${totalProductsAmount}</h4><h4>Total amount + shipping: ${(
 			shippingCost + totalPriceSum
 		).toFixed(2)} $`;
-		totalPriceSummary.innerHTML = `${(shippingCost + totalPriceSum).toFixed(
+		totalPriceSummary.innerHTML = `<li>
+    <p class="orderTotalCost">Your total cost: <span id="totalPriceSummary">${(shippingCost + totalPriceSum).toFixed(
 			2
-		)} ${totalProductsAmount}`;
+		)}</p>
+  </li>
+  <li>
+    <p class="orderTotalPcs">Total PCS: ${totalProductsAmount}</p>
+  </li>`;
 
 		disableInvoiceOption(totalPriceSum);
 	});
@@ -1101,8 +1123,8 @@ function updateTimers(totalPriceSum) {
   clearTimeout(msgTimer);
 
   if (totalPriceSum > 0) {
-    resetOrderTimer = setTimeout(resetCartOrder, 1000 * 6);
-    msgTimer = setTimeout(toggleTimeoutMsg, 1000 * 5);
+    resetOrderTimer = setTimeout(resetCartOrder, 1000 * 60 * 15);
+    msgTimer = setTimeout(toggleTimeoutMsg, 1000 * 60 * 15);
   }
 }
 
@@ -1120,10 +1142,12 @@ function updateTimers(totalPriceSum) {
 //   // };
 // }
 //Call two functions at the same time
+
 function updateStock() {
 	pushProductStock();
 	addProductToCart();
 }
+
 function disableInvoiceOption(totalPriceSum) {
 	if (totalPriceSum >= 800) {
 		invoicePaymentBtn.setAttribute('disabled', '');

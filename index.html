@@ -324,48 +324,48 @@
 					</legend>
 					<label for="fname">First name</label>
 					<div class="formInput">
-						<input type="text" id="fname" required="required" class="checkoutInput" />
-						<p id="fNameErrorMsg" class="errorMsg toggleHide">Please provide a valid e-mail address</p>
+						<input type="text" id="fname" required="required" class="checkoutInput" placeholder="John"/>
+						<p id="fNameErrorMsg" class="errorMsg toggleHide">Please provide your first name</p>
 					</div>
 
 					<label for="lname">Last name</label>
 					<div class="formInput">
-						<input type="text" id="lname" class="checkoutInput" />
-						<p id="lNameErrorMsg" class="errorMsg toggleHide">Please provide a valid e-mail address</p>
+						<input type="text" id="lname" required="required" class="checkoutInput" placeholder="Doe"/>
+						<p id="lNameErrorMsg" class="errorMsg toggleHide">Please provide your last name</p>
 					</div>
 
 					<label for="street-address">Street address</label>
 					<div class="formInput">
 						<input type="text" id="street-address" name="street-address" required="required"
-							class="checkoutInput" />
-						<p id="streetError" class="errorMsg toggleHide">Please provide a valid e-mail address</p>
+							class="checkoutInput" placeholder="Streetname 123"/>
+						<p id="streetError" class="errorMsg toggleHide">Please provide a valid street address</p>
 					</div>
 
 					<label for="zip">Zip code </label>
 					<div class="formInput">
-						<input name="zip" id="zip" required="required" type="number" class="checkoutInput" />
-						<p id="zipErrorMsg" class="errorMsg toggleHide">Please provide a valid e-mail address</p>
+						<input name="zip" id="zip" required="required" type="number" class="checkoutInput" placeholder="123 56"/>
+						<p id="zipErrorMsg" class="errorMsg toggleHide">Please provide a valid zip code</p>
 					</div>
 
 					<label for="city">City</label>
 					<div class="formInput">
-						<input type="text" id="city" name="city" class="checkoutInput" />
+						<input type="text" id="city" name="city" class="checkoutInput" placeholder="Doe" required="required"/>
 						<p id="cityErrorMsg" class="errorMsg toggleHide">Please provide a valid e-mail address</p>
 					</div>
 
 					<label for="doorcode">Door code(Optional):</label>
-					<input type="number" id="doorcode" name="doorcode" class="checkoutInput" />
+					<input type="number" id="doorcode" name="doorcode" class="checkoutInput" placeholder="Code for door or Phone #"/>
 
 
 					<label for="tel">Phone (mobile):</label>
 					<div class="formInput">
-						<input type="tel" id="tel" name="tel" required="required" class="checkoutInput" />
+						<input type="tel" id="tel" name="tel" required="required" class="checkoutInput" placeholder="+46 73 2222 333"/>
 						<p id="telErrorMsg" class="errorMsg toggleHide">Please provide a valid e-mail address</p>
 					</div>
 
 					<label for="email">Email Address:</label>
 					<div class="formInput">
-						<input type="email" id="email" name="email" required="required" class="checkoutInput" />
+						<input type="email" id="email" name="email" required="required" class="checkoutInput" placeholder="example@domain.com"/>
 						<p id="emailErrorMsg" class="errorMsg toggleHide">Please provide a valid e-mail address</p>
 					</div>
 				</fieldset>
@@ -452,22 +452,18 @@
 			</p>
 			<p>See your order summary below</p>
 			<ul class="orderSummary">
-				<li class="productAdded">
-					<img class="productSummaryImage" src="Assets/Images/Products/Akryl.jpg" width="60" height="60" />
 
-					<h3 class="ProductCheckoutTitle">Test1</h3>
-					<p class="ProductCheckoutPrice">2590 SEK</p>
-					<p class="productAmount">7</p>
-				</li>
-				<li>
+			</ul>
+			<ul class="productSummaryAmt" id="totalPriceSummary">
+				<!-- <li>
 					<p class="orderTotalCost">Your total cost: <span id="totalPriceSummary"></p>
 				</li>
 				<li>
 					<p class="orderTotalPcs">Total PCS: <span id="totalAmountSummary"></span></p>
 				</li>
-			</ul>
-			<button class="resetAllBtn">Back to home</button>
+			</ul> -->
 		</div>
+		<button class="resetAllBtn">Back to home</button>
 	</section>
 	<div class="timeOutMsgBg toggleHide">
 		<div class="timeOutMsg">
