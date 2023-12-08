@@ -107,8 +107,9 @@ function selectedPaymentOption(e) {
 		invoicePayment.style.display = 'none';
 	} else if (currentPaymentOption === 'invoicePaymentOption') {
 		cardPayment.style.display = 'none';
-		invoicePayment.style.display = 'block';
+		invoicePayment.style.display = 'flex';
 	}
+  
 	clearPaymentField();
 	console.log(currentPaymentOption);
 }
@@ -128,15 +129,7 @@ function toggleTimeoutMsg() {
 	timeOutMsgBg.classList.toggle('toggleHide');
 }
 
-//Variable to select the payment input fields and change event to trigger the validation function
-const ssnField = document.querySelector('#ssn');
-ssnField.addEventListener('input', activateSubmitOrder);
-const cardNoField = document.querySelector('#cardno');
-cardNoField.addEventListener('input', activateSubmitOrder);
-const cardCvvField = document.querySelector('#cvv');
-cardCvvField.addEventListener('input', activateSubmitOrder);
-const cardExpiryField = document.querySelector('#expirydate');
-cardExpiryField.addEventListener('input', activateSubmitOrder);
+
 
 //Variables to define the different validation criteria - RegEx for different fields in the payment forms
 const ssnRegEx = /^(?=[\s\S]{0,13}$)\d{6}(?:\d{2})?[-\s]?\d{4}/;
@@ -151,6 +144,7 @@ const telRegex = /^(07\d{8}|(\+46\s?)?\d{10})$/
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
 //Variable for the order form submit order
 const submitOrderBtn = document.querySelector('#submitorder');
+submitOrderBtn.addEventListener('click', activateSubmitOrder)
 
 function clearPaymentField() {
 	//Kolla om det går applicera form.clear istället
@@ -158,7 +152,7 @@ function clearPaymentField() {
 	cardExpiryField.value = '';
 	cardCvvField.value = '';
 	ssnField.value = '';
-	submitOrderBtn.setAttribute('disabled', '');
+	// submitOrderBtn.setAttribute('disabled', '');
 }
 
 
@@ -173,109 +167,171 @@ const zipErrorMsg = document.querySelector('#zipErrorMsg');
 const cityErrorMsg = document.querySelector('#cityErrorMsg');
 const telErrorMsg = document.querySelector('#telErrorMsg');
 const emailErrorMsg = document.querySelector('#emailErrorMsg');
+const ssnErrorMsg = document.querySelector('#ssnErrorMsg');
+const cardNoErrorMsg = document.querySelector('#cardNoErrorMsg');
+const expiryErrorMsg = document.querySelector('#expiryErrorMsg');
+const cvvErrorMsg = document.querySelector('#cvvErrorMsg')
+
 
 //Variables & event listeners for fields in the contact detail form
 const fnameField = document.querySelector('#fname');
-fnameField.addEventListener('change', activatePaymentForm);
+fnameField.addEventListener('input', activatePaymentForm);
 fnameField.addEventListener('change', fNameError);
 const lnameField = document.querySelector('#lname');
-lnameField.addEventListener('focusout', activatePaymentForm);
-lnameField.addEventListener('change', lNameError);
+lnameField.addEventListener('change', activatePaymentForm && lNameError);
+// lnameField.addEventListener('change', lNameError);
 const streetField = document.querySelector('#street-address');
-streetField.addEventListener('focusout', activatePaymentForm);
-streetField.addEventListener('change', streetError);
+streetField.addEventListener('change', activatePaymentForm && streetError);
+// streetField.addEventListener('change', streetError);
 const zipField = document.querySelector('#zip');
-zipField.addEventListener('focusout', activatePaymentForm);
-zipField.addEventListener('change', zipError);
+zipField.addEventListener('change', activatePaymentForm && zipError);
+// zipField.addEventListener('change', zipError);
 const cityField = document.querySelector('#city');
-cityField.addEventListener('focusout', activatePaymentForm);
-cityField.addEventListener('change', cityError);
+cityField.addEventListener('change', activatePaymentForm && cityError);
+// cityField.addEventListener('change', cityError);
 const telField = document.querySelector('#tel');
-telField.addEventListener('focusout', activatePaymentForm);
-telField.addEventListener('change', telError);
+telField.addEventListener('change', activatePaymentForm && telError);
+// telField.addEventListener('change', telError);
 const emailField = document.querySelector('#email');
-emailField.addEventListener('focusout', activatePaymentForm);
-emailField.addEventListener('change', emailError);
-
+emailField.addEventListener('change', activatePaymentForm && emailError);
+// emailField.addEventListener('change', emailError);
+//Variable to select the payment input fields and change event to trigger the validation function
+const ssnField = document.querySelector('#ssn');
+ssnField.addEventListener('change', activateSubmitOrder && ssnError);
+const cardNoField = document.querySelector('#cardno');
+cardNoField.addEventListener('change', activateSubmitOrder && cardNoError);
+const cardCvvField = document.querySelector('#cvv');
+cardCvvField.addEventListener('change', activateSubmitOrder && cvvError);
+const cardExpiryField = document.querySelector('#expirydate');
+cardExpiryField.addEventListener('change', activateSubmitOrder && expiryError);
 
 function fNameError() {
   if (fNameRegex.exec(fnameField.value) === null) {
-		fNameErrorMsg.classList.remove('toggleHide', 'activeField');
+		fNameErrorMsg.classList.remove('toggleHide');
     fnameField.classList.remove('fieldValid');
     fnameField.classList.add('fieldInvalid');
 	} else {
-    fNameErrorMsg.classList.add('toggleHide', 'activeField');
+    fNameErrorMsg.classList.add('toggleHide');
     fnameField.classList.add('fieldValid');
     fnameField.classList.remove('fieldInvalid');
 	}
 }
 function lNameError() {
 	if (lNameRegex.exec(lnameField.value) === null) {
-		lNameErrorMsg.classList.remove('toggleHide', 'activeField');
+		lNameErrorMsg.classList.remove('toggleHide');
     lnameField.classList.remove('fieldValid');
     lnameField.classList.add('fieldInvalid');
 	} else {
-    lNameErrorMsg.classList.add('toggleHide', 'activeField');
+    lNameErrorMsg.classList.add('toggleHide');
     lnameField.classList.add('fieldValid');
     lnameField.classList.remove('fieldInvalid');
 	}
 }
 function streetError() {
 	if (streetField.value.trim() === '') {
-		streetErrorMsg.classList.remove('toggleHide', 'activeField');
+		streetErrorMsg.classList.remove('toggleHide');
     streetField.classList.remove('fieldValid');
     streetField.classList.add('fieldInvalid');
 	} else {
-    streetErrorMsg.classList.add('activeField', 'toggleHide');
+    streetErrorMsg.classList.add('activeField');
 		streetField.classList.add('fieldValid');
     streetField.classList.remove('fieldInvalid');
 	}
 }
 function zipError() {
 	if (zipRegex.exec(zipField.value) === null) {
-		zipErrorMsg.classList.remove('toggleHide', 'activeField');
+		zipErrorMsg.classList.remove('toggleHide');
     zipField.classList.remove('fieldValid');
     zipField.classList.add('fieldInvalid');
 	} else {
-    zipErrorMsg.classList.add('toggleHide', 'activeField');
+    zipErrorMsg.classList.add('toggleHide');
 		zipField.classList.add('fieldValid');
     zipField.classList.remove('fieldInvalid');
 	}
 }
 function cityError() {
 	if (cityField.value.trim() === '') {
-		cityErrorMsg.classList.remove('toggleHide', 'activeField');
+		cityErrorMsg.classList.remove('toggleHide');
     cityField.classList.remove('fieldValid');
     cityField.classList.add('fieldInvalid');
 	} else {
     // cityErrorMsg.classList.add('activeField');
-		cityErrorMsg.classList.add('toggleHide', 'activeField');
+		cityErrorMsg.classList.add('toggleHide');
     cityField.classList.add('fieldValid');
     cityField.classList.remove('fieldInvalid');
 	}
 }
 function telError() {
 	if (telRegex.exec(telField.value) === null) {
-		telErrorMsg.classList.remove('toggleHide', 'activeField');
+		telErrorMsg.classList.remove('toggleHide');
     telField.classList.remove('fieldValid');
     telField.classList.add('fieldInvalid');
 	} else {
-		telErrorMsg.classList.add('toggleHide', 'activeField');
+		telErrorMsg.classList.add('toggleHide');
 		telField.classList.add('fieldValid');
     telField.classList.remove('fieldInvalid');
 	}
 }
 function emailError() {
 	if (emailRegex.exec(emailField.value) === null) {
-		emailErrorMsg.classList.remove('toggleHide', 'activeField');
+		emailErrorMsg.classList.remove('toggleHide');
     emailField.classList.remove('fieldValid');
     emailField.classList.add('fieldInvalid');
 	} else {
-    emailErrorMsg.classList.add('toggleHide', 'activeField');
+    emailErrorMsg.classList.add('toggleHide');
 		emailField.classList.add('fieldValid');
     emailField.classList.remove('fieldInvalid');
 	}
 }
+
+function ssnError() {
+	if (ssnRegEx.exec(ssnField.value) === null) {
+		ssnErrorMsg.classList.remove('toggleHide');
+    ssnField.classList.remove('fieldValid');
+    ssnField.classList.add('fieldInvalid');
+	} else {
+    ssnErrorMsg.classList.add('toggleHide');
+		ssnField.classList.add('fieldValid');
+    ssnField.classList.remove('fieldInvalid');
+	}
+}
+function cardNoError() {
+	if (cardNoRegEx.exec(cardNoField.value) === null) {
+		cardNoErrorMsg.classList.remove('toggleHide');
+    cardNoField.classList.remove('fieldValid');
+    cardNoField.classList.add('fieldInvalid');
+	} else {
+    cardNoErrorMsg.classList.add('toggleHide');
+		cardNoField.classList.add('fieldValid');
+    cardNoField.classList.remove('fieldInvalid');
+	}
+}
+
+
+function cvvError() {
+	if (cvvRegex.exec(cardCvvField.value) === null) {
+		cvvErrorMsg.classList.remove('toggleHide');
+    cardCvvField.classList.remove('fieldValid');
+    cardCvvField.classList.add('fieldInvalid');
+	} else {
+    cvvErrorMsg.classList.add('toggleHide');
+		cardCvvField.classList.add('fieldValid');
+    cardCvvField.classList.remove('fieldInvalid');
+	}
+}
+
+function expiryError() {
+	if (expiryDateRegEx.exec(cardExpiryField.value) === null) {
+		expiryErrorMsg.classList.remove('toggleHide');
+    cardExpiryField.classList.remove('fieldValid');
+    cardExpiryField.classList.add('fieldInvalid');
+	} else {
+    expiryErrorMsg.classList.add('toggleHide');
+		cardExpiryField.classList.add('fieldValid');
+    cardExpiryField.classList.remove('fieldInvalid');
+	}
+}
+
 //Variable & event listener for the "To Payment Button"
 const toPaymentBtn = document.querySelector('#toPaymentBtn');
 toPaymentBtn.addEventListener('click', activatePaymentForm);
@@ -286,51 +342,66 @@ const paymentSection = document.querySelector('.paymentSection');
   //Variable which checks if all fields valid
 
 function activatePaymentForm() {
-  fNameError()
-  lNameError()
-  streetError()
-  zipError()
-  cityError()
-  telError()
-  emailError()
+
   // If
   const allFieldsValid = (
-    fNameErrorMsg.classList.contains('activeField') &&
-    lNameErrorMsg.classList.contains('activeField') &&
-    streetErrorMsg.classList.contains('activeField') &&
-    zipErrorMsg.classList.contains('activeField') &&
-    cityErrorMsg.classList.contains('activeField') &&
-    telErrorMsg.classList.contains('activeField') &&
-    emailErrorMsg.classList.contains('activeField')
+    fnameField.classList.contains('fieldValid') &&
+    lnameField.classList.contains('fieldValid') &&
+    streetField.classList.contains('fieldValid') &&
+    zipField.classList.contains('fieldValid') &&
+    cityField.classList.contains('fieldValid') &&
+    telField.classList.contains('fieldValid') &&
+    emailField.classList.contains('fieldValid')
   );
   if (allFieldsValid) {
     paymentSection.classList.remove('toggleHide');
   } else {
     paymentSection.classList.add('toggleHide');
+    // fNameError()
+    // lNameError()
+    // streetError()
+    // zipError()
+    // cityError()
+    // telError()
+    // emailError()
   }
 }
 
+const orderConfirmationPage = document.querySelector('.orderConfirmation')
+const navBar = document.querySelector('.navBar')
+
+// const formContainer = document.querySelector('.fieldSetContainer')
+
+function orderConfirmation() {
+  orderConfirmationPage.classList.remove('toggleHide')
+  checkOutPage.classList.add('toggleHide')
+  navBar.classList.add('toggleHide')
+}
+
+// function orderComplete() {
+
+// }
+
 function activateSubmitOrder() {
-	submitOrderBtn.setAttribute('disabled', '');
-	if (currentPaymentOption === 'cardPaymentOption') {
-		if (cardNoRegEx.exec(cardNoField.value) === null) {
-			console.log('Invalid card no');
-			return;
-		} else if (expiryDateRegEx.exec(cardExpiryField.value) === null) {
-			console.log('Invalid expiry format');
-			return;
-		} else if (cvvRegex.exec(cardCvvField.value) === null) {
-			console.log('Invalid cvv no');
-			return;
-		}
-	} else if (currentPaymentOption === 'invoicePaymentOption' ) {
-		if (ssnRegEx.exec(ssnField.value) === null) {
-			submitOrderBtn.setAttribute('disabled', '');
-			console.log('Invalid SSN format');
-			return;
-		}
-	}
-	submitOrderBtn.removeAttribute('disabled');
+  const cardIsValid =
+    cardNoRegEx.exec(cardNoField.value) &&
+    expiryDateRegEx.exec(cardExpiryField.value) &&
+    cvvRegex.exec(cardCvvField.value);
+
+  const ssnIsValid = ssnRegEx.exec(ssnField.value);
+
+  if (currentPaymentOption === 'cardPaymentOption' && cardIsValid) {
+    // submitOrderBtn.removeAttribute('disabled');
+    console.log('card is A OK')
+    orderConfirmation()
+  } else if (currentPaymentOption === 'invoicePaymentOption' && ssnIsValid) {
+    // submitOrderBtn.removeAttribute('disabled');
+    orderConfirmation()
+    console.log('SSN is A OK')
+  } else {
+    console.log('Payment info is NOT OK')
+    // submitOrderBtn.setAttribute('disabled', '');
+  }
 }
 
 // function displayError() {
@@ -899,9 +970,12 @@ function addProductToCart() {
 		}
 
 		// discountEntireOrder(discountMessage, discountProuductOnAmount);
-		const MondayCheck = new Date();
-		console.log(MondayCheck.getDay());
-		if (MondayCheck.getDay() === 2) {
+
+		const mondayCheck = new Date();
+    const timeCheck = mondayCheck.getHours() 
+    console.log(timeCheck)
+		console.log(mondayCheck.getDay());
+		if (mondayCheck.getDay() === 1 && timeCheck > 10) { //1 10
 			//1
 			discountMessage =
 				'10% OFF a wonderful discount on the entire order to start your week<3';
@@ -983,13 +1057,23 @@ function addProductToCart() {
 		disableInvoiceOption(totalPriceSum);
 	});
 
-	if (totalProductsAmount > 0) {
-		resetOrderTimer =
-			setTimeout(resetCartOrder, 1000 * 60 * 15) &&
-			setTimeout(toggleTimeoutMsg, 1000 * 60 * 15);
-	} else {
-		clearTimeout(resetOrderTimer);
-	}
+
+  // let resetOrderTimer
+	// if (totalPriceSum > 0) {
+	// 		setTimeout(resetCartOrder, 1000 * 6) &&
+	// 		setTimeout(toggleTimeoutMsg, 1000 * 6);
+	// } else {
+	// 	clearTimeout(resetCartOrder);
+  //   clearTimeout(toggleTimeoutMsg);
+	// }¨
+
+  if (totalPriceSum > 0) {
+    updateTimers(totalPriceSum);
+  } else {
+    clearTimeout(resetOrderTimer);
+    clearTimeout(msgTimer);
+  }
+  
 	//Add clickEvent to each of the removal Btns
 	Array.from(document.querySelectorAll('.previewProductRemoval')).forEach(
 		(btn) => {
@@ -1007,6 +1091,19 @@ function addProductToCart() {
 	cartMinus.forEach((button) => {
 		button.addEventListener('click', decreaseCartMinus);
 	});
+}
+
+let resetOrderTimer;
+let msgTimer;
+
+function updateTimers(totalPriceSum) {
+  clearTimeout(resetOrderTimer);
+  clearTimeout(msgTimer);
+
+  if (totalPriceSum > 0) {
+    resetOrderTimer = setTimeout(resetCartOrder, 1000 * 6);
+    msgTimer = setTimeout(toggleTimeoutMsg, 1000 * 5);
+  }
 }
 
 // function discountEntireOrder(discountMessage, discountProuductOnAmount) {
@@ -1036,6 +1133,31 @@ function disableInvoiceOption(totalPriceSum) {
 		invoicePaymentBtn.removeAttribute('disabled');
 	}
 }
+
+function clearInputValidation() {
+  const formFields = document.querySelectorAll('.checkoutInput');
+  formFields.forEach(formField => {
+    formField.classList.remove('fieldValid');
+    formField.classList.remove('fieldInvalid');
+  });
+
+  const errorMessages = document.querySelectorAll('.errorMsg');
+  errorMessages.forEach(errorMessage => {
+    errorMessage.classList.add('toggleHide');
+    // formField.classList.remove('activeField');
+  });
+}
+const resetToMainBtn = document.querySelector('.resetAllBtn')
+resetToMainBtn.addEventListener('click', resetToMain)
+
+function resetToMain() {
+  resetCartOrder()
+  orderConfirmationPage.classList.add('toggleHide')
+  cartPreview.classList.add('toggleHide');
+  mainPageWrapper.classList.remove('toggleHide')
+  navBar.classList.remove('toggleHide')
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 //Function for reset BTN in the checkout section, also called when timer runs out for user
 function resetCartOrder() {
 	productStock.forEach((product) => {
@@ -1044,7 +1166,9 @@ function resetCartOrder() {
 	totalAmountIcon.innerHTML = '';
 	cart = [];
 	updateStock();
-	clearPaymentField();
+	clearPaymentField()
+  clearInputValidation()
+  activatePaymentForm()
 	// cartClose()
 	// toggleTimeoutMsg()
 }

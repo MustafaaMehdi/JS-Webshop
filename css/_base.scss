@@ -645,6 +645,36 @@ body {
 				outline: 1px solid #f5c24c;
 				padding: 3px;
 			}
+			.formInput {
+				grid-column: 3 / span 2;
+				color: red;
+				font-weight: 600;
+				input {
+					width: 100%;
+					// outline: 2px solid black;
+					// outline: 2px solid black;
+				}
+				.fieldValid {
+					// background-color: ivory;
+					// border: none;
+					outline: 2px solid rgb(54, 255, 47);
+					// border-radius: 5px;
+				  }
+				.fieldInvalid {
+					background-color: ivory;
+					// border: none;
+					outline: 2px solid red;
+					// border-radius: 5px;
+
+				}
+				  p {
+					margin: 0;
+					text-align: left;
+				  }
+				// border:1px solid rgb(172, 64, 64)
+				// margin-bottom: 1rem;
+				// width: 100%;
+			}
 			h3 {
 				text-align: center;
 			}
@@ -671,34 +701,7 @@ body {
 					// width: 30%;
 					// margin-bottom: 1rem;
 				}
-				.formInput {
-					grid-column: 3 / span 2;
-					color: red;
-					font-weight: 600;
-					input {
-						width: 100%;
-						// outline: 2px solid black;
-						// outline: 2px solid black;
-					}
-					.fieldValid {
-						// background-color: ivory;
-						// border: none;
-						outline: 2px solid rgb(54, 255, 47);
-						// border-radius: 5px;
-					  }
-					.fieldInvalid {
-						background-color: ivory;
-						// border: none;
-						outline: 2px solid red;
-						// border-radius: 5px;
-					  }
-					  p {
-						margin-bottom: 0;
-					  }
-					// border:1px solid rgb(172, 64, 64)
-					// margin-bottom: 1rem;
-					// width: 100%;
-				}
+
 			}
 			.couponCode {
 				border: none;
@@ -720,7 +723,7 @@ body {
 
 	.orderConfirmation {
 		text-align: center;
-		// height: 100vh;
+		height: 80vh;
 		.confirmationMsg {
 			border: 5px solid #f3ca6a;
 			border-left: none;
