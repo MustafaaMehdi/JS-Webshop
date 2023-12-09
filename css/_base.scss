@@ -71,7 +71,29 @@ body {
 					// right: 5px ;
 				}
 			}
-			.navSearchBtn {
+			.continueShopping {
+				// position: absolute;
+				// top:px;
+				background-color: rgb(45, 58, 196);
+				color: #ffffff;
+				width: 200px;
+				height: 40px;
+				text-align: center;
+				position: relative;
+				// border-radius: 50px;
+				border: none;
+				img {
+					height: 30px;
+					position: absolute;
+					left: -8px;
+					top: 5px;
+					
+				}
+			}
+			.continueShopping:hover {
+				background-color: rgb(94, 100, 173);
+			}
+			.sortBtn {
 				flex: 1;
 				border: 1px solid #f3ca6a;
 				border-left: none;
@@ -249,7 +271,7 @@ body {
 			}
 			.navCartBtn:hover,
 			.OpenNavBtn:hover,
-			.navSearchBtn:hover {
+			.sortBtn:hover {
 				background-color: #f3ca6a;
 				// color: #ffffff;
 			}
@@ -713,10 +735,10 @@ body {
 			}
 			.cardPayment,
 			.orderSubmit {
-				display: flex;
-				flex-direction: column;
+				// display: grid;
+				// flex-direction: column;
 				// width: 50%;
-				justify-content: space-between;
+				// justify-content: space-between;
 			}
 		}
 	}

@@ -1,4 +1,11 @@
-/*------------------------------------------Header------------------------------------------*/
+/*------------------------------------------Header variables & Evt listeners------------------------------------------*/
+//Variable for the navigation bar
+const navBar = document.querySelector('.navBar')
+
+
+//Search Input variabel - Variable & event listener for the search bar input variable in header
+const navSearchBar = document.querySelector('.navSearchBar');
+navSearchBar.addEventListener('input', searchBarFilter)
 
 //Burger Menu(Open.Button) - VARIABLE to select the BURGER MENU open button
 const burgerMenuBtn = document.querySelector('.OpenNavBtn');
@@ -54,9 +61,9 @@ const totalPriceCartPreview = document.querySelector('#totalPriceCartPreview');
 const totalPriceCheckout = document.querySelector('.checkoutProductSum');
 //Order confirmation section total price inside cart preview - VARIABLE for the total PRICE in order confirmation section
 const totalPriceSummary = document.querySelector('#totalPriceSummary');
-/*------------------------------------------Header------------------------------------------*/
+/*------------------------------------------Header variables & Evt listeners------------------------------------------*/
 
-/*------------------------------------------PAGE WRAPPERS------------------------------------------*/
+/*------------------------------------------PAGEWRAPPERS------------------------------------------*/
 // Main Page wrapper - Variable to select the main page container
 const mainPageWrapper = document.querySelector('.mainSectionWrapper');
 // Product section Wrapper - Variable to select the product page container
@@ -67,7 +74,96 @@ const cartSummary = document.querySelector('.productPreviewSummary');
 const checkOutPage = document.querySelector('.checkoutWrapper');
 //Checkout summary Wrapper - Variable to select the checkout product summary section
 const checkoutSummary = document.querySelector('.productCheckoutSummary');
+//Variable for the order confirmation page 
+const orderConfirmationPage = document.querySelector('.orderConfirmation')
 /*------------------------------------------PAGE WRAPPERS------------------------------------------*/
+
+/*------------------------------------------Form variables & Evt listeners------------------------------------------*/
+//Contact detial input fields
+const fnameField = document.querySelector('#fname');
+// fnameField.addEventListener('input', activatePaymentForm);
+fnameField.addEventListener('change', fNameError);
+const lnameField = document.querySelector('#lname');
+// lnameField.addEventListener('input', activatePaymentForm);
+lnameField.addEventListener('change', lNameError);
+// lnameField.addEventListener('change', lNameError);
+const streetField = document.querySelector('#street-address');
+// streetField.addEventListener('change', activatePaymentForm);
+streetField.addEventListener('input', streetError);
+// streetField.addEventListener('change', streetError);
+const zipField = document.querySelector('#zip');
+zipField.addEventListener('change', zipError);
+// zipField.addEventListener('input', activatePaymentForm);
+// zipField.addEventListener('change', zipError);
+const cityField = document.querySelector('#city');
+cityField.addEventListener('change', cityError);
+// cityField.addEventListener('input', activatePaymentForm);
+// cityField.addEventListener('change', cityError);
+const telField = document.querySelector('#tel');
+telField.addEventListener('change', telError);
+// telField.addEventListener('input', activatePaymentForm);
+// telField.addEventListener('change', telError);
+const emailField = document.querySelector('#email');
+emailField.addEventListener('change', emailError);
+// emailField.addEventListener('input', activatePaymentForm);
+// emailField.addEventListener('change', emailError);
+
+//Variables & eventlisteners for the payment input fields
+//Variable to select the payment input fields and change event to trigger the validation function
+const ssnField = document.querySelector('#ssn');
+ssnField.addEventListener('change', ssnError);
+ssnField.addEventListener('input', activateSubmitOrder);
+const cardNoField = document.querySelector('#cardno');
+cardNoField.addEventListener('change', cardNoError);
+cardNoField.addEventListener('input', activateSubmitOrder);
+const cardCvvField = document.querySelector('#cvv');
+cardCvvField.addEventListener('change', cvvError);
+cardCvvField.addEventListener('input', activateSubmitOrder);
+const cardExpiryField = document.querySelector('#expirydate');
+cardExpiryField.addEventListener('change', expiryError);
+cardExpiryField.addEventListener('input', activateSubmitOrder);
+
+
+//Variable for form fields error message
+const fNameErrorMsg = document.querySelector('#fNameErrorMsg');
+const lNameErrorMsg = document.querySelector('#lNameErrorMsg');
+const streetErrorMsg = document.querySelector('#streetError');
+const zipErrorMsg = document.querySelector('#zipErrorMsg');
+const cityErrorMsg = document.querySelector('#cityErrorMsg');
+const telErrorMsg = document.querySelector('#telErrorMsg');
+const emailErrorMsg = document.querySelector('#emailErrorMsg');
+const ssnErrorMsg = document.querySelector('#ssnErrorMsg');
+const cardNoErrorMsg = document.querySelector('#cardNoErrorMsg');
+const expiryErrorMsg = document.querySelector('#expiryErrorMsg');
+const cvvErrorMsg = document.querySelector('#cvvErrorMsg')
+const toPaymentErrorMsg = document.querySelector('#toPaymentErrorMsg')
+
+//Variable & eventlistener for the T&Cs checkbox in complete-order section
+const privacyCheckBox = document.querySelector('.privacyNotice')
+privacyCheckBox.addEventListener('change', activateSubmitOrder)
+
+//Variable & event listener for the "To Payment Button" in contact detail section
+const toPaymentBtn = document.querySelector('#toPaymentBtn');
+toPaymentBtn.addEventListener('click', activatePaymentForm);
+//Variable for the go back to details Btn in payment selection page 
+const backToDetailsBtn = document.querySelector('#backToDetails')
+backToDetailsBtn.addEventListener('click', backToDetails)
+//Variable for proceeding to submit order section
+// const finalizeOrderBtn = document.querySelector('#finalizeOrder')
+// finalizeOrderBtn.addEventListener('click', activateSubmitOrder)
+
+//Variable for the contact details order form
+const contactDetils = document.querySelector('.orderForm')
+//Variable for the payment section
+const paymentSection = document.querySelector('.paymentSection');
+//variable for the complete-order sectionn 
+const completeOrder = document.querySelector('.orderSubmit')
+
+
+
+/*------------------------------------------Form variables & Evt listeners------------------------------------------*/
+
+
 //reset BTN in the checkout section
 const resetCart = document.querySelector('#resetBTN');
 //Click event for the reset BTN in checkout section
@@ -141,12 +237,14 @@ const expiryDateRegEx = /^(0[1-9]|1[0-2])\/(20)?(24|25|26|27|28|29)$/;
 const cvvRegex = /^\d{3,4}$/;
 const fNameRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ '-]+$/
 const lNameRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ '-]+$/
+const streetRegex = /^(.+)$/
 const zipRegex = /^[1-9]\d{2}\s?\d{2}$/
-const telRegex = /^(07\d{8}|(\+46\s?)?\d{10})$/
+const cityRegx = /^[a-zA-ZåäöÅÄÖ\s-]+$/
+const telRegex = /^(07\d{8}|\+46\s?\d{8,10})$/
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
 //Variable for the order form submit order
 const submitOrderBtn = document.querySelector('#submitorder');
-submitOrderBtn.addEventListener('click', activateSubmitOrder)
+submitOrderBtn.addEventListener('click', orderConfirmation)
 
 function clearPaymentField() {
 	//Kolla om det går applicera form.clear istället
@@ -160,187 +258,78 @@ function clearPaymentField() {
 
 
 
-//ERROR MESSAGES
-//Variable for first name field error message
-const fNameErrorMsg = document.querySelector('#fNameErrorMsg');
-const lNameErrorMsg = document.querySelector('#lNameErrorMsg');
-const streetErrorMsg = document.querySelector('#streetError');
-const zipErrorMsg = document.querySelector('#zipErrorMsg');
-const cityErrorMsg = document.querySelector('#cityErrorMsg');
-const telErrorMsg = document.querySelector('#telErrorMsg');
-const emailErrorMsg = document.querySelector('#emailErrorMsg');
-const ssnErrorMsg = document.querySelector('#ssnErrorMsg');
-const cardNoErrorMsg = document.querySelector('#cardNoErrorMsg');
-const expiryErrorMsg = document.querySelector('#expiryErrorMsg');
-const cvvErrorMsg = document.querySelector('#cvvErrorMsg')
 
 
-//Variables & event listeners for fields in the contact detail form
-const fnameField = document.querySelector('#fname');
-fnameField.addEventListener('input', activatePaymentForm);
-fnameField.addEventListener('change', fNameError);
-const lnameField = document.querySelector('#lname');
-lnameField.addEventListener('change', activatePaymentForm && lNameError);
-// lnameField.addEventListener('change', lNameError);
-const streetField = document.querySelector('#street-address');
-streetField.addEventListener('change', activatePaymentForm && streetError);
-// streetField.addEventListener('change', streetError);
-const zipField = document.querySelector('#zip');
-zipField.addEventListener('change', activatePaymentForm && zipError);
-// zipField.addEventListener('change', zipError);
-const cityField = document.querySelector('#city');
-cityField.addEventListener('change', activatePaymentForm && cityError);
-// cityField.addEventListener('change', cityError);
-const telField = document.querySelector('#tel');
-telField.addEventListener('change', activatePaymentForm && telError);
-// telField.addEventListener('change', telError);
-const emailField = document.querySelector('#email');
-emailField.addEventListener('change', activatePaymentForm && emailError);
-// emailField.addEventListener('change', emailError);
-//Variable to select the payment input fields and change event to trigger the validation function
-const ssnField = document.querySelector('#ssn');
-ssnField.addEventListener('change', activateSubmitOrder && ssnError);
-const cardNoField = document.querySelector('#cardno');
-cardNoField.addEventListener('change', activateSubmitOrder && cardNoError);
-const cardCvvField = document.querySelector('#cvv');
-cardCvvField.addEventListener('change', activateSubmitOrder && cvvError);
-const cardExpiryField = document.querySelector('#expirydate');
-cardExpiryField.addEventListener('change', activateSubmitOrder && expiryError);
 
-function fNameError() {
-  if (fNameRegex.exec(fnameField.value) === null) {
-		fNameErrorMsg.classList.remove('toggleHide');
-    fnameField.classList.remove('fieldValid');
-    fnameField.classList.add('fieldInvalid');
+
+
+
+
+
+//General inputValidation to shorten the amount of code for each individual field validation
+function inputValidation(fieldRegex, inputField, fieldError) {
+  if (fieldRegex.exec(inputField.value) === null) {
+		fieldError.classList.remove('toggleHide');
+    inputField.classList.remove('fieldValid');
+    inputField.classList.add('fieldInvalid');
 	} else {
-    fNameErrorMsg.classList.add('toggleHide');
-    fnameField.classList.add('fieldValid');
-    fnameField.classList.remove('fieldInvalid');
+    fieldError.classList.add('toggleHide');
+    inputField.classList.add('fieldValid');
+    inputField.classList.remove('fieldInvalid');
 	}
 }
-
+//Functionns which call the inputValidation() individually upon interaction based on their own values
+function fNameError() {
+  inputValidation(fNameRegex, fnameField, fNameErrorMsg)
+}
 function lNameError() {
-	if (lNameRegex.exec(lnameField.value) === null) {
-		lNameErrorMsg.classList.remove('toggleHide');
-    lnameField.classList.remove('fieldValid');
-    lnameField.classList.add('fieldInvalid');
-	} else {
-    lNameErrorMsg.classList.add('toggleHide');
-    lnameField.classList.add('fieldValid');
-    lnameField.classList.remove('fieldInvalid');
-	}
+  inputValidation(lNameRegex, lnameField, lNameErrorMsg)
 }
 function streetError() {
-	if (streetField.value.trim() === '') {
-		streetErrorMsg.classList.remove('toggleHide');
-    streetField.classList.remove('fieldValid');
-    streetField.classList.add('fieldInvalid');
-	} else {
-    streetErrorMsg.classList.add('activeField');
-		streetField.classList.add('fieldValid');
-    streetField.classList.remove('fieldInvalid');
-	}
+  inputValidation(streetRegex, streetField, streetErrorMsg)
 }
 function zipError() {
-	if (zipRegex.exec(zipField.value) === null) {
-		zipErrorMsg.classList.remove('toggleHide');
-    zipField.classList.remove('fieldValid');
-    zipField.classList.add('fieldInvalid');
-	} else {
-    zipErrorMsg.classList.add('toggleHide');
-		zipField.classList.add('fieldValid');
-    zipField.classList.remove('fieldInvalid');
-	}
+  inputValidation(zipRegex, zipField, zipErrorMsg)
 }
 function cityError() {
-	if (cityField.value.trim() === '') {
-		cityErrorMsg.classList.remove('toggleHide');
-    cityField.classList.remove('fieldValid');
-    cityField.classList.add('fieldInvalid');
-	} else {
-    // cityErrorMsg.classList.add('activeField');
-		cityErrorMsg.classList.add('toggleHide');
-    cityField.classList.add('fieldValid');
-    cityField.classList.remove('fieldInvalid');
-	}
+  inputValidation(cityRegx, cityField, cityErrorMsg)
 }
 function telError() {
-	if (telRegex.exec(telField.value) === null) {
-		telErrorMsg.classList.remove('toggleHide');
-    telField.classList.remove('fieldValid');
-    telField.classList.add('fieldInvalid');
-	} else {
-		telErrorMsg.classList.add('toggleHide');
-		telField.classList.add('fieldValid');
-    telField.classList.remove('fieldInvalid');
-	}
+  inputValidation(telRegex, telField, telErrorMsg)
 }
 function emailError() {
-	if (emailRegex.exec(emailField.value) === null) {
-		emailErrorMsg.classList.remove('toggleHide');
-    emailField.classList.remove('fieldValid');
-    emailField.classList.add('fieldInvalid');
-	} else {
-    emailErrorMsg.classList.add('toggleHide');
-		emailField.classList.add('fieldValid');
-    emailField.classList.remove('fieldInvalid');
-	}
+  inputValidation(emailRegex, emailField, emailErrorMsg)
 }
-
 function ssnError() {
-	if (ssnRegEx.exec(ssnField.value) === null) {
-		ssnErrorMsg.classList.remove('toggleHide');
-    ssnField.classList.remove('fieldValid');
-    ssnField.classList.add('fieldInvalid');
-	} else {
-    ssnErrorMsg.classList.add('toggleHide');
-		ssnField.classList.add('fieldValid');
-    ssnField.classList.remove('fieldInvalid');
-	}
+  inputValidation(ssnRegEx, ssnField, ssnErrorMsg)
 }
 function cardNoError() {
-	if (cardNoRegEx.exec(cardNoField.value) === null) {
-		cardNoErrorMsg.classList.remove('toggleHide');
-    cardNoField.classList.remove('fieldValid');
-    cardNoField.classList.add('fieldInvalid');
-	} else {
-    cardNoErrorMsg.classList.add('toggleHide');
-		cardNoField.classList.add('fieldValid');
-    cardNoField.classList.remove('fieldInvalid');
-	}
+  inputValidation(cardNoRegEx, cardNoField, cardNoErrorMsg)
 }
-
-
 function cvvError() {
-	if (cvvRegex.exec(cardCvvField.value) === null) {
-		cvvErrorMsg.classList.remove('toggleHide');
-    cardCvvField.classList.remove('fieldValid');
-    cardCvvField.classList.add('fieldInvalid');
-	} else {
-    cvvErrorMsg.classList.add('toggleHide');
-		cardCvvField.classList.add('fieldValid');
-    cardCvvField.classList.remove('fieldInvalid');
-	}
+  inputValidation(cvvRegex, cardCvvField, cvvErrorMsg)
 }
-
 function expiryError() {
-	if (expiryDateRegEx.exec(cardExpiryField.value) === null) {
-		expiryErrorMsg.classList.remove('toggleHide');
-    cardExpiryField.classList.remove('fieldValid');
-    cardExpiryField.classList.add('fieldInvalid');
-	} else {
-    expiryErrorMsg.classList.add('toggleHide');
-		cardExpiryField.classList.add('fieldValid');
-    cardExpiryField.classList.remove('fieldInvalid');
-	}
+  inputValidation(expiryDateRegEx, cardExpiryField, expiryErrorMsg)
 }
 
-//Variable & event listener for the "To Payment Button"
-const toPaymentBtn = document.querySelector('#toPaymentBtn');
-toPaymentBtn.addEventListener('click', activatePaymentForm);
-//Variable for the payment section
-const paymentSection = document.querySelector('.paymentSection');
 
+
+
+// function finalizeOrder() {
+//   paymentSection.style.display = 'none'
+//   completeOrder.style.display = "grid"
+// }
+
+function backToDetails() {
+  // finalizeOrderBtn.classList.add('toggleHide')
+  backToDetailsBtn.classList.add('toggleHide')
+  paymentSection.style.display = 'none'
+  toPaymentErrorMsg.classList.remove('toggleHide')
+  contactDetils.style.display = "grid"
+  toPaymentBtn.classList.remove('toggleHide')
+  completeOrder.style.display = "none"
+}
 //Function to validate the contact details in form - piror to payment section
   //Variable which checks if all fields valid
 
@@ -357,21 +346,20 @@ function activatePaymentForm() {
     emailField.classList.contains('fieldValid')
   );
   if (allFieldsValid) {
-    paymentSection.classList.remove('toggleHide');
+    // finalizeOrderBtn.classList.remove('toggleHide')
+    backToDetailsBtn.classList.remove('toggleHide')
+    paymentSection.style.display = 'grid';
+    completeOrder.style.display = "grid"
+    toPaymentErrorMsg.classList.add('toggleHide')
+    contactDetils.style.display = "none"
+    toPaymentBtn.classList.add('toggleHide')
   } else {
     paymentSection.classList.add('toggleHide');
-    // fNameError()
-    // lNameError()
-    // streetError()
-    // zipError()
-    // cityError()
-    // telError()
-    // emailError()
+    toPaymentBtn.classList.remove('toggleHide')
   }
 }
 
-const orderConfirmationPage = document.querySelector('.orderConfirmation')
-const navBar = document.querySelector('.navBar')
+
 
 // const formContainer = document.querySelector('.fieldSetContainer')
 
@@ -386,6 +374,9 @@ function orderConfirmation() {
 // }
 
 function activateSubmitOrder() {
+  console.log('Card:', cardNoField.value, 'Expiry:', cardExpiryField.value, 'CVV:', cardCvvField.value);
+  console.log('SSN:', ssnField.value);
+  console.log('Current Payment Option:', currentPaymentOption);
   const cardIsValid =
     cardNoRegEx.exec(cardNoField.value) &&
     expiryDateRegEx.exec(cardExpiryField.value) &&
@@ -393,17 +384,18 @@ function activateSubmitOrder() {
 
   const ssnIsValid = ssnRegEx.exec(ssnField.value);
 
-  if (currentPaymentOption === 'cardPaymentOption' && cardIsValid) {
-    // submitOrderBtn.removeAttribute('disabled');
-    console.log('card is A OK')
-    orderConfirmation()
-  } else if (currentPaymentOption === 'invoicePaymentOption' && ssnIsValid) {
-    // submitOrderBtn.removeAttribute('disabled');
-    orderConfirmation()
+  if ((currentPaymentOption === 'cardPaymentOption' && cardIsValid) && privacyCheckBox.checked) {
+      // finalizeOrder()
+      submitOrderBtn.removeAttribute('disabled');
+      console.log('card is A OK')
+      // orderConfirmation()
+  }  else if ((currentPaymentOption === 'invoicePaymentOption' && ssnIsValid) && privacyCheckBox.checked) {
+    // finalizeOrder()
+    submitOrderBtn.removeAttribute('disabled');
     console.log('SSN is A OK')
   } else {
     console.log('Payment info is NOT OK')
-    // submitOrderBtn.setAttribute('disabled', '');
+    submitOrderBtn.setAttribute('disabled', '');
   }
 }
 
@@ -413,11 +405,9 @@ function activateSubmitOrder() {
 //   }
 // }
 
-//Search function
-//Search Input variabel - Variable to slect the search bar input variable in header
-const navSearchBar = document.querySelector('.navSearchBar');
+
 //Search button variable - Variable to slect the search button in the header
-const searchBtn = document.querySelector('.navSearchBtn');
+// const searchBtn = document.querySelector('.navSearchBtn');
 
 //Variable which is multiplied with the price of all individual inside both the print products function and print to cart function to display the individual prices accumilated and not only the total
 // - should the criterie meet, the prices are increased, if not the price is unchanged
@@ -428,19 +418,19 @@ function weekendPriceBoost() {
 	const weekendCheck = new Date();
 	// Defined variables which store certain days/hours to make the reading of conditions easier
 	//Variable for friday
-	const boostrapFriday = weekendCheck.getDay() === 6; //6
+	const boostrapFriday = weekendCheck.getDay() === 5; //6
 	//Variable for Monday
 	const tomatoSaleMonday = weekendCheck.getDay() === 1; //1
 	//Variable for actual current hour
 	const rightNowHour = weekendCheck.getHours();
 	//Sets condition for the priceBoost variable which increases the amount if certain days are true
 	if (
-		(boostrapFriday && rightNowHour >= 15) ||
-		(tomatoSaleMonday && rightNowHour <= 3)
+		(boostrapFriday && rightNowHour >= 15) || (tomatoSaleMonday && rightNowHour <= 3)
 	) {
 		priceBoost *= 1.15;
 	}
 }
+
 weekendPriceBoost();
 
 //Burger Menu (open.button) - Function for displaying navigation menu when clicking on burger menu BTN
@@ -465,13 +455,18 @@ function cartClose() {
 
 //Checkout section (open.button) - Function which displays checkout section when clicking on proceed to checkout BTN in the cart preview
 function orderSummary() {
+  backToShop.classList.remove('toggleHide')
 	checkOutPage.classList.remove('toggleHide');
+  cartPreviewBtn.classList.add('toggleHide')
 	mainPageWrapper.classList.add('toggleHide');
 	cartPreview.classList.add('toggleHide');
 }
-
+// backToShop.classList.add('toggleHide')
+// cartPreviewBtn.classList.remove('toggleHide')
 //Checkout section (close.button) - Function which hides checkout section and displays product page when clicking on continue shopping BTN in the checkout section
 function toggleCheckout() {
+  cartPreviewBtn.classList.remove('toggleHide')
+  backToShop.classList.add('toggleHide')
 	checkOutPage.classList.add('toggleHide');
 	mainPageWrapper.classList.remove('toggleHide');
 }
@@ -520,21 +515,6 @@ function updateTotalPrice() {
 	// // }
 }
 
-//Variable for:
-
-//Add input event to the searchbar and display function
-navSearchBar.addEventListener('input', (e) => {
-	let keyWord = e.target.value;
-
-	if (keyWord && keyWord.trim().length > 0) {
-		// keyWord = keyWord.trim().toLowerCase()
-		console.log(keyWord);
-	}
-	// else {
-
-	// }
-});
-
 //Array containing the product stock
 const productStock = [
 	{
@@ -550,6 +530,10 @@ const productStock = [
 			height: 100,
 			width: 100,
 		},
+    ratingImage: {
+      src: 'Assets/icons/rating.webp',
+			alt: 'a bouqet of roses indicating high rating',
+    },
 	},
 	{
 		name: 'Cesto Di Rose',
@@ -564,6 +548,10 @@ const productStock = [
 			height: 100,
 			width: 100,
 		},
+    ratingImage: {
+      src: 'Assets/icons/rating2.webp',
+			alt: 'two roses indicating decent rating',
+    },
 	},
 	{
 		name: 'Gioiello Di Fiori',
@@ -578,6 +566,10 @@ const productStock = [
 			height: 100,
 			width: 100,
 		},
+    ratingImage: {
+      src: 'Assets/icons/rating3.webp',
+			alt: 'a single rose indicating low rating',
+    },
 	},
 	{
 		name: 'Cuore Infinito',
@@ -592,6 +584,10 @@ const productStock = [
 			height: 100,
 			width: 100,
 		},
+    ratingImage: {
+      src: 'Assets/icons/rating.webp',
+			alt: 'a bouqet of roses indicating high rating',
+    },
 	},
 	{
 		name: 'Dolce Rose',
@@ -606,6 +602,10 @@ const productStock = [
 			height: 100,
 			width: 100,
 		},
+    ratingImage: {
+      src: 'Assets/icons/rating.webp',
+			alt: 'a bouqet of roses indicating high rating',
+    },
 	},
 	{
 		name: 'Notte Romantica',
@@ -620,6 +620,10 @@ const productStock = [
 			height: 100,
 			width: 100,
 		},
+    ratingImage: {
+      src: 'Assets/icons/rating.webp',
+			alt: 'a bouqet of roses indicating high rating',
+    },
 	},
 	{
 		name: 'Gioiello Di Rose Bianche',
@@ -634,6 +638,10 @@ const productStock = [
 			height: 100,
 			width: 100,
 		},
+    ratingImage: {
+      src: 'Assets/icons/rating.webp',
+			alt: 'a bouqet of roses indicating high rating',
+    },
 	},
 	{
 		name: 'Cuore di Rose Blu',
@@ -648,6 +656,10 @@ const productStock = [
 			height: 100,
 			width: 100,
 		},
+    ratingImage: {
+      src: 'Assets/icons/rating.webp',
+			alt: 'a single rose indicating low rating',
+    },
 	},
 	{
 		name: 'Amore Eterno',
@@ -662,6 +674,10 @@ const productStock = [
 			height: 100,
 			width: 100,
 		},
+    ratingImage: {
+      src: 'Assets/icons/rating.webp',
+			alt: 'three roses indicating decent rating',
+    },
 	},
 	{
 		name: 'Dolcezza In Rosa',
@@ -676,6 +692,10 @@ const productStock = [
 			height: 100,
 			width: 100,
 		},
+    ratingImage: {
+      src: 'Assets/icons/rating3.webp',
+			alt: 'a single rose indicating low rating',
+    },
 	},
 	{
 		name: 'Gioia Del Cuore',
@@ -690,6 +710,10 @@ const productStock = [
 			height: 100,
 			width: 100,
 		},
+    ratingImage: {
+      src: 'Assets/icons/rating.webp',
+			alt: 'a bouqet of roses indicating high rating',
+    },
 	},
 	{
 		name: 'Serenata Rosata',
@@ -704,6 +728,10 @@ const productStock = [
 			height: 100,
 			width: 100,
 		},
+    ratingImage: {
+      src: 'Assets/icons/rating.webp',
+			alt: 'three roses indicating decent rating',
+    },
 	},
 	{
 		name: 'Dolce Amore',
@@ -718,6 +746,10 @@ const productStock = [
 			height: 100,
 			width: 100,
 		},
+    ratingImage: {
+      src: 'Assets/icons/rating.webp',
+			alt: 'a bouqet of roses indicating high rating',
+    },
 	},
 
 	//Bear products
@@ -734,6 +766,10 @@ const productStock = [
 			height: 100,
 			width: 100,
 		},
+    ratingImage: {
+      src: 'Assets/icons/rating.webp',
+			alt: 'a bouqet of roses indicating high rating',
+    },
 	},
 	{
 		name: 'Coccole Di Noce',
@@ -748,6 +784,10 @@ const productStock = [
 			height: 100,
 			width: 100,
 		},
+    ratingImage: {
+      src: 'Assets/icons/rating.webp',
+			alt: 'three roses indicating decent rating',
+    },
 	},
 	{
 		name: 'Gioiello Del Cuore',
@@ -762,6 +802,10 @@ const productStock = [
 			height: 100,
 			width: 100,
 		},
+    ratingImage: {
+      src: 'Assets/icons/rating.webp',
+			alt: 'a bouqet of roses indicating high rating',
+    },
 	},
 	{
 		name: "Orsetto D'Amore",
@@ -776,6 +820,10 @@ const productStock = [
 			height: 100,
 			width: 100,
 		},
+    ratingImage: {
+      src: 'Assets/icons/rating.webp',
+			alt: 'a bouqet of roses indicating high rating',
+    },
 	},
 	{
 		name: 'Rosa Incanto',
@@ -790,6 +838,10 @@ const productStock = [
 			height: 100,
 			width: 100,
 		},
+    ratingImage: {
+      src: 'Assets/icons/rating.webp',
+			alt: 'a bouqet of roses indicating high rating',
+    },
 	},
 	{
 		name: 'Sogno Azzurro',
@@ -804,6 +856,10 @@ const productStock = [
 			height: 100,
 			width: 100,
 		},
+    ratingImage: {
+      src: 'Assets/icons/rating.webp',
+			alt: 'a bouqet of roses indicating high rating',
+    },
 	},
 ];
 
@@ -812,6 +868,7 @@ const productStock = [
 
 //Variable for price range slider
 const priceRangeSlider = document.querySelector('#pricerange');
+
 //Add event to the slider
 priceRangeSlider.addEventListener('input', adjustPriceRange);
 
@@ -824,15 +881,89 @@ alphabetSorting.addEventListener('click', sortByAlphabet);
 let filteredProductStock = [...productStock];
 //Array for filtered products on price range
 let filteredPriceRange = [...productStock];
+
 //Function to display the slider price and apply to array
 function adjustPriceRange() {
+  navSearchBar.value = ''
 	const currentPriceValue = priceRangeSlider.value;
 	priceRangeValue.innerHTML = currentPriceValue;
 	filteredPriceRange = filteredProductStock.filter(
 		(product) => product.price <= currentPriceValue
 	);
-	console.log(filteredPriceRange);
-	updateStock();
+	console.dir(priceRangeSlider)
+	pushProductStock()
+}
+
+const heartShapeFilter = document.querySelector('.heart')
+heartShapeFilter.addEventListener('click', selectedFilterOption)
+const roundShapeFilter = document.querySelector('.round')
+roundShapeFilter.addEventListener('click', selectedFilterOption)
+const squareShapeFilter = document.querySelector('.square')
+squareShapeFilter.addEventListener('click', selectedFilterOption)
+const bearFilter = document.querySelector('.bear')
+bearFilter.addEventListener('click', selectedFilterOption)
+//Generic function to allow the selection of the shape filtering based on the ID which is retrieved
+function sortByShape(shape) {
+	filteredPriceRange = filteredProductStock.filter(
+		(product) => product.category.shape === shape
+	);
+	pushProductStock()
+}
+//Function to select the correct filtering radioBTN ID which is then run by sortByShape based on the shape = ID of the BTN
+function selectedFilterOption(e) {
+	currentFilterOption = e.currentTarget.classList[0];
+		sortByShape(currentFilterOption)
+	console.dir(currentFilterOption);
+}
+// function selectedFilterOption(e) {
+// 	currentFilterOption = e.target.id;
+// 	if (currentFilterOption === 'heartShapeFilter') {
+// 		sortByShape('heart')
+// 	} else if (currentFilterOption === 'roundShapeFilter') {
+// 		sortByShape(round)
+// 	}
+  
+// 	console.log(heart);
+// }
+
+
+
+// function sortByHeartShape() {
+// 	filteredPriceRange = filteredProductStock.filter(
+// 		(product) => product.category.shape === 'heart'
+// 	);
+// 	pushProductStock()
+// }
+
+//Variable for:
+
+//Add input event to the searchbar and display function
+// navSearchBar.addEventListener('input', searchBarFilter)
+
+// function searchBarFilter(e)  {
+// 	let keyWord = e.target.value;
+
+// 	if (keyWord && keyWord.trim().length > 0) {
+// 		keyWord = keyWord.trim().toLowerCase()
+// 		console.log(keyWord);
+// 	}
+
+// };
+// searchBtn.addEventListener('click', searchBarFilter)
+
+
+//Function for the search bar which resets the price range and filters the procuct array based on the keyword
+function searchBarFilter(e) {
+  priceRangeSlider.value = 59.99
+  let keyWord = e.target.value
+  if (keyWord.length > 0) {
+    filteredPriceRange = productStock.filter((product) =>
+      product.name.toLowerCase().includes(keyWord)
+    );
+  } else {
+    filteredPriceRange = [...productStock];
+  }
+  pushProductStock()
 }
 
 // Function for sorting based on name A-Z
@@ -851,6 +982,7 @@ function sortByAlphabet() {
 
 //Function to print out the products to the main product cataloge page
 function pushProductStock() {
+
 	productContainer.innerHTML = '';
 	filteredPriceRange.forEach((product, index) => {
 		productContainer.innerHTML += `<article class="productArticles">
@@ -867,7 +999,7 @@ function pushProductStock() {
             <p class="articlePrice">
                 ${(product.price * priceBoost).toFixed(
 									2
-								)} $<span class="articleRating"> <img src="Assets/icons/Rating.webp" alt="" height="50">${
+								)} $<span class="articleRating"> <img src="${product.ratingImage.src}" alt=${product.ratingImage.alt} height="50">${
 			product.rating
 		}</span>
             </p>
@@ -1177,8 +1309,7 @@ resetToMainBtn.addEventListener('click', resetToMain)
 function resetToMain() {
   resetCartOrder()
   orderConfirmationPage.classList.add('toggleHide')
-  cartPreview.classList.add('toggleHide');
-  mainPageWrapper.classList.remove('toggleHide')
+  toggleCheckout()
   navBar.classList.remove('toggleHide')
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
@@ -1189,6 +1320,9 @@ function resetCartOrder() {
 	});
 	totalAmountIcon.innerHTML = '';
 	cart = [];
+  navSearchBar.value = ''
+  filteredPriceRange = [...productStock];
+  backToDetails()
 	updateStock();
 	clearPaymentField()
   clearInputValidation()
