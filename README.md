@@ -2,21 +2,25 @@
 Bowls by Baba is hopefully just the beginning of further showcasing the hidden treasures of my father's woodworking mastery. This assignment was a great opportunity for me to both aqcuire new skills as well as pay homage to my father's work. Each piece presented here is a testament to his unparalleled skill, encapsulating a legacy of artistry, precision, and dedication. It's not merely a display of products; it's a celebration of his artistry that has fueled my own love for creativity.
  
 ## Demolink
-https://medieinstitutet.github.io/fed23d-js-grundkurs-webshop-alahojat/
- 
+### [Live link to Elegant roses webshop](https://medieinstitutet.github.io/fed23d-js-grundkurs-webshop-MustafaaMehdi/)  
  
 ## Authors
 - [@MustafaaMehdi](https://github.com/MustafaaMehdi)
- 
+ a
 ## Built with
 ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
  
  
  
  
-## Outtakes from final result default mode
+## Outtakes from live page
  
-![Desktop](https://medieinstitutet.github.io/fed23d-js-grundkurs-webshop-alahojat/assets/readme-screenshots/bowls-by-baba-1.png)
+|  | Image 2 | 
+|---------|---------|
+| ![Alt text 1](https://medieinstitutet.github.io/fed23d-js-grundkurs-webshop-MustafaaMehdi/Pagepreview/CheckoutLight) | ![Alt text 2](https://medieinstitutet.github.io/fed23d-js-grundkurs-webshop-alahojat/assets/readme-screenshots/bowls-by-baba-1.png) |
+| Description 1 | Description 2 | 
+
+![Desktop]
 ![Mobile](https://medieinstitutet.github.io/fed23d-js-grundkurs-webshop-alahojat/assets/readme-screenshots/bowls-by-baba-mobile.png)
 ![Cart overview](https://medieinstitutet.github.io/fed23d-js-grundkurs-webshop-alahojat/assets/readme-screenshots/cart-overview.png)
 ![Payment section](https://medieinstitutet.github.io/fed23d-js-grundkurs-webshop-alahojat/assets/readme-screenshots/payment-section.png)
