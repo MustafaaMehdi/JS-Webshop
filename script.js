@@ -1006,7 +1006,6 @@ function pushProductStock() {
                 width="${product.image.width}"
                 height="${product.image.height}"
                 alt="${product.image.alt}"
-                loading="lazy"
             />
             <p class="articlePrice">
                 ${(product.price * priceBoost).toFixed(
