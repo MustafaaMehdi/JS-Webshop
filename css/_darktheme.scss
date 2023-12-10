@@ -1,0 +1,255 @@
+
+.darkTheme {
+	background: #111d29;
+    color: white;
+	header {
+        color: #111d29;
+		.headerLogo {
+			.headerLogoText {
+				color: #ecf0f1;
+			}
+		}
+		nav {
+			.navCartBtn {
+				.productInCart {
+					background-color: #f8fcff;
+				}
+			}
+			.continueShopping {
+				background-color: rgb(56, 71, 236);
+				color: #ffffff;
+			}
+			.continueShopping:hover {
+				background-color: rgb(7, 17, 121);
+			}
+			.sortBtn {
+				border: 1px solid #f3ca6a;
+			}
+			.cartPreview {
+				background: #2c3e50;
+                color: white;
+				.cartPreviewArrow {
+					background-color: #2c3e50;
+				}
+
+				.cartCloseBtn {
+					background-color: rgb(131, 34, 52);
+				}
+				.cartCloseBtn:hover {
+					background-color: rgb(172, 77, 93);
+				}
+				.summaryHeading {
+					border-bottom: 1px solid black;
+				}
+				.productPreviewSummary {
+					.productsInCart {
+                        color: white;
+					background-color: #101f2e;
+				}
+
+
+				}
+        .cartProductSum {
+            color: white;
+          background-color: #101f2e;
+        }
+
+				.checkoutBtn {
+					background-color: #101f2e;
+                    color: white;
+				}
+				.checkoutBtn:hover {
+					background-color: #0f345a;
+				}
+			}
+            .navCartBtn,
+			.OpenNavBtn,
+			.sortBtn {
+				background-color: #3069a1;
+				// color: #ffffff;
+			}
+			.navCartBtn:hover,
+			.OpenNavBtn:hover,
+			.sortBtn:hover {
+				background-color: #f3ca6a;
+				// color: #ffffff;
+			}
+
+			.navSearchBar {
+				border: 1px solid #f3ca6a;
+			}
+			.navMenu {
+				background-color: rgb(107, 107, 107);
+				.closeNavBtn {
+					background-color: rgb(216, 93, 114);
+				}
+				.closeNavBtn:hover {
+					background-color: rgb(172, 77, 93);
+				}
+				ul {
+					a {
+						color: #fff;
+					}
+					a:hover {
+						color: #ffb406;
+					}
+				}
+			}
+		}
+	}
+    .previewProductRemoval,
+    .minusOneProduct,
+    .addOneProduct,
+    .productAmount {
+        margin-top: 13px;
+        border: 1px solid #0e0b0b;
+        background-color: #39546e;
+        color: white;
+    }
+    .previewProductRemoval:hover,
+    .addOneProduct:hover,
+    .minusOneProduct:hover {
+        background-color: rgb(172, 168, 168);
+    }
+	.sectionHeading {
+        color: white;
+	}
+
+	.rightDivider,
+	.leftDivider {
+		border-bottom: 1px solid #ffb406;
+	}
+	.mainSectionWrapper {
+
+		.productSec {
+			background-color:  #111d29;
+			.sortBtn {
+				background-color: rgb(252, 246, 246);
+			}
+			.sortBtn:hover {
+				background-color: rgb(172, 168, 168);
+			}
+			.sortMenu {
+                color: white;
+			}
+			.productContainer {
+				.productArticles {
+					.articleImage {
+						filter: brightness(0.8);
+						border-radius: 5px;
+					}
+                    .articleImage:hover {
+                        filter: brightness(1);
+                    }
+					.articleTitle,
+					.articlePrice {
+						color: white;
+					}
+					.articlePrice {
+						.articleRating {
+							background-color: #c4a2a2;
+						}
+					}
+					.articleBtn {
+						display: flex;
+						justify-content: space-between;
+						.articleAddToCart,
+						.articleRemoveFromCart {
+                            background-color: #39546e;
+                            color: white;
+						}
+						.articleAddToCart {
+							border-radius: 0 0 5px 0;
+						}
+						.articleAmnt {
+							background-color: #111d29;
+						}
+						.articleAddToCart:hover,
+						.articleRemoveFromCart:hover {
+							background-color: #c0a8a8;
+						}
+						.articleAddToCart:active,
+						.articleRemoveFromCart:active {
+							background-color: #8f4949;
+						}
+					}
+
+				}
+
+				.productArticles:nth-child(even) {
+					background-color: #111d29;
+				}
+			}
+			.addedToCart {
+				background: #101920;
+
+				.addedBtn {
+					background: #39546e;
+					color: white;
+				}
+				.addedBtn:hover {
+					background-image: linear-gradient(
+						to right,
+						#d1a9a9,
+						rgb(255, 127, 148),
+					);
+				}
+			}
+		}
+
+		.reviewSec {
+			// background-color: aqua;
+			background-color: #2c3e50;
+
+			.reviewsContainer {
+				.reviews {
+					h3 {
+						color: #ffffff;
+						background-color: rgba($color: #c24f4f, $alpha: 0.5);
+					}
+				}
+			}
+		}
+	}
+
+	.checkoutWrapper {
+		.continueShopping {
+			background-color: rgb(45, 58, 196);
+			color: #ffffff;
+		}
+		.continueShopping:hover {
+			background-color: rgb(94, 100, 173);
+		}
+		.checkoutSec {
+			background-color: #2c3e50;
+
+
+			.formInput {
+				color: rgb(255, 255, 255);
+			}
+			.checkoutProductSum {
+				background-color: #39546e;
+			}
+		}
+	}
+
+
+
+	.timeOutMsgBg {
+	.timeOutMsg {
+		background: #2c3e50;
+	}
+}
+	footer {
+		background-color: #2c3e50;
+		li {
+			border-bottom: 1px solid #000000;
+			a {
+				color: #fff;
+			}
+			a:hover {
+				background-color: #dfd1d1;
+			}
+		}
+	}
+}

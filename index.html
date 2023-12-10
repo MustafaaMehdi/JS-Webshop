@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class='no-js lt-ie9 lt-ie8 lt-ie7'> <![endif]-->
 
 <html lang="en">
 
@@ -39,15 +38,11 @@
 
 <body>
 	<header>
-		<!-- <div class='headingLogo'> -->
 
 		<figure class="headerLogo">
 			<img src="Assets/icons/lightThemeLogo.svg" class="logoColor" />
 			<h1 class="headerLogoText">Elegant Roses</h1>
 		</figure>
-		<!-- </div> -->
-		<!-- <p class='checkOutProd'>TROLLY</p>
-			<p class='checkOutAmount'>PRICE</p> -->
 		<nav class="navBar">
 			<button class="continueShopping toggleHide">
 				<img src="Assets/icons/leftArrow.svg" alt="arrow pointing left" width="50" height="50" />Continue shopping
@@ -57,14 +52,12 @@
 					class="productInCart"></span>
 			</button>
 
-			<!-- <div class="cartPreview"> -->
 			<div class="cartPreview toggleHide">
 				<span class="cartPreviewArrow"></span>
 				<button class="cartCloseBtn">
 					<img class="cartPreviewImg" src="Assets/icons/closeBtn.svg" width="20" height="20" />
 				</button>
 				<h2 class="summaryHeading">Shopping cart</h2>
-				<!-- <article class="productPreviewSummary"> -->
 				<ul class="productPreviewInfo">
 					<li>
 						<h3>Product</h3>
@@ -90,16 +83,14 @@
 				<button class="checkoutBtn">Proceed to checkout</button>
 			</div>
 			<input type="text" class="navSearchBar" />
-			<button class="sortBtn">
+			<button id="filterBtn" class="sortBtn">
 				<img src="Assets/icons/Filter.svg" alt="" height="30" width="50" />
 			</button>
-			<!-- <button class="navSearchBtn">
-				<img src="Assets/icons/Search.svg" alt="" width="30px" height="30px" />
-			</button> -->
+			<button id="toggleFilterBtn" class="sortBtn toggleHide"><img src="Assets/icons/clearFilterIcon.svg" width="30" height="30"></button>
+
 			<button class="OpenNavBtn">
 				<img src="Assets/icons/burgerMenu.svg" alt="" width="30px" height="30px" />
 			</button>
-			<!-- <div class="navMenu "> -->
 			<div class="navMenu toggleHide">
 				<button class="closeNavBtn">
 					<img src="Assets/icons/closeBtn.svg" width="30" height="30" />
@@ -115,32 +106,19 @@
 				</ul>
 			</div>
 
-			<!-- <ul>
-					<li class='navList'><a href='#'>Cart</a></li>
-					<li class='navList'><a href=''><input type='text' placeholder='Search roses' /></a></li>
-					<li class='navList'><a href='#'>Contact</a></li> -->
-			<!-- <li class='navSearch'>
-						<span class='searchIcon'>Search</span
-						><input type='text' placeholder='Search roses' />
-					</li> -->
-			<!-- </ul> -->
+
 		</nav>
 	</header>
 
 	<div class="mainSectionWrapper">
-		<!-- <div class="mainSectionWrapper toggleHide"> -->
 
 		<section class="productSec">
 			<h2 class="sectionHeading">
 				<span class="leftDivider"></span>Products<span class="rightDivider"></span>
 			</h2>
-
-			<!-- <button class="sortBtn">
-				<img src="Assets/icons/Filter.svg" alt="" height="30" width="50" />
-			</button> -->
 			<div class="sortMenu toggleHide">
-				<!-- <div class="sortMenu"> -->
 				<h4>Sort products:</h4>
+
 				<div class="priceSorting">
 					<label for="pricerange">Price range: </label>
 					<span class="rangeMinVal">0$</span><input type="range" id="pricerange" class="priceRangeInput"
@@ -148,66 +126,44 @@
 					<span class="rangeVal">0$</span>
 
 				</div>
-				
-				<button class="sortAlpha">A-Z</button>
-				<select name="sorting" id="sorting">
-					<option value="fprice">Price falling</option>
-					<option value="rprice">Price rising</option>
-					<option value="Bluecategory">Blue category</option>
-					<option value="redcategory">red catogory</option>
-				</select>
-				<label for="sorting">Rose color</label>
 
-				<select name="sorting" id="sorting">
-					<option value="fprice">Price falling</option>
-					<option value="rprice">Price rising</option>
-					<option value="Blue category">Blue category</option>
-					<option value="red category">Audi</option>
-				</select>
-				<p>Select rose color category</p>
-				<label for="blue">Blue</label>
-				<input type="radio" name="category" />
-				<label for="red">Red</label>
-				<input type="radio" name="category" />
-				<label for="yellow">Yellow</label>
-				<input type="radio" name="category" />
-				<label for="pink">Pink</label>
-				<input type="radio" name="category" />
+				<p class="filterTitle">Filter on prefered category/shape</p>
+				<div class="shapeFilter">
+				<button class="round shapeFilterOption"><img src="Assets/icons/circleShape.svg" width="40" height="40"></button>
+				<button class="heart shapeFilterOption"><img src="Assets/icons/heartShape.svg" width="40" height="40"></button>
+				<button class="square shapeFilterOption"><img src="Assets/icons/squareShape.svg" width="40" height="40"></button> 
+				<button class="bear shapeFilterOption"><img src="Assets/icons/teddyShape.svg" width="40" height="40"></button>
+			</div>
 
-				<p>Select box Shape category</p>
-				<button class="round"><img class="circle" src="Assets/icons/circleShape.svg" width="40" height="40"></button>
-				<button class="heart"><img src="Assets/icons/heartShape.svg" width="40" height="40"></button>
-				<button class="square"><img src="Assets/icons/squareShape.svg" width="40" height="40"></button> 
-				<button class="bear"><img src="Assets/icons/teddyShape.svg" width="40" height="40"></button>
+			<p class="filterTitle">Filter on prefered color</p>
+			<div class="colorFilter">
+
+				<button class="red colorFilterOption">Red</button>
+				<button class="blue colorFilterOption">Blue</button>
+				<button class="white colorFilterOption">White</button> 
+				<button class="black colorFilterOption">Black</button>
+				<button class="pink colorFilterOption">Pink</button>
+				<button class="brown colorFilterOption">Brown</button>
+				<button class="gray colorFilterOption">Gray</button>
+			</div>
+
+			<p class="filterTitle">Sort product</p>
+			<div class="sortOption">
+				<button class="sortAlpha sortingOption"><img src="Assets/icons/alphabetSort.svg" height="30" width="30"></button>
+				<button class="sortAlphaReverse sortingOption"><img src="Assets/icons/alphaReverseSort.svg" height="30" width="30"></button>
+				<button class="sortPriceAsc sortingOption"><img src="Assets/icons/priceAscSort.svg" height="30" width="30"></button>
+				<button class="sortPriceDec sortingOption"><img src="Assets/icons/priceDecSort.svg" height="30" width="30"></button>
+				<button class="sortRatingAsc sortingOption"><img src="Assets/icons/ratingAscSort.svg" height="30" width="30"></button>
+				<button class="sortRatingDec sortingOption"><img src="Assets/icons/ratingDecSort.svg" height="30" width="30"></button>
+			</div>
+			</div>
+			<div class="addedToCart">
+				<p class="addedMsg"></p>
+				<button class="addedBtn">To checkout</button>
 			</div>
 
 			<div class="productContainer">
-				<!-- <div class="articleSort"> -->
-				<!-- <button class="sortBtn"><img src="Assets/icons/Filter.svg" alt="" height="30" width="50"></button>
-						<div class="sortMenu"> 
-						</div> -->
-				<!-- </div> -->
-				<!-- <article class="productArticles">
-						<h3 class="articleTitle">Test1</h3>
-						<img
-							class="articleImage"
-							src="Assets/Images/Products/Akryl.jpg"
-							width="100"
-							height="100"
-						/>
 
-						<p class="articlePrice">
-							590 SEK<span class="articleRating">4/5 <img src="Assets/icons/Star.svg" alt=""></span>
-						</p>
-						
-					<div class="articleBtn">
-						<button class="articleRemoveFromCart">Remove</button>
-						<p class="articleAmnt">In cart: <span>0</span></p>
-						<button class="articleAddToCart">Add</button>
-					</div>
-
-
-					</article> -->
 			</div>
 		</section>
 
@@ -218,31 +174,27 @@
 			<ul class="instructionList">
 				<li>
 					<img src="Assets/icons/1Choose.png" alt="" width="150" height="150" />
-					<!-- </li>
-					<li> -->
+
 					<h3>Select Symbols of Eternal Love:</h3>
 					<p>Explore our diverse collection of timeless roses each a unique expression of enduring love.</p>
 				</li>
 				<li>
 					<img src="Assets/icons/2Payment.png" alt="" width="150" height="150" />
-					<!-- </li>
-					<li> -->
+
 					<h3>Convenient Payment Options:</h3>
 					<p>Enjoy a seamless checkout experience with our flexible payment methods, including card payments
 						and hassle-free invoicing.</p>
 				</li>
 				<li>
 					<img src="Assets/icons/3Delivery.png" alt="" width="150" height="120" />
-					<!-- </li>
-					<li> -->
+
 					<h3>Sit Back and Unwind:</h3>
 					<p>While we handle the delivery, take a moment to relax and savor life. Our sustainable delivery
 						methods ensure a conscientious service.</p>
 				</li>
 				<li>
 					<img src="Assets/icons/4Enjoy.png" alt="" width="150" height="150" />
-					<!-- </li>
-					<li> -->
+
 					<h3>Cherish the Extraordinary:</h3>
 					<p>Gift your loved ones with a symbol of love like no other. ElegantRoses - A timeless emblem of
 						eternity.</p>
@@ -269,7 +221,6 @@
 					<img src="Assets/Images/Reviews/Review3.jpg" alt="girl holding box of flowers" height="300"
 						width="300" />
 					<h3>"An elegant touch to any occasion – the perfect gift."</h3>
-					<!-- <p>-A poor soul</p> -->
 				</article>
 				<article class="reviews">
 					<img src="Assets/Images/Reviews/Review4.jpg" alt="girl holding box of flowers" height="300"
@@ -277,12 +228,10 @@
 					<h3>
 						"A touch of romance delivered in a stylish box – simply divine."
 					</h3>
-					<!-- <p>-A poor soul</p> -->
 				</article>
 			</div>
 		</section>
 	</div>
-	<!-- <div class="checkoutWrapper"> -->
 	<section class="checkoutWrapper toggleHide">
 		<h2 class="sectionHeading">
 			<span class="leftDivider"></span>Checkout<span class="rightDivider"></span>
@@ -293,26 +242,11 @@
 			<div>
 				<ul class="productCheckoutSummary">
 					<li class="productAdded">
-						<img class="productCheckoutImage" src="Assets/Images/Products/Akryl.jpg" width="60"
-							height="60" />
-
-						<h3 class="ProductCheckoutTitle">Test1</h3>
-						<p class="ProductCheckoutPrice">2590 SEK</p>
-						<div class="productAmount">
-							<button class="productAmountSub">-</button><input class="productAmountValue"
-								type="number" /><button class="productAmountAdd">
-								+
-							</button>
-						</div>
+						<p>No products in card :/</p>
 					</li>
 				</ul>
 			</div>
 			<ul class="checkoutProductSum">
-				<li><label for="coupon">
-						<h4>Coupon code</h4>
-					</label>
-					<input type="text" name="coupon" id="coupon" class="checkoutInput" /><button>Apply</button>
-				</li>
 				<li>
 					<h4 class="productSummaryAmount">Total products: <span id="totalAmountCheckout"></span></h4>
 				</li>
@@ -321,6 +255,10 @@
 					<h4 class="productSummarySum">Total amount: <span id="totalPriceCheckout"></span></h4>
 				</li>
 			</ul>
+			<label for="coupon">
+				<h4>Promo code</h4>
+			</label>
+			<input type="text" name="coupon" id="coupon" class="checkoutInput" /><button>Apply</button>
 			<form action="" class="fieldSetContainer">
 				<fieldset class="orderForm">
 					<legend>
@@ -373,27 +311,15 @@
 						<p id="emailErrorMsg" class="errorMsg toggleHide">Please provide a valid e-mail address</p>
 					</div>
 				</fieldset>
-
-				<!-- <fieldset class="couponCode">
-						<legend>Coupon code</legend>
-						<input
-							type="text"
-							name="coupon"
-							id="coupon"
-							class="checkoutInput"
-						/>
-					</fieldset> -->
 					<p id="toPaymentErrorMsg" class="paymentErrorMsg">Please make sure to fill all mandatory fields (containing a * symbol)</p>
-				<button class="continueShopping" type="button" id="toPaymentBtn">Proceed to payment</button>
+				<button class="proceedToPayment" type="button" id="toPaymentBtn">Proceed to payment</button>
 
 				<fieldset class="paymentSection toggleHide">
 					<legend>
 						<h4>Choose payment method</h4>
 					</legend>
-					<!-- <label> <input type="radio" name="payment" id="cardPaymentOption" />Card </label>
-						<label> <input type="radio" name="payment" id="invoicePaymentOption" checked/>Invoice </label> -->
-					<button id="cardPaymentOption" type="button">Card </button>
-					<button id="invoicePaymentOption" type="button">Invoice </button>
+					<button class="paymentOption" id="cardPaymentOption" type="button">Card </button>
+					<button class="paymentOption invoiceBtn" id="invoicePaymentOption" type="button">Invoice </button>
 					<div class="cardPayment" id="cardPaymentForm">
 						<label for="cardno">Card number:</label>
 						<div class="formInput">
@@ -438,18 +364,17 @@
 						<label for="privacynotice">I confirm that I have read and accepted
 							<a href="#">Elgantroses T&Cs</a>*</label>
 					</div>
-					<button disabled type="button" id="submitorder">Submit order</button>
+					<button class="checkoutFormBtn" disabled type="button" id="submitorder">Submit order</button>
 				</fieldset>
 
-				<button class="continueShopping toggleHide" type="button" id="backToDetails">Back to contact details</button>
+				<button class="proceedToPayment toggleHide" type="button" id="backToDetails">Back to contact details</button>
 				<button class="continueShopping toggleHide" type="button" id="finalizeOrder">Finalize order</button>
-				<button class="continueShopping" id="resetBTN" type="reset">Reset order</button>
+				<button class="resetOrder" id="resetBTN" type="reset">Reset order</button>
 			</form>
 		</div>
 	</section>
 
 	<section class="orderConfirmation toggleHide">
-		<!-- <section class="orderConfirmation toggleHide"> -->
 		<h2 class="sectionHeading">
 			<span class="leftDivider"></span>Order confirmation<span class="rightDivider"></span>
 		</h2>
@@ -457,20 +382,13 @@
 			<h3>Thank you for your order</h3>
 			<p>
 				We are happy to let you know that your order will be delivered to you
-				in {JS} Your order confirmation will be emailed shortly
+				in 3-5 working days Your order confirmation will be emailed shortly
 			</p>
 			<p>See your order summary below</p>
 			<ul class="orderSummary">
 
 			</ul>
 			<ul class="productSummaryAmt" id="totalPriceSummary">
-				<!-- <li>
-					<p class="orderTotalCost">Your total cost: <span id="totalPriceSummary"></p>
-				</li>
-				<li>
-					<p class="orderTotalPcs">Total PCS: <span id="totalAmountSummary"></span></p>
-				</li>
-			</ul> -->
 		</div>
 		<button class="resetAllBtn">Back to home</button>
 	</section>

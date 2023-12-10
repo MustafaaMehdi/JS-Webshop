@@ -1,8 +1,8 @@
 /*------------------------------------------Header variables & Evt listeners------------------------------------------*/
 //Variable for the navigation bar
 const navBar = document.querySelector('.navBar')
-
-
+const themeToggleBtn = document.querySelector('.themeToggleBtn')
+themeToggleBtn.addEventListener('click', themeToggle)
 //Search Input variabel - Variable & event listener for the search bar input variable in header
 const navSearchBar = document.querySelector('.navSearchBar');
 navSearchBar.addEventListener('input', searchBarFilter)
@@ -40,7 +40,7 @@ const backToShop = document.querySelector('.continueShopping');
 backToShop.addEventListener('click', toggleCheckout);
 
 //Sorting menu (Toggle.Button) - VARIABLE for sorting menu toggle BTN
-const sortBtn = document.querySelector('.sortBtn');
+const sortBtn = document.querySelector('#filterBtn');
 //Sorting menu (Toggle.Button) - Click EVENT for sorting menu toggle BTN
 sortBtn.addEventListener('click', sortToggle);
 //Sort menu screen - VARIABLE which selects the sort menu screen
@@ -201,13 +201,12 @@ let currentPaymentOption = 'cardPaymentOption';
 function selectedPaymentOption(e) {
 	currentPaymentOption = e.target.id;
 	if (currentPaymentOption === 'cardPaymentOption') {
-		cardPayment.style.display = 'flex';
+		cardPayment.style.display = 'grid';
 		invoicePayment.style.display = 'none';
 	} else if (currentPaymentOption === 'invoicePaymentOption') {
 		cardPayment.style.display = 'none';
-		invoicePayment.style.display = 'flex';
+		invoicePayment.style.display = 'grid';
 	}
-  
 	clearPaymentField();
 	console.log(currentPaymentOption);
 }
@@ -329,6 +328,7 @@ function backToDetails() {
   contactDetils.style.display = "grid"
   toPaymentBtn.classList.remove('toggleHide')
   completeOrder.style.display = "none"
+  clearPaymentField()
 }
 //Function to validate the contact details in form - piror to payment section
   //Variable which checks if all fields valid
@@ -356,7 +356,19 @@ function activatePaymentForm() {
   } else {
     paymentSection.classList.add('toggleHide');
     toPaymentBtn.classList.remove('toggleHide')
+    fNameError()
+    lNameError()
+    streetError()
+    zipError()
+    cityError()
+    telError()
+    emailError()
+    ssnError()
+    cardNoError()
+    cvvError()
+    expiryError()
   }
+  submitOrderBtn.setAttribute('disabled', '');
 }
 
 
@@ -374,8 +386,6 @@ function orderConfirmation() {
 // }
 
 function activateSubmitOrder() {
-  console.log('Card:', cardNoField.value, 'Expiry:', cardExpiryField.value, 'CVV:', cardCvvField.value);
-  console.log('SSN:', ssnField.value);
   console.log('Current Payment Option:', currentPaymentOption);
   const cardIsValid =
     cardNoRegEx.exec(cardNoField.value) &&
@@ -418,14 +428,15 @@ function weekendPriceBoost() {
 	const weekendCheck = new Date();
 	// Defined variables which store certain days/hours to make the reading of conditions easier
 	//Variable for friday
-	const boostrapFriday = weekendCheck.getDay() === 5; //6
-	//Variable for Monday
+	const boostrapFriday = weekendCheck.getDay() === 5; //5
+	const inflationWeekend = (weekendCheck. getDay() === 6 || weekendCheck.getDate() === 0)
 	const tomatoSaleMonday = weekendCheck.getDay() === 1; //1
 	//Variable for actual current hour
+  console.log(inflationWeekend)
 	const rightNowHour = weekendCheck.getHours();
 	//Sets condition for the priceBoost variable which increases the amount if certain days are true
 	if (
-		(boostrapFriday && rightNowHour >= 15) || (tomatoSaleMonday && rightNowHour <= 3)
+		(boostrapFriday && rightNowHour >= 15) || inflationWeekend || (tomatoSaleMonday && rightNowHour <= 3)
 	) {
 		priceBoost *= 1.15;
 	}
@@ -473,46 +484,13 @@ function toggleCheckout() {
 
 //Checkout section (toggle.button) - Function which displays/hides sorting menu when clicking the sort icon BTN
 function sortToggle() {
-	sortMenu.classList.toggle('toggleHide');
+  sortBtn.classList.add('toggleHide')
+  clearFilterBtn.classList.remove('toggleHide')
+	sortMenu.classList.remove('toggleHide');
 }
 
-//Total amount(Pieces/products) to update/streamline - Function to streamline the total amount accross the cart preview, checkout and order confirmation
-function updateTotalAmount() {
-	//Define a variable to hold a reduce function which accumilates the total amount value
-	//Print the total amount accumilated at the same time into the different sections based on the totalProductsAmunt
-	// totalAmountIcon.innerHTML = totalProductsAmount;
-	// totalAmountcartPreview.innerHTML = `<h3>Total PCS: ${totalProductsAmount}</h3>`;
-	// totalAmountCheckout.innerHTML = totalProductsAmount;
-	// totalAmountSummary.innerHTML = totalProductsAmount;
-}
-
-//Total Price to be updated & streamline - Function to streamline the total price accross the cart preview, checkout and order confirmation
-function updateTotalPrice() {
-	// let discountMessage = '';
-	// //Define a variable to hold a reduce function which accumilates the total price value
-	// let totalProductsPrice = cart.reduce(
-	// 	(total, product) => total + product.price * priceBoost * product.amount,
-	// 	0
-	// );
-	// //Condition which provides user with a discount for the total price alongside a message
-	// if (weekDay.getDay() === 1) {
-	// 	discountMessage =
-	// 		'10% OFF a wonderful discount on the entire order to start your week<3';
-	// 	totalProductsPrice *= 0.9;
-	// }
-	// // let adjustedPriceOnAmount = product.price;
-	// if (product.amount > 0) {
-	//   adjustedPriceOnAmount *= 0.9
-	// }
-	// // Print the total price accumilated into the different sections
-	// totalPriceCartPreview.innerHTML = `<h3>Total amount: ${totalProductsPrice.toFixed(
-	// 	2
-	// )} $</h3><div class="discountMessage">${discountMessage}</div>`;
-	// totalPriceCheckout.innerHTML = `<h4>Total amount: ${totalProductsPrice.toFixed(
-	// 	2
-	// )} $</h4><div class="discountMessage">${discountMessage}</div>`;
-	// totalPriceSummary.innerHTML = `${totalProductsPrice.toFixed(2)} $`;
-	// // }
+function themeToggle() {
+document.body.classList.toggle('darkTheme')
 }
 
 //Array containing the product stock
@@ -794,7 +772,7 @@ const productStock = [
 		amount: 0,
 		serialNo: 16,
 		price: 21.99,
-		category: { shape: 'bear', color: 'grey' },
+		category: { shape: 'bear', color: 'gray' },
 		rating: 4.5,
 		image: {
 			src: 'Assets/Images/Warehouse/GioielloDelCuore.jpg',
@@ -875,8 +853,20 @@ priceRangeSlider.addEventListener('input', adjustPriceRange);
 //Global variabel for the price element
 const priceRangeValue = document.querySelector('.rangeVal');
 //Variable for BTN to sort alphabetically
-alphabetSorting = document.querySelector('.sortAlpha');
-alphabetSorting.addEventListener('click', sortByAlphabet);
+alphabetAscSorting = document.querySelector('.sortAlpha');
+alphabetAscSorting.addEventListener('click', sortingBySelection);
+alphaDecSorting = document.querySelector('.sortAlphaReverse')
+alphaDecSorting.addEventListener('click', sortingBySelection);
+
+priceAscSorting = document.querySelector('.sortPriceAsc')
+priceAscSorting.addEventListener('click', sortingBySelection);
+priceDecSorting = document.querySelector('.sortPriceDec')
+priceDecSorting.addEventListener('click', sortingBySelection);
+
+ratingAscSorting = document.querySelector('.sortRatingAsc')
+ratingAscSorting.addEventListener('click', sortingBySelection);
+ratingDecSorting = document.querySelector('.sortRatingDec')
+ratingDecSorting.addEventListener('click', sortingBySelection);
 //Array for filtered products on category
 let filteredProductStock = [...productStock];
 //Array for filtered products on price range
@@ -895,61 +885,81 @@ function adjustPriceRange() {
 }
 
 const heartShapeFilter = document.querySelector('.heart')
-heartShapeFilter.addEventListener('click', selectedFilterOption)
+heartShapeFilter.addEventListener('click', selectedShapeFilter)
 const roundShapeFilter = document.querySelector('.round')
-roundShapeFilter.addEventListener('click', selectedFilterOption)
+roundShapeFilter.addEventListener('click', selectedShapeFilter)
 const squareShapeFilter = document.querySelector('.square')
-squareShapeFilter.addEventListener('click', selectedFilterOption)
+squareShapeFilter.addEventListener('click', selectedShapeFilter)
 const bearFilter = document.querySelector('.bear')
-bearFilter.addEventListener('click', selectedFilterOption)
+bearFilter.addEventListener('click', selectedShapeFilter)
+
+const redFilter = document.querySelector('.red')
+redFilter.addEventListener('click', selectedColorFilter)
+const blueFilter = document.querySelector('.blue')
+blueFilter.addEventListener('click', selectedColorFilter)
+const whiteFilter = document.querySelector('.white')
+whiteFilter.addEventListener('click', selectedColorFilter)
+const blackFilter = document.querySelector('.black')
+blackFilter.addEventListener('click', selectedColorFilter)
+const pinkFilter = document.querySelector('.pink')
+pinkFilter.addEventListener('click', selectedColorFilter)
+const brownFilter = document.querySelector('.brown')
+brownFilter.addEventListener('click', selectedColorFilter)
+const grayFilter = document.querySelector('.gray')
+grayFilter.addEventListener('click', selectedColorFilter)
+
+const clearFilterBtn = document.querySelector('#toggleFilterBtn')
+clearFilterBtn.addEventListener('click', clearFilter)
+
+
+function clearFilter() {
+  priceRangeSlider.value = 59.99; // Reset the price range slider to a default value
+  navSearchBar.value = ''; // Clear the search bar
+  // Add more filter-clearing logic if needed
+  sortByShape('clearFilter')
+  // Reset the filteredPriceRange to the original productStock
+  // filteredPriceRange = [...productStock];
+
+  // Update the product display
+  pushProductStock();
+  sortBtn.classList.remove('toggleHide')
+  clearFilterBtn.classList.add('toggleHide')
+  sortMenu.classList.add('toggleHide');
+}
 //Generic function to allow the selection of the shape filtering based on the ID which is retrieved
 function sortByShape(shape) {
+  navSearchBar.value = '';
 	filteredPriceRange = filteredProductStock.filter(
 		(product) => product.category.shape === shape
 	);
+  if (shape === 'clearFilter') {
+    filteredPriceRange = productStock
+  }
 	pushProductStock()
 }
 //Function to select the correct filtering radioBTN ID which is then run by sortByShape based on the shape = ID of the BTN
-function selectedFilterOption(e) {
-	currentFilterOption = e.currentTarget.classList[0];
-		sortByShape(currentFilterOption)
+function selectedShapeFilter(e) {
+	let currentFilterOption = e.currentTarget.classList[0];
+	sortByShape(currentFilterOption)
 	console.dir(currentFilterOption);
 }
-// function selectedFilterOption(e) {
-// 	currentFilterOption = e.target.id;
-// 	if (currentFilterOption === 'heartShapeFilter') {
-// 		sortByShape('heart')
-// 	} else if (currentFilterOption === 'roundShapeFilter') {
-// 		sortByShape(round)
-// 	}
-  
-// 	console.log(heart);
-// }
 
+//Generic function to allow the selection of the shape filtering based on the ID which is retrieved
+function sortByColor(color) {
+  navSearchBar.value = '';
+	filteredPriceRange = filteredProductStock.filter(
+		(product) => product.category.color === color
+	);
 
+	pushProductStock()
+}
+//Function to select the correct filtering radioBTN ID which is then run by sortByShape based on the shape = ID of the BTN
+function selectedColorFilter(e) {
+	let currentColorOption = e.currentTarget.classList[0];
+	sortByColor(currentColorOption)
+	console.dir(currentColorOption);
+}
 
-// function sortByHeartShape() {
-// 	filteredPriceRange = filteredProductStock.filter(
-// 		(product) => product.category.shape === 'heart'
-// 	);
-// 	pushProductStock()
-// }
-
-//Variable for:
-
-//Add input event to the searchbar and display function
-// navSearchBar.addEventListener('input', searchBarFilter)
-
-// function searchBarFilter(e)  {
-// 	let keyWord = e.target.value;
-
-// 	if (keyWord && keyWord.trim().length > 0) {
-// 		keyWord = keyWord.trim().toLowerCase()
-// 		console.log(keyWord);
-// 	}
-
-// };
-// searchBtn.addEventListener('click', searchBarFilter)
 
 
 //Function for the search bar which resets the price range and filters the procuct array based on the keyword
@@ -967,8 +977,13 @@ function searchBarFilter(e) {
 }
 
 // Function for sorting based on name A-Z
-function sortByAlphabet() {
+function sortingBySelection(e) {
+
+  let currentSortOption = e.currentTarget.classList[0]
+
+
 	filteredPriceRange.sort((product1, product2) => {
+    if (currentSortOption === 'sortAlpha') {
 		if (product1.name < product2.name) {
 			return -1;
 		}
@@ -976,9 +991,97 @@ function sortByAlphabet() {
 			return 1;
 		}
 		return 0;
+  } else if (currentSortOption === 'sortAlphaReverse') {
+		if (product1.name < product2.name) {
+			return 1;
+		}
+		if (product1.name > product2.name) {
+			return -1;
+		}
+		return 0;
+  } else if (currentSortOption === 'sortPriceAsc') {
+		if (product1.price < product2.price) {
+			return -1;
+		}
+		if (product1.price > product2.price) {
+			return 1;
+		}
+		return 0;
+  } else if (currentSortOption === 'sortPriceDec') {
+		if (product1.price < product2.price) {
+			return 1;
+		}
+		if (product1.price > product2.price) {
+			return -1;
+		}
+		return 0;
+  } else if (currentSortOption === 'sortRatingAsc') {
+		if (product1.rating < product2.rating) {
+			return -1;
+		}
+		if (product1.rating > product2.rating) {
+			return 1;
+		}
+		return 0;
+  } else if (currentSortOption === 'sortRatingDec') {
+		if (product1.rating < product2.rating) {
+			return 1;
+		}
+		if (product1.rating > product2.rating) {
+			return -1;
+		}
+		return 0;
+  } 
 	});
+
+
+
+// else if (currentSortOption === 'sortAlphaReverse') {
+//   console.log('hello it work')
+// 	filteredPriceRange.sort((product1, product2) => {
+// 		if (product1.name < product2.name) {
+// 			return 1;
+// 		}
+// 		if (product1.name > product2.name) {
+// 			return -1;
+// 		}
+// 		return 0;
+// 	});
+// }
 	pushProductStock();
 }
+
+
+
+const addedToCartMsg = document.querySelector('.addedToCart');
+const addedToCartProduct = document.querySelector('.addedMsg')
+const addedToCartBtn = document.querySelector('.addedBtn')
+addedToCartBtn.addEventListener('click', orderSummary)
+//Function to display a message to notify user of added product
+function showAddedToCartMessage(addedProduct) {
+
+  addedToCartProduct.innerHTML = `${addedProduct.name} added - In cart: ${addedProduct.amount}`;
+  addedToCartMsg.style.opacity = '1';
+
+  setTimeout(hideAddedToCartMessage, 5000);
+  
+}
+//Function called by showAddedTocartMessage to hide it after 5Seconds
+function hideAddedToCartMessage() {
+  addedToCartMsg.style.opacity = '0';
+
+}
+
+
+
+//criteria for light or dark theme
+if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  document.body.classList.add('darkTheme');
+} else {
+  document.body.classList.remove('darkTheme')
+}
+
+
 
 //Function to print out the products to the main product cataloge page
 function pushProductStock() {
@@ -993,7 +1096,6 @@ function pushProductStock() {
                 width="${product.image.width}"
                 height="${product.image.height}"
                 alt="${product.image.alt}"
-                loading="lazy"
             />
 
             <p class="articlePrice">
@@ -1033,9 +1135,12 @@ function pushProductStock() {
 function addAProduct(e) {
 	let index = e.target.id.replace('articleAddToCart', '');
 	index = Number(index);
+
 	// productStock[index].amount += 1;
 	filteredPriceRange[index].amount += 1;
 	cart = productStock.filter((productStock) => productStock.amount > 0);
+  const addedProduct = filteredPriceRange[index];
+  showAddedToCartMessage(addedProduct);
 	pushProductStock();
 	addProductToCart();
 }
@@ -1091,7 +1196,8 @@ function addProductToCart() {
 	totalPriceCheckout.innerHTML = ``;
   orderSummaryPage.innerHTML = ``
 	totalPriceSummary.innerHTML = ``;
-	let discountMessage = '';
+	let mondayIscountMessage = '';
+  let tenForNineMsg = '';
 	// checkoutSummary.innerHTML = "";
 	let totalPriceSum = 0;
 	let totalProductsAmount = cart.reduce(
@@ -1102,6 +1208,8 @@ function addProductToCart() {
 		//Variable to round up the price to a maximum of two decimal points
 		let discountProuductOnAmount = product.price;
 		if (product.amount >= 10) {
+      tenForNineMsg =
+				'10 for 9! Get the 10th product for free';
 			discountProuductOnAmount *= 0.9;
 		}
 
@@ -1109,11 +1217,9 @@ function addProductToCart() {
 
 		const mondayCheck = new Date();
     const timeCheck = mondayCheck.getHours() 
-    console.log(timeCheck)
-		console.log(mondayCheck.getDay());
-		if (mondayCheck.getDay() === 1 && timeCheck > 10) { //1 10
+		if (mondayCheck.getDay() === 6 && timeCheck < 19) { //1 <10
 			//1
-			discountMessage =
+			mondayIscountMessage +=
 				'10% OFF a wonderful discount on the entire order to start your week<3';
 			discountProuductOnAmount *= 0.9;
 		}
@@ -1139,7 +1245,7 @@ function addProductToCart() {
 			<p class="previewProductPrice">${totalPcsPrice}$</p>
 		<div class="productAmountActions">
 			<button class="minusOneProduct" data-id="${index}" >-</button
-			><input class="productAmount" type="number" value="${product.amount}" /><button
+			><span class="productAmount">${product.amount}</span><button
 			class="addOneProduct" data-id="${index}"
 			>
 				+
@@ -1160,7 +1266,7 @@ function addProductToCart() {
 		<p class="ProductCheckoutPrice">${totalPcsPrice}</p>
 		<div class="productAmount">
 		<button class="minusOneProduct" data-id="${index}" >-</button>
-		<input class="productAmountValue" type="number" value="${product.amount}"/>
+		<span class="productAmount">${product.amount}</span>
 		<button
 			class="addOneProduct" data-id="${index}"
 			>
@@ -1195,8 +1301,8 @@ function addProductToCart() {
 		
     totalPriceCartPreview.innerHTML = `<h3>Total PCS: ${totalProductsAmount}</h3><h3>Total amount: ${totalPriceSum.toFixed(
 			2
-		)} $</h3><div class="discountMessage">${discountMessage}</div>`;
-		totalPriceCheckout.innerHTML = `<h4 class="ShippingCost">Shipping: ${shippingCost}$</h4></h4><div class="discountMessage">${discountMessage}</div><h4>Total PCS: ${totalProductsAmount}</h4><h4>Total amount + shipping: ${(
+		)} $</h3><div class="discountMessage">${mondayIscountMessage}</div><div class="discountMessage">${tenForNineMsg}</div>`;
+		totalPriceCheckout.innerHTML = `<h4 class="ShippingCost">Shipping: ${shippingCost}$</h4></h4><div class="discountMessage">${mondayIscountMessage}</div><div class="discountMessage">${tenForNineMsg}</div><h4>Total PCS: ${totalProductsAmount}</h4><h4>Total amount + shipping: ${(
 			shippingCost + totalPriceSum
 		).toFixed(2)} $`;
 		totalPriceSummary.innerHTML = `<li>
@@ -1260,21 +1366,6 @@ function updateTimers(totalPriceSum) {
   }
 }
 
-// function discountEntireOrder(discountMessage, discountProuductOnAmount) {
-//   const MondayCheck = new Date();
-//   console.log(MondayCheck.getDay())
-// 	if (MondayCheck.getDay() === 3) { //1
-// 		discountMessage =
-// 			'10% OFF a wonderful discount on the entire order to start your week<3';
-// 		discountProuductOnAmount *= 0.9;
-// 	}
-//   // return {
-//   //   discountMessage: discountMessage,
-//   //   discountProuductOnAmount: discountProuductOnAmount
-//   // };
-// }
-//Call two functions at the same time
-
 function updateStock() {
 	pushProductStock();
 	addProductToCart();
@@ -1283,7 +1374,7 @@ function updateStock() {
 function disableInvoiceOption(totalPriceSum) {
 	if (totalPriceSum >= 800) {
 		invoicePaymentBtn.setAttribute('disabled', '');
-		cardPayment.style.display = 'flex';
+		cardPayment.style.display = 'grid';
 		invoicePayment.style.display = 'none';
 	} else {
 		invoicePaymentBtn.removeAttribute('disabled');
@@ -1303,6 +1394,7 @@ function clearInputValidation() {
     // formField.classList.remove('activeField');
   });
 }
+
 const resetToMainBtn = document.querySelector('.resetAllBtn')
 resetToMainBtn.addEventListener('click', resetToMain)
 
@@ -1312,6 +1404,7 @@ function resetToMain() {
   toggleCheckout()
   navBar.classList.remove('toggleHide')
   window.scrollTo({ top: 0, behavior: 'smooth' });
+
 }
 //Function for reset BTN in the checkout section, also called when timer runs out for user
 function resetCartOrder() {
@@ -1320,13 +1413,14 @@ function resetCartOrder() {
 	});
 	totalAmountIcon.innerHTML = '';
 	cart = [];
-  navSearchBar.value = ''
-  filteredPriceRange = [...productStock];
+  // navSearchBar.value = ''
+  // filteredPriceRange = [...productStock];
   backToDetails()
 	updateStock();
 	clearPaymentField()
   clearInputValidation()
-  activatePaymentForm()
+  clearFilter()
+  // activatePaymentForm()
 	// cartClose()
 	// toggleTimeoutMsg()
 }
