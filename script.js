@@ -1010,7 +1010,7 @@ function pushProductStock() {
             <p class="articlePrice">
                 ${(product.price * priceBoost).toFixed(
 									2
-								)} $<span class="articleRating"> <img src="${product.ratingImage.src}" alt="${product.ratingImage.alt}" height="50" width="50">${
+								)} $<span class="articleRating"> <img src="${product.ratingImage.src}" alt="${product.ratingImage.alt}" height="50" width="50" loading="lazy">${
 			product.rating
 		}</span>
             </p>
@@ -1154,7 +1154,7 @@ function addProductToCart() {
 			class="productCheckoutImage"
 			src="${product.image.src}"
 			width="${product.image.width}"
-			height="${product.image.height}"
+			height="${product.image.height}" loading="lazy"
 		/>
 
 		<h3 class="ProductCheckoutTitle">${product.name}</h3>
