@@ -502,7 +502,7 @@ const productStock = [
 		category: { shape: 'heart', color: 'red' },
 		rating: 4.8,
 		image: {
-			src: "Assets/Images/Warehouse/SegretoD'Amore.webp",
+			src: "Assets/Images/Warehouse/sweetNight.webp",
 			alt: 'heartshaped black box filled with red roses',
 			height: 100,
 			width: 100,
