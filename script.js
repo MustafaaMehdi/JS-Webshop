@@ -380,11 +380,6 @@ function orderConfirmation() {
   checkOutPage.classList.add('toggleHide')
   navBar.classList.add('toggleHide')
 }
-
-// function orderComplete() {
-
-// }
-
 function activateSubmitOrder() {
   console.log('Current Payment Option:', currentPaymentOption);
   const cardIsValid =
@@ -429,14 +424,14 @@ function weekendPriceBoost() {
 	// Defined variables which store certain days/hours to make the reading of conditions easier
 	//Variable for friday
 	const boostrapFriday = weekendCheck.getDay() === 5; //5
-	const inflationWeekend = (weekendCheck. getDay() === 6 || weekendCheck.getDate() === 0)
+	const inflationWeekend = (weekendCheck.getDay() === 6 || weekendCheck.getDay() === 0)
 	const tomatoSaleMonday = weekendCheck.getDay() === 1; //1
 	//Variable for actual current hour
   console.log(inflationWeekend)
 	const rightNowHour = weekendCheck.getHours();
 	//Sets condition for the priceBoost variable which increases the amount if certain days are true
 	if (
-		(boostrapFriday && rightNowHour >= 15) || inflationWeekend || (tomatoSaleMonday && rightNowHour <= 3)
+		(boostrapFriday && rightNowHour >= 15) || inflationWeekend || (tomatoSaleMonday && rightNowHour < 3)
 	) {
 		priceBoost *= 1.15;
 	}
@@ -471,6 +466,7 @@ function orderSummary() {
   cartPreviewBtn.classList.add('toggleHide')
 	mainPageWrapper.classList.add('toggleHide');
 	cartPreview.classList.add('toggleHide');
+  backToDetails();
 }
 // backToShop.classList.add('toggleHide')
 // cartPreviewBtn.classList.remove('toggleHide')
@@ -1188,7 +1184,6 @@ function decreaseCartMinus(e) {
 
 //Function to sreamline products + cost for individual and total + shipping in cart preview, checkout section and summary section
 function addProductToCart() {
-	// weekendPriceBoost()
 	totalAmountIcon.innerHTML = '';
 	cartSummary.innerHTML = '';
 	checkoutSummary.innerHTML = '';
