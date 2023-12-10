@@ -12,35 +12,32 @@ Discover a palette of colors, each expressing different emotions, and elevate yo
 ## Built with
 ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
  
- 
- 
- 
 ## Outtakes from prod page
  
 | Desktop light theme preview | Mobile light theme preview | 
 |---------|---------|
-| ![Elegantroses main page desktop light](https://medieinstitutet.github.io/fed23d-js-grundkurs-webshop-MustafaaMehdi/Pagepreview/MainPageLight.png) | ![Alt text 2](https://medieinstitutet.github.io/fed23d-js-grundkurs-webshop-MustafaaMehdi/Pagepreview/MainPageMobileLight.png) |
-| Main page in desktop view light theme | Main page in mobile view light theme | 
+| ![Elegantroses main page desktop light](https://medieinstitutet.github.io/fed23d-js-grundkurs-webshop-MustafaaMehdi/Pagepreview/MainPageLight.png) | ![Elegantroses main page mobile light](https://medieinstitutet.github.io/fed23d-js-grundkurs-webshop-MustafaaMehdi/Pagepreview/MainPageMobileLight.png) |
+
 
 | Desktop dark theme preview | Mobile dark theme preview | 
 |---------|---------|
-| ![Elegantroses main page desktop light](https://medieinstitutet.github.io/fed23d-js-grundkurs-webshop-MustafaaMehdi/Pagepreview/MainPageDark.png) | ![Alt text 2](https://medieinstitutet.github.io/fed23d-js-grundkurs-webshop-MustafaaMehdi/Pagepreview/MainPageMobileDark.png) |
-| Main page in desktop view dark theme | Main page in mobile view dark theme | 
+| ![Elegantroses main page desktop light](https://medieinstitutet.github.io/fed23d-js-grundkurs-webshop-MustafaaMehdi/Pagepreview/MainPageDark.png) | ![Elegantroses main page mobile dark](https://medieinstitutet.github.io/fed23d-js-grundkurs-webshop-MustafaaMehdi/Pagepreview/MainPageMobileDark.png) |
+
 
 
  
  
 HTML W3 Validation 
 ![Elegantroses main page desktop light](https://medieinstitutet.github.io/fed23d-js-grundkurs-webshop-MustafaaMehdi/Validation/HTMLvalidationW3.png) 
-#### [Link to full HTML W3 validation report](https://medieinstitutet.github.io/fed23d-js-grundkurs-webshop-MustafaaMehdi/)  
+#### [Link to full HTML W3 validation report](https://medieinstitutet.github.io/fed23d-js-grundkurs-webshop-MustafaaMehdi/Validation/HTMLvalidationW3pdf.pdf)  
 
  CSS W3 Validation 
 ![Elegantroses main page desktop light](https://medieinstitutet.github.io/fed23d-js-grundkurs-webshop-MustafaaMehdi/Validation/CSSvalidationW3.png) 
- #### [Link to full CSS W3 validation report](https://medieinstitutet.github.io/fed23d-js-grundkurs-webshop-MustafaaMehdi/)  
- 
-## Validation reports for desktop and mobile
-<!-- ![Alt text](https://medieinstitutet.github.io/fed23d-js-grundkurs-webshop-alahojat/Validation-reports/Lighthouse-light-desktop.PNG)
-![Alt text](https://medieinstitutet.github.io/fed23d-js-grundkurs-webshop-alahojat/Validation-reports/Lighthouse-light-mobile.PNG) -->
+ #### [Link to full CSS W3 validation report](https://medieinstitutet.github.io/fed23d-js-grundkurs-webshop-MustafaaMehdi/Validation/CSSvalidationW3pdf.pdf)  
+
+## Validation reports for lighthouse
+![Light house validation report for elegant roses](https://medieinstitutet.github.io/fed23d-js-grundkurs-webshop-MustafaaMehdi/Validation/LighthouseValidation.png) 
+
  
 ## Insight to webshop functionality description
 - **Search Bar:**
