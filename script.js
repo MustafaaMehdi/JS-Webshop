@@ -502,7 +502,7 @@ const productStock = [
 		category: { shape: 'heart', color: 'red' },
 		rating: 4.8,
 		image: {
-			src: "Assets/Images/Warehouse/SegretoD'Amore.jpg",
+			src: "Assets/Images/Warehouse/SegretoD'Amore.webp",
 			alt: 'heartshaped black box filled with red roses',
 			height: 100,
 			width: 100,
@@ -520,7 +520,7 @@ const productStock = [
 		category: { shape: 'round', color: 'red' },
 		rating: 3.9,
 		image: {
-			src: 'Assets/Images/Warehouse/CestoDiRose.jpg',
+			src: 'Assets/Images/Warehouse/CestoDiRose.webp',
 			alt: 'white round box filled with red roses',
 			height: 100,
 			width: 100,
@@ -538,7 +538,7 @@ const productStock = [
 		category: { shape: 'round', color: 'blue' },
 		rating: 2.9,
 		image: {
-			src: 'Assets/Images/Warehouse/GioielloDiFiori.png',
+			src: 'Assets/Images/Warehouse/GioielloDiFiori.webp',
 			alt: 'blue round box filled with blue roses',
 			height: 100,
 			width: 100,
@@ -556,7 +556,7 @@ const productStock = [
 		category: { shape: 'square', color: 'transparent' },
 		rating: 4.9,
 		image: {
-			src: 'Assets/Images/Warehouse/CuoreInfinito2.jpg',
+			src: 'Assets/Images/Warehouse/CuoreInfinito2.webp',
 			alt: 'transparent square box filled with red roses',
 			height: 100,
 			width: 100,
@@ -592,7 +592,7 @@ const productStock = [
 		category: { shape: 'square', color: 'black' },
 		rating: 4.9,
 		image: {
-			src: 'Assets/Images/Warehouse/NotteRomantica.jpg',
+			src: 'Assets/Images/Warehouse/NotteRomantica.webp',
 			alt: 'black square box filled with red roses',
 			height: 100,
 			width: 100,
@@ -610,7 +610,7 @@ const productStock = [
 		category: { shape: 'square', color: 'white' },
 		rating: 4.3,
 		image: {
-			src: 'Assets/Images/Warehouse/GioielloDiRoseBianche.jpg',
+			src: 'Assets/Images/Warehouse/GioielloDiRoseBianche.webp',
 			alt: 'white square box filled with pink roses',
 			height: 100,
 			width: 100,
@@ -628,7 +628,7 @@ const productStock = [
 		category: { shape: 'round', color: 'white' },
 		rating: 3.3,
 		image: {
-			src: 'Assets/Images/Warehouse/CuorediRoseBlu.jpg',
+			src: 'Assets/Images/Warehouse/CuorediRoseBlu.webp',
 			alt: 'white round box filled with blue roses',
 			height: 100,
 			width: 100,
@@ -646,7 +646,7 @@ const productStock = [
 		category: { shape: 'heart', color: 'black' },
 		rating: 4.1,
 		image: {
-			src: 'Assets/Images/Warehouse/AmoreEterno.jpg',
+			src: 'Assets/Images/Warehouse/AmoreEterno.webp',
 			alt: 'black heart shaped box filled with red roses',
 			height: 100,
 			width: 100,
@@ -664,7 +664,7 @@ const productStock = [
 		category: { shape: 'round', color: 'pink' },
 		rating: 3.1,
 		image: {
-			src: 'Assets/Images/Warehouse/DolcezzaInRosa.jpg',
+			src: 'Assets/Images/Warehouse/DolcezzaInRosa.webp',
 			alt: 'pink round box filled with blue roses',
 			height: 100,
 			width: 100,
@@ -682,7 +682,7 @@ const productStock = [
 		category: { shape: 'heart', color: 'white' },
 		rating: 4.4,
 		image: {
-			src: 'Assets/Images/Warehouse/GioiaDelCuore.jpg',
+			src: 'Assets/Images/Warehouse/GioiaDelCuore.webp',
 			alt: 'white heart shaped box filled with red roses',
 			height: 100,
 			width: 100,
@@ -700,7 +700,7 @@ const productStock = [
 		category: { shape: 'round', color: 'pink' },
 		rating: 3.7,
 		image: {
-			src: 'Assets/Images/Warehouse/SerenataRosata.jpg',
+			src: 'Assets/Images/Warehouse/SerenataRosata.webp',
 			alt: 'round shaped pink box filled with pink roses',
 			height: 100,
 			width: 100,
@@ -718,7 +718,7 @@ const productStock = [
 		category: { shape: 'round', color: 'white' },
 		rating: 4.5,
 		image: {
-			src: 'Assets/Images/Warehouse/DolceAmore.jpg',
+			src: 'Assets/Images/Warehouse/DolceAmore.webp',
 			alt: 'white round shaped box filled with red roses',
 			height: 100,
 			width: 100,
@@ -738,7 +738,7 @@ const productStock = [
 		category: { shape: 'bear', color: 'white' },
 		rating: 4.6,
 		image: {
-			src: 'Assets/Images/Warehouse/DolceAbbraccio.jpg',
+			src: 'Assets/Images/Warehouse/DolceAbbraccio.webp',
 			alt: 'white bear made out of plastic roses',
 			height: 100,
 			width: 100,
@@ -756,7 +756,7 @@ const productStock = [
 		category: { shape: 'bear', color: 'brown' },
 		rating: 3.6,
 		image: {
-			src: 'Assets/Images/Warehouse/CoccoleDiNoce.jpg',
+			src: 'Assets/Images/Warehouse/CoccoleDiNoce.webp',
 			alt: 'brown bear made out of plastic roses',
 			height: 100,
 			width: 100,
@@ -774,7 +774,7 @@ const productStock = [
 		category: { shape: 'bear', color: 'gray' },
 		rating: 4.5,
 		image: {
-			src: 'Assets/Images/Warehouse/GioielloDelCuore.jpg',
+			src: 'Assets/Images/Warehouse/GioielloDelCuore.webp',
 			alt: 'grey bear made out of plastic roses',
 			height: 100,
 			width: 100,
@@ -792,7 +792,7 @@ const productStock = [
 		category: { shape: 'bear', color: 'red' },
 		rating: 4.8,
 		image: {
-			src: "Assets/Images/Warehouse/OrsettoD'Amore.jpg",
+			src: "Assets/Images/Warehouse/OrsettoD'Amore.webp",
 			alt: 'red bear made out of plastic roses',
 			height: 100,
 			width: 100,
@@ -810,7 +810,7 @@ const productStock = [
 		category: { shape: 'bear', color: 'pink' },
 		rating: 4.4,
 		image: {
-			src: 'Assets/Images/Warehouse/RosaIncanto.jpg',
+			src: 'Assets/Images/Warehouse/RosaIncanto.webp',
 			alt: 'pink bear made out of plastic roses',
 			height: 100,
 			width: 100,
@@ -828,7 +828,7 @@ const productStock = [
 		category: { shape: 'bear', color: 'blue' },
 		rating: 4.7,
 		image: {
-			src: 'Assets/Images/Warehouse/SognoAzzurro.jpg',
+			src: 'Assets/Images/Warehouse/SognoAzzurro.webp',
 			alt: 'blue mini bear made out of plastic roses',
 			height: 100,
 			width: 100,
@@ -1010,7 +1010,7 @@ function pushProductStock() {
             <p class="articlePrice">
                 ${(product.price * priceBoost).toFixed(
 									2
-								)} $<span class="articleRating"> <img src="${product.ratingImage.src}" alt="${product.ratingImage.alt}" height="50">${
+								)} $<span class="articleRating"> <img src="${product.ratingImage.src}" alt="${product.ratingImage.alt}" height="50" width="50">${
 			product.rating
 		}</span>
             </p>

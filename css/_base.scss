@@ -15,6 +15,10 @@ body {
 		.headerLogo {
 			position: relative;
 			margin: 0;
+			.logoColor {
+				height: 100%;
+				width: 100%;
+			}
 			.headerLogoText {
 				position: absolute;
 				bottom: 0.5rem;
