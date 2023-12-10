@@ -63,7 +63,7 @@ const totalPriceCheckout = document.querySelector('.checkoutProductSum');
 const totalPriceSummary = document.querySelector('#totalPriceSummary');
 /*------------------------------------------Header variables & Evt listeners------------------------------------------*/
 
-/*------------------------------------------PAGEWRAPPERS------------------------------------------*/
+/*START------------------------------------------PAGEWRAPPERS------------------------------------------START*/
 // Main Page wrapper - Variable to select the main page container
 const mainPageWrapper = document.querySelector('.mainSectionWrapper');
 // Product section Wrapper - Variable to select the product page container
@@ -76,37 +76,90 @@ const checkOutPage = document.querySelector('.checkoutWrapper');
 const checkoutSummary = document.querySelector('.productCheckoutSummary');
 //Variable for the order confirmation page 
 const orderConfirmationPage = document.querySelector('.orderConfirmation')
-/*------------------------------------------PAGE WRAPPERS------------------------------------------*/
+//Variable for summary page after user has submitted order
+const orderSummaryPage = document.querySelector('.orderSummary')
 
-/*------------------------------------------Form variables & Evt listeners------------------------------------------*/
+//Variable to select the timeout message
+const timeOutMsgBg = document.querySelector('.timeOutMsgBg');
+//Variable for Button to close the timeout message which appears if user has been idle for more than 15 minutes
+const timeOutMsgBtn = document.querySelector('.timeOutBtn');
+timeOutMsgBtn.addEventListener('click', toggleTimeoutMsg);
+/*END------------------------------------------PAGE WRAPPERS------------------------------------------END*/
+
+/*START------------------------------------------Sorting & filtering variables & Evt listeners------------------------------------------START*/
+//Variable for price range slider
+const priceRangeSlider = document.querySelector('#pricerange');
+
+//Add event to the slider
+priceRangeSlider.addEventListener('input', adjustPriceRange);
+
+//Variables for the shape filter Btns 
+const heartShapeFilter = document.querySelector('.heart')
+heartShapeFilter.addEventListener('click', selectedShapeFilter)
+const roundShapeFilter = document.querySelector('.round')
+roundShapeFilter.addEventListener('click', selectedShapeFilter)
+const squareShapeFilter = document.querySelector('.square')
+squareShapeFilter.addEventListener('click', selectedShapeFilter)
+const bearFilter = document.querySelector('.bear')
+bearFilter.addEventListener('click', selectedShapeFilter)
+
+//Variables for the color filter Btns
+const redFilter = document.querySelector('.red')
+redFilter.addEventListener('click', selectedColorFilter)
+const blueFilter = document.querySelector('.blue')
+blueFilter.addEventListener('click', selectedColorFilter)
+const whiteFilter = document.querySelector('.white')
+whiteFilter.addEventListener('click', selectedColorFilter)
+const blackFilter = document.querySelector('.black')
+blackFilter.addEventListener('click', selectedColorFilter)
+const pinkFilter = document.querySelector('.pink')
+pinkFilter.addEventListener('click', selectedColorFilter)
+const brownFilter = document.querySelector('.brown')
+brownFilter.addEventListener('click', selectedColorFilter)
+const grayFilter = document.querySelector('.gray')
+grayFilter.addEventListener('click', selectedColorFilter)
+
+const clearFilterBtn = document.querySelector('#toggleFilterBtn')
+clearFilterBtn.addEventListener('click', clearFilter)
+
+
+//Global variabel for the price element
+const priceRangeValue = document.querySelector('.rangeVal');
+//Variable for BTN to sort alphabetically
+alphabetAscSorting = document.querySelector('.sortAlpha');
+alphabetAscSorting.addEventListener('click', sortingBySelection);
+alphaDecSorting = document.querySelector('.sortAlphaReverse')
+alphaDecSorting.addEventListener('click', sortingBySelection);
+
+priceAscSorting = document.querySelector('.sortPriceAsc')
+priceAscSorting.addEventListener('click', sortingBySelection);
+priceDecSorting = document.querySelector('.sortPriceDec')
+priceDecSorting.addEventListener('click', sortingBySelection);
+
+ratingAscSorting = document.querySelector('.sortRatingAsc')
+ratingAscSorting.addEventListener('click', sortingBySelection);
+ratingDecSorting = document.querySelector('.sortRatingDec')
+ratingDecSorting.addEventListener('click', sortingBySelection);
+
+/*END------------------------------------------Soritng & filtering variables and Evt listeners------------------------------------------END*/
+
+/*START------------------------------------------Form variables & Evt listeners------------------------------------------START*/
 //Contact detial input fields
 const fnameField = document.querySelector('#fname');
-// fnameField.addEventListener('input', activatePaymentForm);
 fnameField.addEventListener('change', fNameError);
 const lnameField = document.querySelector('#lname');
-// lnameField.addEventListener('input', activatePaymentForm);
 lnameField.addEventListener('change', lNameError);
-// lnameField.addEventListener('change', lNameError);
 const streetField = document.querySelector('#street-address');
-// streetField.addEventListener('change', activatePaymentForm);
 streetField.addEventListener('input', streetError);
-// streetField.addEventListener('change', streetError);
 const zipField = document.querySelector('#zip');
 zipField.addEventListener('change', zipError);
-// zipField.addEventListener('input', activatePaymentForm);
-// zipField.addEventListener('change', zipError);
 const cityField = document.querySelector('#city');
 cityField.addEventListener('change', cityError);
-// cityField.addEventListener('input', activatePaymentForm);
-// cityField.addEventListener('change', cityError);
 const telField = document.querySelector('#tel');
 telField.addEventListener('change', telError);
-// telField.addEventListener('input', activatePaymentForm);
-// telField.addEventListener('change', telError);
 const emailField = document.querySelector('#email');
 emailField.addEventListener('change', emailError);
-// emailField.addEventListener('input', activatePaymentForm);
-// emailField.addEventListener('change', emailError);
+
 
 //Variables & eventlisteners for the payment input fields
 //Variable to select the payment input fields and change event to trigger the validation function
@@ -138,95 +191,6 @@ const expiryErrorMsg = document.querySelector('#expiryErrorMsg');
 const cvvErrorMsg = document.querySelector('#cvvErrorMsg')
 const toPaymentErrorMsg = document.querySelector('#toPaymentErrorMsg')
 
-//Variable & eventlistener for the T&Cs checkbox in complete-order section
-const privacyCheckBox = document.querySelector('.privacyNotice')
-privacyCheckBox.addEventListener('change', activateSubmitOrder)
-
-//Variable & event listener for the "To Payment Button" in contact detail section
-const toPaymentBtn = document.querySelector('#toPaymentBtn');
-toPaymentBtn.addEventListener('click', activatePaymentForm);
-//Variable for the go back to details Btn in payment selection page 
-const backToDetailsBtn = document.querySelector('#backToDetails')
-backToDetailsBtn.addEventListener('click', backToDetails)
-//Variable for proceeding to submit order section
-// const finalizeOrderBtn = document.querySelector('#finalizeOrder')
-// finalizeOrderBtn.addEventListener('click', activateSubmitOrder)
-
-//Variable for the contact details order form
-const contactDetils = document.querySelector('.orderForm')
-//Variable for the payment section
-const paymentSection = document.querySelector('.paymentSection');
-//variable for the complete-order sectionn 
-const completeOrder = document.querySelector('.orderSubmit')
-
-
-
-/*------------------------------------------Form variables & Evt listeners------------------------------------------*/
-
-
-//reset BTN in the checkout section
-const resetCart = document.querySelector('#resetBTN');
-//Click event for the reset BTN in checkout section
-resetCart.addEventListener('click', resetCartOrder);
-
-
-const orderSummaryPage = document.querySelector('.orderSummary')
-//Variable to select the card payment option
-
-// const paymentOptions = Array.from(document.querySelectorAll('input[name="payment"]'))
-
-// paymentOptions.forEach(paymentBtn => {
-// 	paymentBtn.addEventListener('change', choiceOfPayment)
-// })
-
-// function choiceOfPayment(e) {
-// 	console.log(e.target.id)
-// }
-
-//*Variable to select the invoice radio button option
-const invoicePaymentBtn = document.querySelector('#invoicePaymentOption');
-//*Click event for the button to trigger the display of invoice and hide card option
-invoicePaymentBtn.addEventListener('click', selectedPaymentOption);
-//*Variable to select the card radio button option
-const cardPaymentBtn = document.querySelector('#cardPaymentOption');
-//*Click event for the button to trigger the display of card and hide invoice option
-cardPaymentBtn.addEventListener('click', selectedPaymentOption);
-
-//Variable to select the card payment form
-const cardPayment = document.querySelector('#cardPaymentForm');
-//Variable to select the invoice payment form
-const invoicePayment = document.querySelector('#invoicePaymentForm');
-//Functions to alter between the card form and invoice form by applying display attribute directly to the section
-let currentPaymentOption = 'cardPaymentOption';
-function selectedPaymentOption(e) {
-	currentPaymentOption = e.target.id;
-	if (currentPaymentOption === 'cardPaymentOption') {
-		cardPayment.style.display = 'grid';
-		invoicePayment.style.display = 'none';
-	} else if (currentPaymentOption === 'invoicePaymentOption') {
-		cardPayment.style.display = 'none';
-		invoicePayment.style.display = 'grid';
-	}
-	clearPaymentField();
-	console.log(currentPaymentOption);
-}
-
-// function displayInvoice() {
-// 	cardPayment.style.display = 'none';
-// 	invoicePayment.style.display = 'block';
-// 	console.log('change2');
-// }
-
-//Variable to select the timeout message
-const timeOutMsgBg = document.querySelector('.timeOutMsgBg');
-//Variable for Button to close the timeout message which appears if user has been idle for more than 15 minutes
-const timeOutMsgBtn = document.querySelector('.timeOutBtn');
-timeOutMsgBtn.addEventListener('click', toggleTimeoutMsg);
-function toggleTimeoutMsg() {
-	timeOutMsgBg.classList.toggle('toggleHide');
-}
-
-
 
 //Variables to define the different validation criteria - RegEx for different fields in the payment forms
 const ssnRegEx = /^(?=[\s\S]{0,13}$)\d{6}(?:\d{2})?[-\s]?\d{4}/;
@@ -241,29 +205,98 @@ const zipRegex = /^[1-9]\d{2}\s?\d{2}$/
 const cityRegx = /^[a-zA-ZåäöÅÄÖ\s-]+$/
 const telRegex = /^(07\d{8}|\+46\s?\d{8,10})$/
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+
+
+//Variable & eventlistener for the T&Cs checkbox in complete-order section
+const privacyCheckBox = document.querySelector('.privacyNotice')
+privacyCheckBox.addEventListener('change', activateSubmitOrder)
+
+//Variable & event listener for the "To Payment Button" in contact detail section
+const toPaymentBtn = document.querySelector('#toPaymentBtn');
+toPaymentBtn.addEventListener('click', activatePaymentForm);
+//Variable for the go back to details Btn in payment selection page 
+const backToDetailsBtn = document.querySelector('#backToDetails')
+backToDetailsBtn.addEventListener('click', backToDetails)
+
+
+//Variable for the contact details order form
+const contactDetils = document.querySelector('.orderForm')
+//Variable for the payment section
+const paymentSection = document.querySelector('.paymentSection');
+//variable for the complete-order sectionn 
+const completeOrder = document.querySelector('.orderSubmit')
+
+//Variable to select the card payment form
+const cardPayment = document.querySelector('#cardPaymentForm');
+//Variable to select the invoice payment form
+const invoicePayment = document.querySelector('#invoicePaymentForm');
+
+
+//reset BTN in the checkout section
+const resetCart = document.querySelector('#resetBTN');
+//Click event for the reset BTN in checkout section
+resetCart.addEventListener('click', resetCartOrder);
+
 //Variable for the order form submit order
 const submitOrderBtn = document.querySelector('#submitorder');
 submitOrderBtn.addEventListener('click', orderConfirmation)
 
+//*Variable to select the invoice radio button option
+const invoicePaymentBtn = document.querySelector('#invoicePaymentOption');
+//*Click event for the button to trigger the display of invoice and hide card option
+invoicePaymentBtn.addEventListener('click', selectedPaymentOption);
+//*Variable to select the card radio button option
+const cardPaymentBtn = document.querySelector('#cardPaymentOption');
+//*Click event for the button to trigger the display of card and hide invoice option
+cardPaymentBtn.addEventListener('click', selectedPaymentOption);
+
+//Variable and event listener for the reset Btn in the checkout view
+const resetToMainBtn = document.querySelector('.resetAllBtn')
+resetToMainBtn.addEventListener('click', resetToMain)
+
+/*END------------------------------------------Form variables & Evt listeners------------------------------------------END*/
+
+//Variables for the message which is displayed upon adding a product to cart from product page
+const addedToCartMsg = document.querySelector('.addedToCart');
+const addedToCartProduct = document.querySelector('.addedMsg')
+const addedToCartBtn = document.querySelector('.addedBtn')
+addedToCartBtn.addEventListener('click', orderSummary)
+
+//Variable which is set to validate if criteria for price markup is true or false used in weekendPriceBoost()
+let priceBoost = 1;
+
+//Variables used in updateTimers() to store the setTimeout to message and reset fucntion
+let resetOrderTimer;
+let msgTimer;
+
+//Variable to set the default payment option to card
+let currentPaymentOption = 'cardPaymentOption';
+
+//Functions to alter between the card form and invoice form by applying display attribute directly to the section
+function selectedPaymentOption(e) {
+ currentPaymentOption = e.target.id;
+	if (currentPaymentOption === 'cardPaymentOption') {
+		cardPayment.style.display = 'grid';
+		invoicePayment.style.display = 'none';
+	} else if (currentPaymentOption === 'invoicePaymentOption') {
+		cardPayment.style.display = 'none';
+		invoicePayment.style.display = 'grid';
+	}
+	clearPaymentField();
+}
+
+//Function which is called by timeout to display timeoutmessage and for the Btn to close the Message
+function toggleTimeoutMsg() {
+	timeOutMsgBg.classList.toggle('toggleHide');
+}
+
+//Funciton which clears payment input
 function clearPaymentField() {
-	//Kolla om det går applicera form.clear istället
 	cardNoField.value = '';
 	cardExpiryField.value = '';
 	cardCvvField.value = '';
 	ssnField.value = '';
-	// submitOrderBtn.setAttribute('disabled', '');
 }
-
-
-
-
-
-
-
-
-
-
-
 
 //General inputValidation to shorten the amount of code for each individual field validation
 function inputValidation(fieldRegex, inputField, fieldError) {
@@ -277,6 +310,7 @@ function inputValidation(fieldRegex, inputField, fieldError) {
     inputField.classList.remove('fieldInvalid');
 	}
 }
+
 //Functionns which call the inputValidation() individually upon interaction based on their own values
 function fNameError() {
   inputValidation(fNameRegex, fnameField, fNameErrorMsg)
@@ -312,16 +346,8 @@ function expiryError() {
   inputValidation(expiryDateRegEx, cardExpiryField, expiryErrorMsg)
 }
 
-
-
-
-// function finalizeOrder() {
-//   paymentSection.style.display = 'none'
-//   completeOrder.style.display = "grid"
-// }
-
+//Function for the back to details Btn in payment view which toggles the payment and calls on clear payment field function
 function backToDetails() {
-  // finalizeOrderBtn.classList.add('toggleHide')
   backToDetailsBtn.classList.add('toggleHide')
   paymentSection.style.display = 'none'
   toPaymentErrorMsg.classList.remove('toggleHide')
@@ -330,12 +356,11 @@ function backToDetails() {
   completeOrder.style.display = "none"
   clearPaymentField()
 }
-//Function to validate the contact details in form - piror to payment section
-  //Variable which checks if all fields valid
 
+//Function to validate the contact details in form - piror to payment section
 function activatePaymentForm() {
 
-  // If
+//Variable which checks if all fields valid
   const allFieldsValid = (
     fnameField.classList.contains('fieldValid') &&
     lnameField.classList.contains('fieldValid') &&
@@ -346,7 +371,6 @@ function activatePaymentForm() {
     emailField.classList.contains('fieldValid')
   );
   if (allFieldsValid) {
-    // finalizeOrderBtn.classList.remove('toggleHide')
     backToDetailsBtn.classList.remove('toggleHide')
     paymentSection.style.display = 'grid';
     completeOrder.style.display = "grid"
@@ -371,17 +395,8 @@ function activatePaymentForm() {
   submitOrderBtn.setAttribute('disabled', '');
 }
 
-
-
-// const formContainer = document.querySelector('.fieldSetContainer')
-
-function orderConfirmation() {
-  orderConfirmationPage.classList.remove('toggleHide')
-  checkOutPage.classList.add('toggleHide')
-  navBar.classList.add('toggleHide')
-}
+//Function which checks if payment fields are valid and activates submit Btn
 function activateSubmitOrder() {
-  console.log('Current Payment Option:', currentPaymentOption);
   const cardIsValid =
     cardNoRegEx.exec(cardNoField.value) &&
     expiryDateRegEx.exec(cardExpiryField.value) &&
@@ -403,31 +418,22 @@ function activateSubmitOrder() {
     submitOrderBtn.setAttribute('disabled', '');
   }
 }
+//Function to display order confirmation message when user clicks on submit Btn
+function orderConfirmation() {
+  orderConfirmationPage.classList.remove('toggleHide')
+  checkOutPage.classList.add('toggleHide')
+  navBar.classList.add('toggleHide')
+}
 
-// function displayError() {
-//   if (email.validity.valueMissing) {
-
-//   }
-// }
-
-
-//Search button variable - Variable to slect the search button in the header
-// const searchBtn = document.querySelector('.navSearchBtn');
-
-//Variable which is multiplied with the price of all individual inside both the print products function and print to cart function to display the individual prices accumilated and not only the total
-// - should the criterie meet, the prices are increased, if not the price is unchanged
-let priceBoost = 1;
 //Function to check if the weekend price increase citeria is matched
 function weekendPriceBoost() {
 	//Variable to store actual current date which is used to define the discount parameters
 	const weekendCheck = new Date();
 	// Defined variables which store certain days/hours to make the reading of conditions easier
-	//Variable for friday
 	const boostrapFriday = weekendCheck.getDay() === 5; //5
 	const inflationWeekend = (weekendCheck.getDay() === 6 || weekendCheck.getDay() === 0)
 	const tomatoSaleMonday = weekendCheck.getDay() === 1; //1
 	//Variable for actual current hour
-  console.log(inflationWeekend)
 	const rightNowHour = weekendCheck.getHours();
 	//Sets condition for the priceBoost variable which increases the amount if certain days are true
 	if (
@@ -436,7 +442,6 @@ function weekendPriceBoost() {
 		priceBoost *= 1.15;
 	}
 }
-
 weekendPriceBoost();
 
 //Burger Menu (open.button) - Function for displaying navigation menu when clicking on burger menu BTN
@@ -468,8 +473,6 @@ function orderSummary() {
 	cartPreview.classList.add('toggleHide');
   backToDetails();
 }
-// backToShop.classList.add('toggleHide')
-// cartPreviewBtn.classList.remove('toggleHide')
 //Checkout section (close.button) - Function which hides checkout section and displays product page when clicking on continue shopping BTN in the checkout section
 function toggleCheckout() {
   cartPreviewBtn.classList.remove('toggleHide')
@@ -484,12 +487,12 @@ function sortToggle() {
   clearFilterBtn.classList.remove('toggleHide')
 	sortMenu.classList.remove('toggleHide');
 }
-
+//Function which toggles the darkTheme class in body depending on user preference
 function themeToggle() {
 document.body.classList.toggle('darkTheme')
 }
 
-//Array containing the product stock
+//Array containing all the products
 const productStock = [
 	{
 		name: "Segreto D'Amore",
@@ -836,33 +839,6 @@ const productStock = [
     },
 	},
 ];
-
-/*------------------------------------------SORTING & FILTER------------------------------------------*/
-//Have the price range react and show the price intervall set by user
-
-//Variable for price range slider
-const priceRangeSlider = document.querySelector('#pricerange');
-
-//Add event to the slider
-priceRangeSlider.addEventListener('input', adjustPriceRange);
-
-//Global variabel for the price element
-const priceRangeValue = document.querySelector('.rangeVal');
-//Variable for BTN to sort alphabetically
-alphabetAscSorting = document.querySelector('.sortAlpha');
-alphabetAscSorting.addEventListener('click', sortingBySelection);
-alphaDecSorting = document.querySelector('.sortAlphaReverse')
-alphaDecSorting.addEventListener('click', sortingBySelection);
-
-priceAscSorting = document.querySelector('.sortPriceAsc')
-priceAscSorting.addEventListener('click', sortingBySelection);
-priceDecSorting = document.querySelector('.sortPriceDec')
-priceDecSorting.addEventListener('click', sortingBySelection);
-
-ratingAscSorting = document.querySelector('.sortRatingAsc')
-ratingAscSorting.addEventListener('click', sortingBySelection);
-ratingDecSorting = document.querySelector('.sortRatingDec')
-ratingDecSorting.addEventListener('click', sortingBySelection);
 //Array for filtered products on category
 let filteredProductStock = [...productStock];
 //Array for filtered products on price range
@@ -880,49 +856,19 @@ function adjustPriceRange() {
 	pushProductStock()
 }
 
-const heartShapeFilter = document.querySelector('.heart')
-heartShapeFilter.addEventListener('click', selectedShapeFilter)
-const roundShapeFilter = document.querySelector('.round')
-roundShapeFilter.addEventListener('click', selectedShapeFilter)
-const squareShapeFilter = document.querySelector('.square')
-squareShapeFilter.addEventListener('click', selectedShapeFilter)
-const bearFilter = document.querySelector('.bear')
-bearFilter.addEventListener('click', selectedShapeFilter)
 
-const redFilter = document.querySelector('.red')
-redFilter.addEventListener('click', selectedColorFilter)
-const blueFilter = document.querySelector('.blue')
-blueFilter.addEventListener('click', selectedColorFilter)
-const whiteFilter = document.querySelector('.white')
-whiteFilter.addEventListener('click', selectedColorFilter)
-const blackFilter = document.querySelector('.black')
-blackFilter.addEventListener('click', selectedColorFilter)
-const pinkFilter = document.querySelector('.pink')
-pinkFilter.addEventListener('click', selectedColorFilter)
-const brownFilter = document.querySelector('.brown')
-brownFilter.addEventListener('click', selectedColorFilter)
-const grayFilter = document.querySelector('.gray')
-grayFilter.addEventListener('click', selectedColorFilter)
-
-const clearFilterBtn = document.querySelector('#toggleFilterBtn')
-clearFilterBtn.addEventListener('click', clearFilter)
-
-
+//Function to clear the filter/sorting/search values applied 
 function clearFilter() {
-  priceRangeSlider.value = 59.99; // Reset the price range slider to a default value
-  navSearchBar.value = ''; // Clear the search bar
-  // Add more filter-clearing logic if needed
+  priceRangeSlider.value = 59.99; 
+  navSearchBar.value = '';
   sortByShape('clearFilter')
-  // Reset the filteredPriceRange to the original productStock
-  // filteredPriceRange = [...productStock];
-
-  // Update the product display
   pushProductStock();
   sortBtn.classList.remove('toggleHide')
   clearFilterBtn.classList.add('toggleHide')
   sortMenu.classList.add('toggleHide');
 }
-//Generic function to allow the selection of the shape filtering based on the ID which is retrieved
+
+//Generic function to allow the selection of the shape filtering based on the ID which is retrieved by the Btn that is clicked
 function sortByShape(shape) {
   navSearchBar.value = '';
 	filteredPriceRange = filteredProductStock.filter(
@@ -933,11 +879,11 @@ function sortByShape(shape) {
   }
 	pushProductStock()
 }
+
 //Function to select the correct filtering radioBTN ID which is then run by sortByShape based on the shape = ID of the BTN
 function selectedShapeFilter(e) {
 	let currentFilterOption = e.currentTarget.classList[0];
 	sortByShape(currentFilterOption)
-	console.dir(currentFilterOption);
 }
 
 //Generic function to allow the selection of the shape filtering based on the ID which is retrieved
@@ -949,14 +895,12 @@ function sortByColor(color) {
 
 	pushProductStock()
 }
+
 //Function to select the correct filtering radioBTN ID which is then run by sortByShape based on the shape = ID of the BTN
 function selectedColorFilter(e) {
 	let currentColorOption = e.currentTarget.classList[0];
 	sortByColor(currentColorOption)
-	console.dir(currentColorOption);
 }
-
-
 
 //Function for the search bar which resets the price range and filters the procuct array based on the keyword
 function searchBarFilter(e) {
@@ -972,12 +916,9 @@ function searchBarFilter(e) {
   pushProductStock()
 }
 
-// Function for sorting based on name A-Z
+// Function for sorting based on which Btn is clicked and class is retrieved from that Btn
 function sortingBySelection(e) {
-
   let currentSortOption = e.currentTarget.classList[0]
-
-
 	filteredPriceRange.sort((product1, product2) => {
     if (currentSortOption === 'sortAlpha') {
 		if (product1.name < product2.name) {
@@ -1029,30 +970,9 @@ function sortingBySelection(e) {
 		return 0;
   } 
 	});
-
-
-
-// else if (currentSortOption === 'sortAlphaReverse') {
-//   console.log('hello it work')
-// 	filteredPriceRange.sort((product1, product2) => {
-// 		if (product1.name < product2.name) {
-// 			return 1;
-// 		}
-// 		if (product1.name > product2.name) {
-// 			return -1;
-// 		}
-// 		return 0;
-// 	});
-// }
 	pushProductStock();
 }
 
-
-
-const addedToCartMsg = document.querySelector('.addedToCart');
-const addedToCartProduct = document.querySelector('.addedMsg')
-const addedToCartBtn = document.querySelector('.addedBtn')
-addedToCartBtn.addEventListener('click', orderSummary)
 //Function to display a message to notify user of added product
 function showAddedToCartMessage(addedProduct) {
 
@@ -1065,23 +985,17 @@ function showAddedToCartMessage(addedProduct) {
 //Function called by showAddedTocartMessage to hide it after 5Seconds
 function hideAddedToCartMessage() {
   addedToCartMsg.style.opacity = '0';
-
 }
 
-
-
-//criteria for light or dark theme
+//criteria which detects if user system has dark theme preference and adds dark class if true, else default is light theme
 if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
   document.body.classList.add('darkTheme');
 } else {
   document.body.classList.remove('darkTheme')
 }
 
-
-
 //Function to print out the products to the main product cataloge page
 function pushProductStock() {
-
 	productContainer.innerHTML = '';
 	filteredPriceRange.forEach((product, index) => {
 		productContainer.innerHTML += `<article class="productArticles">
@@ -1093,15 +1007,13 @@ function pushProductStock() {
                 height="${product.image.height}"
                 alt="${product.image.alt}"
             />
-
             <p class="articlePrice">
                 ${(product.price * priceBoost).toFixed(
 									2
-								)} $<span class="articleRating"> <img src="${product.ratingImage.src}" alt=${product.ratingImage.alt} height="50">${
+								)} $<span class="articleRating"> <img src="${product.ratingImage.src}" alt="${product.ratingImage.alt}" height="50">${
 			product.rating
 		}</span>
             </p>
-
             <div class="articleBtn">
                 <button class="articleRemoveFromCart" id="articleRemoveFromCart${index}">Remove</button>
                 <p class="articleAmnt">In cart: <span>${
@@ -1131,8 +1043,6 @@ function pushProductStock() {
 function addAProduct(e) {
 	let index = e.target.id.replace('articleAddToCart', '');
 	index = Number(index);
-
-	// productStock[index].amount += 1;
 	filteredPriceRange[index].amount += 1;
 	cart = productStock.filter((productStock) => productStock.amount > 0);
   const addedProduct = filteredPriceRange[index];
@@ -1141,12 +1051,11 @@ function addAProduct(e) {
 	addProductToCart();
 }
 
-//Function to be able to decrease the amount of product in the cart view & Summary view
+//Functions to be able to decrease the amount of product in the cart view & Summary view
 function subtractAProduct(e) {
 	let index = e.target.id.replace('articleRemoveFromCart', '');
 	if (filteredPriceRange[index].amount > 0) {
 		index = Number(index);
-		// productStock[index].amount -= 1;
 		filteredPriceRange[index].amount -= 1;
 		//Conditions the product to be removed from cart if the amount is set to 0
 		if (filteredPriceRange[index].amount === 0) {
@@ -1158,9 +1067,6 @@ function subtractAProduct(e) {
 		addProductToCart();
 	}
 }
-
-//Göra om funtkion till forEach, lägg till function i add knappen sen också
-
 function increaseCartPlus(e) {
 	const index = e.currentTarget.dataset.id;
 	cart[index].amount += 1;
@@ -1177,7 +1083,6 @@ function decreaseCartMinus(e) {
 		if (cart[index].amount === 0) {
 			cart.splice(index, 1);
 		}
-		//
 		updateStock();
 	}
 }
@@ -1193,7 +1098,6 @@ function addProductToCart() {
 	totalPriceSummary.innerHTML = ``;
 	let mondayIscountMessage = '';
   let tenForNineMsg = '';
-	// checkoutSummary.innerHTML = "";
 	let totalPriceSum = 0;
 	let totalProductsAmount = cart.reduce(
 		(total, product) => total + product.amount,
@@ -1208,18 +1112,14 @@ function addProductToCart() {
 			discountProuductOnAmount *= 0.9;
 		}
 
-		// discountEntireOrder(discountMessage, discountProuductOnAmount);
-
 		const mondayCheck = new Date();
     const timeCheck = mondayCheck.getHours() 
-		if (mondayCheck.getDay() === 6 && timeCheck < 19) { //1 <10
-			//1
+		if (mondayCheck.getDay() === 1 && timeCheck < 10) { 
 			mondayIscountMessage +=
 				'10% OFF a wonderful discount on the entire order to start your week<3';
 			discountProuductOnAmount *= 0.9;
 		}
 
-		// if ()
 		totalPriceSum += product.amount * discountProuductOnAmount * priceBoost;
 		let totalPcsPrice = (
 			discountProuductOnAmount *
@@ -1312,16 +1212,7 @@ function addProductToCart() {
 		disableInvoiceOption(totalPriceSum);
 	});
 
-
-  // let resetOrderTimer
-	// if (totalPriceSum > 0) {
-	// 		setTimeout(resetCartOrder, 1000 * 6) &&
-	// 		setTimeout(toggleTimeoutMsg, 1000 * 6);
-	// } else {
-	// 	clearTimeout(resetCartOrder);
-  //   clearTimeout(toggleTimeoutMsg);
-	// }¨
-
+//Criteria to start the "customer idle" message timer if there is a product in card based on the sum, else the timer is reset
   if (totalPriceSum > 0) {
     updateTimers(totalPriceSum);
   } else {
@@ -1348,9 +1239,7 @@ function addProductToCart() {
 	});
 }
 
-let resetOrderTimer;
-let msgTimer;
-
+//Function which checks if total price is more than 0 and starts timers, else the timer is reset
 function updateTimers(totalPriceSum) {
   clearTimeout(resetOrderTimer);
   clearTimeout(msgTimer);
@@ -1361,11 +1250,13 @@ function updateTimers(totalPriceSum) {
   }
 }
 
+//Function to call both amount update functions 
 function updateStock() {
 	pushProductStock();
 	addProductToCart();
 }
 
+//Function which disables invoice Btn if the totalamount is over or equal to 800
 function disableInvoiceOption(totalPriceSum) {
 	if (totalPriceSum >= 800) {
 		invoicePaymentBtn.setAttribute('disabled', '');
@@ -1376,6 +1267,7 @@ function disableInvoiceOption(totalPriceSum) {
 	}
 }
 
+//Function which clears the validation classes for the form inputs
 function clearInputValidation() {
   const formFields = document.querySelectorAll('.checkoutInput');
   formFields.forEach(formField => {
@@ -1390,17 +1282,15 @@ function clearInputValidation() {
   });
 }
 
-const resetToMainBtn = document.querySelector('.resetAllBtn')
-resetToMainBtn.addEventListener('click', resetToMain)
-
+//Function which resets products to 0 and displays the main page
 function resetToMain() {
   resetCartOrder()
   orderConfirmationPage.classList.add('toggleHide')
   toggleCheckout()
   navBar.classList.remove('toggleHide')
   window.scrollTo({ top: 0, behavior: 'smooth' });
-
 }
+
 //Function for reset BTN in the checkout section, also called when timer runs out for user
 function resetCartOrder() {
 	productStock.forEach((product) => {
@@ -1408,22 +1298,12 @@ function resetCartOrder() {
 	});
 	totalAmountIcon.innerHTML = '';
 	cart = [];
-  // navSearchBar.value = ''
-  // filteredPriceRange = [...productStock];
   backToDetails()
 	updateStock();
 	clearPaymentField()
   clearInputValidation()
   clearFilter()
-  // activatePaymentForm()
-	// cartClose()
-	// toggleTimeoutMsg()
 }
-//Function to reset cart and push message to user informing that they were too slow
-// function tooSlow() {
-//       console.log('stan')
-//       resetCartOrder()
-// }
 
 //Function for removing-product button in cart and Checkout summary
 function removeFromCartBtn(e) {
@@ -1440,7 +1320,6 @@ function removeFromCartBtn(e) {
 	);
 
 	if (cartIndex > -1) {
-		// && productStock.amount === 0
 		cart.splice(cartIndex, 1);
 
 		productStock[productIndex].amount = 0;
@@ -1448,7 +1327,7 @@ function removeFromCartBtn(e) {
 		addProductToCart();
 	}
 }
-
+//Function called to print the product form the productStock array to main product container
 pushProductStock();
 
-// Total cart amount showing = all (product.amount > 0) should be summed together and loop through forEach (all products with amount > 0)
+
