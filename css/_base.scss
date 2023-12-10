@@ -30,7 +30,6 @@ body {
 				font-weight: 300;
 			}
 		}
-
 		nav {
 			display: flex;
 			width: 100%;
@@ -64,7 +63,6 @@ body {
 					position: absolute;
 					left: -8px;
 					top: 5px;
-					
 				}
 			}
 			.continueShopping:hover {
@@ -130,7 +128,7 @@ body {
 					justify-content: space-evenly;
 					padding: 10px;
 					background-color: white;
-          border-radius:  100px 0px 100px 0px;
+         			 border-radius:  100px 0px 100px 0px;
 					margin: 0.5rem;
 				}
 				.productsInCart:nth-child(2n) {
@@ -520,7 +518,6 @@ body {
 						pink,
 						#ebebeb,
 					);
-					
 					border-radius: 5px 5px 5px 5px;
 				}
 				.addedBtn:hover {
@@ -544,14 +541,11 @@ body {
 		.reviewSec {
 			background-color: #fff;
 			.reviewsContainer {
-				display: grid;
-				grid-template-columns: repeat(4, 1fr);
+				display: flex;
+				flex-direction: column;
 				gap: 20px;
-				position: relative;
 				.reviews {
 					position: relative;
-					grid-column: span 4;
-					background-position: center;
 				}
 				.reviews {
 					img {
@@ -756,7 +750,6 @@ body {
 			}
 		}
 	}
-
 	.timeOutMsgBg {
 		position: fixed;
 		top: 0;
@@ -775,7 +768,6 @@ body {
 			#ecc66d
 		);
 		opacity: 0.9;
-
 		border-radius: 25px;
 		.timeOutHeader {
 			text-align: center;
@@ -798,7 +790,6 @@ body {
 		background-color: rgb(241, 237, 237);
 		display: flex;
 		justify-content: space-evenly;
-		background-image: url(Assets/icons/lightThemeLogo.svg);
 		background-repeat: no-repeat;
 		background-position: center;
 		flex-wrap: wrap;
