@@ -1,431 +1,396 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Elegant roses</title>
-	<link rel="icon" type="image/x-icon" href="Assets/icons/faviconLogo.ico">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elegant roses</title>
+  <link rel="icon" type="image/x-icon" href="Assets/icons/faviconLogo.ico">
 
-	<meta name="description"
-		content="Elegant Roses - Discover timeless romance with our exquisite collection of eternal roses in various colors and enchanting boxes. Elevate your special moments with the language of love.">
-	<meta name="keywords"
-		content="Elegant Roses, eternal roses, romantic gifts, flower arrangements, love, special occasions, floral elegance">
-	<meta name="author" content="Elegant Roses">
-	<meta name="theme-color" content="#FFD9E6">
+  <meta name="description"
+    content="Elegant Roses - Discover timeless romance with our exquisite collection of eternal roses in various colors and enchanting boxes. Elevate your special moments with the language of love.">
+  <meta name="keywords"
+    content="Elegant Roses, eternal roses, romantic gifts, flower arrangements, love, special occasions, floral elegance">
+  <meta name="author" content="Elegant Roses">
+  <meta name="theme-color" content="#FFD9E6">
 
-	<meta property="og:title" content="Elegant Roses">
-	<meta property="og:description"
-		content="Discover timeless romance with our exquisite collection of eternal roses in various colors and enchanting boxes. Elevate your special moments with the language of love.">
-	<meta property="og:image"
-		content="https://medieinstitutet.github.io/fed23d-js-grundkurs-webshop-MustafaaMehdi/Assets/Images/Reviews/Review4.jpg">
-	<meta property="og:url" content="https://medieinstitutet.github.io/fed23d-js-grundkurs-webshop-MustafaaMehdi">
-	<meta name="og:site_name" content="Elegant Roses - Capturing Moments in Petals">
-	<meta property="og:type" content="website">
+  <meta property="og:title" content="Elegant Roses">
+  <meta property="og:description"
+    content="Discover timeless romance with our exquisite collection of eternal roses in various colors and enchanting boxes. Elevate your special moments with the language of love.">
+  <meta property="og:image"
+    content="https://medieinstitutet.github.io/fed23d-js-grundkurs-webshop-MustafaaMehdi/Assets/Images/Reviews/Review4.jpg">
+  <meta property="og:url" content="https://medieinstitutet.github.io/fed23d-js-grundkurs-webshop-MustafaaMehdi">
+  <meta name="og:site_name" content="Elegant Roses - Capturing Moments in Petals">
+  <meta property="og:type" content="website">
 
-	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:title" content="Elegant Roses - Capturing Moments in Petals">
-	<meta name="twitter:description"
-		content="Discover timeless romance with our exquisite collection of eternal roses in various colors and enchanting boxes. Elevate your special moments with the language of love.">
-	<meta name="twitter:image"
-		content="https://medieinstitutet.github.io/fed23d-js-grundkurs-webshop-MustafaaMehdi/Assets/Images/Reviews/Review4.jpg">
-	<meta name="twitter:site" content="@elegantroses">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Elegant Roses - Capturing Moments in Petals">
+  <meta name="twitter:description"
+    content="Discover timeless romance with our exquisite collection of eternal roses in various colors and enchanting boxes. Elevate your special moments with the language of love.">
+  <meta name="twitter:image"
+    content="https://medieinstitutet.github.io/fed23d-js-grundkurs-webshop-MustafaaMehdi/Assets/Images/Reviews/Review4.jpg">
+  <meta name="twitter:site" content="@elegantroses">
 
-	<link rel="stylesheet" href="css/style.css" />
-	<link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400&display=swap" rel="stylesheet" />
 </head>
-
 <body>
-	<header>
-
-		<figure class="headerLogo">
-			<img src="Assets/icons/lightThemeLogo.svg" class="logoColor" />
-			<h1 class="headerLogoText">Elegant Roses</h1>
-		</figure>
-		<nav class="navBar">
-			<button class="continueShopping toggleHide">
-				<img src="Assets/icons/leftArrow.svg" alt="arrow pointing left" width="50" height="50" />Continue shopping
-			</button>
-			<button class="navCartBtn">
-				<img src="Assets/icons/shoppingCart.svg" alt="" width="30px" height="30px" /><span
-					class="productInCart"></span>
-			</button>
-
-			<div class="cartPreview toggleHide">
-				<span class="cartPreviewArrow"></span>
-				<button class="cartCloseBtn">
-					<img class="cartPreviewImg" src="Assets/icons/closeBtn.svg" width="20" height="20" />
-				</button>
-				<h2 class="summaryHeading">Shopping cart</h2>
-				<ul class="productPreviewInfo">
-					<li>
-						<h3>Product</h3>
-					</li>
-					<li>
-						<h3>Price</h3>
-					</li>
-					<li>
-						<h3>Amount</h3>
-					</li>
-				</ul>
-				<div class="productPreviewSummary">
-					<ul>
-						<li>
-							<p>No products in cart :/</p>
-						</li>
-					</ul>
-				</div>
-				<ul class="cartProductSum">
-					<li id="totalAmountcartPreview"></li>
-					<li id="totalPriceCartPreview"></li>
-				</ul>
-				<button class="checkoutBtn">Proceed to checkout</button>
-			</div>
-			<input type="text" class="navSearchBar" placeholder="Search"/>
-			<button id="filterBtn" class="sortBtn">
-				<img src="Assets/icons/Filter.svg" alt="" height="30" width="50" />
-			</button>
-			<button id="toggleFilterBtn" class="sortBtn toggleHide"><img src="Assets/icons/clearFilterIcon.svg" width="30" height="30"></button>
-
-			<button class="OpenNavBtn">
-				<img src="Assets/icons/burgerMenu.svg" alt="" width="30px" height="30px" />
-			</button>
-			<div class="navMenu toggleHide">
-				<button class="closeNavBtn">
-					<img src="Assets/icons/closeBtn.svg" width="30" height="30" />
-				</button>
-				<button class="themeToggleBtn">
-					<img src="Assets/icons/themeToggle.svg" width="30" height="30" />
-				</button>
-				<ul>
-					<li><a href="#">Products</a></li>
-					<li><a href="#">Who are we</a></li>
-					<li><a href="#">How does it work</a></li>
-					<li><a href="#">About us</a></li>
-				</ul>
-			</div>
-
-
-		</nav>
-	</header>
-
-	<div class="mainSectionWrapper">
-
-		<section class="productSec">
-			<h2 class="sectionHeading">
-				<span class="leftDivider"></span>Products<span class="rightDivider"></span>
-			</h2>
-			<div class="sortMenu toggleHide">
-				<h4>Sort products:</h4>
-
-				<div class="priceSorting">
-					<label for="pricerange">Price range: </label>
-					<span class="rangeMinVal">0$</span><input type="range" id="pricerange" class="priceRangeInput"
-						step="5" min="14.99" max="60.99" value="0" /><span class="rangeMaxVal">59.99$</span>
-					<span class="rangeVal">0$</span>
-
-				</div>
-
-				<p class="filterTitle">Filter on prefered category/shape</p>
-				<div class="shapeFilter">
-				<button class="round shapeFilterOption"><img src="Assets/icons/circleShape.svg" width="40" height="40"></button>
-				<button class="heart shapeFilterOption"><img src="Assets/icons/heartShape.svg" width="40" height="40"></button>
-				<button class="square shapeFilterOption"><img src="Assets/icons/squareShape.svg" width="40" height="40"></button> 
-				<button class="bear shapeFilterOption"><img src="Assets/icons/teddyShape.svg" width="40" height="40"></button>
-			</div>
-
-			<p class="filterTitle">Filter on prefered color</p>
-			<div class="colorFilter">
-
-				<button class="red colorFilterOption">Red</button>
-				<button class="blue colorFilterOption">Blue</button>
-				<button class="white colorFilterOption">White</button> 
-				<button class="black colorFilterOption">Black</button>
-				<button class="pink colorFilterOption">Pink</button>
-				<button class="brown colorFilterOption">Brown</button>
-				<button class="gray colorFilterOption">Gray</button>
-			</div>
-
-			<p class="filterTitle">Sort product</p>
-			<div class="sortOption">
-				<button class="sortAlpha sortingOption"><img src="Assets/icons/alphabetSort.svg" height="30" width="30"></button>
-				<button class="sortAlphaReverse sortingOption"><img src="Assets/icons/alphaReverseSort.svg" height="30" width="30"></button>
-				<button class="sortPriceAsc sortingOption"><img src="Assets/icons/priceAscSort.svg" height="30" width="30"></button>
-				<button class="sortPriceDec sortingOption"><img src="Assets/icons/priceDecSort.svg" height="30" width="30"></button>
-				<button class="sortRatingAsc sortingOption"><img src="Assets/icons/ratingAscSort.svg" height="30" width="30"></button>
-				<button class="sortRatingDec sortingOption"><img src="Assets/icons/ratingDecSort.svg" height="30" width="30"></button>
-			</div>
-			</div>
-			<div class="addedToCart">
-				<p class="addedMsg"></p>
-				<button class="addedBtn">To checkout</button>
-			</div>
-
-			<div class="productContainer">
-
-			</div>
-		</section>
-
-		<section class="instructionSec">
-			<h2 class="sectionHeading">
-				<span class="leftDivider"></span>How it works<span class="rightDivider"></span>
-			</h2>
-			<ul class="instructionList">
-				<li>
-					<img src="Assets/icons/1Choose.png" alt="" width="150" height="150" />
-
-					<h3>Select Symbols of Eternal Love:</h3>
-					<p>Explore our diverse collection of timeless roses each a unique expression of enduring love.</p>
-				</li>
-				<li>
-					<img src="Assets/icons/2Payment.png" alt="" width="150" height="150" />
-
-					<h3>Convenient Payment Options:</h3>
-					<p>Enjoy a seamless checkout experience with our flexible payment methods, including card payments
-						and hassle-free invoicing.</p>
-				</li>
-				<li>
-					<img src="Assets/icons/3Delivery.png" alt="" width="150" height="120" />
-
-					<h3>Sit Back and Unwind:</h3>
-					<p>While we handle the delivery, take a moment to relax and savor life. Our sustainable delivery
-						methods ensure a conscientious service.</p>
-				</li>
-				<li>
-					<img src="Assets/icons/4Enjoy.png" alt="" width="150" height="150" />
-
-					<h3>Cherish the Extraordinary:</h3>
-					<p>Gift your loved ones with a symbol of love like no other. ElegantRoses - A timeless emblem of
-						eternity.</p>
-				</li>
-			</ul>
-		</section>
-
-		<section class="reviewSec">
-			<h2 class="sectionHeading">
-				<span class="leftDivider"></span>Reviews<span class="rightDivider"></span>
-			</h2>
-			<div class="reviewsContainer">
-				<article class="reviews">
-					<img src="Assets/Images/Reviews/Review1.jpg" alt="girl holding box of flowers" height="300"
-						width="300" />
-					<h3>"The flower box exceeded all expectations – pure elegance."</h3>
-				</article>
-				<article class="reviews">
-					<img src="Assets/Images/Reviews/Review2.jpg" alt="girl holding box of flowers" height="300"
-						width="300" />
-					<h3>"Beautifully arranged flowers, a gift that speaks volumes."</h3>
-				</article>
-				<article class="reviews">
-					<img src="Assets/Images/Reviews/Review3.jpg" alt="girl holding box of flowers" height="300"
-						width="300" />
-					<h3>"An elegant touch to any occasion – the perfect gift."</h3>
-				</article>
-				<article class="reviews">
-					<img src="Assets/Images/Reviews/Review4.jpg" alt="girl holding box of flowers" height="300"
-						width="300" />
-					<h3>
-						"A touch of romance delivered in a stylish box – simply divine."
-					</h3>
-				</article>
-			</div>
-		</section>
-	</div>
-	<section class="checkoutWrapper toggleHide">
-		<h2 class="sectionHeading">
-			<span class="leftDivider"></span>Checkout<span class="rightDivider"></span>
-		</h2>
-
-		<div class="checkoutSec">
-			<h3>Order Summary</h3>
-			<div>
-				<ul class="productCheckoutSummary">
-					<li class="productAdded">
-						<p>No products in cart :/</p>
-					</li>
-				</ul>
-			</div>
-			<ul class="checkoutProductSum">
-				<li>
-					<h4 class="productSummaryAmount">Total products: <span id="totalAmountCheckout"></span></h4>
-				</li>
-
-				<li id="totalPriceCheckout">
-					<h4 class="productSummarySum">Total amount: <span id="totalPriceCheckout"></span></h4>
-				</li>
-			</ul>
-			<label for="coupon">
-				<h4>Promo code</h4>
-			</label>
-			<input type="text" name="coupon" id="coupon" class="checkoutInput" /><button>Apply</button>
-			<form action="" class="fieldSetContainer">
-				<fieldset class="orderForm">
-					<legend>
-						<h4>Contact details</h4>
-					</legend>
-					<label for="fname">First name*</label>
-					<div class="formInput">
-						<input type="text" id="fname" required="required" class="checkoutInput" placeholder="John"/>
-						<p id="fNameErrorMsg" class="errorMsg toggleHide">Please provide your first name</p>
-					</div>
-
-					<label for="lname">Last name*</label>
-					<div class="formInput">
-						<input type="text" id="lname" required="required" class="checkoutInput" placeholder="Doe"/>
-						<p id="lNameErrorMsg" class="errorMsg toggleHide">Please provide your last name</p>
-					</div>
-
-					<label for="street-address">Street address*</label>
-					<div class="formInput">
-						<input type="text" id="street-address" name="street-address" required="required"
-							class="checkoutInput" placeholder="Streetname 123"/>
-						<p id="streetError" class="errorMsg toggleHide">Please provide a valid street address</p>
-					</div>
-
-					<label for="zip">Zip code*</label>
-					<div class="formInput">
-						<input name="zip" id="zip" required="required" type="number" class="checkoutInput" placeholder="123 56"/>
-						<p id="zipErrorMsg" class="errorMsg toggleHide">Please provide a valid zip code</p>
-					</div>
-
-					<label for="city">City*</label>
-					<div class="formInput">
-						<input type="text" id="city" name="city" class="checkoutInput" placeholder="Doe" required="required"/>
-						<p id="cityErrorMsg" class="errorMsg toggleHide">Please provide a valid city</p>
-					</div>
-
-					<label for="doorcode">Door code(Optional)</label>
-					<input type="text" id="doorcode" name="doorcode" class="checkoutInput" placeholder="Code for door or Phone #"/>
-
-
-					<label for="tel">Phone (mobile)*</label>
-					<div class="formInput">
-						<input type="tel" id="tel" name="tel" required="required" class="checkoutInput" placeholder="+46 73 2222 333"/>
-						<p id="telErrorMsg" class="errorMsg toggleHide">Please provide a valid phone number</p>
-					</div>
-
-					<label for="email">Email Address*</label>
-					<div class="formInput">
-						<input type="email" id="email" name="email" required="required" class="checkoutInput" placeholder="example@domain.com"/>
-						<p id="emailErrorMsg" class="errorMsg toggleHide">Please provide a valid e-mail address</p>
-					</div>
-				</fieldset>
-					<p id="toPaymentErrorMsg" class="paymentErrorMsg">Please make sure to fill all mandatory fields (containing a * symbol)</p>
-				<button class="proceedToPayment" type="button" id="toPaymentBtn">Proceed to payment</button>
-
-				<fieldset class="paymentSection toggleHide">
-					<legend>
-						<h4>Choose payment method</h4>
-					</legend>
-					<button class="paymentOption" id="cardPaymentOption" type="button">Card </button>
-					<button class="paymentOption invoiceBtn" id="invoicePaymentOption" type="button">Invoice </button>
-					<div class="cardPayment" id="cardPaymentForm">
-						<label for="cardno">Card number:</label>
-						<div class="formInput">
-							<input type="number" id="cardno" class="checkoutInput" value="4111111111111111" />
-							<p id="cardNoErrorMsg" class="errorMsg toggleHide">Please provide a valid card number</p>
-						</div>
-
-						<label for="expirydate">Expiry date</label>
-						<div class="formInput">
-							<input type="text" id="expirydate" class="checkoutInput" value="05/25" />
-							<p id="expiryErrorMsg" class="errorMsg toggleHide">Please provide a card use a valid card</p>
-						</div>
-
-						<label for="cvv">CVV Code</label>
-						<div class="formInput">
-							<input type="number" id="cvv" class="checkoutInput" />
-							<p id="cvvErrorMsg" class="errorMsg toggleHide">Please provide a valid cvv/cvc number</p>
-						</div>
-					</div>
-
-						<div class="invoicePayment toggleHide" id="invoicePaymentForm">
-							<label for="ssn">SSN:</label>
-							<div class="formInput">
-								<input type="text" id="ssn" class="checkoutInput" />
-								<p id="ssnErrorMsg" class="errorMsg toggleHide">Please provide a valid social securty number</p>
-							</div>
-						</div>
-
-
-				</fieldset>
-				<fieldset class="orderSubmit toggleHide">
-					<legend>
-						<h4>Complete order</h4>
-					</legend>
-					<div>
-						<input type="checkbox" id="subscribeNews" name="subscribe" value="newsletter" checked />
-						<label for="subscribeNews">Subscribe to newsletter, receive unique deals and coupon
-							codes</label>
-					</div>
-					<div>
-						<input type="checkbox" class="privacyNotice" name="privacynotice" value="privacynotice" />
-						<label for="privacynotice">I confirm that I have read and accepted
-							<a href="#">Elgantroses T&Cs</a>*</label>
-					</div>
-					<button class="checkoutFormBtn" disabled type="button" id="submitorder">Submit order</button>
-				</fieldset>
-
-				<button class="proceedToPayment toggleHide" type="button" id="backToDetails">Back to contact details</button>
-				<button class="continueShopping toggleHide" type="button" id="finalizeOrder">Finalize order</button>
-				<button class="resetOrder" id="resetBTN" type="reset">Reset order</button>
-			</form>
-		</div>
-	</section>
-
-	<section class="orderConfirmation toggleHide">
-		<h2 class="sectionHeading">
-			<span class="leftDivider"></span>Order confirmation<span class="rightDivider"></span>
-		</h2>
-		<div class="confirmationMsg">
-			<h3>Thank you for your order</h3>
-			<p>
-				We are happy to let you know that your order will be delivered to you
-				in 3-5 working days Your order confirmation will be emailed shortly
-			</p>
-			<p>See your order summary below</p>
-			<ul class="orderSummary">
-
-			</ul>
-			<ul class="productSummaryAmt" id="totalPriceSummary">
-		</div>
-		<button class="resetAllBtn">Back to home</button>
-	</section>
-	<div class="timeOutMsgBg toggleHide">
-		<div class="timeOutMsg">
-			<h2 class="timeOutHeader">Wake up!</h2>
-			<p class="timeOutText">Sorry about that...Seems like someone fell asleep, for your own safety, we have
-				emptied out the cart for you to re-discover all the amazing products we have to offer!</p>
-			<button class="timeOutBtn">Snooze...ZzZzZzz</button>
-		</div>
-	</div>
-	<footer>
-		<ul>
-			<li>
-				<h3>About ElegantRoses</h3>
-			</li>
-			<li><a href="#">Environmental policy</a></li>
-			<li><a href="#">Our eternal roses</a></li>
-			<li><a href="#">Job openings</a></li>
-			<li><a href="#">Follow our journey</a></li>
-		</ul>
-		<ul>
-			<li>
-				<h3>Customer support</h3>
-			</li>
-			<li><a href="#">T&C</a></li>
-			<li><a href="#">Payment</a></li>
-			<li><a href="#">Contact us</a></li>
-		</ul>
-		<div>
-			<p>Elegant Roses® 2023</p>
-			<img src="Assets/icons/FooterLogo.svg" alt="" width="100" height="64" />
-			<p>All Rights Reserved</p>
-		</div>
-	</footer>
-
-	<script src="script.js" async defer></script>
+  <header>
+    <figure class="headerLogo">
+      <img src="Assets/icons/lightThemeLogo.svg" class="logoColor" alt="elegant roses logo in yellow"/>
+      <h1 class="headerLogoText">Elegant Roses</h1>
+    </figure>
+    <nav class="navBar">
+      <button class="continueShopping toggleHide">
+        <img src="Assets/icons/leftArrow.svg" alt="arrow pointing left" width="50" height="50">Continue shopping
+      </button>
+      <button class="navCartBtn" aria-label="Open navigation">
+        <img src="Assets/icons/shoppingCart.svg" alt="a shopping cart icon" width="30" height="30" /><span class="productInCart"></span>
+      </button>
+      <div class="cartPreview toggleHide">
+        <span class="cartPreviewArrow"></span>
+        <button class="cartCloseBtn">
+          <img class="cartPreviewImg" src="Assets/icons/closeBtn.svg" width="20" height="20" alt="an X icon indicating closing of cart">
+        </button>
+        <h2 class="summaryHeading">Shopping cart</h2>
+        <ul class="productPreviewInfo">
+          <li>
+            <h3>Product</h3>
+          </li>
+          <li>
+            <h3>Price</h3>
+          </li>
+          <li>
+            <h3>Amount</h3>
+          </li>
+        </ul>
+        <div class="productPreviewSummary">
+          <ul>
+            <li>
+              <p>No products in cart :/</p>
+            </li>
+          </ul>
+        </div>
+        <ul class="cartProductSum">
+          <li id="totalAmountcartPreview"></li>
+          <li id="totalPriceCartPreview"></li>
+        </ul>
+        <button class="checkoutBtn">Proceed to checkout</button>
+      </div>
+      <input type="text" class="navSearchBar" placeholder="Search" aria-label="search bar"/>
+      <button id="filterBtn" class="sortBtn" aria-label="open sorting menu">
+        <img src="Assets/icons/Filter.svg" alt="a filter icon" height="30" width="50" />
+      </button>
+      <button id="toggleFilterBtn" class="sortBtn toggleHide"><img src="Assets/icons/clearFilterIcon.svg" width="30"
+          height="30" alt="clear filter icon"></button>
+      <button class="OpenNavBtn" aria-label="display navigation menu">
+        <img src="Assets/icons/burgerMenu.svg" alt="burger menu icon" width="30" height="30" />
+      </button>
+      <div class="navMenu toggleHide">
+        <button class="closeNavBtn">
+          <img src="Assets/icons/closeBtn.svg" width="30" height="30" alt="an X icon indicating close navigationn">
+        </button>
+        <button class="themeToggleBtn">
+          <img src="Assets/icons/themeToggle.svg" width="30" height="30" alt="a theme toggle icon">
+        </button>
+        <ul>
+          <li><a href="#">Products</a></li>
+          <li><a href="#">Who are we</a></li>
+          <li><a href="#">How does it work</a></li>
+          <li><a href="#">About us</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <div class="mainSectionWrapper">
+    <section class="productSec">
+      <h2 class="sectionHeading">
+        <span class="leftDivider"></span>Products<span class="rightDivider"></span>
+      </h2>
+      <div class="sortMenu toggleHide">
+        <h4>Sort products:</h4>
+        <div class="priceSorting">
+          <label for="pricerange">Price range: </label>
+          <span class="rangeMinVal">0$</span><input type="range" id="pricerange" class="priceRangeInput" step="5"
+            min="14.99" max="60.99" value="0" /><span class="rangeMaxVal">59.99$</span>
+          <span class="rangeVal">0$</span>
+        </div>
+        <p class="filterTitle">Filter on prefered category/shape</p>
+        <div class="shapeFilter">
+          <button class="round shapeFilterOption"><img src="Assets/icons/circleShape.svg" width="40"
+              height="40" alt="a circle icon"></button>
+          <button class="heart shapeFilterOption"><img src="Assets/icons/heartShape.svg" width="40"
+              height="40" alt="a heart icon"></button>
+          <button class="square shapeFilterOption"><img src="Assets/icons/squareShape.svg" width="40"
+              height="40" alt="a sqare icon"></button>
+          <button class="bear shapeFilterOption"><img src="Assets/icons/teddyShape.svg" width="40" height="40" alt="a teddy bear icon"></button>
+        </div>
+        <p class="filterTitle">Filter on prefered color</p>
+        <div class="colorFilter">
+          <button class="red colorFilterOption">Red</button>
+          <button class="blue colorFilterOption">Blue</button>
+          <button class="white colorFilterOption">White</button>
+          <button class="black colorFilterOption">Black</button>
+          <button class="pink colorFilterOption">Pink</button>
+          <button class="brown colorFilterOption">Brown</button>
+          <button class="gray colorFilterOption">Gray</button>
+        </div>
+        <p class="filterTitle">Sort product</p>
+        <div class="sortOption">
+          <button class="sortAlpha sortingOption"><img src="Assets/icons/alphabetSort.svg" height="30"
+              width="30" alt="an alphabet sorting icon"></button>
+          <button class="sortAlphaReverse sortingOption"><img src="Assets/icons/alphaReverseSort.svg" height="30"
+              width="30" alt="a reverse alphabet sorting icon"></button>
+          <button class="sortPriceAsc sortingOption"><img src="Assets/icons/priceAscSort.svg" height="30"
+              width="30" alt="a price sorting icon"></button>
+          <button class="sortPriceDec sortingOption"><img src="Assets/icons/priceDecSort.svg" height="30"
+              width="30" alt="a high high to low price sorting icon"></button>
+          <button class="sortRatingAsc sortingOption"><img src="Assets/icons/ratingAscSort.svg" height="30"
+              width="30" alt="a high low to high rating sorting icon"></button>
+          <button class="sortRatingDec sortingOption"><img src="Assets/icons/ratingDecSort.svg" height="30"
+              width="30" alt="a high high to low rating sorting icon"></button>
+      </div>
+      </div>
+      <div class="addedToCart">
+        <p class="addedMsg"></p>
+        <button class="addedBtn">To checkout</button>
+      </div>
+      <div class="productContainer">
+      </div>
+    </section>
+    <section class="instructionSec">
+      <h2 class="sectionHeading">
+        <span class="leftDivider"></span>How it works<span class="rightDivider"></span>
+      </h2>
+      <ul class="instructionList">
+        <li>
+          <img src="Assets/icons/1Choose.png" alt="two round flower boxes icon" width="150" height="150">
+          <h3>Select Symbols of Eternal Love:</h3>
+          <p>Explore our diverse collection of timeless roses each a unique expression of enduring love.</p>
+        </li>
+        <li>
+          <img src="Assets/icons/2Payment.png" alt="payment option icon" width="150" height="150">
+          <h3>Convenient Payment Options:</h3>
+          <p>Enjoy a seamless checkout experience with our flexible payment methods, including card payments
+            and hassle-free invoicing.</p>
+        </li>
+        <li>
+          <img src="Assets/icons/3Delivery.png" alt="delivery truck icon" width="150" height="120">
+          <h3>Sit Back and Unwind:</h3>
+          <p>While we handle the delivery, take a moment to relax and savor life. Our sustainable delivery
+            methods ensure a conscientious service.</p>
+        </li>
+        <li>
+          <img src="Assets/icons/4Enjoy.png" alt="a flower box icon with hearts sparking" width="150" height="150">
+          <h3>Cherish the Extraordinary:</h3>
+          <p>Gift your loved ones with a symbol of love like no other. ElegantRoses - A timeless emblem of
+            eternity.</p>
+        </li>
+      </ul>
+    </section>
+    <section class="reviewSec">
+      <h2 class="sectionHeading">
+        <span class="leftDivider"></span>Reviews<span class="rightDivider"></span>
+      </h2>
+      <div class="reviewsContainer">
+        <article class="reviews">
+          <img src="Assets/Images/Reviews/Review1.jpg" alt="girl holding box of flowers" height="300" width="300" />
+          <h3>"The flower box exceeded all expectations – pure elegance."</h3>
+        </article>
+        <article class="reviews">
+          <img src="Assets/Images/Reviews/Review2.jpg" alt="man holding box of flowers" height="300" width="300" />
+          <h3>"Beautifully arranged flowers, a gift that speaks volumes."</h3>
+        </article>
+        <article class="reviews">
+          <img src="Assets/Images/Reviews/Review3.jpg" alt="man holding box of flowers" height="300" width="300" />
+          <h3>"An elegant touch to any occasion – the perfect gift."</h3>
+        </article>
+        <article class="reviews">
+          <img src="Assets/Images/Reviews/Review4.jpg" alt="girl sitting next to box of flowers" height="300" width="300" />
+          <h3>
+            "A touch of romance delivered in a stylish box – simply divine."
+          </h3>
+        </article>
+      </div>
+    </section>
+  </div>
+  <section class="checkoutWrapper toggleHide">
+    <h2 class="sectionHeading">
+      <span class="leftDivider"></span>Checkout<span class="rightDivider"></span>
+    </h2>
+    <div class="checkoutSec">
+      <h3>Order Summary</h3>
+      <div>
+        <ul class="productCheckoutSummary">
+          <li class="productAdded">
+            <p>No products in cart :/</p>
+          </li>
+        </ul>
+      </div>
+      <ul class="checkoutProductSum">
+        <li>
+          <h4 class="productSummaryAmount">Total products: <span id="totalAmountCheckout"></span></h4>
+        </li>
+        <li>
+          <h4 class="productSummarySum">Total amount: <span id="totalPriceCheckout"></span></h4>
+        </li>
+      </ul>
+      <label for="coupon">
+        Promo code
+      </label>
+      <input type="text" name="coupon" id="coupon" class="checkoutInput" /><button>Apply</button>
+      <form class="fieldSetContainer">
+        <fieldset class="orderForm">
+          <legend>
+            <h4>Contact details</h4>
+          </legend>
+          <label for="fname">First name*</label>
+          <div class="formInput">
+            <input type="text" id="fname" required="required" class="checkoutInput" placeholder="John" />
+            <p id="fNameErrorMsg" class="errorMsg toggleHide">Please provide your first name</p>
+          </div>
+          <label for="lname">Last name*</label>
+          <div class="formInput">
+            <input type="text" id="lname" required="required" class="checkoutInput" placeholder="Doe" />
+            <p id="lNameErrorMsg" class="errorMsg toggleHide">Please provide your last name</p>
+          </div>
+          <label for="street-address">Street address*</label>
+          <div class="formInput">
+            <input type="text" id="street-address" name="street-address" required="required" class="checkoutInput"
+              placeholder="Streetname 123" />
+            <p id="streetError" class="errorMsg toggleHide">Please provide a valid street address</p>
+          </div>
+          <label for="zip">Zip code*</label>
+          <div class="formInput">
+            <input name="zip" id="zip" required="required" type="number" class="checkoutInput" placeholder="123 56" />
+            <p id="zipErrorMsg" class="errorMsg toggleHide">Please provide a valid zip code</p>
+          </div>
+          <label for="city">City*</label>
+          <div class="formInput">
+            <input type="text" id="city" name="city" class="checkoutInput" placeholder="Doe" required="required" />
+            <p id="cityErrorMsg" class="errorMsg toggleHide">Please provide a valid city</p>
+          </div>
+          <label for="doorcode">Door code(Optional)</label>
+          <input type="text" id="doorcode" name="doorcode" class="checkoutInput"
+            placeholder="Code for door or Phone #" />
+          <label for="tel">Phone (mobile)*</label>
+          <div class="formInput">
+            <input type="tel" id="tel" name="tel" required="required" class="checkoutInput"
+              placeholder="+46 73 2222 333" />
+            <p id="telErrorMsg" class="errorMsg toggleHide">Please provide a valid phone number</p>
+          </div>
+          <label for="email">Email Address*</label>
+          <div class="formInput">
+            <input type="email" id="email" name="email" required="required" class="checkoutInput"
+              placeholder="example@domain.com" />
+            <p id="emailErrorMsg" class="errorMsg toggleHide">Please provide a valid e-mail address</p>
+          </div>
+        </fieldset>
+        <p id="toPaymentErrorMsg" class="paymentErrorMsg">Please make sure to fill all mandatory fields (containing a *
+          symbol)</p>
+        <button class="proceedToPayment" type="button" id="toPaymentBtn">Proceed to payment</button>
+        <fieldset class="paymentSection toggleHide">
+          <legend>
+            <h4>Choose payment method</h4>
+          </legend>
+          <button class="paymentOption" id="cardPaymentOption" type="button">Card </button>
+          <button class="paymentOption invoiceBtn" id="invoicePaymentOption" type="button">Invoice </button>
+          <div class="cardPayment" id="cardPaymentForm">
+            <label for="cardno">Card number:</label>
+            <div class="formInput">
+              <input type="number" id="cardno" class="checkoutInput" value="4111111111111111" />
+              <p id="cardNoErrorMsg" class="errorMsg toggleHide">Please provide a valid card number</p>
+            </div>
+            <label for="expirydate">Expiry date</label>
+            <div class="formInput">
+              <input type="text" id="expirydate" class="checkoutInput" value="05/25" />
+              <p id="expiryErrorMsg" class="errorMsg toggleHide">Please provide a card use a valid card</p>
+            </div>
+            <label for="cvv">CVV Code</label>
+            <div class="formInput">
+              <input type="number" id="cvv" class="checkoutInput" />
+              <p id="cvvErrorMsg" class="errorMsg toggleHide">Please provide a valid cvv/cvc number</p>
+            </div>
+          </div>
+          <div class="invoicePayment toggleHide" id="invoicePaymentForm">
+            <label for="ssn">SSN:</label>
+            <div class="formInput">
+              <input type="text" id="ssn" class="checkoutInput" />
+              <p id="ssnErrorMsg" class="errorMsg toggleHide">Please provide a valid social securty number</p>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset class="orderSubmit toggleHide">
+          <legend>
+            <h4>Complete order</h4>
+          </legend>
+          <div>
+            <input type="checkbox" id="subscribeNews" name="subscribe" value="newsletter" checked />
+            <label for="subscribeNews">Subscribe to newsletter, receive unique deals and coupon
+              codes</label>
+          </div>
+          <div>
+            <input type="checkbox" class="privacyNotice" name="privacynotice" value="privacynotice" id="privacynotice"/>
+            <label for="privacynotice">I confirm that I have read and accepted
+              <a href="#">Elgantroses T&Cs</a>*</label>
+          </div>
+          <button class="checkoutFormBtn" disabled type="button" id="submitorder">Submit order</button>
+        </fieldset>
+        <button class="proceedToPayment toggleHide" type="button" id="backToDetails">Back to contact details</button>
+        <button class="continueShopping toggleHide" type="button" id="finalizeOrder">Finalize order</button>
+        <button class="resetOrder" id="resetBTN" type="reset">Reset order</button>
+      </form>
+    </div>
+  </section>
+  <section class="orderConfirmation toggleHide">
+    <h2 class="sectionHeading">
+      <span class="leftDivider"></span>Order confirmation<span class="rightDivider"></span>
+    </h2>
+    <div class="confirmationMsg">
+      <h3>Thank you for your order</h3>
+      <p>
+        We are happy to let you know that your order will be delivered to you
+        in 3-5 working days Your order confirmation will be emailed shortly
+      </p>
+      <p>See your order summary below</p>
+      <ul class="orderSummary">
+      </ul>
+      <ul class="productSummaryAmt" id="totalPriceSummary">
+      </ul>
+    </div>
+    <button class="resetAllBtn">Back to home</button>
+  </section>
+  <div class="timeOutMsgBg toggleHide">
+    <div class="timeOutMsg">
+      <h2 class="timeOutHeader">Wake up!</h2>
+      <p class="timeOutText">Sorry about that...Seems like someone fell asleep, for your own safety, we have
+        emptied out the cart for you to re-discover all the amazing products we have to offer!</p>
+      <button class="timeOutBtn">Snooze...ZzZzZzz</button>
+    </div>
+  </div>
+  <footer>
+    <ul>
+      <li>
+        <h3>About ElegantRoses</h3>
+      </li>
+      <li><a href="#">Environmental policy</a></li>
+      <li><a href="#">Our eternal roses</a></li>
+      <li><a href="#">Job openings</a></li>
+      <li><a href="#">Follow our journey</a></li>
+    </ul>
+    <ul>
+      <li>
+        <h3>Customer support</h3>
+      </li>
+      <li><a href="#">T&C</a></li>
+      <li><a href="#">Payment</a></li>
+      <li><a href="#">Contact us</a></li>
+    </ul>
+    <div>
+      <p>Elegant Roses® 2023</p>
+      <img src="Assets/icons/FooterLogo.svg" alt="white elegant roses logo in footer" width="100" height="64">
+      <p>All Rights Reserved</p>
+    </div>
+  </footer>
+  <script src="script.js" async defer></script>
 </body>
-
 </html>
