@@ -508,7 +508,7 @@ const productStock = [
 			width: 100,
 		},
     ratingImage: {
-      src: 'Assets/icons/rating.webp',
+      src: 'Assets/icons/rating1.webp',
 			alt: 'a bouqet of roses indicating high rating',
     },
 	},
@@ -562,7 +562,7 @@ const productStock = [
 			width: 100,
 		},
     ratingImage: {
-      src: 'Assets/icons/rating.webp',
+      src: 'Assets/icons/rating1.webp',
 			alt: 'a bouqet of roses indicating high rating',
     },
 	},
@@ -580,7 +580,7 @@ const productStock = [
 			width: 100,
 		},
     ratingImage: {
-      src: 'Assets/icons/rating.webp',
+      src: 'Assets/icons/rating1.webp',
 			alt: 'a bouqet of roses indicating high rating',
     },
 	},
@@ -598,7 +598,7 @@ const productStock = [
 			width: 100,
 		},
     ratingImage: {
-      src: 'Assets/icons/rating.webp',
+      src: 'Assets/icons/rating1.webp',
 			alt: 'a bouqet of roses indicating high rating',
     },
 	},
@@ -616,7 +616,7 @@ const productStock = [
 			width: 100,
 		},
     ratingImage: {
-      src: 'Assets/icons/rating.webp',
+      src: 'Assets/icons/rating1.webp',
 			alt: 'a bouqet of roses indicating high rating',
     },
 	},
@@ -634,7 +634,7 @@ const productStock = [
 			width: 100,
 		},
     ratingImage: {
-      src: 'Assets/icons/rating.webp',
+      src: 'Assets/icons/rating1.webp',
 			alt: 'a single rose indicating low rating',
     },
 	},
@@ -652,7 +652,7 @@ const productStock = [
 			width: 100,
 		},
     ratingImage: {
-      src: 'Assets/icons/rating.webp',
+      src: 'Assets/icons/rating1.webp',
 			alt: 'three roses indicating decent rating',
     },
 	},
@@ -688,7 +688,7 @@ const productStock = [
 			width: 100,
 		},
     ratingImage: {
-      src: 'Assets/icons/rating.webp',
+      src: 'Assets/icons/rating1.webp',
 			alt: 'a bouqet of roses indicating high rating',
     },
 	},
@@ -706,7 +706,7 @@ const productStock = [
 			width: 100,
 		},
     ratingImage: {
-      src: 'Assets/icons/rating.webp',
+      src: 'Assets/icons/rating1.webp',
 			alt: 'three roses indicating decent rating',
     },
 	},
@@ -724,7 +724,7 @@ const productStock = [
 			width: 100,
 		},
     ratingImage: {
-      src: 'Assets/icons/rating.webp',
+      src: 'Assets/icons/rating1.webp',
 			alt: 'a bouqet of roses indicating high rating',
     },
 	},
@@ -744,7 +744,7 @@ const productStock = [
 			width: 100,
 		},
     ratingImage: {
-      src: 'Assets/icons/rating.webp',
+      src: 'Assets/icons/rating1.webp',
 			alt: 'a bouqet of roses indicating high rating',
     },
 	},
@@ -762,7 +762,7 @@ const productStock = [
 			width: 100,
 		},
     ratingImage: {
-      src: 'Assets/icons/rating.webp',
+      src: 'Assets/icons/rating1.webp',
 			alt: 'three roses indicating decent rating',
     },
 	},
@@ -780,7 +780,7 @@ const productStock = [
 			width: 100,
 		},
     ratingImage: {
-      src: 'Assets/icons/rating.webp',
+      src: 'Assets/icons/rating1.webp',
 			alt: 'a bouqet of roses indicating high rating',
     },
 	},
@@ -798,7 +798,7 @@ const productStock = [
 			width: 100,
 		},
     ratingImage: {
-      src: 'Assets/icons/rating.webp',
+      src: 'Assets/icons/rating1.webp',
 			alt: 'a bouqet of roses indicating high rating',
     },
 	},
@@ -816,7 +816,7 @@ const productStock = [
 			width: 100,
 		},
     ratingImage: {
-      src: 'Assets/icons/rating.webp',
+      src: 'Assets/icons/rating1.webp',
 			alt: 'a bouqet of roses indicating high rating',
     },
 	},
@@ -834,7 +834,7 @@ const productStock = [
 			width: 100,
 		},
     ratingImage: {
-      src: 'Assets/icons/rating.webp',
+      src: 'Assets/icons/rating1.webp',
 			alt: 'a bouqet of roses indicating high rating',
     },
 	},
